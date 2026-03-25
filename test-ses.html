@@ -1,25 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-<title>GitHub Ses Testi</title>
-<style>
-body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
-button { background-color: #4CAF50; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; cursor: pointer; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP3 Facebook Test</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; background: #f0f2f5; }
+        .btn { background: #1877f2; color: white; border: none; padding: 20px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 18px; }
+    </style>
 </head>
 <body>
 
-<h1>GitHub Sayfalarında Ses Testi</h1>
-<button onclick="sesiCal()">Sesi Çal</button>
+    <h2>Fatih Mehmet CANITEZ</h2>
+    <p>Testing real MP3 from GitHub on Facebook</p>
 
-<script>
-function sesiCal() {
-  const text = "Merhaba Dünya";
-  const msg = new SpeechSynthesisUtterance(text);
-  msg.lang = 'tr-TR';
-  window.speechSynthesis.speak(msg);
-}
-</script>
+    <!-- Butona basınca GitHub'daki audio klasöründen q1.mp3'ü çağırır -->
+    <button class="btn" onclick="playTest()">🔊 PLAY q1.mp3 (Sesi Çal)</button>
+
+    <p id="status" style="margin-top:20px; font-weight:bold;"></p>
+
+    <script>
+        function playTest() {
+            const status = document.getElementById('status');
+            // GitHub Pages dosya yolu: audio/q1.mp3
+            const audio = new Audio('audio/q1.mp3');
+            
+            audio.play()
+                .then(() => {
+                    status.innerHTML = "✅ SUCCESS! Audio is playing.";
+                    status.style.color = "green";
+                })
+                .catch(error => {
+                    status.innerHTML = "❌ ERROR: " + error.message;
+                    status.style.color = "red";
+                    console.log(error);
+                });
+        }
+    </script>
 
 </body>
 </html>
