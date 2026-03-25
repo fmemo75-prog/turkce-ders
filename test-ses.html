@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GitHub Ses Testi</title>
+<style>
+body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+button { background-color: #4CAF50; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<h1>GitHub Sayfalarında Ses Testi</h1>
+<button onclick="sesiCal()">Sesi Çal</button>
+
+<script>
+function sesiCal() {
+  const text = "Merhaba Dünya";
+  const msg = new SpeechSynthesisUtterance(text);
+  msg.lang = 'tr-TR';
+  window.speechSynthesis.speak(msg);
+}
+</script>
+
+</body>
+</html>
