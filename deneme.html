@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fatih Hoca Ses Deneme</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; background: #f4f7f6; }
+        .test-btn { 
+            background: #27ae60; color: white; border: none; 
+            padding: 25px 50px; border-radius: 15px; 
+            font-size: 22px; font-weight: bold; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        #status { margin-top: 30px; font-weight: bold; font-size: 18px; }
+    </style>
+</head>
+<body>
+
+    <h2>Fatih Mehmet CANITEZ</h2>
+    <p>q1.mp4 Ses Dosyası Testi</p>
+
+    <!-- Butona basınca q1.mp4 çalmalı -->
+    <button class="test-btn" onclick="playTest()">🔊 SESİ DUY (q1.mp4)</button>
+
+    <div id="status"></div>
+
+    <script>
+        function playTest() {
+            const status = document.getElementById('status');
+            status.innerHTML = "⏳ Çalmaya çalışıyor...";
+            status.style.color = "blue";
+
+            // GitHub Pages üzerindeki ses yolu
+            const audio = new Audio('audio/q1.mp4');
+            
+            audio.play()
+                .then(() => {
+                    status.innerHTML = "✅ BAŞARILI! Ses çalıyor.";
+                    status.style.color = "green";
+                })
+                .catch(error => {
+                    status.innerHTML = "❌ HATA: " + error.message;
+                    status.style.color = "red";
+                    console.error(error);
+                });
+        }
+    </script>
+
+</body>
+</html>
