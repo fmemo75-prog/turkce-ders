@@ -16,23 +16,27 @@
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .btn-opt { padding: 16px; font-size: 20px; font-weight: bold; border: 2px solid var(--blue); background: white; color: var(--blue); border-radius: 10px; cursor: pointer; }
         #fb { text-align: center; margin-top: 15px; font-weight: bold; height: 24px; font-size: 18px; }
-        #starter { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 100; display: flex; align-items: center; justify-content: center; flex-direction: column; }
-        .btn-go { padding: 20px 40px; font-size: 24px; background: var(--green); color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: bold; }
+        #starter { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 100; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding: 20px; }
+        .btn-go { padding: 20px 40px; font-size: 24px; background: var(--green); color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: bold; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
+<!-- SESİ AKTİF ETMEK İÇİN GİRİŞ EKRANI -->
 <div id="starter">
-    <h2>Fatih Hoca Turkish Lessons</h2>
-    <p>Voice interaction: Active</p>
+    <h2 style="color:var(--dark)">Fatih Hoca Turkish Lessons</h2>
+    <p>Please click to start and hear my voice</p>
     <button class="btn-go" onclick="unlockAudio()">🔊 START TEST</button>
+    <p id="load-status" style="font-size:12px; color:gray;">Loading sound file...</p>
 </div>
 
 <div class="quiz-card">
-    <div style="text-align:left; margin-bottom:10px;"><a href="index.html" style="text-decoration:none; color:var(--blue)">← HOME</a></div>
+    <div style="text-align:left; margin-bottom:10px;"><a href="index.html" style="text-decoration:none; color:var(--blue); font-weight:bold;">← HOME</a></div>
+    
     <table class="rule-table">
         <tr><td>a, ı → <span class="red">mı</span></td><td>e, i → <span class="red">mi</span></td><td>o, u → <span class="red">mu</span></td><td>ö, ü → <span class="red">mü</span></td></tr>
     </table>
+
     <div id="quiz-ui">
         <div class="word-card" id="box" onclick="playVoice()">...</div>
         <div class="grid">
@@ -43,17 +47,25 @@
         </div>
         <div id="fb"></div>
     </div>
+
     <div id="done" style="display:none; padding:30px 0;">
         <h2 style="color:var(--green)">Tebrikler! 🎉</h2>
-        <button onclick="location.reload()" style="background:var(--blue); color:white; border:none; padding:15px 30px; border-radius:10px; cursor:pointer;">Restart</button>
+        <p>You mastered the ı/i distinction!</p>
+        <button onclick="location.reload()" style="background:var(--blue); color:white; border:none; padding:15px 30px; border-radius:10px; cursor:pointer; font-weight:bold;">Restart</button>
     </div>
 </div>
 
 <script>
-    // SES DOSYASI YOLUNU GARANTİYE ALDIK
-    const audioFile = new Audio('./audio/all_questions.mp4');
-    audioFile.preload = 'auto'; // Dosyayı önceden yükle
+    // SES DOSYASININ TAM ADRESİNİ YAZDIK (Hata payını sildik)
+    const audioFile = new Audio('https://fmemo75-prog.github.io/turkce-ders/audio/all_questions.mp4');
+    
+    // Ses yüklendiğinde kullanıcıya haber ver
+    audioFile.oncanplaythrough = () => {
+        document.getElementById('load-status').innerText = "Sound file ready! ✅";
+        document.getElementById('load-status').style.color = "green";
+    };
 
+    // Sizin kağıttaki saniyeleriniz
     const dataList = [
         { t: 4, w: "O ev", a: "mi", i: "🏠" }, { t: 9, w: "Kitap yeni", a: "mi", i: "📖" },
         { t: 13, w: "Limon ekşi", a: "mi", i: "🍋" }, { t: 20, w: "Hava soğuk", a: "mu", i: "❄️" },
@@ -64,15 +76,16 @@
         { t: 49, w: "Süt soğuk", a: "mu", i: "🥛" }, { t: 50, w: "Kapı kapalı", a: "mı", i: "🚪" }
     ];
 
-    let current = 0; let pool = [];
+    let current = 0;
+    let pool = [];
 
     function unlockAudio() {
+        // İlk dokunuşta sesi oynatıp hemen durduruyoruz (Kilidi açar)
         audioFile.play().then(() => {
             audioFile.pause();
             document.getElementById('starter').style.display = 'none';
             start();
         }).catch(e => {
-            alert("Please allow sound in your browser!");
             document.getElementById('starter').style.display = 'none';
             start();
         });
@@ -90,8 +103,9 @@
             return;
         }
         const item = pool[current];
-        document.getElementById('box').classList.remove('win');
-        document.getElementById('box').innerHTML = `${item.w} ${item.i} ...?<br><small style="font-size:12px;color:gray;">🔊 Click to hear</small>`;
+        const box = document.getElementById('box');
+        box.classList.remove('win');
+        box.innerHTML = `${item.w} ${item.i} ...?<br><small style="font-size:12px;color:gray;">🔊 Click to hear my voice</small>`;
         document.getElementById('fb').innerText = "";
     }
 
@@ -99,8 +113,8 @@
         const item = pool[current];
         audioFile.currentTime = item.t;
         audioFile.play();
-        // 1.8 saniye çal ve dur
-        setTimeout(() => { audioFile.pause(); }, 1800); 
+        // Saniyeyi 2 saniyeye çıkardım ki cümleniz tam duyulsun
+        setTimeout(() => { audioFile.pause(); }, 2000); 
     }
 
     function check(ans) {
@@ -111,7 +125,7 @@
             document.getElementById('box').innerHTML = pool[current].w + " " + pool[current].a + " " + pool[current].i;
             playVoice();
             current++;
-            setTimeout(render, 2200);
+            setTimeout(render, 2500);
         } else {
             document.getElementById('fb').style.color = "red";
             document.getElementById('fb').innerText = "Wrong! ❌";
