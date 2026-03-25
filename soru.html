@@ -1,0 +1,38 @@
+<script>
+    // id'ler dosya adlarıyla (q1.mp3 gibi) aynı olmalı
+    const data = [
+        { id: 1, w: "Bu masa", a: "mı", i: "🪑" },
+        { id: 2, w: "O ev", a: "mi", i: "🏠" },
+        { id: 3, w: "Kitap yeni", a: "mi", i: "📖" },
+        { id: 4, w: "Limon ekşi", a: "mi", i: "🍋" },
+        { id: 5, w: "Hava soğuk", a: "mu", i: "❄️" }
+        // Liste böyle devam ediyor...
+    ];
+
+    function playVoice() {
+        const item = pool[step];
+        // .mp3 olarak güncellendi
+        let audio = new Audio('audio/q' + item.id + '.mp3');
+        
+        audio.play().catch(e => {
+            console.log("Ses çalma hatası. Muhtemelen dosya henüz yüklenmedi.");
+        });
+    }
+
+    function check(ans) {
+        if (ans === pool[step].a) {
+            document.getElementById('fb').style.color = "var(--success)";
+            document.getElementById('fb').innerText = "Correct! ✅";
+            document.getElementById('box').classList.add('win');
+            
+            // Doğru cevapta MP3'ü çal
+            playVoice();
+
+            step++;
+            setTimeout(render, 1800);
+        } else {
+            document.getElementById('fb').style.color = "red";
+            document.getElementById('fb').innerText = "Wrong! ❌";
+        }
+    }
+</script>
