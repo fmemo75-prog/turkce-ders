@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turkish Quiz - mı, mi, mu, mü</title>
+    <style>
+        :root { --blue: #2980b9; --dark: #2c3e50; --green: #27ae60; --bg: #f5f6fa; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); margin: 0; padding: 10px; display: flex; justify-content: center; }
+        .quiz-card { width: 100%; max-width: 500px; background: white; border-radius: 20px; padding: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .nav { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 14px; }
+        
+        .rule-box { width: 100%; background: #fffbe6; border: 1px solid #ffe58f; margin-bottom: 15px; padding: 10px; border-radius: 8px; font-size: 13px; text-align: center; }
+        .red-bold { color: #e74c3c; font-weight: bold; font-size: 16px; }
+
+        .word-display { background: #f9f9f9; border: 2px dashed var(--blue); padding: 40px 10px; border-radius: 15px; text-align: center; font-size: 32px; font-weight: bold; color: var(--dark); margin-bottom: 25px; }
+        .word-display.win { background: #e8f8f0; border-color: var(--green); color: var(--green); border-style: solid; }
+        
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .btn-opt { padding: 18px; font-size: 22px; font-weight: bold; border: 2px solid var(--blue); background: white; color: var(--blue); border-radius: 10px; cursor: pointer; }
+
+        #fb { text-align: center; margin-top: 20px; font-weight: bold; height: 24px; font-size: 18px; }
+    </style>
+</head>
+<body>
+
+<div class="quiz-card">
+    <div class="nav"><a href="index.html" style="text-decoration:none; color:var(--blue)">← Back</a> <b id="prog">1 / 15</b></div>
+    
+    <div class="rule-box">
+        Vowels: <b>a, ı → <span class="red-bold">mı</span></b> | <b>e, i → <span class="red-bold">mi</span></b> | <b>o, u → <span class="red-bold">mu</span></b> | <b>ö, ü → <span class="red-bold">mü</span></b>
+    </div>
+
+    <div id="quiz-ui">
+        <div class="word-display" id="box">...</div>
+        <div class="grid">
+            <button class="btn-opt" onclick="check('mı')">mı</button>
+            <button class="btn-opt" onclick="check('mi')">mi</button>
+            <button class="btn-opt" onclick="check('mu')">mu</button>
+            <button class="btn-opt" onclick="check('mü')">mü</button>
+        </div>
+        <div id="fb"></div>
+    </div>
+
+    <div id="done" style="display:none; text-align:center; padding:30px 0;">
+        <h2 style="color:var(--green)">Tebrikler! 🎉</h2>
+        <p>Mastered the ı/i distinction!</p>
+        <button onclick="location.reload()" style="background:var(--blue); color:white; border:none; padding:15px 30px; border-radius:10px; cursor:pointer; font-weight:bold;">Restart</button>
+    </div>
+</div>
+
+<script>
+    const data = [
+        { w: "Bu masa", a: "mı", i: "🪑" }, { w: "O ev", a: "mi", i: "🏠" },
+        { w: "Kitap yeni", a: "mi", i: "📖" }, { w: "Balık taze", a: "mi", i: "🐟" },
+        { w: "Limon ekşi", a: "mi", i: "🍋" }, { w: "Hava soğuk", a: "mu", i: "❄️" },
+        { w: "Bu kutu", a: "mu", i: "📦" }, { w: "O doktor", a: "mu", i: "👨‍⚕️" },
+        { w: "Okul büyük", a: "mü", i: "🏫" }, { w: "Çay sıcak", a: "mı", i: "☕" },
+        { w: "Gözlük pahalı", a: "mı", i: "👓" }, { w: "Üzüm tatlı", a: "mı", i: "🍇" },
+        { w: "O kedi", a: "mi", i: "🐱" }, { w: "Defter açık", a: "mı", i: "📔" },
+        { w: "Süt soğuk", a: "mu", i: "🥛" }
+    ];
+    let step = 0; let pool = [];
+
+    function start() {
+        pool = [...data].sort(() => Math.random() - 0.5);
+        render();
+    }
+
+    function render() {
+        if (step >= pool.length) {
+            document.getElementById('quiz-ui').style.display = 'none';
+            document.getElementById('done').style.display = 'block';
+            return;
+        }
+        const item = pool[step];
+        const box = document.getElementById('box');
+        box.classList.remove('win');
+        box.innerHTML = `${item.w} ${item.i} ...?`;
+        document.getElementById('prog').innerText = `${step + 1} / ${pool.length}`;
+        document.getElementById('fb').innerText = "";
+    }
+
+    function check(ans) {
+        if (ans === pool[step].a) {
+            document.getElementById('fb').style.color = "var(--green)";
+            document.getElementById('fb').innerText = "Correct! ✅";
+            document.getElementById('box').classList.add('win');
+            document.getElementById('box').innerHTML = `${pool[step].w} ${pool[step].a} ${pool[step].i}`;
+            step++;
+            setTimeout(render, 1200);
+        } else {
+            document.getElementById('fb').style.color = "red";
+            document.getElementById('fb').innerText = "Check the vowels! ❌";
+        }
+    }
+    start();
+</script>
+</body>
+</html>
