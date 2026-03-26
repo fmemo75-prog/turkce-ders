@@ -3,70 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fatih Mehmet CANITEZ | Turkish & Tourism Expert</title>
+    <title>Fatih Mehmet CANITEZ | Academy</title>
     <style>
-        :root {
-            --primary: #2c3e50;
-            --accent: #3498db;
-            --turkish: #e74c3c;
-            --whatsapp: #27ae60;
-            --bg: #f4f7f6;
-        }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; padding: 0; color: var(--primary); }
-        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        :root { --primary: #2c3e50; --accent: #3498db; --turkish: #e74c3c; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; padding: 0; }
+        .container { max-width: 500px; margin: 0 auto; padding: 15px; }
         
-        /* HEADER VE FOTOĞRAF BÖLÜMÜ */
-        header { text-align: center; padding: 40px 20px; background: white; border-radius: 0 0 30px 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 8px solid var(--turkish); }
+        /* FOTOĞRAF ÇERÇEVESİ - BOYUT SABİTLENDİ */
+        header { text-align: center; padding: 30px 15px; background: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 6px solid var(--turkish); }
         
         .photo-frame {
-            width: 160px;
-            height: 160px;
-            margin: 0 auto 20px;
+            width: 140px; /* Boyut biraz küçültüldü */
+            height: 140px;
+            margin: 0 auto 15px;
             border-radius: 50%;
-            border: 5px solid white;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border: 4px solid white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
             overflow: hidden;
             background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .photo-frame img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Fotoğrafı yuvarlağa tam sığdırır */
+            object-fit: cover; /* Halıların içinde sizi merkeze alır */
         }
 
-        h1 { margin: 0; font-size: 26px; letter-spacing: -0.5px; }
-        .main-title { color: var(--turkish); font-weight: 800; font-size: 18px; text-transform: uppercase; margin-top: 8px; display: block; letter-spacing: 1px; }
-        .tourism-tag { color: #d35400; font-weight: bold; font-size: 14px; margin-top: 5px; display: block; font-style: italic; }
-
-        /* İLETİŞİM */
-        .contact-box { background: #fff; padding: 15px; border-radius: 20px; margin: 20px 0; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 1px solid #eee; }
-        .contact-link { display: block; text-decoration: none; font-weight: bold; margin: 5px 0; font-size: 15px; }
-
-        .section-title { font-size: 14px; font-weight: bold; margin: 25px 0 10px; display: flex; align-items: center; gap: 10px; color: #7f8c8d; text-transform: uppercase; }
-        .section-title::after { content: ""; flex: 1; height: 1px; background: #ddd; }
+        h1 { margin: 0; font-size: 22px; color: var(--primary); }
+        .main-title { color: var(--turkish); font-weight: 800; font-size: 18px; text-transform: uppercase; margin-top: 5px; display: block; }
+        .tourism-tag { color: #d35400; font-weight: bold; font-size: 13px; display: block; margin-top: 5px; }
 
         /* BUTONLAR */
-        .yt-btn { display: flex; align-items: center; justify-content: center; gap: 15px; background: #FF0000; color: white; text-decoration: none; padding: 22px; border-radius: 20px; text-align: center; margin-bottom: 15px; box-shadow: 0 8px 20px rgba(255, 0, 0, 0.2); font-weight: bold; transition: 0.3s; }
-        .yt-btn:hover { transform: scale(1.02); background: #e60000; }
+        .contact-box { background: white; padding: 15px; border-radius: 20px; margin: 15px 0; text-align: center; border: 1px solid #eee; }
+        .yt-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background: #FF0000; color: white; text-decoration: none; padding: 18px; border-radius: 15px; margin-bottom: 12px; font-weight: bold; box-shadow: 0 4px 15px rgba(255,0,0,0.2); }
+        
+        .exercise-card { display: flex; align-items: center; justify-content: space-between; background: white; padding: 15px; border-radius: 15px; text-decoration: none; color: inherit; font-weight: bold; margin-bottom: 8px; border: 1px solid #eee; transition: 0.2s; }
+        .exercise-card:hover { border-color: var(--accent); background: #f0faff; }
+        .ex-tag { font-size: 10px; color: var(--accent); background: #e1f5fe; padding: 2px 6px; border-radius: 5px; display: block; width: fit-content; margin-bottom: 3px; }
 
-        .exercise-card { display: flex; align-items: center; justify-content: space-between; background: white; padding: 18px; border-radius: 20px; text-decoration: none; color: inherit; font-weight: bold; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 2px solid transparent; transition: 0.3s; margin-bottom: 10px; }
-        .exercise-card:hover { border-color: var(--accent); transform: translateX(5px); }
-        .ex-badge { font-size: 10px; color: var(--accent); background: #e1f5fe; padding: 2px 8px; border-radius: 10px; margin-bottom: 5px; display: block; width: fit-content; }
+        .lang-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; margin-top: 10px; }
+        .lang-card { background: white; padding: 8px; border-radius: 10px; text-align: center; font-size: 9px; font-weight: bold; border-bottom: 2px solid #ddd; }
 
-        /* LANG GRID */
-        .lang-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 10px; }
-        .lang-card { background: white; padding: 10px; border-radius: 12px; text-align: center; font-size: 10px; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-bottom: 3px solid #ddd; }
-
-        footer { text-align: center; margin-top: 30px; padding: 20px; font-size: 12px; color: #aaa; border-top: 1px solid #eee; }
+        footer { text-align: center; margin-top: 30px; padding: 20px; font-size: 11px; color: #999; border-top: 1px solid #eee; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <!-- KAPADOKYA FOTOĞRAFINIZ BURAYA GELECEK -->
         <div class="photo-frame">
-            <img src="fatih-photo.jpg" alt="Fatih Mehmet CANITEZ">
+            <!-- Dosya adı fatih-photo.jpg ile birebir aynı olmalı -->
+            <img src="fatih-photo.jpg" alt="Fatih Mehmet CANITEZ" onerror="this.src='https://ui-avatars.com/api/?name=Fatih+Mehmet+Canitez&background=3498db&color=fff'">
         </div>
         <h1>Fatih Mehmet CANITEZ</h1>
         <span class="main-title">TURKISH FOR FOREIGNERS</span>
@@ -74,42 +63,40 @@
     </header>
 
     <div class="contact-box">
-        <a href="https://wa.me/905054466760" target="_blank" class="contact-link" style="color:var(--whatsapp);">🟢 WhatsApp: +90 505 446 67 60</a>
-        <a href="mailto:fmemo75@gmail.com" class="contact-link" style="color:var(--accent);">📧 Email: fmemo75@gmail.com</a>
+        <a href="https://wa.me/905054466760" target="_blank" style="color:#27ae60; text-decoration:none; font-weight:bold; display:block; margin-bottom:5px;">🟢 WhatsApp: +90 505 446 67 60</a>
+        <a href="mailto:fmemo75@gmail.com" style="color:var(--accent); text-decoration:none; font-size:14px;">📧 Email: fmemo75@gmail.com</a>
     </div>
 
-    <div class="section-title">Video Lessons</div>
-    <a href="courses.html" class="yt-btn">📺 WATCH YOUTUBE LESSONS & BOOKS</a>
+    <a href="courses.html" class="yt-btn">📺 VIDEO LESSONS & BOOKS</a>
 
-    <div class="section-title">Interactive Exercises</div>
+    <div style="font-size:12px; font-weight:bold; color:#7f8c8d; margin: 15px 0 5px; text-transform:uppercase;">Interactive Practice</div>
     
     <a href="soru-eki.html" class="exercise-card">
         <div>
-            <span class="ex-badge">EXERCISE 1</span>
-            <span>🎯 Question Particles (mı, mi, mu, mü)</span>
+            <span class="ex-tag">EXERCISE 1</span>
+            <span>🎯 Question Particles</span>
         </div>
-        <span style="font-size: 18px;">🔊</span>
+        <span>🔊</span>
     </a>
 
     <a href="plural.html" class="exercise-card">
         <div>
-            <span class="ex-badge">EXERCISE 2</span>
-            <span>👥 Plural Suffixes (-lar / -ler)</span>
+            <span class="ex-tag">EXERCISE 2</span>
+            <span>👥 Plural Suffixes</span>
         </div>
-        <span style="font-size: 18px;">🔊</span>
+        <span>🔊</span>
     </a>
 
-    <div class="section-title">Teaching Languages</div>
     <div class="lang-grid">
         <div class="lang-card">🇹🇷<br>Turkish</div>
-        <div class="lang-card">🇫🇷<br>Français</div>
-        <div class="lang-card">🇮🇹<br>Italiano</div>
-        <div class="lang-card">🇪🇸<br>Español</div>
+        <div class="lang-card">🇫🇷<br>French</div>
+        <div class="lang-card">🇮🇹<br>Italian</div>
+        <div class="lang-card">🇪🇸<br>Spanish</div>
     </div>
 
     <footer>
-        Professional Language Education <br>
-        Guided by Expertise in Culture and Tourism.
+        Multi-Language Digital Academy <br>
+        Culture & Tourism Focused Education
     </footer>
 </div>
 
