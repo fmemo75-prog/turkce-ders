@@ -10,68 +10,45 @@
             --accent: #3498db;
             --yt-red: #FF0000;
             --turkish: #e74c3c;
-            --french: #002395;
-            --italian: #008c45;
-            --spanish: #f1c40f;
+            --whatsapp: #27ae60;
             --bg: #f4f7f6;
         }
         body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; padding: 0; color: var(--primary); }
         .container { max-width: 600px; margin: 0 auto; padding: 20px; }
         
-        /* EN ÜST BÖLÜM: İSİM VE UZMANLIK */
-        header { text-align: center; padding: 40px 20px; background: white; border-radius: 0 0 30px 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 8px solid var(--turkish); }
-        .profile-img { width: 80px; height: 80px; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 35px; border: 4px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        h1 { margin: 0; font-size: 26px; letter-spacing: -0.5px; color: var(--primary); }
-        
-        /* İSTEDİĞİNİZ VURGULU BAŞLIK */
-        .main-title { 
-            color: var(--turkish); 
-            font-weight: 800; 
-            font-size: 22px; 
-            text-transform: uppercase; 
-            margin-top: 8px; 
-            display: block;
-            letter-spacing: 1px;
-        }
-        .sub-tag { color: var(--accent); font-weight: 600; font-size: 14px; margin-top: 5px; display: block; }
+        /* HEADER */
+        header { text-align: center; padding: 30px 20px; background: white; border-radius: 0 0 30px 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 8px solid var(--turkish); }
+        .profile-img { width: 70px; height: 70px; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-size: 30px; border: 3px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h1 { margin: 0; font-size: 24px; letter-spacing: -0.5px; }
+        .main-title { color: var(--turkish); font-weight: 800; font-size: 20px; text-transform: uppercase; margin-top: 5px; display: block; }
 
-        /* DİLLER GRİDİ */
-        .section-title { font-size: 15px; font-weight: bold; margin: 30px 0 12px; display: flex; align-items: center; gap: 10px; color: #7f8c8d; text-transform: uppercase; }
+        /* CONTACT SECTION (TOP) */
+        .contact-info-box { background: #fff; padding: 15px; border-radius: 20px; margin: 20px 0; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 1px solid #eee; }
+        .contact-link { display: block; text-decoration: none; font-weight: bold; margin: 5px 0; font-size: 15px; transition: 0.2s; }
+        .wa-color { color: var(--whatsapp); }
+        .mail-color { color: var(--accent); }
+
+        /* BUTTONS */
+        .section-title { font-size: 14px; font-weight: bold; margin: 25px 0 10px; display: flex; align-items: center; gap: 10px; color: #7f8c8d; text-transform: uppercase; }
         .section-title::after { content: ""; flex: 1; height: 1px; background: #ddd; }
-        
-        .lang-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 25px; }
-        .lang-card { background: white; padding: 10px; border-radius: 12px; text-align: center; font-size: 11px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); font-weight: bold;}
-        .tr { border-bottom: 3px solid var(--turkish); }
-        .fr { border-bottom: 3px solid var(--french); }
-        .it { border-bottom: 3px solid var(--italian); }
-        .es { border-bottom: 3px solid var(--spanish); }
 
-        /* KIRMIZI BELİRGİN YOUTUBE BUTONU */
         .yt-mega-button {
             display: flex; align-items: center; justify-content: center; gap: 15px;
-            background: var(--yt-red);
-            color: white; text-decoration: none; padding: 25px 20px; border-radius: 20px;
-            text-align: center; margin-bottom: 25px; 
-            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.4);
-            transition: all 0.3s ease;
-            border: 2px solid #e60000;
+            background: var(--yt-red); color: white; text-decoration: none; padding: 22px; border-radius: 20px;
+            text-align: center; margin-bottom: 15px; box-shadow: 0 8px 20px rgba(255, 0, 0, 0.3);
+            transition: 0.3s; border: 2px solid #e60000;
         }
-        .yt-mega-button:hover { 
-            transform: scale(1.03); 
-            background: #e60000;
-            box-shadow: 0 15px 35px rgba(255, 0, 0, 0.6);
-        }
-        .yt-icon { font-size: 40px; }
-        .yt-info h2 { margin: 0; font-size: 20px; letter-spacing: 1px; font-weight: 800; }
-        .yt-info p { margin: 5px 0 0; opacity: 0.9; font-size: 14px; font-weight: 600; }
+        .yt-mega-button:hover { transform: scale(1.02); box-shadow: 0 12px 30px rgba(255, 0, 0, 0.5); }
 
-        /* İNTERAKTİF PRATİK */
-        .exercise-item { display: flex; align-items: center; justify-content: space-between; background: white; padding: 20px; border-radius: 20px; text-decoration: none; color: inherit; font-weight: bold; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 2px solid transparent; transition: 0.3s; }
+        .exercise-item { display: flex; align-items: center; justify-content: space-between; background: white; padding: 18px; border-radius: 20px; text-decoration: none; color: inherit; font-weight: bold; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 2px solid transparent; transition: 0.3s; }
         .exercise-item:hover { border-color: var(--accent); transform: translateX(5px); }
-        .ex-level { font-size: 10px; color: var(--accent); background: #e1f5fe; padding: 2px 8px; border-radius: 10px; width: fit-content; margin-bottom: 5px; display: block;}
 
-        footer { text-align: center; margin-top: 40px; padding: 30px 20px; font-size: 13px; color: #7f8c8d; border-top: 1px solid #eee; }
-        .wa-link { display: inline-block; margin-top: 10px; color: #27ae60; text-decoration: none; font-weight: bold; font-size: 17px; background: white; padding: 10px 20px; border-radius: 50px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        /* LANG GRID */
+        .lang-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 10px; }
+        .lang-card { background: white; padding: 10px; border-radius: 12px; text-align: center; font-size: 10px; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-bottom: 3px solid #ddd; }
+
+        /* FOOTER */
+        footer { text-align: center; margin-top: 30px; padding: 20px; font-size: 13px; color: #7f8c8d; border-top: 1px solid #eee; }
     </style>
 </head>
 <body>
@@ -81,41 +58,50 @@
         <div class="profile-img">👨‍🏫</div>
         <h1>Fatih Mehmet CANITEZ</h1>
         <span class="main-title">TURKISH FOR FOREIGNERS</span>
-        <span class="sub-tag">Language Education Specialist</span>
     </header>
 
-    <div class="section-title">Video Lessons Library</div>
-    <!-- YOUTUBE ANA BUTONU -->
+    <!-- İLETİŞİM BİLGİLERİ (EN ÜSTTE) -->
+    <div class="contact-info-box">
+        <a href="https://wa.me/905054466760" target="_blank" class="contact-link wa-color">
+            🟢 WhatsApp: +90 505 446 67 60
+        </a>
+        <a href="mailto:fmemo75@gmail.com" class="contact-link mail-color">
+            📧 Email: fmemo75@gmail.com
+        </a>
+    </div>
+
+    <div class="section-title">Video Lessons</div>
     <a href="courses.html" class="yt-mega-button">
-        <span class="yt-icon">📽️</span>
-        <div class="yt-info">
-            <h2>YOUTUBE VIDEO LESSONS</h2>
-            <p>Turkish, French and Italian Playlists</p>
+        <span style="font-size: 30px;">🎬</span>
+        <div>
+            <h2 style="margin:0; font-size: 18px;">YOUTUBE VIDEO LESSONS</h2>
+            <p style="margin:5px 0 0; font-size: 13px; opacity: 0.9;">Turkish, French and Italian Playlists</p>
         </div>
     </a>
 
-    <div class="section-title">Interactive Exercises</div>
-    <!-- TEST BAĞLANTISI -->
+    <div class="section-title">Interactive Practice</div>
     <a href="soru-eki.html" class="exercise-item">
         <div>
-            <span class="ex-level">TURKISH A1</span>
-            <span>🎯 1. Question Particles (mı, mi, mu, mü)</span>
+            <span style="font-size: 10px; color: var(--accent); background: #e1f5fe; padding: 2px 8px; border-radius: 10px; display: block; width: fit-content; margin-bottom: 5px;">A1 TURKISH</span>
+            <span>🎯 1. Question Particles Quiz</span>
         </div>
-        <span style="font-size: 24px; color: #27ae60;">🔊</span>
+        <span style="font-size: 20px; color: var(--whatsapp);">🔊 Live</span>
     </a>
 
-    <div class="section-title">Languages Taught</div>
+    <div class="section-title">Teaching Languages</div>
     <div class="lang-grid">
-        <div class="lang-card tr">🇹🇷<br>Turkish</div>
-        <div class="lang-card fr">🇫🇷<br>Français</div>
-        <div class="lang-card it">🇮🇹<br>Italiano</div>
-        <div class="lang-card es">🇪🇸<br>Español</div>
+        <div class="lang-card" style="border-color:var(--turkish)">🇹🇷<br>Turkish</div>
+        <div class="lang-card" style="border-color:#002395">🇫🇷<br>Français</div>
+        <div class="lang-card" style="border-color:#008c45">🇮🇹<br>Italiano</div>
+        <div class="lang-card" style="border-color:#f1c40f">🇪🇸<br>Español</div>
     </div>
 
     <footer>
-        <p><b>Interested in Private Lessons (Zoom/WhatsApp)?</b></p>
-        <a href="https://wa.me/905054466760" target="_blank" class="wa-link">💬 Contact Teacher Fatih</a>
-        <p style="margin-top:25px;">© 2024 Multi-Language Academy</p>
+        <p>Expert tutoring for international students.</p>
+        <div style="margin-top: 10px; font-weight: bold;">
+            WhatsApp: +90 505 446 67 60
+        </div>
+        <p>© 2024 Multi-Language Academy | Teacher Fatih</p>
     </footer>
 </div>
 
