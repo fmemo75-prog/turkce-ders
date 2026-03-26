@@ -3,109 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fatih Mehmet CANITEZ | Digital Language Classroom</title>
+    <title>Course Library | Fatih Mehmet CANITEZ</title>
     <style>
-        :root {
-            --primary: #2c3e50;
-            --accent: #3498db;
-            --turkish: #e74c3c;
-            --french: #002395;
-            --italian: #008c45;
-            --spanish: #f1c40f;
-            --bg: #f4f7f6;
-        }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; padding: 0; color: var(--primary); }
-        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-        
-        /* HEADER */
-        header { text-align: center; padding: 40px 20px; background: white; border-radius: 0 0 30px 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .profile-img { width: 80px; height: 80px; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 35px; border: 4px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        h1 { margin: 0; font-size: 24px; letter-spacing: -0.5px; }
-        .title-tag { color: var(--accent); font-weight: bold; font-size: 14px; text-transform: uppercase; margin-top: 5px; display: block; }
-
-        /* SERVICES / LANGUAGES */
-        .section-title { font-size: 16px; font-weight: bold; margin: 30px 0 15px; display: flex; align-items: center; gap: 10px; color: #7f8c8d; }
-        .section-title::after { content: ""; flex: 1; height: 1px; background: #ddd; }
-        
-        .lang-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .lang-card { background: white; padding: 15px; border-radius: 15px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-bottom: 4px solid #ccc; transition: 0.3s; }
-        .lang-card:hover { transform: translateY(-5px); }
-        .tr { border-color: var(--turkish); } .fr { border-color: var(--french); }
-        .it { border-color: var(--italian); } .es { border-color: var(--spanish); }
-
-        /* EXERCISE LIST */
-        .exercise-list { display: flex; flex-direction: column; gap: 10px; }
-        .exercise-item { display: flex; align-items: center; justify-content: space-between; background: white; padding: 20px; border-radius: 18px; text-decoration: none; color: inherit; font-weight: bold; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 1px solid transparent; transition: 0.3s; }
-        .exercise-item:hover { border-color: var(--accent); background: #f0faff; transform: scale(1.02); }
-        .exercise-info { display: flex; flex-direction: column; }
-        .ex-tag { font-size: 10px; color: var(--accent); background: #e1f5fe; padding: 2px 8px; border-radius: 10px; width: fit-content; margin-bottom: 5px; }
-        .status-badge { font-size: 12px; color: #27ae60; }
-        .locked { color: #bdc3c7; font-weight: normal; }
-
-        /* YOUTUBE BUTTON */
-        .btn-yt { display: flex; align-items: center; justify-content: center; gap: 10px; background: #ff0000; color: white; padding: 18px; border-radius: 18px; text-decoration: none; font-weight: bold; margin-top: 10px; box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3); }
-
-        /* FOOTER */
-        footer { text-align: center; margin-top: 40px; padding: 20px; font-size: 13px; color: #7f8c8d; border-top: 1px solid #eee; }
-        .wa-contact { display: inline-block; margin-top: 10px; color: #27ae60; text-decoration: none; font-weight: bold; font-size: 16px; }
+        :root { --blue: #2980b9; --dark: #2c3e50; --bg: #f4f7f6; --fr: #002395; --it: #008c45; --tr: #e74c3c; --en: #2d3436; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; padding: 20px; color: var(--dark); }
+        .container { max-width: 650px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 30px; }
+        .back-link { text-decoration: none; color: var(--blue); font-weight: bold; font-size: 14px; display: block; margin-bottom: 10px; }
+        .lang-section { background: white; border-radius: 20px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 25px; border-left: 8px solid #ccc; }
+        .french { border-color: var(--fr); } .italian { border-color: var(--it); } .turkish { border-color: var(--tr); } .english { border-color: var(--en); }
+        h2 { margin-top: 0; font-size: 20px; }
+        .level-badge { background: #f8f9fa; padding: 5px 12px; border-radius: 8px; font-size: 13px; font-weight: bold; color: var(--blue); display: inline-block; margin: 15px 0 10px; }
+        .link-list { display: flex; flex-direction: column; gap: 8px; }
+        .link-item { display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid #eee; padding: 12px; border-radius: 12px; text-decoration: none; color: #444; font-size: 14px; transition: 0.2s; }
+        .link-item:hover { border-color: var(--blue); transform: translateX(5px); background: #f0faff; }
+        .book { background: #fffcf0; border-color: #f1c40f; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <header>
-        <div class="profile-img">👨‍🏫</div>
-        <h1>Fatih Mehmet CANITEZ</h1>
-        <span class="title-tag">Professional Language Specialist</span>
-    </header>
-
-    <div class="section-title">LANGUAGES I TEACH</div>
-    <div class="lang-grid">
-        <div class="lang-card tr">🇹🇷<br><b>Turkish</b></div>
-        <div class="lang-card fr">🇫🇷<br><b>Français</b></div>
-        <div class="lang-card it">🇮🇹<br><b>Italiano</b></div>
-        <div class="lang-card es">🇪🇸<br><b>Español</b></div>
+    <div class="header">
+        <a href="index.html" class="back-link">← Back to Dashboard</a>
+        <h1>Language Study Library</h1>
     </div>
 
-    <div class="section-title">INTERACTIVE EXERCISES</div>
-    <div class="exercise-list">
-        <!-- MEVCUT TEST -->
-        <a href="soru-eki.html" class="exercise-item">
-            <div class="exercise-info">
-                <span class="ex-tag">LEVEL A1</span>
-                <span>1. Question Particles (mı, mi, mu, mü)</span>
-            </div>
-            <span class="status-badge">🔊 Live</span>
-        </a>
-
-        <!-- GELECEK TESTLER (Taslak) -->
-        <div class="exercise-item locked">
-            <div class="exercise-info">
-                <span class="ex-tag" style="background:#eee; color:#aaa;">COMING SOON</span>
-                <span>2. Turkish Alphabet & Sounds</span>
-            </div>
-            <span>🔒</span>
-        </div>
-
-        <div class="exercise-item locked">
-            <div class="exercise-info">
-                <span class="ex-tag" style="background:#eee; color:#aaa;">COMING SOON</span>
-                <span>3. Numbers and Counting</span>
-            </div>
-            <span>🔒</span>
+    <!-- TÜRKÇE -->
+    <div class="lang-section turkish">
+        <h2>🇹🇷 Turkish Lessons</h2>
+        <div class="link-list">
+            <a href="https://www.youtube.com/playlist?list=PL3pFQDLvmLmkUvmTiCNklI3akzgN7ObaT" target="_blank" class="link-item">📺 Turkish Grammar Playlist</a>
+            <a href="soru-eki.html" class="link-item">🎯 Interactive Quiz (Question Particles)</a>
         </div>
     </div>
 
-    <div class="section-title">VIDEO LESSONS</div>
-    <a href="https://www.youtube.com/playlist?list=PL3pFQDLvmLmkUvmTiCNklI3akzgN7ObaT" target="_blank" class="btn-yt">
-        📺 WATCH ON YOUTUBE CHANNEL
-    </a>
+    <!-- FRANSIZCA -->
+    <div class="lang-section french">
+        <h2>🇫🇷 French Lessons (Cours de Français)</h2>
+        <div class="level-badge">LEVEL A1.1</div>
+        <div class="link-list">
+            <a href="https://youtube.com/playlist?list=PL3pFQDLvmLmk9Rabzs4PbMUY_iglOgcga" target="_blank" class="link-item">📺 French Videos - Step 1</a>
+            <a href="https://www.youtube.com/playlist?list=PL3pFQDLvmLmmiKcUesJmDGhWF98mmC1km" target="_blank" class="link-item">📺 French Videos - Step 2</a>
+            <a href="https://drive.google.com/drive/folders/1afag9H5GKvk3avHbiQ2IjiUen9GbUY6f" target="_blank" class="link-item book">📚 Course Books (Drive Folder)</a>
+        </div>
+        <div class="level-badge">LEVEL A1.2</div>
+        <div class="link-list">
+            <a href="https://www.youtube.com/playlist?list=PL3pFQDLvmLmlqJdfsio5qbiN-2gzjYf_B" target="_blank" class="link-item">📺 French Videos A1.2</a>
+        </div>
+    </div>
 
-    <footer>
-        <b>Interested in Private Lessons?</b><br>
-        <a href="https://wa.me/905054466760" target="_blank" class="wa-contact">💬 Contact via WhatsApp</a>
-        <p style="margin-top:20px;">© 2024 Turkish for Strangers | Teacher Fatih</p>
-    </footer>
+    <!-- ITALYANCA -->
+    <div class="lang-section italian">
+        <h2>🇮🇹 Italian Lessons (Lezioni di Italiano)</h2>
+        <div class="link-list">
+            <a href="https://youtube.com/playlist?list=PL3pFQDLvmLmn_Kl0mKcIX0Z4CfHGAY0rZ" target="_blank" class="link-item">📺 Italian Full Playlist</a>
+        </div>
+    </div>
+
+    <!-- İNGİLİZCE (Placeholder) -->
+    <div class="lang-section english">
+        <h2>🇬🇧 English Lessons</h2>
+        <div class="link-list">
+            <p style="font-size: 13px; color: #7f8c8d;">English materials are currently being updated. Please check back soon!</p>
+        </div>
+    </div>
+
 </div>
 
 </body>
