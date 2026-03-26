@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Turkish Quiz - Fatih Mehmet CANITEZ</title>
+    <title>Turkish Quiz Test - Fatih Mehmet CANITEZ</title>
     <style>
         :root { --blue: #2980b9; --dark: #2c3e50; --green: #27ae60; --bg: #f4f7f6; }
         body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; padding: 10px; display: flex; justify-content: center; }
@@ -23,9 +23,9 @@
 <body>
 
 <div id="starter">
-    <h2>Fatih Hoca Turkish Lessons</h2>
-    <p>Voice interaction enabled</p>
-    <button class="btn-go" onclick="startQuiz()">🔊 START QUIZ</button>
+    <h2>Fatih Hoca - TEST MODU</h2>
+    <p>Sorular şu an SIRAYLA (WA0022-WA0033) gelecektir.</p>
+    <button class="btn-go" onclick="startQuiz()">🔊 TESTİ BAŞLAT</button>
 </div>
 
 <div class="quiz-card">
@@ -36,6 +36,8 @@
     </table>
 
     <div id="quiz-ui">
+        <!-- Dosya adını ekranda gizli tuttum ama debug için burada göreceğiz -->
+        <div id="debug-info" style="font-size:10px; color:gray; margin-bottom:5px;"></div>
         <div class="word-card" id="box" onclick="playCurrentVoice()">...</div>
         <div class="grid">
             <button class="opt" onclick="check('mı')">mı</button>
@@ -48,13 +50,12 @@
 
     <div id="done" style="display:none; padding:30px 0;">
         <h2 style="color:var(--green)">Tebrikler! 🎉</h2>
-        <p>You completed the exercise!</p>
-        <button onclick="location.reload()" style="background:var(--blue); color:white; border:none; padding:15px 30px; border-radius:10px; cursor:pointer;">Restart</button>
+        <button onclick="location.reload()" style="background:var(--blue); color:white; border:none; padding:15px 30px; border-radius:10px; cursor:pointer;">Tekrar Başla</button>
     </div>
 </div>
 
 <script>
-    // SES LİSTESİ (WA0021 ATLANDI, DİĞERLERİ EŞLENDİ)
+    // SIRALI LİSTE (Random kapalı)
     const dataList = [
         { file: "PTT-20260325-WA0022.opus", w: "Kitap yeni", a: "mi", i: "📖" },
         { file: "PTT-20260325-WA0023.opus", w: "Limon ekşi", a: "mi", i: "🍋" },
@@ -70,12 +71,11 @@
         { file: "PTT-20260325-WA0033.opus", w: "Süt soğuk", a: "mu", i: "🥛" }
     ];
 
-    let current = 0; let pool = [];
+    let current = 0;
+    let pool = dataList; // Random devre dışı, olduğu gibi pool'a atadık.
 
     function startQuiz() {
         document.getElementById('starter').style.display = 'none';
-        // Soruları karıştırıyoruz
-        pool = [...dataList].sort(() => Math.random() - 0.5);
         render();
     }
 
@@ -87,15 +87,16 @@
         }
         const item = pool[current];
         const box = document.getElementById('box');
+        document.getElementById('debug-info').innerText = "Çalan Dosya: " + item.file; // Hangi dosya çalıyorsa ekranda yazar
         box.classList.remove('win');
-        box.innerHTML = `${item.w} ${item.i} ...?<br><small style="font-size:12px;color:gray;">🔊 Click to hear</small>`;
+        box.innerHTML = `${item.w} ${item.i} ...?<br><small style="font-size:12px;color:gray;">🔊 Dinle</small>`;
         document.getElementById('fb').innerText = "";
     }
 
     function playCurrentVoice() {
         const item = pool[current];
         let audio = new Audio('https://fmemo75-prog.github.io/turkce-ders/audio/' + item.file);
-        audio.play().catch(e => console.log("Audio Error"));
+        audio.play().catch(e => console.log("Hata"));
     }
 
     function check(ans) {
@@ -104,13 +105,12 @@
             document.getElementById('fb').innerText = "Doğru! ✅";
             document.getElementById('box').classList.add('win');
             document.getElementById('box').innerHTML = pool[current].w + " " + pool[current].a + " " + pool[current].i;
-            
             playCurrentVoice();
             current++;
             setTimeout(render, 2200);
         } else {
             document.getElementById('fb').style.color = "red";
-            document.getElementById('fb').innerText = "Wrong! ❌";
+            document.getElementById('fb').innerText = "Yanlış! ❌";
         }
     }
 </script>
