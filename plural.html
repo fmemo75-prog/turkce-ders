@@ -1,113 +1,64 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Turkish Plurals & Vowel Harmony | Fatih Mehmet CANITEZ</title>
+    <title>Plural Suffixes Quiz | Fatih Hoca</title>
     <style>
-        :root {
-            --primary: #2c3e50;
-            --accent: #3498db;
-            --turkish-red: #e74c3c;
-            --success: #27ae60;
-            --bg: #f4f7f6;
-        }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; padding: 0; color: var(--primary); }
+        :root { --primary: #2c3e50; --accent: #3498db; --turkish: #e74c3c; --success: #27ae60; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; padding: 0; }
         .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-
-        /* TARAYICI UYARISI */
-        .browser-alert {
-            background: #fff3cd; border: 1px solid #ffeeba; color: #856404;
-            padding: 15px; border-radius: 12px; text-align: center;
-            font-size: 14px; font-weight: bold; margin-bottom: 20px;
-        }
-
-        /* DERS BÖLÜMÜ */
-        .lesson-card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px; }
-        h1 { color: var(--turkish-red); font-size: 22px; text-align: center; margin-bottom: 5px; }
-        h3 { border-bottom: 2px solid #eee; padding-bottom: 5px; margin-top: 25px; font-size: 18px; }
         
-        .vowel-table { width: 100%; border-collapse: collapse; margin: 15px 0; }
-        .vowel-table th, .vowel-table td { border: 1px solid #eee; padding: 12px; text-align: center; }
-        .back-v { background: #fff5f5; color: #c0392b; font-weight: bold; font-size: 18px; }
-        .front-v { background: #f0f7ff; color: #2980b9; font-weight: bold; font-size: 18px; }
+        .browser-alert { background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 12px; border-radius: 12px; text-align: center; font-size: 13px; font-weight: bold; margin-bottom: 15px; }
+        
+        .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .nav-btns { display: flex; justify-content: space-between; margin-bottom: 20px; }
+        .btn-nav { text-decoration: none; color: var(--accent); font-weight: bold; font-size: 14px; border: 1px solid var(--accent); padding: 5px 12px; border-radius: 8px; }
 
-        .exception-box { background: #fdf2f2; border-left: 5px solid var(--turkish-red); padding: 15px; margin: 15px 0; font-size: 14px; }
+        h1 { color: var(--turkish); font-size: 22px; text-align: center; }
+        .vowel-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; }
+        .vowel-table th, .vowel-table td { border: 1px solid #eee; padding: 10px; text-align: center; }
+        .back-v { background: #fff5f5; color: #c0392b; font-weight: bold; }
+        .front-v { background: #f0f7ff; color: #2980b9; font-weight: bold; }
 
-        /* QUIZ BÖLÜMÜ */
         #quiz-section { display: none; text-align: center; }
-        .q-card { background: white; padding: 40px 20px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .word-display { font-size: 38px; font-weight: bold; color: var(--accent); margin-bottom: 25px; }
-        .word-display span { color: #ddd; }
-
+        .word-display { font-size: 35px; font-weight: bold; color: var(--accent); margin-bottom: 20px; }
         .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .btn-opt { padding: 20px; font-size: 22px; font-weight: bold; border: 2px solid var(--accent); background: white; color: var(--accent); border-radius: 15px; cursor: pointer; transition: 0.3s; }
-        .btn-opt:hover { background: var(--accent); color: white; }
-
-        .btn-main { display: block; width: 100%; padding: 18px; background: var(--success); color: white; text-decoration: none; border-radius: 15px; font-weight: bold; font-size: 18px; border: none; cursor: pointer; margin-top: 20px; }
+        .btn-opt { padding: 20px; font-size: 22px; font-weight: bold; border: 2px solid var(--accent); background: white; color: var(--accent); border-radius: 15px; cursor: pointer; }
+        .btn-main { display: block; width: 100%; padding: 18px; background: var(--success); color: white; border-radius: 15px; font-weight: bold; font-size: 18px; border: none; cursor: pointer; margin-top: 20px; text-decoration: none; text-align: center; }
         
-        footer { text-align: center; margin-top: 40px; padding: 20px; font-size: 13px; color: #7f8c8d; border-top: 1px solid #eee; }
-        #feedback { margin-top: 20px; font-weight: bold; font-size: 18px; min-height: 24px; }
+        #feedback { margin-top: 15px; font-weight: bold; font-size: 18px; height: 24px; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- SES UYARISI -->
     <div class="browser-alert">
-        🔊 <b>Sound Note:</b> Use Chrome, Safari, or Firefox for voice. <br>
-        Open in an external browser if you are on Facebook.
+        🔊 Use <b>Chrome, Safari, or Firefox</b> for sound. <br>
+        Open in external browser if on Facebook.
     </div>
 
-    <!-- DERS ANLATIMI -->
+    <!-- DERS BÖLÜMÜ -->
     <div id="lesson-section">
-        <div class="lesson-card">
-            <a href="index.html" style="text-decoration:none; color:var(--accent); font-weight:bold;">← BACK</a>
-            <h1>Turkish Plurals & Vowel Harmony</h1>
-            
-            <h3>1. Vowel Groups</h3>
-            <p>Turkish vowels are split into two groups. The <b>last vowel</b> of a word tells you which suffix to use.</p>
-            
-            <table class="vowel-table">
-                <tr>
-                    <th>Group</th>
-                    <th>Vowels</th>
-                    <th>Suffix</th>
-                </tr>
-                <tr class="back-v">
-                    <td>Back (Thick)</td>
-                    <td>a, ı, o, u</td>
-                    <td>-lar</td>
-                </tr>
-                <tr class="front-v">
-                    <td>Front (Thin)</td>
-                    <td>e, i, ö, ü</td>
-                    <td>-ler</td>
-                </tr>
-            </table>
-
-            <h3>2. The Rule</h3>
-            <p>Last vowel is <b>Back</b> → Use <b>-lar</b> <br>
-               Last vowel is <b>Front</b> → Use <b>-ler</b></p>
-
-            <div class="exception-box">
-                <b>💡 The Exception (Loanwords):</b><br>
-                Some words from Arabic/French use <b>-ler</b> even if they look "back". <br>
-                Example: <b>Saat</b> (Hour) → <b>Saatler</b> (Clocks)
+        <div class="card">
+            <div class="nav-btns">
+                <a href="index.html" class="btn-nav">🏠 HOME</a>
             </div>
-
-            <button class="btn-main" onclick="startQuiz()">START INTERACTIVE EXERCISES 🎯</button>
+            <h1>Plural Suffixes (-lar / -ler)</h1>
+            <table class="vowel-table">
+                <tr><th>Group</th><th>Vowels</th><th>Suffix</th></tr>
+                <tr class="back-v"><td>Back</td><td>a, ı, o, u</td><td>-lar</td></tr>
+                <tr class="front-v"><td>Front</td><td>e, i, ö, ü</td><td>-ler</td></tr>
+            </table>
+            <p style="font-size:14px;">Example: <b>Saat</b> (Hour) → <b>Saatler</b> (Exception)</p>
+            <button class="btn-main" onclick="startQuiz()">START EXERCISES 🎯</button>
         </div>
     </div>
 
     <!-- TEST BÖLÜMÜ -->
     <div id="quiz-section">
-        <div class="q-card">
-            <div style="display:flex; justify-content:space-between; color:#aaa; font-size:12px; margin-bottom:15px;">
-                <span>Practice: Plural Suffix</span>
-                <b id="prog">1 / 10</b>
-            </div>
+        <div class="card">
+            <div id="prog" style="text-align:right; font-size:12px; color:#aaa; margin-bottom:10px;">1 / 10</div>
             <div class="word-display" id="q-word">...</div>
             <div class="btn-grid">
                 <button class="btn-opt" onclick="check('-lar')">-lar</button>
@@ -117,58 +68,40 @@
         </div>
     </div>
 
-    <footer>
-        <p><b>Fatih Mehmet CANITEZ</b><br>Language Education Specialist</p>
-        <div style="color:var(--success); font-weight:bold;">WhatsApp: +90 505 446 67 60</div>
-    </footer>
+    <div style="text-align:center;">
+        <a href="https://wa.me/905054466760" target="_blank" style="color:var(--success); font-weight:bold; text-decoration:none;">💬 WhatsApp Support</a>
+    </div>
 </div>
 
 <script>
-    // SİZİN VERDİĞİNİZ TÜM KELİMELER EKLENDİ
     const quizData = [
-        { w: "Kitap", a: "-lar", i: "📖", desc: "Book" },
-        { w: "Ev", a: "-ler", i: "🏠", desc: "House" },
-        { w: "Balık", a: "-lar", i: "🐟", desc: "Fish" },
-        { w: "Köpek", a: "-ler", i: "🐶", desc: "Dog" },
-        { w: "Kutu", a: "-lar", i: "📦", desc: "Box" },
-        { w: "Üzüm", a: "-ler", i: "🍇", desc: "Grape" },
-        { w: "Araba", a: "-lar", i: "🚗", desc: "Car" },
-        { w: "Kedi", a: "-ler", i: "🐱", desc: "Cat" },
-        { w: "Okul", a: "-lar", i: "🏫", desc: "School" },
-        { w: "Göz", a: "-ler", i: "👁️", desc: "Eye" }
+        { w: "Kitap", a: "-lar", i: "📖", d: "Book" }, { w: "Ev", a: "-ler", i: "🏠", d: "House" },
+        { w: "Balık", a: "-lar", i: "🐟", d: "Fish" }, { w: "Köpek", a: "-ler", i: "🐶", d: "Dog" },
+        { w: "Kutu", a: "-lar", i: "📦", d: "Box" }, { w: "Üzüm", a: "-ler", i: "🍇", d: "Grape" },
+        { w: "Araba", a: "-lar", i: "🚗", d: "Car" }, { w: "Kedi", a: "-ler", i: "🐱", d: "Cat" },
+        { w: "Okul", a: "-lar", i: "🏫", d: "School" }, { w: "Göz", a: "-ler", i: "👁️", d: "Eye" }
     ];
 
-    let current = 0;
-    let pool = [];
-
-    function speak(text) {
-        window.speechSynthesis.cancel();
-        const msg = new SpeechSynthesisUtterance(text);
-        msg.lang = 'tr-TR';
-        msg.rate = 0.85;
-        window.speechSynthesis.speak(msg);
-    }
+    let current = 0; let pool = [];
+    function speak(t) { window.speechSynthesis.cancel(); const m = new SpeechSynthesisUtterance(t); m.lang = 'tr-TR'; m.rate = 0.8; window.speechSynthesis.speak(m); }
 
     function startQuiz() {
-        speak(""); // Sesi uyandır
         document.getElementById('lesson-section').style.display = 'none';
         document.getElementById('quiz-section').style.display = 'block';
         pool = [...quizData].sort(() => Math.random() - 0.5);
-        showQuestion();
+        show();
     }
 
-    function showQuestion() {
+    function show() {
         if (current >= pool.length) {
             document.getElementById('quiz-section').innerHTML = `
-                <div class="q-card">
-                    <h2 style="color:var(--success)">Tebrikler! 🎉</h2>
-                    <p>You completed the exercise with Fatih Hoca.</p>
-                    <button class="btn-main" onclick="location.reload()">Back to Lesson</button>
-                </div>`;
+                <h1>Tebrikler! 🎉</h1>
+                <p>Quiz finished.</p>
+                <a href="index.html" class="btn-main">RETURN HOME (ANA SAYFA)</a>`;
             return;
         }
         const item = pool[current];
-        document.getElementById('q-word').innerHTML = `${item.i} ${item.w}<span>...</span><br><small style="font-size:14px; color:#aaa; font-weight:normal;">(${item.desc})</small>`;
+        document.getElementById('q-word').innerHTML = `${item.i} ${item.w}...<br><small style="font-size:15px; color:#aaa; font-weight:normal;">(${item.d})</small>`;
         document.getElementById('prog').innerText = `${current + 1} / ${pool.length}`;
         document.getElementById('feedback').innerText = "";
         speak(item.w);
@@ -178,18 +111,14 @@
         const item = pool[current];
         const fb = document.getElementById('feedback');
         if (ans === item.a) {
-            fb.style.color = "var(--success)";
-            fb.innerText = "Correct! ✅";
-            document.getElementById('q-word').innerHTML = `${item.i} ${item.w}<b style="color:var(--success)">${item.a}</b><br><small style="font-size:14px; color:#aaa; font-weight:normal;">(${item.desc})</small>`;
+            fb.style.color = "var(--success)"; fb.innerText = "Correct! ✅";
+            document.getElementById('q-word').innerHTML = `${item.i} ${item.w}<b style="color:var(--success)">${item.a}</b>`;
             speak(item.w + item.a);
-            current++;
-            setTimeout(showQuestion, 2000);
+            current++; setTimeout(show, 2000);
         } else {
-            fb.style.color = "var(--turkish-red)";
-            fb.innerText = "Try again! ❌ Check the last vowel.";
+            fb.style.color = "var(--turkish)"; fb.innerText = "Try again! ❌";
         }
     }
 </script>
-
 </body>
 </html>
