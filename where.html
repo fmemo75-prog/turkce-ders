@@ -105,4 +105,54 @@
     ];
 
     let current = 0; let pool = [];
-    function unlockAudio() { window.speechSynthesis.cancel(); let m =
+    function unlockAudio() { window.speechSynthesis.cancel(); let m = new SpeechSynthesisUtterance("Merhaba"); m.lang = 'tr-TR'; window.speechSynthesis.speak(m); document.getElementById('starter').style.display = 'none'; }
+    function speak(t) { window.speechSynthesis.cancel(); const m = new SpeechSynthesisUtterance(t); m.lang = 'tr-TR'; m.rate = 0.8; window.speechSynthesis.speak(m); }
+
+    function startQuiz() {
+        document.getElementById('lesson-section').style.display = 'none';
+        document.getElementById('quiz-section').style.display = 'block';
+        pool = [...quizData].sort(() => Math.random() - 0.5);
+        show();
+    }
+
+    function show() {
+        if (current >= pool.length) {
+            document.getElementById('quiz-section').innerHTML = `<h2>Harika! 🏆</h2><p>You mastered "Neredesin?"</p><button class='btn-main' onclick='location.reload()'>Restart Quiz</button><a href='index.html' class='btn-main' style='background:var(--blue)'>Back to Menu</a>`;
+            return;
+        }
+        const item = pool[current];
+        document.getElementById('q-emoji').innerText = item.i;
+        document.getElementById('q-text').innerHTML = `Bugün <b style="color:var(--blue)">___</b><br><small style="font-weight:normal;color:#aaa">(${item.t})</small>`;
+        document.getElementById('prog').innerText = `${current + 1} / ${pool.length}`;
+        document.getElementById('fb-msg').innerText = "";
+        
+        const btnContainer = document.getElementById('btn-container');
+        btnContainer.innerHTML = '';
+        item.opts.sort(() => Math.random() - 0.5).forEach(opt => {
+            const b = document.createElement('button');
+            b.className = 'btn-opt';
+            b.innerText = opt;
+            b.onclick = () => check(opt);
+            btnContainer.appendChild(b);
+        });
+        speak("Bugün " + item.w.replace('yim','').replace('yım',''));
+    }
+
+    function check(ans) {
+        const item = pool[current];
+        const fb = document.getElementById('fb-msg');
+        if (ans === item.a) {
+            fb.style.color = "var(--green)";
+            fb.innerText = "Doğru! ✅";
+            document.getElementById('q-text').innerHTML = `Bugün <b style="color:var(--green)">${item.a}</b><br><small style="color:#aaa;">(${item.t})</small>`;
+            speak("Bugün " + item.a);
+            current++;
+            setTimeout(show, 2500);
+        } else {
+            fb.style.color = "var(--turkish-red)";
+            fb.innerText = "Tekrar dene! ❌";
+        }
+    }
+</script>
+</body>
+</html>
