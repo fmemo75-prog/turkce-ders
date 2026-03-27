@@ -80,4 +80,61 @@
         { file: "PTT-20260325-WA0022.opus", w: "Kitap yeni", a: "mi", i: "📖" },
         { file: "PTT-20260325-WA0023.opus", w: "Limon ekşi", a: "mi", i: "🍋" },
         { file: "PTT-20260325-WA0024.opus", w: "Hava soğuk", a: "mu", i: "❄️" },
-        { file: "PTT-20260325-WA0025.opus", w: "Bu kutu",
+        { file: "PTT-20260325-WA0025.opus", w: "Bu kutu", a: "mu", i: "📦" },
+        { file: "PTT-20260325-WA0026.opus", w: "O doktor", a: "mu", i: "👨‍⚕️" },
+        { file: "PTT-20260325-WA0027.opus", w: "Okul büyük", a: "mü", i: "🏫" },
+        { file: "PTT-20260325-WA0028.opus", w: "Çay sıcak", a: "mı", i: "☕" },
+        { file: "PTT-20260325-WA0029.opus", w: "Gözlük pahalı", a: "mı", i: "👓" },
+        { file: "PTT-20260325-WA0030.opus", w: "Üzüm tatlı", a: "mı", i: "🍇" },
+        { file: "PTT-20260325-WA0031.opus", w: "O kedi", a: "mi", i: "🐱" },
+        { file: "PTT-20260325-WA0032.opus", w: "Defter açık", a: "mı", i: "📔" },
+        { file: "PTT-20260325-WA0033.opus", w: "Süt soğuk", a: "mu", i: "🥛" }
+    ];
+
+    let current = 0;
+    let pool = [];
+
+    function startQuiz() {
+        document.getElementById('starter').style.display = 'none';
+        // Soruları karıştır (Shuffle)
+        pool = [...dataList].sort(() => Math.random() - 0.5);
+        render();
+    }
+
+    function render() {
+        if (current >= pool.length) {
+            document.getElementById('quiz-ui').style.display = 'none';
+            document.getElementById('done').style.display = 'block';
+            return;
+        }
+        const item = pool[current];
+        const box = document.getElementById('box');
+        box.classList.remove('win');
+        box.innerHTML = `${item.w} ${item.i} ...?<br><small style="font-size:12px;color:gray;font-weight:normal;">🔊 Click to hear me</small>`;
+        document.getElementById('prog').innerText = (current + 1) + " / " + pool.length;
+        document.getElementById('fb').innerText = "";
+    }
+
+    function playVoice() {
+        const item = pool[current];
+        let audio = new Audio('https://fmemo75-prog.github.io/turkce-ders/audio/' + item.file);
+        audio.play().catch(e => console.log("Audio load error"));
+    }
+
+    function check(ans) {
+        if (ans === pool[current].a) {
+            document.getElementById('fb').style.color = "var(--green)";
+            document.getElementById('fb').innerText = "Correct! ✅";
+            document.getElementById('box').classList.add('win');
+            document.getElementById('box').innerHTML = pool[current].w + " " + pool[current].a + " " + pool[current].i;
+            playVoice();
+            current++;
+            setTimeout(render, 2200);
+        } else {
+            document.getElementById('fb').style.color = "red";
+            document.getElementById('fb').innerText = "Try again! ❌";
+        }
+    }
+</script>
+</body>
+</html>
