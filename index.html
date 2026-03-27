@@ -9,11 +9,10 @@
         body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; padding: 0; }
         .container { max-width: 500px; margin: 0 auto; padding: 15px; }
         
-        /* FOTOĞRAF ÇERÇEVESİ - BOYUT SABİTLENDİ */
-        header { text-align: center; padding: 30px 15px; background: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 6px solid var(--turkish); }
+        header { text-align: center; padding: 30px 15px; background: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 8px solid var(--turkish); }
         
         .photo-frame {
-            width: 140px; /* Boyut biraz küçültüldü */
+            width: 140px;
             height: 140px;
             margin: 0 auto 15px;
             border-radius: 50%;
@@ -21,23 +20,19 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.15);
             overflow: hidden;
             background: #eee;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
         }
-        .photo-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Halıların içinde sizi merkeze alır */
-        }
+        .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
 
         h1 { margin: 0; font-size: 22px; color: var(--primary); }
         .main-title { color: var(--turkish); font-weight: 800; font-size: 18px; text-transform: uppercase; margin-top: 5px; display: block; }
         .tourism-tag { color: #d35400; font-weight: bold; font-size: 13px; display: block; margin-top: 5px; }
 
-        /* BUTONLAR */
         .contact-box { background: white; padding: 15px; border-radius: 20px; margin: 15px 0; text-align: center; border: 1px solid #eee; }
-        .yt-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background: #FF0000; color: white; text-decoration: none; padding: 18px; border-radius: 15px; margin-bottom: 12px; font-weight: bold; box-shadow: 0 4px 15px rgba(255,0,0,0.2); }
+        
+        /* KIRMIZI YOUTUBE BUTONU */
+        .yt-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background: #FF0000; color: white; text-decoration: none; padding: 18px; border-radius: 15px; margin-bottom: 12px; font-weight: bold; box-shadow: 0 4px 15px rgba(255,0,0,0.2); transition: 0.3s; }
+        .yt-btn:hover { transform: scale(1.02); background: #e60000; }
         
         .exercise-card { display: flex; align-items: center; justify-content: space-between; background: white; padding: 15px; border-radius: 15px; text-decoration: none; color: inherit; font-weight: bold; margin-bottom: 8px; border: 1px solid #eee; transition: 0.2s; }
         .exercise-card:hover { border-color: var(--accent); background: #f0faff; }
@@ -54,7 +49,6 @@
 <div class="container">
     <header>
         <div class="photo-frame">
-            <!-- Dosya adı fatih-photo.jpg ile birebir aynı olmalı -->
             <img src="fatih-photo.jpg" alt="Fatih Mehmet CANITEZ" onerror="this.src='https://ui-avatars.com/api/?name=Fatih+Mehmet+Canitez&background=3498db&color=fff'">
         </div>
         <h1>Fatih Mehmet CANITEZ</h1>
@@ -67,14 +61,16 @@
         <a href="mailto:fmemo75@gmail.com" style="color:var(--accent); text-decoration:none; font-size:14px;">📧 Email: fmemo75@gmail.com</a>
     </div>
 
-    <a href="courses.html" class="yt-btn">📺 VIDEO LESSONS & BOOKS</a>
+    <!-- YOUTUBE VURGULU BUTON -->
+    <a href="courses.html" class="yt-btn">📺 YouTube: VIDEO LESSONS & BOOKS</a>
 
     <div style="font-size:12px; font-weight:bold; color:#7f8c8d; margin: 15px 0 5px; text-transform:uppercase;">Interactive Practice</div>
     
+    <!-- İLK DERS GÜNCELLENDİ: mı, mi, mu, mü Soru Eki -->
     <a href="soru-eki.html" class="exercise-card">
         <div>
             <span class="ex-tag">EXERCISE 1</span>
-            <span>🎯 Question Particles</span>
+            <span>🎯 Question Particles (mı, mi, mu, mü Soru Eki)</span>
         </div>
         <span>🔊</span>
     </a>
@@ -82,7 +78,7 @@
     <a href="plural.html" class="exercise-card">
         <div>
             <span class="ex-tag">EXERCISE 2</span>
-            <span>👥 Plural Suffixes</span>
+            <span>👥 Plural Suffixes (-lar / -ler)</span>
         </div>
         <span>🔊</span>
     </a>
