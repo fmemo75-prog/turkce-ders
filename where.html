@@ -5,15 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Neredesin? | Fatih Mehmet CANITEZ</title>
     <style>
-        :root { --blue: #2980b9; --dark: #2c3e50; --turkish-red: #e74c3c; --green: #27ae60; --bg: #f4f7f6; }
+        :root { --blue: #2980b9; --dark: #2c3e50; --turkish-red: #e74c3c; --green: #27ae60; --yt-red: #FF0000; --bg: #f4f7f6; }
         body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; padding: 15px; color: var(--dark); }
         .container { max-width: 600px; margin: 0 auto; }
         
         .browser-warning { background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 12px; border-radius: 12px; text-align: center; font-size: 13px; font-weight: bold; margin-bottom: 15px; }
         .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; border-top: 6px solid var(--turkish-red); }
         
-        h1 { color: var(--turkish-red); font-size: 22px; text-align: center; }
+        h1 { color: var(--turkish-red); font-size: 22px; text-align: center; margin-bottom: 10px; }
         .rule-box { background: #f0f7ff; padding: 15px; border-radius: 15px; margin: 15px 0; font-size: 14px; border-left: 5px solid var(--blue); }
+
+        /* YOUTUBE DERS BUTONU */
+        .yt-link-btn {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            background: var(--yt-red); color: white; text-decoration: none;
+            padding: 15px; border-radius: 12px; font-weight: bold; margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2); transition: 0.3s;
+        }
+        .yt-link-btn:hover { transform: scale(1.02); background: #e60000; }
         
         #quiz-section { display: none; text-align: center; }
         .q-emoji { font-size: 60px; margin-bottom: 15px; display: block; }
@@ -37,8 +46,8 @@
 
 <div id="starter">
     <div class="container">
-        <h1>Neredesin?</h1>
-        <p>I am at... (Bulunma + Şahıs)</p>
+        <h1>📍 Neredesin?</h1>
+        <p>Listen and learn with Teacher Fatih</p>
         <button class="btn-main" onclick="unlockAudio()">🔊 START LESSON</button>
     </div>
 </div>
@@ -46,23 +55,30 @@
 <div class="container">
     <div class="browser-warning">⚠️ <b>FACEBOOK USERS:</b> For sound, open this page in <b>Chrome/Safari</b>.</div>
 
+    <!-- DERS ANLATIMI -->
     <div id="lesson-section">
         <div class="card">
             <div style="text-align:left; margin-bottom:10px;"><a href="index.html" style="text-decoration:none; color:var(--blue); font-weight:bold;">🏠 HOME</a></div>
             <h1>How to say "I am at..."</h1>
             
+            <!-- YOUTUBE VİDEO LİNKİ -->
+            <a href="https://www.youtube.com/playlist?list=PL3pFQDLvmLmkUvmTiCNklI3akzgN7ObaT" target="_blank" class="yt-link-btn">
+                🎬 Watch Fatih Hoca's Lesson Video
+            </a>
+
             <div class="rule-box">
                 <b>Place + (de/da) + (y) + ım/im</b><br><br>
                 🏠 Ev + de + y + im = <b>Evdeyim</b> (I'm at home)<br>
                 🏫 Okul + da + y + ım = <b>Okuldayım</b> (I'm at school)
             </div>
 
-            <p style="font-size:14px; text-align:center;">In this exercise, you will practice the sentences from Fatih Hoca's latest video!</p>
+            <p style="font-size:14px; text-align:center; color:#666;">Watch the video above, then test your skills below!</p>
 
-            <button class="btn-main" onclick="startQuiz()">PRACTICE NOW 🎯</button>
+            <button class="btn-main" onclick="startQuiz()">START PRACTICE 🎯</button>
         </div>
     </div>
 
+    <!-- QUIZ ALANI -->
     <div id="quiz-section">
         <div class="card">
             <span id="prog" style="color:#aaa; font-size:12px;">1 / 5</span>
@@ -74,7 +90,7 @@
     </div>
 
     <div class="footer-contact">
-        <span style="font-size:13px; color:#7f8c8d;">Contact Teacher Fatih:</span>
+        <span style="font-size:13px; color:#7f8c8d;">Questions? Private lessons?</span>
         <a href="https://wa.me/905054466760" target="_blank" class="wa-link">🟢 WhatsApp: +90 505 446 67 60</a>
     </div>
 </div>
@@ -89,54 +105,4 @@
     ];
 
     let current = 0; let pool = [];
-    function unlockAudio() { window.speechSynthesis.cancel(); let m = new SpeechSynthesisUtterance("Merhaba"); m.lang = 'tr-TR'; window.speechSynthesis.speak(m); document.getElementById('starter').style.display = 'none'; }
-    function speak(t) { window.speechSynthesis.cancel(); const m = new SpeechSynthesisUtterance(t); m.lang = 'tr-TR'; m.rate = 0.8; window.speechSynthesis.speak(m); }
-
-    function startQuiz() {
-        document.getElementById('lesson-section').style.display = 'none';
-        document.getElementById('quiz-section').style.display = 'block';
-        pool = [...quizData].sort(() => Math.random() - 0.5);
-        show();
-    }
-
-    function show() {
-        if (current >= pool.length) {
-            document.getElementById('quiz-section').innerHTML = `<h2>Harika! 🏆</h2><p>You mastered "Neredesin?"</p><button class='btn-main' onclick='location.reload()'>Restart</button><a href='index.html' class='btn-main' style='background:var(--blue)'>Back to Menu</a>`;
-            return;
-        }
-        const item = pool[current];
-        document.getElementById('q-emoji').innerText = item.i;
-        document.getElementById('q-text').innerHTML = `Bugün <b style="color:var(--blue)">___</b><br><small style="font-weight:normal;color:#aaa">(${item.t})</small>`;
-        document.getElementById('prog').innerText = `${current + 1} / ${pool.length}`;
-        document.getElementById('fb-msg').innerText = "";
-        
-        const btnContainer = document.getElementById('btn-container');
-        btnContainer.innerHTML = '';
-        item.opts.sort(() => Math.random() - 0.5).forEach(opt => {
-            const b = document.createElement('button');
-            b.className = 'btn-opt';
-            b.innerText = opt;
-            b.onclick = () => check(opt);
-            btnContainer.appendChild(b);
-        });
-        speak("Bugün " + item.w.replace('yim','').replace('yım',''));
-    }
-
-    function check(ans) {
-        const item = pool[current];
-        const fb = document.getElementById('fb-msg');
-        if (ans === item.a) {
-            fb.style.color = "var(--green)";
-            fb.innerText = "Doğru! ✅";
-            document.getElementById('q-text').innerHTML = `Bugün <b style="color:var(--green)">${item.a}</b><br><small style="color:#aaa;">(${item.t})</small>`;
-            speak("Bugün " + item.a);
-            current++;
-            setTimeout(show, 2500);
-        } else {
-            fb.style.color = "var(--turkish-red)";
-            fb.innerText = "Tekrar dene! ❌";
-        }
-    }
-</script>
-</body>
-</html>
+    function unlockAudio() { window.speechSynthesis.cancel(); let m =
