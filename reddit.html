@@ -3,33 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Turkish Learning Project | Community Edition</title>
+    <title>Merhaba Reddit! | Turkish Learning Project</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #2c3e50; max-width: 600px; margin: 0 auto; padding: 20px; background: #f4f7f6; }
-        .card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        h1 { color: #e74c3c; border-bottom: 2px solid #eee; padding-bottom: 10px; font-size: 22px; }
-        .btn { display: block; padding: 15px; margin: 10px 0; background: #3498db; color: white; text-decoration: none; border-radius: 12px; font-weight: bold; text-align: center; transition: 0.3s; }
-        .btn:hover { opacity: 0.9; transform: translateY(-2px); }
-        .support-text { font-size: 14px; color: #7f8c8d; text-align: center; margin-top: 20px; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; line-height: 1.6; color: #2c3e50; max-width: 600px; margin: 0 auto; padding: 20px; background: #f4f7f6; }
+        .card { background: white; padding: 35px; border-radius: 25px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        h1 { color: #e74c3c; margin-top: 0; font-size: 24px; border-bottom: 2px solid #f8d7da; padding-bottom: 10px; }
+        
+        .polyglot-box { 
+            background: #fff9db; 
+            padding: 20px; 
+            border-radius: 15px; 
+            font-style: italic; 
+            margin: 20px 0; 
+            border-left: 5px solid #f1c40f;
+            font-size: 15px;
+            color: #5d4037;
+        }
+
+        .btn-list { display: flex; flex-direction: column; gap: 12px; margin: 25px 0; }
+        .btn { display: block; padding: 18px; background: #3498db; color: white; text-decoration: none; border-radius: 15px; font-weight: bold; text-align: center; transition: 0.3s; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(52,152,219,0.3); }
+        
+        .coming-soon { 
+            text-align: center; 
+            font-size: 12px; 
+            color: #95a5a6; 
+            margin-top: -10px; 
+            margin-bottom: 20px; 
+            font-style: italic; 
+        }
+
+        .footer { text-align: center; font-size: 14px; color: #7f8c8d; margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; }
+        .wa-link { color: #27ae60; font-weight: bold; text-decoration: none; border: 1px solid #27ae60; padding: 8px 15px; border-radius: 50px; display: inline-block; margin-top: 10px; }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>Merhaba r/TurkishLearning! 🇹🇷</h1>
-        <p>I am a native language enthusiast. To help the community master <b>Vowel Harmony</b> and <b>ı-i distinction</b>, I've developed these free interactive tools with voice support.</p>
-        
-        <p>This is a non-profit educational project. I'd love to get your feedback to improve the timings and functionality.</p>
 
-        <div class="links">
-            <a href="soru-eki.html" class="btn">🎯 Question Particles Quiz (Voice)</a>
-            <a href="plural.html" class="btn" style="background:#27ae60;">👥 Plural Suffixes Practice</a>
-            <a href="locative.html" class="btn" style="background:#8e44ad;">📍 Locative Case (-de/-da)</a>
-        </div>
+<div class="card">
+    <h1>Merhaba r/TurkishLearning! 🇹🇷</h1>
+    
+    <p>Every language is a new world, and the journey to master it is a brave one. I’m here to support everyone who is passionate about learning, just as I have been throughout my life.</p>
 
-        <div class="support-text">
-            If you encounter any issues or have grammar questions, feel free to reach out for support.<br>
-            <a href="https://wa.me/905054466760" target="_blank" style="color:#27ae60; font-weight:bold; text-decoration:none;">🟢 WhatsApp Community Support</a>
-        </div>
+    <div class="polyglot-box">
+        "Having dedicated years to studying <b>French, Italian, Spanish, and English</b>, I truly understand the hurdles of learning a new language. Now, I want to give back to the global community by helping you master the <b>unique logic and beautiful patterns</b> of my mother tongue: Turkish."
     </div>
+
+    <p>I am developing a series of free interactive, voice-supported tools to help you practice and internalize Turkish naturally:</p>
+
+    <div class="btn-list">
+        <!-- Mevcut Etkinlikler -->
+        <a href="soru-eki.html" class="btn">🎯 Question Particles Quiz</a>
+        <a href="plural.html" class="btn" style="background:#27ae60;">👥 Plural Suffixes Practice</a>
+        <a href="locative.html" class="btn" style="background:#8e44ad;">📍 Locative Case (-de / -da)</a>
+    </div>
+    <div class="coming-soon">More interactive topics and vocabulary modules are being added weekly...</div>
+
+    <p>Feel free to use these resources. I value your feedback immensely as I continue to build this project for the community.</p>
+
+    <div class="footer">
+        Need help with a specific grammar point? <br>
+        <a href="https://wa.me/905054466760" target="_blank" class="wa-link">🟢 Message me on WhatsApp for Support</a>
+    </div>
+</div>
+
 </body>
 </html>
