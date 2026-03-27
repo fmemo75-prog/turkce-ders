@@ -2,48 +2,170 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Locative Case | Fatih Mehmet CANITEZ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Locative Case (-de / -da) | Fatih Mehmet CANITEZ</title>
     <style>
-        :root { --blue: #2980b9; --dark: #2c3e50; --turkish: #e74c3c; --green: #27ae60; --bg: #f4f7f6; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; padding: 10px; }
-        .card { max-width: 500px; margin: 0 auto; background: white; padding: 25px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; }
-        h1 { color: var(--turkish); font-size: 20px; margin: 10px 0; }
-        .rule { background: #f0f7ff; padding: 15px; border-radius: 12px; margin-bottom: 20px; font-size: 13px; }
-        .word-display { font-size: 22px; font-weight: bold; margin: 20px 0; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .btn-opt { padding: 15px; font-size: 20px; font-weight: bold; border: 2px solid var(--blue); background: white; color: var(--blue); border-radius: 12px; cursor: pointer; }
-        .btn-start { display: block; width: 100%; padding: 18px; background: var(--green); color: white; border-radius: 15px; font-weight: bold; text-decoration: none; border: none; cursor: pointer; }
-        #feedback { margin-top: 15px; font-weight: bold; }
-        .footer-contact { margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; }
+        :root { --blue: #2980b9; --dark: #2c3e50; --turkish-red: #e74c3c; --green: #27ae60; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; padding: 0; color: var(--dark); }
+        .container { max-width: 600px; margin: 0 auto; padding: 15px; }
+
+        /* FACEBOOK / HARİCİ TARAYICI UYARISI */
+        .browser-warning { background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 12px; border-radius: 12px; text-align: center; font-size: 13px; font-weight: bold; margin-bottom: 15px; }
+
+        .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; border-top: 6px solid var(--blue); }
+        h1 { color: var(--turkish-red); font-size: 22px; text-align: center; margin: 10px 0; }
+        
+        .rule-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0; }
+        .rule-box { padding: 15px; border-radius: 15px; text-align: center; font-size: 14px; border: 2px solid #eee; }
+        .rule-box b { font-size: 18px; display: block; margin-bottom: 5px; }
+        .v-da { border-color: #ff7675; background: #fff5f5; }
+        .v-de { border-color: #74b9ff; background: #f0f7ff; }
+
+        .fstk-box { background: #ffeaa7; border: 2px solid #fdcb6e; padding: 10px; border-radius: 12px; text-align: center; font-weight: 900; color: #d35400; margin-bottom: 10px; letter-spacing: 2px; }
+
+        #quiz-section { display: none; text-align: center; }
+        .q-emoji { font-size: 50px; margin-bottom: 10px; display: block; }
+        .word-display { font-size: 22px; font-weight: bold; margin-bottom: 20px; line-height: 1.4; }
+        .word-display b { color: var(--turkish-red); border-bottom: 3px solid #eee; }
+
+        .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .btn-opt { padding: 18px; font-size: 22px; font-weight: bold; border: 2px solid var(--blue); background: white; color: var(--blue); border-radius: 15px; cursor: pointer; transition: 0.2s; }
+        .btn-opt:hover { background: var(--blue); color: white; }
+
+        .btn-main { display: block; width: 100%; padding: 18px; background: var(--green); color: white; border: none; border-radius: 15px; font-weight: bold; font-size: 18px; cursor: pointer; margin-top: 15px; text-decoration: none; text-align: center; }
+        
+        #fb-msg { margin-top: 15px; font-weight: bold; font-size: 18px; min-height: 24px; }
+        #starter { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 100; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; }
+        
+        .footer-contact { margin-top: 30px; padding: 20px; border-top: 1px solid #eee; text-align: center; }
+        .wa-link { color: var(--green); text-decoration: none; font-weight: 800; font-size: 17px; display: block; margin-top: 5px; }
     </style>
 </head>
 <body>
-<div class="card">
-    <div style="text-align:left"><a href="index.html" style="text-decoration:none; color:var(--blue); font-weight:bold;">🏠 HOME</a></div>
-    <div id="lesson">
-        <h1>Bulunma Hâli (Locative)</h1>
-        <div class="rule">Last Vowel a,ı,o,u → <b>-da/-ta</b><br>Last Vowel e,i,ö,ü → <b>-de/-te</b></div>
-        <button class="btn-start" onclick="start()">START TEST 🎯</button>
-    </div>
-    <div id="quiz" style="display:none">
-        <div id="prog" style="text-align:right; font-size:11px; color:#aaa">1 / 10</div>
-        <div style="font-size:50px" id="q-emoji">🪑</div>
-        <div class="word-display" id="q-text">...</div>
-        <div class="grid" id="btn-container"></div>
-        <div id="feedback"></div>
-    </div>
-    <div class="footer-contact"> WhatsApp: +90 505 446 67 60
-        <a href="https://wa.me/905054466760" target="_blank" style="color:var(--green); text-decoration:none; font-weight:bold;">💬 WhatsApp: Fatih Hoca</a>
+
+<div id="starter">
+    <div class="container">
+        <h1>Locative Case</h1>
+        <p>Lesson & Practice</p>
+        <button class="btn-main" onclick="unlockAudio()">🔊 START LESSON</button>
     </div>
 </div>
+
+<div class="container">
+    <div class="browser-warning">
+        ⚠️ <b>FACEBOOK USERS:</b> For sound, click the 3 dots (top right) and select <b>"Open in Browser"</b> (Chrome/Safari).
+    </div>
+
+    <!-- DERS ANLATIMI -->
+    <div id="lesson-section">
+        <div class="card">
+            <div style="text-align:left; margin-bottom:10px;"><a href="index.html" style="text-decoration:none; color:var(--blue); font-weight:bold;">🏠 HOME</a></div>
+            <h1>Locative Case (Bulunma Hâli)</h1>
+            <p style="text-align:center; font-size:14px;">The suffixes for <b>"in, at, on"</b> are <b>-da, -de, -ta, -te</b></p>
+
+            <div class="rule-visual">
+                <div class="rule-box v-da"><span>Last Vowel: <b>a, ı, o, u</b></span><b>➡️ -da</b><small>Oda<b>da</b> (In the room)</small></div>
+                <div class="rule-box v-de"><span>Last Vowel: <b>e, i, ö, ü</b></span><b>➡️ -de</b><small>Ev<b>de</b> (In the house)</small></div>
+            </div>
+
+            <p style="font-size:14px; font-weight:bold; margin-bottom:5px;">⚠️ Hard Consonants (Fıstıkçı Şahap):</p>
+            <div class="fstk-box">F S T K Ç Ş H P</div>
+            <p style="font-size:13px; margin-top:0;">If the word ends with these letters, <b>D</b> changes to <b>T</b>:</p>
+            
+            <div class="rule-visual">
+                <div class="rule-box v-da" style="border-style:dashed"><b>-ta</b><small>Mutfak<b>ta</b> (In the kitchen)</small></div>
+                <div class="rule-box v-de" style="border-style:dashed"><b>-te</b><small>Market<b>te</b> (At the market)</small></div>
+            </div>
+
+            <button class="btn-main" onclick="startQuiz()">PRACTICE TEST 🎯</button>
+        </div>
+    </div>
+
+    <!-- TEST BÖLÜMÜ -->
+    <div id="quiz-section">
+        <div class="card">
+            <div id="prog" style="text-align:right; color:#aaa; font-size:12px; margin-bottom:10px;">1 / 10</div>
+            <span id="q-emoji" class="q-emoji">🪑</span>
+            <div class="word-display" id="q-text">...</div>
+            <div class="btn-grid" id="btn-container"></div>
+            <div id="fb-msg"></div>
+        </div>
+    </div>
+
+    <!-- NUMARALI İLETİŞİM -->
+    <div class="footer-contact">
+        <span style="font-size:13px; color:#7f8c8d;">Questions? Private lessons?</span>
+        <a href="https://wa.me/905054466760" target="_blank" class="wa-link">🟢 WhatsApp: +90 505 446 67 60</a>
+    </div>
+</div>
+
 <script>
-    const data = [{q:"Kitabım masa___ kaldı.",a:"-da",o:["-da","-ta"],i:"🪑",t:"On the table"},{q:"Ali mutfak___ yemek yapıyor.",a:"-ta",o:["-da","-ta"],i:"🍳",t:"In the kitchen"},{q:"Cüzdanımı park___ düşürdüm.",a:"-ta",o:["-da","-ta"],i:"🌲",t:"In the park"},{q:"Sizin ev___ kedi var mı?",a:"-de",o:["-de","-te"],i:"🏠",t:"In the house"},{q:"Öğrenciler sınıf___ çalışıyor.",a:"-ta",o:["-da","-ta"],i:"🏫",t:"In the classroom"},{q:"Anahtar dolap___ duruyor.",a:"-ta",o:["-da","-ta"],i:"🗄️",t:"In the cabinet"},{q:"Dün akşam iş___ çok yoruldum.",a:"-te",o:["-de","-te"],i:"💼",t:"At work"},{q:"Telefonum yatak___ kalmış.",a:"-ta",o:["-da","-ta"],i:"🛏️",t:"On the bed"},{q:"Çocuklar sokak___ oynuyor.",a:"-ta",o:["-da","-ta"],i:"🛣️",t:"In the street"},{q:"Muğla___ tatil yapacağız.",a:"-da",o:["-da","-ta"],i:"📍",t:"In Muğla"}];
-    let step=0; let pool=[];
-    function speak(t){window.speechSynthesis.cancel(); const m=new SpeechSynthesisUtterance(t); m.lang='tr-TR'; window.speechSynthesis.speak(m);}
-    function start(){document.getElementById('lesson').style.display='none'; document.getElementById('quiz').style.display='block'; pool=[...data].sort(()=>Math.random()-0.5); show();}
-    function show(){if(step>=pool.length){document.getElementById('quiz').innerHTML=`<h2>Tebrikler! 🎉</h2><a href="index.html" class="btn-start" style="text-align:center; text-decoration:none">ANA SAYFA</a>`; return;} const item=pool[step]; document.getElementById('q-emoji').innerText=item.i; document.getElementById('q-text').innerHTML=`${item.q.replace('___','<b>___</b>')}<br><small style="font-weight:normal;color:gray">(${item.t})</small>`; document.getElementById('prog').innerText=`${step+1} / 10`; document.getElementById('feedback').innerText=""; const c=document.getElementById('btn-container'); c.innerHTML=''; item.o.forEach(o=>{const b=document.createElement('button'); b.className='btn-opt'; b.innerText=o; b.onclick=()=>check(o); c.appendChild(b);}); speak(item.q.replace('___',''));}
-    function check(ans){if(ans===pool[step].a){document.getElementById('feedback').style.color="green"; document.getElementById('feedback').innerText="Correct! ✅"; speak(pool[step].q.replace('___',pool[step].a)); step++; setTimeout(show,2500);} else {document.getElementById('feedback').style.color="red"; document.getElementById('feedback').innerText="Wrong! ❌";}}
+    const quizData = [
+        { q: "Kitabım masa___ kaldı.", a: "-da", opts: ["-da", "-ta"], i: "🪑", t: "My book was left on the table." },
+        { q: "Ali mutfak___ yemek yapıyor.", a: "-ta", opts: ["-da", "-ta"], i: "🍳", t: "Ali is cooking in the kitchen." },
+        { q: "Cüzdanımı park___ düşürdüm.", a: "-ta", opts: ["-da", "-ta"], i: "🌲", t: "I dropped my wallet in the park." },
+        { q: "Sizin ev___ kedi var mı?", a: "-de", opts: ["-de", "-te"], i: "🏠", t: "Is there a cat in your house?" },
+        { q: "Öğrenciler sınıf___ çalışıyor.", a: "-ta", opts: ["-da", "-ta"], i: "🏫", t: "Students are studying in the classroom." },
+        { q: "Anahtar dolap___ duruyor.", a: "-ta", opts: ["-da", "-ta"], i: "🗄️", t: "The key is in the cabinet." },
+        { q: "Dün akşam iş___ çok yoruldum.", a: "-te", opts: ["-de", "-te"], i: "💼", t: "I got very tired at work last night." },
+        { q: "Telefonum yatak___ kalmış.", a: "-ta", opts: ["-ta", "-da"], i: "🛏️", t: "My phone was left on the bed." },
+        { q: "Çocuklar sokak___ oynuyor.", a: "-ta", opts: ["-ta", "-da"], i: "🛣️", t: "Children are playing in the street." },
+        { q: "Muğla'da tatil yapacağız.", a: "-da", opts: ["-da", "-ta"], i: "📍", t: "We will have a holiday in Muğla.", fixedQ: "Muğla'da tatil yapacağız." }
+    ];
+
+    let current = 0; let pool = [];
+    function unlockAudio() { window.speechSynthesis.cancel(); let m = new SpeechSynthesisUtterance("Merhaba"); m.lang = 'tr-TR'; window.speechSynthesis.speak(m); document.getElementById('starter').style.display = 'none'; }
+    function speak(t) { window.speechSynthesis.cancel(); const m = new SpeechSynthesisUtterance(t); m.lang = 'tr-TR'; m.rate = 0.85; window.speechSynthesis.speak(m); }
+
+    function startQuiz() {
+        document.getElementById('lesson-section').style.display = 'none';
+        document.getElementById('quiz-section').style.display = 'block';
+        pool = [...quizData].sort(() => Math.random() - 0.5);
+        show();
+    }
+
+    function show() {
+        if (current >= pool.length) {
+            document.getElementById('quiz-section').innerHTML = `<h1>Tebrikler! 🎉</h1><p>Mastered Locative Case.</p><a href="index.html" class="btn-main">RETURN HOME</a>`;
+            return;
+        }
+        const item = pool[current];
+        document.getElementById('q-emoji').innerText = item.i;
+        let displayQ = item.fixedQ ? item.fixedQ.replace('Muğla\'da', 'Muğla<b>___</b>') : item.q.replace('___', '<b>___</b>');
+        document.getElementById('q-text').innerHTML = `${displayQ}<br><small style="font-weight:normal;color:#aaa">(${item.t})</small>`;
+        document.getElementById('prog').innerText = `${current + 1} / ${pool.length}`;
+        document.getElementById('fb-msg').innerText = "";
+        
+        const btnContainer = document.getElementById('btn-container');
+        btnContainer.innerHTML = '';
+        item.opts.forEach(opt => {
+            const b = document.createElement('button');
+            b.className = 'btn-opt';
+            b.innerText = opt;
+            b.onclick = () => check(opt);
+            btnContainer.appendChild(b);
+        });
+        // Soru sorulurken "Muğla'da tatil yapacağız" hatasını önlemek için temiz okutuyoruz
+        let textToRead = item.fixedQ ? "Muğla tatil yapacağız" : item.q.replace('___', '');
+        speak(textToRead);
+    }
+
+    function check(ans) {
+        const item = pool[current];
+        const fb = document.getElementById('fb-msg');
+        if (ans === item.a) {
+            fb.style.color = "var(--green)";
+            fb.innerText = "Correct! ✅";
+            let correctSentence = item.fixedQ ? item.fixedQ : item.q.replace('___', item.a);
+            document.getElementById('q-text').innerHTML = `${correctSentence.replace(item.a, '<b style="color:var(--green)">' + item.a + '</b>')}<br><small style="color:#aaa;">(${item.t})</small>`;
+            speak(correctSentence);
+            current++;
+            setTimeout(show, 2500);
+        } else {
+            fb.style.color = "var(--turkish-red)";
+            fb.innerText = "Try again! ❌";
+        }
+    }
 </script>
 </body>
 </html>
