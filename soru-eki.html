@@ -5,59 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Turkish Quiz - Fatih Mehmet CANITEZ</title>
     <style>
-        :root { --blue: #2980b9; --dark: #2c3e50; --green: #27ae60; --bg: #f4f7f6; }
+        :root { --blue: #2980b9; --dark: #2c3e50; --green: #27ae60; --turkish: #e74c3c; --bg: #f4f7f6; }
         body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; padding: 10px; display: flex; justify-content: center; }
-        .quiz-card { width: 100%; max-width: 500px; background: white; border-radius: 20px; padding: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); box-sizing: border-box; text-align: center;}
+        .quiz-card { width: 100%; max-width: 500px; background: white; border-radius: 20px; padding: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); box-sizing: border-box; text-align: center; }
+        
+        .nav { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 14px; }
         .rule-table { width: 100%; border-collapse: collapse; margin-bottom: 15px; background: #fffbe6; font-size: 12px; border: 1px solid #ffe58f; }
         .rule-table td { padding: 8px; text-align: center; border: 1px solid #ffe58f; }
-        .red { color: #e74c3c; font-weight: bold; font-size: 15px; }
+        .red { color: var(--turkish); font-weight: bold; font-size: 16px; }
+
         .word-card { background: #f9f9f9; border: 2px dashed var(--blue); padding: 40px 10px; border-radius: 15px; text-align: center; font-size: 30px; font-weight: bold; color: var(--dark); margin-bottom: 20px; cursor: pointer; transition: 0.3s; }
         .word-card.win { background: #e8f8f0; border-color: var(--green); color: var(--green); border-style: solid; }
+        
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .opt { padding: 16px; font-size: 22px; font-weight: bold; border: 2px solid var(--blue); background: white; color: var(--blue); border-radius: 10px; cursor: pointer; }
+        .btn-opt { padding: 16px; font-size: 22px; font-weight: bold; border: 2px solid var(--blue); background: white; color: var(--blue); border-radius: 10px; cursor: pointer; }
+        
         #fb { text-align: center; margin-top: 15px; font-weight: bold; height: 24px; font-size: 18px; }
+        
         #starter { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 100; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; }
         .btn-go { padding: 20px 40px; font-size: 24px; background: var(--green); color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: bold; }
+        
+        .footer-contact { margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; }
+        .wa-link { color: var(--green); text-decoration: none; font-weight: 800; font-size: 17px; display: block; margin-top: 5px; }
     </style>
 </head>
 <body>
 
 <div id="starter">
-    <h2>Fatih Hoca - Sesli Test</h2>
-    <p>Sorular SIRAYLA gelecektir (WA0022 - WA0033)</p>
-    <button class="btn-go" onclick="startQuiz()">🔊 BAŞLAT</button>
+    <h2>Turkish Voice Quiz</h2>
+    <p>O ev mi? (WA0021) sorusu eklendi.</p>
+    <button class="btn-go" onclick="startQuiz()">🔊 START</button>
 </div>
 
 <div class="quiz-card">
-    <div style="text-align:left; margin-bottom:10px;"><a href="index.html" style="text-decoration:none; color:var(--blue); font-weight:bold;">← HOME</a></div>
+    <div class="nav">
+        <a href="index.html" style="text-decoration:none; color:var(--blue); font-weight:bold;">🏠 HOME</a>
+        <b id="prog">1 / 13</b>
+    </div>
     
     <table class="rule-table">
         <tr><td>a, ı → <span class="red">mı</span></td><td>e, i → <span class="red">mi</span></td><td>o, u → <span class="red">mu</span></td><td>ö, ü → <span class="red">mü</span></td></tr>
     </table>
 
     <div id="quiz-ui">
-        <!-- Hangi dosyanın çaldığını görmeniz için buraya küçük bir not ekledim -->
-        <div id="file-name" style="font-size: 10px; color: #ccc; margin-bottom: 5px;"></div>
-        <div class="word-card" id="box" onclick="playCurrentVoice()">...</div>
+        <div class="word-card" id="box" onclick="playCurrentVoice()">
+            ...
+            <div style="font-size:12px; color:#aaa; font-weight:normal; margin-top:10px;">🔊 Click to hear me</div>
+        </div>
         <div class="grid">
-            <button class="opt" onclick="check('mı')">mı</button>
-            <button class="opt" onclick="check('mi')">mi</button>
-            <button class="opt" onclick="check('mu')">mu</button>
-            <button class="opt" onclick="check('mü')">mü</button>
+            <button class="btn-opt" onclick="check('mı')">mı</button>
+            <button class="btn-opt" onclick="check('mi')">mi</button>
+            <button class="btn-opt" onclick="check('mu')">mu</button>
+            <button class="btn-opt" onclick="check('mü')">mü</button>
         </div>
         <div id="fb"></div>
     </div>
 
     <div id="done" style="display:none; padding:30px 0;">
         <h2 style="color:var(--green)">Tebrikler! 🎉</h2>
-        <p>Sıralı testi bitirdiniz. Sesler uyuşuyorsa karıştırma moduna geçebiliriz.</p>
-        <button onclick="location.reload()" style="background:var(--blue); color:white; border:none; padding:15px 30px; border-radius:10px; cursor:pointer; font-weight:bold;">Tekrar Başla</button>
+        <p>Tüm soruları sırasıyla bitirdiniz.</p>
+        <button onclick="location.reload()" style="background:var(--blue); color:white; border:none; padding:15px 30px; border-radius:10px; cursor:pointer;">Restart</button>
+    </div>
+
+    <div class="footer-contact">
+        <span style="font-size:13px; color:#7f8c8d;">Contact for Private Lessons:</span>
+        <a href="https://wa.me/905054466760" target="_blank" class="wa-link">🟢 WhatsApp: +90 505 446 67 60</a>
     </div>
 </div>
 
 <script>
-    // SIRALI LİSTE (WhatsApp dosyalarınızın gerçek sırası)
+    // SIRALI LİSTE (WA0021'den WA0033'e tam liste)
     const dataList = [
+        { file: "PTT-20260325-WA0021.opus", w: "O ev", a: "mi", i: "🏠" },
         { file: "PTT-20260325-WA0022.opus", w: "Kitap yeni", a: "mi", i: "📖" },
         { file: "PTT-20260325-WA0023.opus", w: "Limon ekşi", a: "mi", i: "🍋" },
         { file: "PTT-20260325-WA0024.opus", w: "Hava soğuk", a: "mu", i: "❄️" },
@@ -73,7 +92,7 @@
     ];
 
     let current = 0;
-    let pool = dataList; // Random kapalı: Sırayla gelecek.
+    let pool = dataList; // Karıştırma kapalı, liste olduğu gibi gelir.
 
     function startQuiz() {
         document.getElementById('starter').style.display = 'none';
@@ -88,16 +107,16 @@
         }
         const item = pool[current];
         const box = document.getElementById('box');
-        document.getElementById('file-name').innerText = "Çalan: " + item.file;
         box.classList.remove('win');
-        box.innerHTML = `${item.w} ${item.i} ...?<br><small style="font-size:12px;color:gray;">🔊 Dinle</small>`;
+        box.innerHTML = `${item.w} ${item.i} ...?<br><small style="font-size:12px;color:gray;font-weight:normal;">🔊 Click to hear</small>`;
+        document.getElementById('prog').innerText = (current + 1) + " / " + pool.length;
         document.getElementById('fb').innerText = "";
     }
 
     function playCurrentVoice() {
         const item = pool[current];
         let audio = new Audio('https://fmemo75-prog.github.io/turkce-ders/audio/' + item.file);
-        audio.play().catch(e => console.log("Hata"));
+        audio.play().catch(e => console.log("Sound load error"));
     }
 
     function check(ans) {
@@ -108,10 +127,10 @@
             document.getElementById('box').innerHTML = pool[current].w + " " + pool[current].a + " " + pool[current].i;
             playCurrentVoice();
             current++;
-            setTimeout(render, 2000);
+            setTimeout(render, 2200);
         } else {
             document.getElementById('fb').style.color = "red";
-            document.getElementById('fb').innerText = "Yanlış! ❌";
+            document.getElementById('fb').innerText = "Wrong! ❌";
         }
     }
 </script>
