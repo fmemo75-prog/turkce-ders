@@ -1,1 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A1 Turkish: Present Continuous (-yor)</title>
+    <style>
+        :root { --primary: #1877f2; --success: #42b72a; --error: #fa3e3e; --bg: #f0f2f5; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 10px; }
+        
+        /* Browser Notice */
+        .browser-alert { background: #fff3cd; color: #856404; padding: 12px; border-radius: 8px; font-size: 13px; margin-bottom: 10px; border: 1px solid #ffeeba; text-align: center; }
 
+        .container { max-width: 450px; margin: auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        
+        /* Grammar Help Area */
+        .grammar-summary { background: #e7f3ff; padding: 15px; border-radius: 10px; margin-bottom: 20px; font-size: 14px; line-height: 1.6; }
+        .rule-title { font-weight: bold; color: var(--primary); text-decoration: underline; }
+        .change { color: var(--error); font-weight: bold; }
+
+        /* Quiz UI */
+        .btn-start { background: var(--primary); color: white; border: none; padding: 18px; width: 100%; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; }
+        .quiz-area { display: none; text-align: center; }
+        .q-emoji { font-size: 60px; margin-bottom: 10px; display: block; }
+        .q-text { font-size: 22px; font-weight: bold; margin-bottom: 20px; min-height: 50px; color: #1c1e21; }
+        
+        /* Options */
+        .options-box { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .opt-btn { background: white; border: 2px solid #ddd; padding: 15px; border-radius: 12px; font-size: 18px; font-weight: bold; cursor: pointer; }
+        
+        .feedback { height: 30px; margin-top: 15px; font-weight: bold; font-size: 18px; }
+
+        /* Footer */
+        .footer { margin-top: 30px; text-align: center; border-top: 1px solid #eee; padding-top: 20px; }
+        .wa-btn { background: #25D366; color: white; text-decoration: none; padding: 12px 25px; border-radius: 30px; display: inline-block; font-weight: bold; margin-bottom: 15px; font-size: 14px; }
+        .nav-links { display: flex; justify-content: center; gap: 15px; font-size: 13px; }
+        .nav-links a { color: var(--primary); font-weight: bold; text-decoration: none; border: 1px solid #ddd; padding: 5px 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="browser-alert">
+        📍 <b>Tip:</b> If sound is missing, click (⋮) and <b>"Open in Browser"</b>.
+    </div>
+
+    <div class="container">
+        <!-- Intro Screen -->
+        <div id="intro">
+            <h2 style="text-align:center;">Turkish Şimdiki Zaman 🇹🇷</h2>
+            
+            <div class="grammar-summary">
+                <span class="rule-title">1. Regular (Konuşmak):</span><br>
+                Ben konuş<span class="change">uyorum</span>, Sen konuş<span class="change">uyorsun</span>...<br><br>
+                
+                <span class="rule-title">2. Irregular (T ➔ D):</span><br>
+                Gitmek ➔ Gi<span class="change">d</span>iyor, Etmek ➔ E<span class="change">d</span>iyor.<br><br>
+                
+                <span class="rule-title">3. Vowel Change (e ➔ i):</span><br>
+                Yemek ➔ Y<span class="change">i</span>yor, Demek ➔ D<span class="change">i</span>yor.
+            </div>
+
+            <button class="btn-start" onclick="initApp()">START EXERCISE 🔊</button>
+        </div>
+
+        <!-- Quiz Area -->
+        <div id="quiz" class="quiz-area">
+            <div id="progress" style="font-size:12px; color:gray; margin-bottom:10px;">Question 1 / 12</div>
+            <span id="emoji" class="q-emoji">🗣️</span>
+            <div id="question" class="q-text">Ben Türkçe ...</div>
+            
+            <div class="options-box" id="options"></div>
+            <div id="feedback" class="feedback"></div>
+            <p style="font-size: 11px; color: #999; margin-top: 10px;">(Correct answer triggers audio 🎧)</p>
+        </div>
+
+        <!-- Professional Footer -->
+        <div class="footer">
+            <a href="https://wa.me/905054466760" class="wa-btn">WhatsApp: +90 505 446 67 60 💬</a>
+            <div class="nav-links">
+                <a href="index.html">🏠 Ana Sayfa</a>
+                <a href="https://youtube.com/YOUR_CHANNEL">📺 YouTube Dersleri</a>
+            </div>
+            <p style="font-size: 10px; color: #aaa; margin-top: 15px;">© Turkish with Your Teacher</p>
+        </div>
+    </div>
+
+<script>
+    const questions = [
+        // Konuşmak Conjugation (6 Persons)
+        { q: "Ben Türkçe ...", c: "konuşuyorum", w: "konuşuyorsun", e: "🗣️", a: "Ben Türkçe konuşuyorum" },
+        { q: "Sen çok güzel ...", c: "konuşuyorsun", w: "konuşuyoruz", e: "🌟", a: "Sen çok güzel konuşuyorsun" },
+        { q: "O her gün ...", c: "konuşuyor", w: "konuşuyorum", e: "📅", a: "O her gün konuşuyor" },
+        { q: "Biz yavaş ...", c: "konuşuyoruz", w: "konuşuyorlar", e: "🐢", a: "Biz yavaş konuşuyoruz" },
+        { q: "Siz hızlı ...", c: "konuşuyorsunuz", w: "konuşuyorsun", e: "⚡", a: "Siz hızlı konuşuyorsunuz" },
+        { q: "Onlar İngilizce ...", c: "konuşuyorlar", w: "konuşuyoruz", e: "🇬🇧", a: "Onlar İngilizce konuşuyorlar" },
+        
+        // Irregular Verbs (T-D and Vowel Change)
+        { q: "Ben şimdi işe ...", c: "gidiyorum", w: "gidiyor", e: "💼", a: "Ben şimdi işe gidiyorum" },
+        { q: "Sen elma ...", c: "yiyorsun", w: "yiyoruz", e: "🍎", a: "Sen elma yiyorsun" },
+        { q: "O bana yardım ...", c: "ediyor", w: "ediyorsun", e: "🤝", a: "O bana yardım ediyor" },
+        { q: "Biz dondurma ...", c: "tadıyoruz", w: "tadıyor", e: "🍦", a: "Biz dondurma tadıyoruz" },
+        { q: "Ayşe 'Merhaba' ...", c: "diyor", w: "diyorum", e: "👋", a: "Ayşe merhaba diyor" },
+        { q: "Onlar eve ...", c: "gidiyorlar", w: "gidiyorsunuz", e: "🏠", a: "Onlar eve gidiyorlar" }
+    ];
+
+    let currentStep = 0;
+
+    function initApp() {
+        document.getElementById('intro').style.display = 'none';
+        document.getElementById('quiz').style.display = 'block';
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        const item = questions[currentStep];
+        document.getElementById('progress').innerText = `Question ${currentStep + 1} / 12`;
+        document.getElementById('emoji').innerText = item.e;
+        document.getElementById('question').innerText = item.q;
+        document.getElementById('feedback').innerText = "";
+        
+        const container = document.getElementById('options');
+        container.innerHTML = "";
+        
+        const choices = [item.c, item.w].sort(() => Math.random() - 0.5);
+        
+        choices.forEach(val => {
+            const btn = document.createElement('button');
+            btn.className = 'opt-btn';
+            btn.innerText = val;
+            btn.onclick = () => validate(val, item.c, btn, item.a);
+            container.appendChild(btn);
+        });
+    }
+
+    function validate(userChoice, correctChoice, btn, audioText) {
+        const f = document.getElementById('feedback');
+        if(userChoice === correctChoice) {
+            btn.style.backgroundColor = "#e7f3ff";
+            btn.style.borderColor = "var(--success)";
+            f.innerText = "Doğru! ✅";
+            f.style.color = "var(--success)";
+            
+            // Play sound ONLY after correct answer
+            playVoice(audioText);
+            
+            setTimeout(() => {
+                currentStep++;
+                if(currentStep < questions.length) loadQuestion();
+                else showResult();
+            }, 2200);
+        } else {
+            btn.style.backgroundColor = "#ffebe9";
+            btn.style.borderColor = "var(--error)";
+            f.innerText = "Tekrar dene! ❌";
+            f.style.color = "var(--error)";
+        }
+    }
+
+    function playVoice(txt) {
+        const msg = new SpeechSynthesisUtterance(txt);
+        msg.lang = 'tr-TR';
+        msg.rate = 0.8; 
+        window.speechSynthesis.speak(msg);
+    }
+
+    function showResult() {
+        document.getElementById('quiz').innerHTML = `
+            <div style="padding:20px;">
+                <h2 style="color:var(--success)">Tebrikler! 🏆</h2>
+                <p>Harika! Şimdiki zamanı ve düzensiz fiilleri öğrendiniz.</p>
+                <button class="btn-start" onclick="location.reload()">Baştan Başla</button>
+            </div>
+        `;
+    }
+</script>
+</body>
+</html>
