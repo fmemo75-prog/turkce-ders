@@ -6,59 +6,70 @@
     <title>Fatih Mehmet CANITEZ | Turkish for Foreigners</title>
     <style>
         :root { --primary: #2c3e50; --accent: #3498db; --turkish: #e74c3c; --whatsapp: #27ae60; --bg: #f4f7f6; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 0; }
         .container { max-width: 600px; margin: 0 auto; padding: 15px; }
+        
+        /* Profil ve Header */
         header { text-align: center; padding: 30px 15px; background: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 8px solid var(--turkish); }
-        .photo-frame { width: 130px; height: 130px; margin: 0 auto 15px; border-radius: 50%; border: 4px solid white; box-shadow: 0 5px 20px rgba(0,0,0,0.15); overflow: hidden; }
+        .photo-frame { width: 120px; height: 120px; margin: 0 auto 15px; border-radius: 50%; border: 4px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.1); overflow: hidden; cursor: pointer; }
         .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
-        h1 { margin: 0; font-size: 22px; color: var(--primary); }
-        .main-title { color: var(--turkish); font-weight: 800; font-size: 18px; text-transform: uppercase; margin-top: 5px; display: block; }
         
-        .contact-box { background: white; padding: 20px; border-radius: 20px; margin: 15px 0; text-align: center; border: 1px solid #eee; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
-        .wa-text { font-size: 18px; font-weight: 800; color: var(--whatsapp); text-decoration: none; display: block; margin-bottom: 5px; }
-        .mail-text { font-size: 14px; color: var(--accent); text-decoration: none; }
-
-        .yt-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background: #FF0000; color: white; text-decoration: none; padding: 18px; border-radius: 15px; margin-bottom: 15px; font-weight: bold; box-shadow: 0 4px 15px rgba(255,0,0,0.2); }
-        
-        /* Dinamik Liste Alanı */
-        #exercise-list { margin-top: 10px; }
+        /* Butonlar ve Listeler */
+        .yt-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background: #FF0000; color: white; text-decoration: none; padding: 18px; border-radius: 15px; margin-bottom: 15px; font-weight: bold; }
         .exercise-card { display: flex; align-items: center; justify-content: space-between; background: white; padding: 15px; border-radius: 15px; text-decoration: none; color: inherit; font-weight: bold; margin-bottom: 8px; border: 1px solid #eee; transition: 0.2s; }
-        .exercise-card:hover { transform: translateX(5px); border-color: var(--accent); }
         .ex-tag { font-size: 10px; color: var(--accent); background: #e1f5fe; padding: 2px 6px; border-radius: 5px; display: block; width: fit-content; margin-bottom: 3px; }
+
+        /* GİZLİ ADMİN PANELİ TASARIMI */
+        #admin-panel { display: none; background: #34495e; color: white; padding: 20px; border-radius: 20px; margin-top: 30px; border: 2px dashed var(--accent); }
+        .admin-input { width: 100%; padding: 10px; margin: 5px 0 15px; border-radius: 5px; border: none; box-sizing: border-box; }
+        .admin-btn { background: var(--whatsapp); color: white; border: none; padding: 10px; width: 100%; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        #code-output { background: #000; color: #0f0; padding: 10px; font-size: 10px; white-space: pre-wrap; margin-top: 15px; display: none; border-radius: 5px; }
         
-        .lang-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; margin-top: 15px; }
-        .lang-card { background: white; padding: 8px; border-radius: 10px; text-align: center; font-size: 9px; font-weight: bold; border-bottom: 2px solid #ddd; }
-        footer { text-align: center; margin-top: 30px; padding: 20px; font-size: 11px; color: #999; border-top: 1px solid #eee; }
+        footer { text-align: center; margin-top: 30px; padding: 20px; font-size: 11px; color: #999; }
     </style>
 </head>
 <body>
+
 <div class="container">
     <header>
-        <div class="photo-frame"><img src="fatih-photo.jpg" alt="Fatih CANITEZ"></div>
+        <!-- Fotoğrafa 5 kez hızlıca tıklarsanız Admin Paneli açılır -->
+        <div class="photo-frame" onclick="adminTrigger()"><img src="fatih-photo.jpg" alt="Fatih CANITEZ"></div>
         <h1>Fatih Mehmet CANITEZ</h1>
-        <span class="main-title">TURKISH FOR FOREIGNERS</span>
+        <span style="color:var(--turkish); font-weight:bold;">TURKISH FOR FOREIGNERS</span>
     </header>
 
-    <div class="contact-box">
-        <a href="https://wa.me/905054466760" target="_blank" class="wa-text">🟢 WhatsApp: +90 505 446 67 60</a>
-        <a href="mailto:fmemo75@gmail.com" class="mail-text">📧 Email: fmemo75@gmail.com</a>
+    <div style="margin: 15px 0;">
+        <a href="https://wa.me/905054466760" style="text-align:center; display:block; text-decoration:none; color:var(--whatsapp); font-weight:bold;">🟢 WhatsApp: +90 505 446 67 60</a>
     </div>
 
     <a href="courses.html" class="yt-btn">📺 YouTube: LESSONS & BOOKS</a>
 
-    <div style="font-size:12px; font-weight:bold; color:#7f8c8d; margin: 15px 0 5px; text-transform:uppercase;">Practice Exercises</div>
+    <div style="font-size:12px; font-weight:bold; color:#7f8c8d; margin-bottom: 10px;">PRACTICE EXERCISES</div>
     
-    <!-- DERSLER OTOMATİK OLARAK BURAYA GELECEK -->
+    <!-- DERS LİSTESİ OTOMATİK OLUŞUR -->
     <div id="exercise-list"></div>
 
-    <div class="lang-grid">
-        <div class="lang-card">🇹🇷<br>Turkish</div><div class="lang-card">🇫🇷<br>French</div><div class="lang-card">🇮🇹<br>Italian</div><div class="lang-card">🇪🇸<br>Spanish</div>
+    <!-- GİZLİ ADMİN PANELİ -->
+    <div id="admin-panel">
+        <h3>👨‍🏫 Admin: Yeni Ders Ekle</h3>
+        <label>Dersin Adı:</label>
+        <input type="text" id="lesson-title" class="admin-input" placeholder="Örn: İyelik Ekleri">
+        <label>Dosya Adı (HTML):</label>
+        <input type="text" id="lesson-url" class="admin-input" placeholder="Örn: iyelik.html">
+        <label>Emoji:</label>
+        <input type="text" id="lesson-icon" class="admin-input" placeholder="Örn: 🏠">
+        <button class="admin-btn" onclick="addLesson()">Listeye Ekle ve Kod Üret</button>
+        
+        <p style="font-size:11px; margin-top:10px;">Aşağıdaki kodu kopyalayıp index.html'deki 'myLessons' kısmıyla değiştirin:</p>
+        <div id="code-output"></div>
     </div>
+
     <footer>© 2024 Multi-Language Academy</footer>
 </div>
 
 <script>
-    // DERS LİSTESİ BURASI - SADECE BURAYA EKLEME YAPIN
+    // BU LİSTE SİZİN VERİTABANINIZDIR
+    // Buradaki verileri Admin Paneli üzerinden güncelleyebilirsiniz
     const myLessons = [
         { title: "Soru Eki (mı, mi, mu, mü)", url: "soru-eki.html", icon: "🎯" },
         { title: "Plural Suffixes (-lar / -ler)", url: "plural.html", icon: "👥" },
@@ -66,28 +77,53 @@
         { title: "Neredesin? (I am at...)", url: "where.html", icon: "📍" },
         { title: "Şimdiki Zaman (Irregular Verbs)", url: "simdiki-zaman-ozel.html", icon: "🗣️" },
         { title: "Ben Mutfaktayım (Vocabulary)", url: "mutfak-kelime.html", icon: "🍳" }
-        // Yeni ders eklemek için yukarıdaki satırı kopyalayıp altına yapıştırın.
     ];
 
     function renderLessons() {
         const listDiv = document.getElementById('exercise-list');
-        listDiv.innerHTML = ""; // Temizle
-
+        listDiv.innerHTML = "";
         myLessons.forEach((lesson, index) => {
-            const card = `
+            listDiv.innerHTML += `
                 <a href="${lesson.url}" class="exercise-card">
                     <div>
                         <span class="ex-tag">EXERCISE ${index + 1}</span>
                         <span>${lesson.icon} ${lesson.title}</span>
                     </div>
                     <span>🔊</span>
-                </a>
-            `;
-            listDiv.innerHTML += card;
+                </a>`;
         });
     }
 
-    // Sayfa açıldığında dersleri yükle
+    // Admin Paneli Açma (Fotoğrafa 5 kez tıkla)
+    let clickCount = 0;
+    function adminTrigger() {
+        clickCount++;
+        if (clickCount === 5) {
+            document.getElementById('admin-panel').style.display = 'block';
+            window.scrollTo(0, document.body.scrollHeight);
+            alert("Admin Modu Açıldı! Sayfanın altına gidin.");
+        }
+    }
+
+    function addLesson() {
+        const title = document.getElementById('lesson-title').value;
+        const url = document.getElementById('lesson-url').value;
+        const icon = document.getElementById('lesson-icon').value;
+
+        if(!title || !url) return alert("Lütfen boş bırakmayın!");
+
+        // Yeni dersi listeye ekle (Anlık görmek için)
+        myLessons.push({ title, url, icon });
+        renderLessons();
+
+        // Kopyalamanız gereken kodu üret
+        const codeOutput = document.getElementById('code-output');
+        codeOutput.style.display = 'block';
+        codeOutput.innerText = "const myLessons = " + JSON.stringify(myLessons, null, 4) + ";";
+        
+        alert("Ders eklendi! Aşağıdaki yeşil kodu kopyalayıp GitHub'daki dosyanızla değiştirin.");
+    }
+
     renderLessons();
 </script>
 </body>
