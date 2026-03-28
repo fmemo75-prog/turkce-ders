@@ -14,8 +14,9 @@
         h1 { margin: 0; font-size: 22px; color: var(--primary); font-weight: bold; }
         .main-title { color: var(--turkish); font-weight: 800; font-size: 18px; text-transform: uppercase; margin-top: 5px; display: block; }
         .wa-box { background: white; padding: 15px; border-radius: 20px; margin: 15px 0; text-align: center; border: 1px solid #eee; }
-        .yt-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background: #FF0000; color: white; text-decoration: none; padding: 18px; border-radius: 15px; margin-bottom: 20px; font-weight: bold; }
-        .exercise-card { display: flex; align-items: center; justify-content: space-between; background: white; padding: 15px; border-radius: 15px; text-decoration: none; color: inherit; font-weight: bold; margin-bottom: 10px; border: 1px solid #eee; }
+        .yt-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background: #FF0000; color: white; text-decoration: none; padding: 18px; border-radius: 15px; margin-bottom: 20px; font-weight: bold; text-align: center; }
+        .exercise-card { display: flex; align-items: center; justify-content: space-between; background: white; padding: 15px; border-radius: 15px; text-decoration: none; color: inherit; font-weight: bold; margin-bottom: 10px; border: 1px solid #eee; transition: 0.2s; }
+        .exercise-card:active { transform: scale(0.98); }
         .ex-tag { font-size: 10px; color: var(--accent); background: #e1f5fe; padding: 2px 6px; border-radius: 5px; display: block; width: fit-content; margin-bottom: 3px; }
         footer { text-align: center; margin-top: 40px; padding: 20px; font-size: 11px; color: #999; border-top: 1px solid #eee; }
     </style>
@@ -37,62 +38,59 @@
 
     <div style="font-size:12px; font-weight:bold; color:#7f8c8d; margin-bottom: 10px; text-transform:uppercase;">Practice Exercises</div>
     
-    <!-- Liste Alanı -->
     <div id="exercise-list">
-        <div style="text-align:center; padding:20px; color:#999;">Dersler yükleniyor...</div>
+        <div style="text-align:center; padding:20px; color:#999;">Loading lessons...</div>
     </div>
 
     <footer>© 2024 Multi-Language Academy</footer>
 </div>
 
 <script>
-    // Ekran görüntüsündeki linki tam olarak buraya ekledim
-    const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR3zbRr2lyKOUOWI5VO7AjVKLpTJrBC1h7L6XKMobwFHCjjdFfxBLKcKJlaHzncLNA9UQ6I-W_6DAAX/pub?gid=0&single=true&output=csv';
+    // Tablonuzun Kimlik Numarası (ID)
+    const spreadsheetId = '1z2a9QpIPGiUoObHqfioTgo_laXXKMP5e3n0pRJA7XcA';
+    // Google Visualization API (Daha güvenli ve CORS hatası vermeyen yöntem)
+    const url = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:json`;
 
-    async function loadLessons() {
+    async function loadData() {
         const listDiv = document.getElementById('exercise-list');
         try {
-            // Cache (önbellek) sorununu aşmak için linke ufak bir rastgele sayı ekliyoruz
-            const response = await fetch(csvUrl + '&cache=' + Math.random());
-            if (!response.ok) throw new Error("Google Tablo bağlantısı başarısız.");
+            const response = await fetch(url);
+            const text = await response.text();
             
-            const data = await response.text();
-            const rows = data.split(/\r?\n/).filter(row => row.trim() !== "");
-            
-            if (rows.length === 0) {
-                listDiv.innerHTML = "<div style='text-align:center; padding:20px;'>Henüz ders eklenmemiş.</div>";
+            // Google'ın döndürdüğü JSON formatını temizliyoruz
+            const jsonText = text.substring(47, text.length - 2);
+            const json = JSON.parse(jsonText);
+            const rows = json.table.rows;
+
+            if (!rows || rows.length === 0) {
+                listDiv.innerHTML = "<div style='text-align:center;'>Ders bulunamadı.</div>";
                 return;
             }
 
-            listDiv.innerHTML = ""; 
+            listDiv.innerHTML = "";
 
-            rows.forEach((row, i) => {
-                // CSV'deki virgülleri ayırır (Tırnak içindeki virgülleri bozmaz)
-                const parts = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-                
-                if (parts.length >= 2) {
-                    const title = parts[0].replace(/"/g, "").trim();
-                    const url = parts[1].replace(/"/g, "").trim();
-                    const icon = parts[2] ? parts[2].replace(/"/g, "").trim() : "📝";
+            rows.forEach((row, index) => {
+                // A sütunu: Title, B sütunu: URL, C sütunu: Icon
+                const title = row.c[0] ? row.c[0].v : "Untitled";
+                const link = row.c[1] ? row.c[1].v : "#";
+                const icon = row.c[2] ? row.c[2].v : "📝";
 
-                    listDiv.innerHTML += `
-                        <a href="${url}" class="exercise-card">
-                            <div>
-                                <span class="ex-tag">EXERCISE ${i + 1}</span>
-                                <span>${icon} ${title}</span>
-                            </div>
-                            <span>🔊</span>
-                        </a>`;
-                }
+                listDiv.innerHTML += `
+                    <a href="${link}" class="exercise-card">
+                        <div>
+                            <span class="ex-tag">EXERCISE ${index + 1}</span>
+                            <span>${icon} ${title}</span>
+                        </div>
+                        <span>🔊</span>
+                    </a>`;
             });
         } catch (error) {
-            console.error("Hata detayı:", error);
-            listDiv.innerHTML = "<div style='text-align:center; color:red; padding:20px;'>Hata: Veriler alınamadı. Lütfen sayfayı yenileyin veya Google Tablo 'Yayınla' ayarlarını kontrol edin.</div>";
+            console.error("Hata:", error);
+            listDiv.innerHTML = "<div style='text-align:center; color:red; padding:20px;'>Hata: Veriler alınamadı. Lütfen Google Tablo 'Paylaş' ayarlarını kontrol edin!</div>";
         }
     }
 
-    // Sayfa yüklenince çalıştır
-    window.onload = loadLessons;
+    window.onload = loadData;
 </script>
 </body>
 </html>
