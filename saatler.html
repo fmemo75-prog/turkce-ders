@@ -3,145 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Turkish A1: Telling the Time (Saatler)</title>
+    <title>A1 Turkish: Saatler (Telling Time)</title>
     <style>
-        :root { --primary: #2c3e50; --past: #27ae60; --to: #e67e22; --bg: #f4f7f6; }
+        :root { --primary: #2c3e50; --acc: #27ae60; --dat: #e67e22; --bg: #f4f7f6; }
         body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 10px; }
         .container { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         
-        /* Grammar Explanation Section */
         .grammar-box { background: #eef7ff; padding: 15px; border-radius: 12px; margin-bottom: 20px; font-size: 14px; line-height: 1.5; border-left: 5px solid #3498db; }
         .rule { font-weight: bold; margin-top: 10px; display: block; }
-        .acc { color: var(--past); font-weight: bold; } /* Accusative */
-        .dat { color: var(--to); font-weight: bold; }   /* Dative */
+        .acc-color { color: var(--acc); font-weight: bold; } 
+        .dat-color { color: var(--dat); font-weight: bold; } 
         
-        /* Quiz Elements */
         .start-btn { background: var(--primary); color: white; border: none; padding: 18px; width: 100%; border-radius: 12px; font-size: 18px; font-weight: bold; cursor: pointer; }
         .quiz-area { display: none; text-align: center; }
-        .clock-display { font-size: 45px; font-weight: bold; background: #34495e; color: #ecf0f1; padding: 20px; border-radius: 15px; margin: 15px 0; letter-spacing: 5px; }
-        .options-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
-        .opt-btn { background: white; border: 2px solid #ddd; padding: 15px; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .clock { font-size: 50px; font-weight: bold; background: #34495e; color: #fff; padding: 20px; border-radius: 15px; margin: 15px 0; letter-spacing: 5px; }
         
+        .options { display: grid; grid-template-columns: 1fr; gap: 10px; }
+        .opt { background: white; border: 2px solid #ddd; padding: 15px; border-radius: 12px; font-size: 17px; font-weight: bold; cursor: pointer; text-align: left; }
         .feedback { height: 30px; margin-top: 15px; font-weight: bold; font-size: 18px; }
-        .footer { margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; text-align: center; }
-        .home-btn { display: inline-block; color: var(--primary); text-decoration: none; font-weight: bold; border: 1px solid var(--primary); padding: 8px 15px; border-radius: 5px; font-size: 14px; }
+        
+        .footer { margin-top: 25px; border-top: 1px solid #eee; padding-top: 15px; text-align: center; }
+        .home-btn { display: inline-block; color: var(--primary); text-decoration: none; font-weight: bold; border: 1px solid var(--primary); padding: 8px 15px; border-radius: 5px; font-size: 13px; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- Intro & English Grammar -->
     <div id="intro">
         <h2 style="text-align:center; color:var(--primary);">Turkish Hours (Saatler) 🕒</h2>
         
         <div class="grammar-box">
-            <span class="rule">1. Past the hour (Geçiyor):</span>
-            Structure: Hour + <span class="acc">Accusative (ı, i, u, ü)</span> + Minute + Geçiyor.<br>
-            <i>Example: 02:10 ➔ Saat iki<span class="acc">yi</span> on geçiyor.</i>
+            <span class="rule">1. Past (01-30 mins) ➔ <span class="acc-color">Geçiyor</span></span>
+            Hour + <span class="acc-color">[ı, i, u, ü]</span> + Minute + Geçiyor.<br>
+            <i>02:10 ➔ İki<span class="acc-color">yi</span> on geçiyor.</i>
 
-            <span class="rule">2. To the hour (Var):</span>
-            Structure: (Next) Hour + <span class="dat">Dative (a, e)</span> + Minute + Var.<br>
-            <i>Example: 02:50 ➔ Saat üç<span class="dat">e</span> on var.</i>
+            <span class="rule">2. To (31-59 mins) ➔ <span class="dat-color">Var</span></span>
+            (Next) Hour + <span class="dat-color">[a, e]</span> + Minute + Var.<br>
+            <i>02:50 ➔ Üç<span class="dat-color">e</span> on var.</i>
 
-            <span class="rule">3. Special Terms:</span>
-            Quarter = <b>Çeyrek</b> | Half = <b>Buçuk</b>
+            <span class="rule">3. Important:</span>
+            <b>Çeyrek</b> (15 mins) | <b>Buçuk</b> (30 mins)
         </div>
 
-        <button class="start-btn" onclick="startQuiz()">START EXERCISE 🔊</button>
+        <button class="start-btn" onclick="startApp()">START EXERCISE 🔊</button>
     </div>
 
-    <!-- Quiz Section -->
     <div id="quiz" class="quiz-area">
-        <div id="progress" style="font-size:12px; color:gray; margin-bottom:10px;">Question 1 / 10</div>
-        <div class="clock-display" id="clock">00:00</div>
+        <div id="progress" style="font-size:12px; color:gray; margin-bottom:5px;">Question 1 / 10</div>
+        <div class="clock" id="clock-display">00:00</div>
         
-        <div class="options-grid" id="options"></div>
+        <div class="options" id="options-container"></div>
         <div id="feedback" class="feedback"></div>
-        <p style="font-size: 11px; color: #999;">Listen to the correct answer! 🎧</p>
+        <p style="font-size: 11px; color: #888;">Correct answer plays audio! 🎧</p>
     </div>
 
-    <!-- Footer -->
     <div class="footer">
-        <a href="https://wa.me/905054466760" style="color:green; text-decoration:none; font-weight:bold;">WhatsApp Support 💬</a><br><br>
+        <a href="https://wa.me/905054466760" style="color:green; text-decoration:none; font-weight:bold; font-size:14px;">WhatsApp Support 💬</a><br><br>
         <a href="index.html" class="home-btn">🏠 Ana Sayfaya Dön</a>
     </div>
 </div>
 
 <script>
     const questions = [
-        { time: "02:00", c: "Saat iki", w: "Saat iki buçuk", audio: "Saat iki" },
-        { time: "04:15", c: "Saat dördü çeyrek geçiyor", w: "Saat dörde çeyrek var", audio: "Saat dördü çeyrek geçiyor" },
-        { time: "06:30", c: "Saat altı buçuk", w: "Saat altıyı otuz geçiyor", audio: "Saat altı buçuk" },
-        { time: "08:10", c: "Saat sekizi on geçiyor", w: "Saat sekize on var", audio: "Saat sekizi on geçiyor" },
-        { time: "09:45", c: "Saat ona çeyrek var", w: "Saat dokuzu çeyrek geçiyor", audio: "Saat ona çeyrek var" },
-        { time: "11:50", c: "Saat on ikiye on var", w: "Saat on biri elli geçiyor", audio: "Saat on ikiye on var" },
-        { time: "01:20", c: "Saat biri yirmi geçiyor", w: "Saat bire yirmi var", audio: "Saat biri yirmi geçiyor" },
-        { time: "03:40", c: "Saat dörde yirmi var", w: "Saat üçü kırk geçiyor", audio: "Saat dörde yirmi var" },
-        { time: "05:05", c: "Saat beşi beş geçiyor", w: "Saat beşe beş var", audio: "Saat beşi beş geçiyor" },
-        { time: "12:55", c: "Saat bire beş var", w: "Saat on ikiyi elli beş geçiyor", audio: "Saat bire beş var" }
+        { t: "08:10", c: "Sekizi on geçiyor", w: "Sekize on var", a: "Saat sekizi on geçiyor" },
+        { t: "10:15", c: "Onu çeyrek geçiyor", w: "Ona çeyrek var", a: "Saat onu çeyrek geçiyor" },
+        { t: "05:30", c: "Beş buçuk", w: "Beşi buçuk geçiyor", a: "Saat beş buçuk" },
+        { t: "01:40", c: "İkiye yirmi var", w: "Biri yirmi geçiyor", a: "Saat ikiye yirmi var" },
+        { t: "07:50", c: "Sekize on var", w: "Yediyi on geçiyor", a: "Saat sekize on var" },
+        { t: "04:05", c: "Dördü beş geçiyor", w: "Dörde beş var", a: "Saat dördü beş geçiyor" },
+        { t: "09:45", c: "Ona çeyrek var", w: "Dokuzu çeyrek geçiyor", a: "Saat ona çeyrek var" },
+        { t: "11:20", c: "On biri yirmi geçiyor", w: "On bire yirmi var", a: "Saat on biri yirmi geçiyor" },
+        { t: "03:55", c: "Dörde beş var", w: "Üçü beş geçiyor", a: "Saat dörde beş var" },
+        { t: "12:30", c: "On iki buçuk", w: "Bire buçuk var", a: "Saat on iki buçuk" }
     ].sort(() => Math.random() - 0.5);
 
-    let step = 0;
+    let current = 0;
 
-    function startQuiz() {
+    function startApp() {
         document.getElementById('intro').style.display = 'none';
         document.getElementById('quiz').style.display = 'block';
-        loadQuestion();
+        loadRound();
     }
 
-    function loadQuestion() {
-        const q = questions[step];
-        document.getElementById('clock').innerText = q.time;
-        document.getElementById('progress').innerText = `Question ${step + 1} / 10`;
+    function loadRound() {
+        const q = questions[current];
+        document.getElementById('clock-display').innerText = q.t;
+        document.getElementById('progress').innerText = `Question ${current + 1} / 10`;
         document.getElementById('feedback').innerText = "";
         
-        const optDiv = document.getElementById('options');
-        optDiv.innerHTML = "";
+        const container = document.getElementById('options-container');
+        container.innerHTML = "";
         
         const choices = [q.c, q.w].sort(() => Math.random() - 0.5);
         
-        choices.forEach(text => {
+        choices.forEach(txt => {
             const btn = document.createElement('button');
-            btn.className = 'opt-btn';
-            btn.innerText = text;
-            btn.onclick = () => check(text, q.c, btn, q.audio);
-            optDiv.appendChild(btn);
+            btn.className = 'opt';
+            btn.innerText = txt;
+            btn.onclick = () => validate(txt, q.c, btn, q.a);
+            container.appendChild(btn);
         });
     }
 
-    function check(selected, correct, btn, audioText) {
+    function validate(selected, correct, btn, audio) {
         const f = document.getElementById('feedback');
         if(selected === correct) {
+            btn.style.borderColor = "var(--acc)";
             btn.style.backgroundColor = "#e8f5e9";
-            btn.style.borderColor = "var(--past)";
             f.innerText = "Doğru! ✅";
-            f.style.color = "var(--past)";
+            f.style.color = "var(--acc)";
             
-            // Audio reinforcement
-            const synth = window.speechSynthesis;
-            const utter = new SpeechSynthesisUtterance(audioText);
-            utter.lang = 'tr-TR';
-            utter.rate = 0.8;
-            synth.speak(utter);
+            // Audio
+            const talk = new SpeechSynthesisUtterance(audio);
+            talk.lang = 'tr-TR';
+            talk.rate = 0.8;
+            window.speechSynthesis.speak(talk);
 
             setTimeout(() => {
-                step++;
-                if(step < 10) loadQuestion();
+                current++;
+                if(current < 10) loadRound();
                 else finish();
-            }, 2500);
+            }, 2200);
         } else {
+            btn.style.borderColor = "var(--dat)";
             btn.style.backgroundColor = "#ffebee";
-            btn.style.borderColor = "var(--to)";
             f.innerText = "Tekrar dene! ❌";
-            f.style.color = "var(--to)";
+            f.style.color = "var(--dat)";
         }
     }
 
     function finish() {
         document.getElementById('quiz').innerHTML = `
             <div style="padding:20px;">
-                <h2 style="color:var(--past)">Tebrikler! 🏆</h2>
-                <p>You can now tell the time in Turkish.</p>
+                <h2 style="color:var(--acc)">Tebrikler! 🏆</h2>
+                <p>You mastered Turkish hours.</p>
                 <button class="start-btn" onclick="location.reload()">RESTART</button>
             </div>
         `;
