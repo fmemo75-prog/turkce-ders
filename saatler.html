@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turkish A1: Telling the Time (Saatler)</title>
+    <style>
+        :root { --primary: #2c3e50; --past: #27ae60; --to: #e67e22; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 10px; }
+        .container { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        
+        /* Grammar Explanation Section */
+        .grammar-box { background: #eef7ff; padding: 15px; border-radius: 12px; margin-bottom: 20px; font-size: 14px; line-height: 1.5; border-left: 5px solid #3498db; }
+        .rule { font-weight: bold; margin-top: 10px; display: block; }
+        .acc { color: var(--past); font-weight: bold; } /* Accusative */
+        .dat { color: var(--to); font-weight: bold; }   /* Dative */
+        
+        /* Quiz Elements */
+        .start-btn { background: var(--primary); color: white; border: none; padding: 18px; width: 100%; border-radius: 12px; font-size: 18px; font-weight: bold; cursor: pointer; }
+        .quiz-area { display: none; text-align: center; }
+        .clock-display { font-size: 45px; font-weight: bold; background: #34495e; color: #ecf0f1; padding: 20px; border-radius: 15px; margin: 15px 0; letter-spacing: 5px; }
+        .options-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .opt-btn { background: white; border: 2px solid #ddd; padding: 15px; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        
+        .feedback { height: 30px; margin-top: 15px; font-weight: bold; font-size: 18px; }
+        .footer { margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; text-align: center; }
+        .home-btn { display: inline-block; color: var(--primary); text-decoration: none; font-weight: bold; border: 1px solid var(--primary); padding: 8px 15px; border-radius: 5px; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Intro & English Grammar -->
+    <div id="intro">
+        <h2 style="text-align:center; color:var(--primary);">Turkish Hours (Saatler) 🕒</h2>
+        
+        <div class="grammar-box">
+            <span class="rule">1. Past the hour (Geçiyor):</span>
+            Structure: Hour + <span class="acc">Accusative (ı, i, u, ü)</span> + Minute + Geçiyor.<br>
+            <i>Example: 02:10 ➔ Saat iki<span class="acc">yi</span> on geçiyor.</i>
+
+            <span class="rule">2. To the hour (Var):</span>
+            Structure: (Next) Hour + <span class="dat">Dative (a, e)</span> + Minute + Var.<br>
+            <i>Example: 02:50 ➔ Saat üç<span class="dat">e</span> on var.</i>
+
+            <span class="rule">3. Special Terms:</span>
+            Quarter = <b>Çeyrek</b> | Half = <b>Buçuk</b>
+        </div>
+
+        <button class="start-btn" onclick="startQuiz()">START EXERCISE 🔊</button>
+    </div>
+
+    <!-- Quiz Section -->
+    <div id="quiz" class="quiz-area">
+        <div id="progress" style="font-size:12px; color:gray; margin-bottom:10px;">Question 1 / 10</div>
+        <div class="clock-display" id="clock">00:00</div>
+        
+        <div class="options-grid" id="options"></div>
+        <div id="feedback" class="feedback"></div>
+        <p style="font-size: 11px; color: #999;">Listen to the correct answer! 🎧</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <a href="https://wa.me/905054466760" style="color:green; text-decoration:none; font-weight:bold;">WhatsApp Support 💬</a><br><br>
+        <a href="index.html" class="home-btn">🏠 Ana Sayfaya Dön</a>
+    </div>
+</div>
+
+<script>
+    const questions = [
+        { time: "02:00", c: "Saat iki", w: "Saat iki buçuk", audio: "Saat iki" },
+        { time: "04:15", c: "Saat dördü çeyrek geçiyor", w: "Saat dörde çeyrek var", audio: "Saat dördü çeyrek geçiyor" },
+        { time: "06:30", c: "Saat altı buçuk", w: "Saat altıyı otuz geçiyor", audio: "Saat altı buçuk" },
+        { time: "08:10", c: "Saat sekizi on geçiyor", w: "Saat sekize on var", audio: "Saat sekizi on geçiyor" },
+        { time: "09:45", c: "Saat ona çeyrek var", w: "Saat dokuzu çeyrek geçiyor", audio: "Saat ona çeyrek var" },
+        { time: "11:50", c: "Saat on ikiye on var", w: "Saat on biri elli geçiyor", audio: "Saat on ikiye on var" },
+        { time: "01:20", c: "Saat biri yirmi geçiyor", w: "Saat bire yirmi var", audio: "Saat biri yirmi geçiyor" },
+        { time: "03:40", c: "Saat dörde yirmi var", w: "Saat üçü kırk geçiyor", audio: "Saat dörde yirmi var" },
+        { time: "05:05", c: "Saat beşi beş geçiyor", w: "Saat beşe beş var", audio: "Saat beşi beş geçiyor" },
+        { time: "12:55", c: "Saat bire beş var", w: "Saat on ikiyi elli beş geçiyor", audio: "Saat bire beş var" }
+    ].sort(() => Math.random() - 0.5);
+
+    let step = 0;
+
+    function startQuiz() {
+        document.getElementById('intro').style.display = 'none';
+        document.getElementById('quiz').style.display = 'block';
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        const q = questions[step];
+        document.getElementById('clock').innerText = q.time;
+        document.getElementById('progress').innerText = `Question ${step + 1} / 10`;
+        document.getElementById('feedback').innerText = "";
+        
+        const optDiv = document.getElementById('options');
+        optDiv.innerHTML = "";
+        
+        const choices = [q.c, q.w].sort(() => Math.random() - 0.5);
+        
+        choices.forEach(text => {
+            const btn = document.createElement('button');
+            btn.className = 'opt-btn';
+            btn.innerText = text;
+            btn.onclick = () => check(text, q.c, btn, q.audio);
+            optDiv.appendChild(btn);
+        });
+    }
+
+    function check(selected, correct, btn, audioText) {
+        const f = document.getElementById('feedback');
+        if(selected === correct) {
+            btn.style.backgroundColor = "#e8f5e9";
+            btn.style.borderColor = "var(--past)";
+            f.innerText = "Doğru! ✅";
+            f.style.color = "var(--past)";
+            
+            // Audio reinforcement
+            const synth = window.speechSynthesis;
+            const utter = new SpeechSynthesisUtterance(audioText);
+            utter.lang = 'tr-TR';
+            utter.rate = 0.8;
+            synth.speak(utter);
+
+            setTimeout(() => {
+                step++;
+                if(step < 10) loadQuestion();
+                else finish();
+            }, 2500);
+        } else {
+            btn.style.backgroundColor = "#ffebee";
+            btn.style.borderColor = "var(--to)";
+            f.innerText = "Tekrar dene! ❌";
+            f.style.color = "var(--to)";
+        }
+    }
+
+    function finish() {
+        document.getElementById('quiz').innerHTML = `
+            <div style="padding:20px;">
+                <h2 style="color:var(--past)">Tebrikler! 🏆</h2>
+                <p>You can now tell the time in Turkish.</p>
+                <button class="start-btn" onclick="location.reload()">RESTART</button>
+            </div>
+        `;
+    }
+</script>
+</body>
+</html>
