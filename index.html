@@ -14,14 +14,18 @@
         h1 { margin: 0; font-size: 22px; color: var(--primary); }
         .main-title { color: var(--turkish); font-weight: 800; font-size: 18px; text-transform: uppercase; margin-top: 5px; display: block; }
         
-        /* İLETİŞİM KUTUSU */
         .contact-box { background: white; padding: 20px; border-radius: 20px; margin: 15px 0; text-align: center; border: 1px solid #eee; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
         .wa-text { font-size: 18px; font-weight: 800; color: var(--whatsapp); text-decoration: none; display: block; margin-bottom: 5px; }
         .mail-text { font-size: 14px; color: var(--accent); text-decoration: none; }
 
         .yt-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background: #FF0000; color: white; text-decoration: none; padding: 18px; border-radius: 15px; margin-bottom: 15px; font-weight: bold; box-shadow: 0 4px 15px rgba(255,0,0,0.2); }
+        
+        /* Dinamik Liste Alanı */
+        #exercise-list { margin-top: 10px; }
         .exercise-card { display: flex; align-items: center; justify-content: space-between; background: white; padding: 15px; border-radius: 15px; text-decoration: none; color: inherit; font-weight: bold; margin-bottom: 8px; border: 1px solid #eee; transition: 0.2s; }
+        .exercise-card:hover { transform: translateX(5px); border-color: var(--accent); }
         .ex-tag { font-size: 10px; color: var(--accent); background: #e1f5fe; padding: 2px 6px; border-radius: 5px; display: block; width: fit-content; margin-bottom: 3px; }
+        
         .lang-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; margin-top: 15px; }
         .lang-card { background: white; padding: 8px; border-radius: 10px; text-align: center; font-size: 9px; font-weight: bold; border-bottom: 2px solid #ddd; }
         footer { text-align: center; margin-top: 30px; padding: 20px; font-size: 11px; color: #999; border-top: 1px solid #eee; }
@@ -44,25 +48,47 @@
 
     <div style="font-size:12px; font-weight:bold; color:#7f8c8d; margin: 15px 0 5px; text-transform:uppercase;">Practice Exercises</div>
     
-    <a href="soru-eki.html" class="exercise-card"><div><span class="ex-tag">EXERCISE 1</span><span>🎯 Soru Eki (mı, mi, mu, mü)</span></div><span>🔊</span></a>
-    <a href="plural.html" class="exercise-card"><div><span class="ex-tag">EXERCISE 2</span><span>👥 Plural Suffixes (-lar / -ler)</span></div><span>🔊</span></a>
-    <a href="locative.html" class="exercise-card"><div><span class="ex-tag">EXERCISE 3</span><span>📍 Locative Case (-de, -da)</span></div><span>🔊</span></a>
-    <a href="where.html" class="exercise-card"><div><span class="ex-tag">EXERCISE 4</span><span>📍 Neredesin? (I am at...)</span></div><span>🔊</span></a>
-    
-    <!-- Yeni linkiniz buraya eklendi -->
-    <a href="simdiki-zaman-ozel.html" class="exercise-card"><div><span class="ex-tag">EXERCISE 5</span><span>🗣️ Şimdiki Zaman (Irregular)</span></div><span>🔊</span></a>
-<!-- Yeni eklenen Ders 6 -->
-    <a href="mutfak-kelime.html" class="exercise-card">
-        <div>
-            <span class="ex-tag">EXERCISE 6</span>
-            <span>🍳 Ben Mutfaktayım (Vocabulary)</span>
-        </div>
-        <span>🔊</span>
-    </a>
+    <!-- DERSLER OTOMATİK OLARAK BURAYA GELECEK -->
+    <div id="exercise-list"></div>
+
     <div class="lang-grid">
         <div class="lang-card">🇹🇷<br>Turkish</div><div class="lang-card">🇫🇷<br>French</div><div class="lang-card">🇮🇹<br>Italian</div><div class="lang-card">🇪🇸<br>Spanish</div>
     </div>
     <footer>© 2024 Multi-Language Academy</footer>
 </div>
+
+<script>
+    // DERS LİSTESİ BURASI - SADECE BURAYA EKLEME YAPIN
+    const myLessons = [
+        { title: "Soru Eki (mı, mi, mu, mü)", url: "soru-eki.html", icon: "🎯" },
+        { title: "Plural Suffixes (-lar / -ler)", url: "plural.html", icon: "👥" },
+        { title: "Locative Case (-de, -da)", url: "locative.html", icon: "📍" },
+        { title: "Neredesin? (I am at...)", url: "where.html", icon: "📍" },
+        { title: "Şimdiki Zaman (Irregular Verbs)", url: "simdiki-zaman-ozel.html", icon: "🗣️" },
+        { title: "Ben Mutfaktayım (Vocabulary)", url: "mutfak-kelime.html", icon: "🍳" }
+        // Yeni ders eklemek için yukarıdaki satırı kopyalayıp altına yapıştırın.
+    ];
+
+    function renderLessons() {
+        const listDiv = document.getElementById('exercise-list');
+        listDiv.innerHTML = ""; // Temizle
+
+        myLessons.forEach((lesson, index) => {
+            const card = `
+                <a href="${lesson.url}" class="exercise-card">
+                    <div>
+                        <span class="ex-tag">EXERCISE ${index + 1}</span>
+                        <span>${lesson.icon} ${lesson.title}</span>
+                    </div>
+                    <span>🔊</span>
+                </a>
+            `;
+            listDiv.innerHTML += card;
+        });
+    }
+
+    // Sayfa açıldığında dersleri yükle
+    renderLessons();
+</script>
 </body>
 </html>
