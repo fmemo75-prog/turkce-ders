@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A1 Turkish: Colors (Renkler)</title>
+    <style>
+        :root { --primary: #2c3e50; --success: #27ae60; --error: #e74c3c; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 10px; }
+        
+        /* ⚠️ FACEBOOK & WHATSAPP BROWSER WARNING ⚠️ */
+        .browser-warning { 
+            background: #fff3cd; 
+            color: #856404; 
+            padding: 12px; 
+            border-radius: 10px; 
+            margin-bottom: 15px; 
+            font-size: 13px; 
+            text-align: center; 
+            border: 1px solid #ffeeba;
+            line-height: 1.4;
+        }
+
+        .container { max-width: 480px; margin: auto; background: white; padding: 20px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        
+        /* Study Mode */
+        .color-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 15px 0; }
+        .color-box { padding: 12px; border-radius: 8px; border: 1px solid #ddd; text-align: center; font-weight: bold; font-size: 14px; }
+        
+        /* Quiz Mode */
+        .quiz-area { display: none; text-align: center; }
+        .object-display { font-size: 80px; margin: 15px 0; }
+        .question-text { font-size: 20px; font-weight: bold; margin-bottom: 20px; color: var(--primary); }
+        
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .opt-btn { background: white; border: 2px solid #eee; padding: 15px; border-radius: 12px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        
+        .btn-start { background: var(--primary); color: white; border: none; padding: 18px; width: 100%; border-radius: 12px; font-size: 18px; font-weight: bold; cursor: pointer; }
+        .feedback { height: 30px; margin-top: 15px; font-weight: bold; font-size: 18px; }
+        .footer { margin-top: 25px; border-top: 1px solid #eee; padding-top: 15px; text-align: center; }
+        .home-btn { display: inline-block; color: var(--primary); text-decoration: none; font-weight: bold; border: 1px solid var(--primary); padding: 8px 15px; border-radius: 5px; font-size: 13px; }
+    </style>
+</head>
+<body>
+
+    <!-- CRITICAL BROWSER WARNING -->
+    <div class="browser-warning">
+        📍 <b>Note for Facebook/WhatsApp users:</b> If the sound doesn't work, click the 3 dots (⋮) and select <b>"Open in Browser"</b> (Chrome or Safari).
+    </div>
+
+<div class="container">
+    <div id="intro">
+        <h2 style="text-align:center; color:var(--primary); margin-top:0;">Colors (Renkler) 🎨</h2>
+        <p style="font-size: 14px; color: #666; text-align: center;">First, study the colors. Then, find the correct color!</p>
+        
+        <div class="color-grid">
+            <div class="color-box" style="background:#ff0000; color:white;">Kırmızı (Red)</div>
+            <div class="color-box" style="background:#0000ff; color:white;">Mavi (Blue)</div>
+            <div class="color-box" style="background:#008000; color:white;">Yeşil (Green)</div>
+            <div class="color-box" style="background:#ffff00; color:black;">Sarı (Yellow)</div>
+            <div class="color-box" style="background:#ffa500; color:white;">Turuncu (Orange)</div>
+            <div class="color-box" style="background:#800080; color:white;">Mor (Purple)</div>
+            <div class="color-box" style="background:#ffc0cb; color:black;">Pembe (Pink)</div>
+            <div class="color-box" style="background:#000000; color:white;">Siyah (Black)</div>
+            <div class="color-box" style="background:#ffffff; color:black; border:1px solid #ccc;">Beyaz (White)</div>
+            <div class="color-box" style="background:#a52a2a; color:white;">Kahverengi (Brown)</div>
+        </div>
+
+        <button class="btn-start" onclick="startQuiz()">START EXERCISE 🚀</button>
+    </div>
+
+    <!-- Quiz Mode -->
+    <div id="quiz" class="quiz-area">
+        <div id="progress" style="font-size:12px; color:gray;">Question 1 / 10</div>
+        <div class="object-display" id="obj-emoji">🍎</div>
+        <div class="question-text" id="q-text">Bu ne renk?</div>
+        
+        <div class="options" id="options-container"></div>
+        <div id="feedback" class="feedback"></div>
+        <p style="font-size: 11px; color: #888;">Correct answer plays audio 🎧</p>
+    </div>
+
+    <div class="footer">
+        <a href="https://wa.me/905054466760" style="color:green; text-decoration:none; font-weight:bold; font-size:14px;">WhatsApp Support 💬</a><br><br>
+        <a href="index.html" class="home-btn">🏠 Ana Sayfaya Dön</a>
+    </div>
+</div>
+
+<script>
+    const questions = [
+        { obj: "Elma 🍎", c: "Kırmızı", w: "Yeşil", a: "Elma kırmızı" },
+        { obj: "Deniz 🌊", c: "Mavi", w: "Sarı", a: "Deniz mavi" },
+        { obj: "Yaprak 🍃", c: "Yeşil", w: "Mor", a: "Yaprak yeşil" },
+        { obj: "Güneş ☀️", c: "Sarı", w: "Siyah", a: "Güneş sarı" },
+        { obj: "Portakal 🍊", c: "Turuncu", w: "Mavi", a: "Portakal turuncu" },
+        { obj: "Gece 🌑", c: "Siyah", w: "Beyaz", a: "Gece siyah" },
+        { obj: "Bulut ☁️", c: "Beyaz", w: "Kahverengi", a: "Bulut beyaz" },
+        { obj: "Çikolata 🍫", c: "Kahverengi", w: "Pembe", a: "Çikolata kahverengi" },
+        { obj: "Patlıcan 🍆", c: "Mor", w: "Sarı", a: "Patlıcan mor" },
+        { obj: "Çilek 🍓", c: "Kırmızı", w: "Mavi", a: "Çilek kırmızı" }
+    ].sort(() => Math.random() - 0.5);
+
+    let current = 0;
+
+    function startQuiz() {
+        // Essential for "User Activation" to allow sound in mobile browsers
+        document.getElementById('intro').style.display = 'none';
+        document.getElementById('quiz').style.display = 'block';
+        loadRound();
+    }
+
+    function loadRound() {
+        const q = questions[current];
+        document.getElementById('obj-emoji').innerText = q.obj.split(' ')[1];
+        document.getElementById('q-text').innerText = `${q.obj.split(' ')[0]} ne renk?`;
+        document.getElementById('progress').innerText = `Question ${current + 1} / 10`;
+        document.getElementById('feedback').innerText = "";
+        
+        const container = document.getElementById('options-container');
+        container.innerHTML = "";
+        
+        const choices = [q.c, q.w].sort(() => Math.random() - 0.5);
+        
+        choices.forEach(txt => {
+            const btn = document.createElement('button');
+            btn.className = 'opt-btn';
+            btn.innerText = txt;
+            btn.onclick = () => validate(txt, q.c, btn, q.a);
+            container.appendChild(btn);
+        });
+    }
+
+    function validate(selected, correct, btn, audio) {
+        const f = document.getElementById('feedback');
+        if(selected === correct) {
+            btn.style.backgroundColor = "#e8f5e9";
+            btn.style.borderColor = "var(--success)";
+            f.innerText = "Doğru! ✅";
+            f.style.color = "var(--success)";
+            
+            // Trigger speech synthesis
+            const talk = new SpeechSynthesisUtterance(audio);
+            talk.lang = 'tr-TR';
+            talk.rate = 0.8;
+            window.speechSynthesis.speak(talk);
+
+            setTimeout(() => {
+                current++;
+                if(current < 10) loadRound();
+                else finish();
+            }, 2000);
+        } else {
+            btn.style.backgroundColor = "#ffebee";
+            btn.style.borderColor = "var(--error)";
+            f.innerText = "Tekrar dene! ❌";
+            f.style.color = "var(--error)";
+        }
+    }
+
+    function finish() {
+        document.getElementById('quiz').innerHTML = `
+            <div style="padding:20px;">
+                <h2 style="color:var(--success)">Tebrikler! 🏆</h2>
+                <p>You learned the colors in Turkish.</p>
+                <button class="btn-start" onclick="location.reload()">RESTART</button>
+            </div>
+        `;
+    }
+</script>
+</body>
+</html>
