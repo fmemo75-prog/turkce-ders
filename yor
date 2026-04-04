@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Turkish Verbs (-yor) | Fatih Mehmet CANITEZ</title>
+    <!-- İKON KÜTÜPHANESİ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --blue: #2980b9; --dark: #2c3e50; --red: #e74c3c; --green: #27ae60; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; padding: 15px; color: var(--dark); }
+        .container { max-width: 650px; margin: 0 auto; }
+        
+        .browser-alert { background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 12px; border-radius: 12px; text-align: center; font-size: 13px; font-weight: bold; margin-bottom: 15px; }
+        
+        .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; border-top: 6px solid var(--blue); }
+        h1 { color: var(--red); font-size: 22px; text-align: center; margin: 10px 0; }
+
+        /* FİİL GALERİSİ */
+        .verb-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+        .verb-item { background: #fff; border: 1px solid #eee; border-radius: 15px; padding: 15px; text-align: center; cursor: pointer; transition: 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .verb-item:hover { transform: translateY(-5px); border-color: var(--blue); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .verb-item img { width: 100%; height: 110px; object-fit: contain; border-radius: 10px; margin-bottom: 10px; }
+        .verb-item b { display: block; font-size: 15px; color: var(--blue); }
+
+        /* QUIZ ALANI */
+        #quiz-section { display: none; text-align: center; }
+        .q-card { background: white; padding: 30px 20px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .q-img { width: 100%; max-width: 280px; height: 180px; object-fit: contain; border-radius: 20px; margin-bottom: 20px; }
+        .q-text { font-size: 24px; font-weight: bold; margin-bottom: 20px; }
+        .q-text b { color: var(--red); border-bottom: 2px solid #eee; }
+
+        .btn-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+        .btn-opt { padding: 16px; font-size: 19px; font-weight: bold; border: 2px solid var(--blue); background: white; color: var(--blue); border-radius: 12px; cursor: pointer; transition: 0.2s; }
+        .btn-opt:hover { background: var(--blue); color: white; }
+
+        .btn-main { display: block; width: 100%; padding: 18px; background: var(--green); color: white; border: none; border-radius: 15px; font-weight: bold; font-size: 18px; cursor: pointer; margin-top: 20px; text-decoration: none; text-align: center; }
+        
+        #fb-msg { margin-top: 20px; font-weight: bold; font-size: 18px; min-height: 24px; }
+        #starter { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 1000; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; }
+        
+        .footer-contact { margin-top: 30px; padding: 20px; border-top: 1px solid #eee; text-align: center; }
+        .wa-link { color: var(--green); text-decoration: none; font-weight: 800; font-size: 16px; display: block; margin-top: 5px; }
+    </style>
+</head>
+<body>
+
+<div id="starter">
+    <div class="container">
+        <img src="https://img.freepik.com/free-vector/learning-concept-illustration_114360-1111.jpg" style="width:200px; margin-bottom:20px;">
+        <h2>Present Continuous</h2>
+        <p>Master 10 Turkish Verbs with Fatih Hoca</p>
+        <button class="btn-main" style="width:250px; margin:0 auto;" onclick="unlockAudio()">🔊 START LESSON</button>
+    </div>
+</div>
+
+<div class="container">
+    <div class="browser-alert">
+        <i class="fa-solid fa-circle-info"></i> <b>SOUND:</b> Best on <b>Chrome</b>, <b>Opera</b> or <b>Safari</b>.
+    </div>
+
+    <!-- DERS ANLATIMI -->
+    <div id="lesson-section">
+        <div class="card">
+            <div style="text-align:left; margin-bottom:10px;"><a href="index.html" style="text-decoration:none; color:var(--blue); font-weight:bold;"><i class="fa-solid fa-house"></i> HOME</a></div>
+            <h1>Daily Verbs (-yor)</h1>
+            <p style="text-align:center; font-size:14px; color:#7f8c8d;">Internalize verbs with visual cues. Click to hear pronunciation.</p>
+
+            <div class="verb-gallery" id="gallery-container">
+                <!-- Fiiller JavaScript ile gelecek -->
+            </div>
+
+            <button class="btn-main" onclick="startQuiz()">PRACTICE CONJUGAISON 🎯</button>
+        </div>
+    </div>
+
+    <!-- QUIZ ALANI -->
+    <div id="quiz-section">
+        <div class="q-card">
+            <div id="prog" style="text-align:right; color:#aaa; font-size:12px; margin-bottom:10px;">1 / 10</div>
+            <img id="q-img" class="q-img" src="" alt="verb">
+            <div class="q-text" id="q-prompt">...</div>
+            <div class="btn-grid" id="btn-container"></div>
+            <div id="fb-msg"></div>
+        </div>
+    </div>
+
+    <div class="footer-contact">
+        <span style="font-size:13px; color:#7f8c8d;">Teacher Fatih Mehmet CANITEZ</span>
+        <a href="https://wa.me/905054466760" target="_blank" class="wa-link">🟢 WhatsApp Support: +90 505 446 67 60</a>
+    </div>
+</div>
+
+<script>
+    // PERTINENT (AMACA UYGUN) GÖRSELLER VE FİİLLER
+    const verbs = [
+        { w: "Okumak", t: "Read", img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books_23-2149341898.jpg", root: "oku" },
+        { w: "İçmek", t: "Drink", img: "https://img.freepik.com/free-vector/drinking-water-concept-illustration_114360-8059.jpg", root: "içi" },
+        { w: "Yemek", t: "Eat", img: "https://img.freepik.com/free-vector/people-eating-delicious-ramen_52683-46016.jpg", root: "yiyi" },
+        { w: "Uyumak", t: "Sleep", img: "https://img.freepik.com/free-vector/sleeping-concept-illustration_114360-1456.jpg", root: "uyu" },
+        { w: "Gitmek", t: "Go", img: "https://img.freepik.com/free-vector/travel-concept-illustration_114360-1620.jpg", root: "gidi" },
+        { w: "Koşmak", t: "Run", img: "https://img.freepik.com/free-vector/running-concept-illustration_114360-1938.jpg", root: "koşu" },
+        { w: "Yazmak", t: "Write", img: "https://img.freepik.com/free-vector/blogging-concept-illustration_114360-4038.jpg", root: "yazı" },
+        { w: "Yüzmek", t: "Swim", img: "https://img.freepik.com/free-vector/swimming-concept-illustration_114360-2010.jpg", root: "yüzü" },
+        { w: "Dinlemek", t: "Listen", img: "https://img.freepik.com/free-vector/music-listening-concept-illustration_114360-3615.jpg", root: "dinli" },
+        { w: "Bakmak", t: "Look", img: "https://img.freepik.com/free-vector/curiosity-concept-illustration_114360-4555.jpg", root: "bakı" }
+    ];
+
+    const persons = [
+        { p: "Ben", s: "um" }, { p: "Sen", s: "sun" }, { p: "O", s: "" },
+        { p: "Biz", s: "uz" }, { p: "Siz", s: "sunuz" }, { p: "Onlar", s: "lar" }
+    ];
+
+    let current = 0; let pool = [];
+    function unlockAudio() { window.speechSynthesis.cancel(); speak(""); document.getElementById('starter').style.display = 'none'; initGallery(); }
+    function speak(t) { window.speechSynthesis.cancel(); const m = new SpeechSynthesisUtterance(t); m.lang = 'tr-TR'; m.rate = 0.8; window.speechSynthesis.speak(m); }
+
+    function initGallery() {
+        const container = document.getElementById('gallery-container');
+        verbs.forEach(v => {
+            const div = document.createElement('div');
+            div.className = 'verb-item';
+            div.onclick = () => speak(v.w);
+            div.innerHTML = `<img src="${v.img}"><b>${v.w}</b><small style="color:gray; font-size:11px;">(${v.t})</small>`;
+            container.appendChild(div);
+        });
+    }
+
+    function startQuiz() {
+        document.getElementById('lesson-section').style.display = 'none';
+        document.getElementById('quiz-section').style.display = 'block';
+        
+        let tempVerbs = [...verbs].sort(() => Math.random() - 0.5);
+        tempVerbs.forEach(v => {
+            let p = persons[Math.floor(Math.random()*persons.length)];
+            pool.push({ verb: v, person: p, answer: v.root + "yor" + p.s });
+        });
+        show();
+    }
+
+    function show() {
+        if (current >= pool.length) {
+            document.getElementById('quiz-section').innerHTML = `
+                <div class="q-card">
+                    <img src="https://img.freepik.com/free-vector/award-concept-illustration_114360-3163.jpg" style="width:150px;">
+                    <h2 style="color:var(--green)">Tebrikler! 🎉</h2>
+                    <p>You have mastered 10 verbs and their conjugations.</p>
+                    <button class='btn-main' onclick='location.reload()'>Restart Lesson</button>
+                    <a href='index.html' class='btn-main' style='background:var(--blue); text-decoration:none;'>Back to Home</a>
+                </div>`;
+            return;
+        }
+        const item = pool[current];
+        document.getElementById('q-img').src = item.verb.img;
+        document.getElementById('q-prompt').innerHTML = `
+            <span style="display:inline-block; background:var(--blue); color:white; padding:6px 18px; border-radius:20px; font-size:20px; margin-bottom:10px;">${item.person.p}</span>
+            <br>
+            <span style="font-size:18px; color:#555; font-weight:normal;">${item.verb.w} <small style="color:#aaa;">(${item.verb.t})</small></span>
+            <br><b style="font-size:26px;">... ?</b>`;
+        document.getElementById('prog').innerText = `${current + 1} / ${pool.length}`;
+        document.getElementById('fb-msg').innerText = "";
+        
+        const btnContainer = document.getElementById('btn-container');
+        btnContainer.innerHTML = '';
+
+        // Doğru şıkkı ve 2 yanlış şıkkı hazırla
+        let options = [item.answer];
+        while(options.length < 3) {
+            let randomP = persons[Math.floor(Math.random()*persons.length)];
+            let wrong = item.verb.root + "yor" + randomP.s;
+            if(!options.includes(wrong)) options.push(wrong);
+        }
+
+        options.sort(() => Math.random() - 0.5).forEach(opt => {
+            const b = document.createElement('button');
+            b.className = 'btn-opt';
+            b.innerText = opt;
+            b.onclick = () => check(opt);
+            btnContainer.appendChild(b);
+        });
+        speak(item.person.p);
+    }
+
+    function check(ans) {
+        const item = pool[current];
+        const fb = document.getElementById('fb-msg');
+        if (ans === item.answer) {
+            fb.style.color = "var(--green)";
+            fb.innerText = "Correct! ✅";
+            document.getElementById('q-prompt').innerHTML = `
+                <span style="display:inline-block; background:var(--blue); color:white; padding:6px 18px; border-radius:20px; font-size:20px; margin-bottom:10px;">${item.person.p}</span>
+                <br><span style="color:var(--green); font-size:26px; font-weight:bold;">${item.answer}</span>`;
+            speak(item.person.p + " " + item.answer);
+            current++;
+            setTimeout(show, 2000);
+        } else {
+            fb.style.color = "var(--red)";
+            fb.innerText = "Try again! ❌";
+            speak(ans);
+        }
+    }
+</script>
+</body>
+</html>
