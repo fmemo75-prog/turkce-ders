@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Turkish Verbs (-yor) | Fatih Mehmet CANITEZ</title>
+    <title>Turkish Present Continuous | Fatih Mehmet CANITEZ</title>
     <!-- İKON KÜTÜPHANESİ -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -16,19 +16,16 @@
         .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; border-top: 6px solid var(--blue); }
         h1 { color: var(--red); font-size: 22px; text-align: center; margin: 10px 0; }
 
-        /* FİİL GALERİSİ */
-        .verb-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
-        .verb-item { background: #fff; border: 1px solid #eee; border-radius: 15px; padding: 15px; text-align: center; cursor: pointer; transition: 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
-        .verb-item:hover { transform: translateY(-5px); border-color: var(--blue); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .verb-item img { width: 100%; height: 110px; object-fit: contain; border-radius: 10px; margin-bottom: 10px; }
-        .verb-item b { display: block; font-size: 15px; color: var(--blue); }
+        .verb-intro { background: #f0f7ff; padding: 15px; border-radius: 15px; margin-bottom: 20px; border-left: 5px solid var(--blue); }
+        .verb-intro b { color: var(--blue); }
 
-        /* QUIZ ALANI */
         #quiz-section { display: none; text-align: center; }
         .q-card { background: white; padding: 30px 20px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .q-img { width: 100%; max-width: 280px; height: 180px; object-fit: contain; border-radius: 20px; margin-bottom: 20px; }
-        .q-text { font-size: 24px; font-weight: bold; margin-bottom: 20px; }
-        .q-text b { color: var(--red); border-bottom: 2px solid #eee; }
+        .q-img { width: 100%; max-width: 250px; height: 180px; object-fit: contain; border-radius: 20px; margin-bottom: 15px; }
+        
+        .sentence-box { font-size: 26px; font-weight: bold; margin-bottom: 25px; line-height: 1.6; }
+        .sentence-box b { color: var(--red); background: #fff5f5; padding: 0 10px; border-radius: 8px; border-bottom: 3px dashed #ccc; }
+        .translation { font-size: 15px; color: #95a5a6; font-weight: normal; display: block; margin-top: 10px; }
 
         .btn-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
         .btn-opt { padding: 16px; font-size: 19px; font-weight: bold; border: 2px solid var(--blue); background: white; color: var(--blue); border-radius: 12px; cursor: pointer; transition: 0.2s; }
@@ -47,30 +44,37 @@
 
 <div id="starter">
     <div class="container">
-        <img src="https://img.freepik.com/free-vector/learning-concept-illustration_114360-1111.jpg" style="width:200px; margin-bottom:20px;">
-        <h2>Present Continuous</h2>
-        <p>Master 10 Turkish Verbs with Fatih Hoca</p>
+        <i class="fa-solid fa-person-walking" style="font-size: 60px; color: var(--blue); margin-bottom: 20px;"></i>
+        <h2>Present Continuous (-yor)</h2>
+        <p>Learn Turkish verb conjugation with Teacher Fatih</p>
         <button class="btn-main" style="width:250px; margin:0 auto;" onclick="unlockAudio()">🔊 START LESSON</button>
     </div>
 </div>
 
 <div class="container">
     <div class="browser-alert">
-        <i class="fa-solid fa-circle-info"></i> <b>SOUND:</b> Best on <b>Chrome</b>, <b>Opera</b> or <b>Safari</b>.
+        <i class="fa-solid fa-circle-info"></i> <b>SOUND:</b> Best on <b>Chrome</b> or <b>Safari</b>.
     </div>
 
     <!-- DERS ANLATIMI -->
     <div id="lesson-section">
         <div class="card">
             <div style="text-align:left; margin-bottom:10px;"><a href="index.html" style="text-decoration:none; color:var(--blue); font-weight:bold;"><i class="fa-solid fa-house"></i> HOME</a></div>
-            <h1>Daily Verbs (-yor)</h1>
-            <p style="text-align:center; font-size:14px; color:#7f8c8d;">Internalize verbs with visual cues. Click to hear pronunciation.</p>
-
-            <div class="verb-gallery" id="gallery-container">
-                <!-- Fiiller JavaScript ile gelecek -->
+            <h1>Verb Conjugation (-yor)</h1>
+            
+            <div class="verb-intro">
+                <p>Because of the "o" in <b>-yor</b>, the personal suffixes follow the <b>U-Harmony</b>:</p>
+                <ul style="list-style:none; padding:0; line-height:2.2; font-size: 18px;">
+                    <li>👤 <b>Ben</b> ........-um</li>
+                    <li>👤 <b>Sen</b> ........-sun</li>
+                    <li>👤 <b>O</b> ........ (no suffix)</li>
+                    <li>👥 <b>Biz</b> ........-uz</li>
+                    <li>👥 <b>Siz</b> ........-sunuz</li>
+                    <li>👥 <b>Onlar</b> ........-lar</li>
+                </ul>
             </div>
 
-            <button class="btn-main" onclick="startQuiz()">PRACTICE CONJUGAISON 🎯</button>
+            <button class="btn-main" onclick="startQuiz()">START SENTENCE PRACTICE 🎯</button>
         </div>
     </div>
 
@@ -79,7 +83,9 @@
         <div class="q-card">
             <div id="prog" style="text-align:right; color:#aaa; font-size:12px; margin-bottom:10px;">1 / 10</div>
             <img id="q-img" class="q-img" src="" alt="verb">
-            <div class="q-text" id="q-prompt">...</div>
+            <div class="sentence-box" id="q-sentence">
+                <!-- Soru buraya gelecek -->
+            </div>
             <div class="btn-grid" id="btn-container"></div>
             <div id="fb-msg"></div>
         </div>
@@ -92,49 +98,27 @@
 </div>
 
 <script>
-    // PERTINENT (AMACA UYGUN) GÖRSELLER VE FİİLLER
-    const verbs = [
-        { w: "Okumak", t: "Read", img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books_23-2149341898.jpg", root: "oku" },
-        { w: "İçmek", t: "Drink", img: "https://img.freepik.com/free-vector/drinking-water-concept-illustration_114360-8059.jpg", root: "içi" },
-        { w: "Yemek", t: "Eat", img: "https://img.freepik.com/free-vector/people-eating-delicious-ramen_52683-46016.jpg", root: "yiyi" },
-        { w: "Uyumak", t: "Sleep", img: "https://img.freepik.com/free-vector/sleeping-concept-illustration_114360-1456.jpg", root: "uyu" },
-        { w: "Gitmek", t: "Go", img: "https://img.freepik.com/free-vector/travel-concept-illustration_114360-1620.jpg", root: "gidi" },
-        { w: "Koşmak", t: "Run", img: "https://img.freepik.com/free-vector/running-concept-illustration_114360-1938.jpg", root: "koşu" },
-        { w: "Yazmak", t: "Write", img: "https://img.freepik.com/free-vector/blogging-concept-illustration_114360-4038.jpg", root: "yazı" },
-        { w: "Yüzmek", t: "Swim", img: "https://img.freepik.com/free-vector/swimming-concept-illustration_114360-2010.jpg", root: "yüzü" },
-        { w: "Dinlemek", t: "Listen", img: "https://img.freepik.com/free-vector/music-listening-concept-illustration_114360-3615.jpg", root: "dinli" },
-        { w: "Bakmak", t: "Look", img: "https://img.freepik.com/free-vector/curiosity-concept-illustration_114360-4555.jpg", root: "bakı" }
-    ];
-
-    const persons = [
-        { p: "Ben", s: "um" }, { p: "Sen", s: "sun" }, { p: "O", s: "" },
-        { p: "Biz", s: "uz" }, { p: "Siz", s: "sunuz" }, { p: "Onlar", s: "lar" }
+    const scenarios = [
+        { p: "Ben", obj: "kitap", verb: "okuyorum", vName: "Okumak", img: "https://img.freepik.com/free-vector/flat-world-book-day-illustration_23-2148875560.jpg", t: "I am reading a book." },
+        { p: "Sen", obj: "su", verb: "içiyorsun", vName: "İçmek", img: "https://img.freepik.com/free-vector/thirsty-concept-illustration_114360-7053.jpg", t: "You are drinking water." },
+        { p: "O", obj: "elma", verb: "yiyor", vName: "Yemek", img: "https://img.freepik.com/free-vector/eating-healthy-food-concept-illustration_114360-2235.jpg", t: "He/She is eating an apple." },
+        { p: "Biz", obj: "müzik", verb: "dinliyoruz", vName: "Dinlemek", img: "https://img.freepik.com/free-vector/listening-podcast-concept-illustration_114360-6316.jpg", t: "We are listening to music." },
+        { p: "Siz", obj: "okula", verb: "gidiyorsunuz", vName: "Gitmek", img: "https://img.freepik.com/free-vector/walking-concept-illustration_114360-1555.jpg", t: "You all are going to school." },
+        { p: "Onlar", obj: "parkta", verb: "koşuyorlar", vName: "Koşmak", img: "https://img.freepik.com/free-vector/jogging-concept-illustration_114360-155.jpg", t: "They are running in the park." },
+        { p: "Ben", obj: "mektup", verb: "yazıyorum", vName: "Yazmak", img: "https://img.freepik.com/free-vector/writing-concept-illustration_114360-4043.jpg", t: "I am writing a letter." },
+        { p: "Sen", obj: "denizde", verb: "yüzüyorsun", vName: "Yüzmek", img: "https://img.freepik.com/free-vector/swimming-pool-concept-illustration_114360-8456.jpg", t: "You are swimming in the sea." },
+        { p: "Biz", obj: "televizyon", verb: "izliyoruz", vName: "İzlemek", img: "https://img.freepik.com/free-vector/online-movie-concept-illustration_114360-5344.jpg", t: "We are watching television." },
+        { p: "O", obj: "yatağında", verb: "uyuyor", vName: "Uyumak", img: "https://img.freepik.com/free-vector/sleep-analysis-concept-illustration_114360-7212.jpg", t: "He/She is sleeping in bed." }
     ];
 
     let current = 0; let pool = [];
-    function unlockAudio() { window.speechSynthesis.cancel(); speak(""); document.getElementById('starter').style.display = 'none'; initGallery(); }
+    function unlockAudio() { window.speechSynthesis.cancel(); speak(""); document.getElementById('starter').style.display = 'none'; }
     function speak(t) { window.speechSynthesis.cancel(); const m = new SpeechSynthesisUtterance(t); m.lang = 'tr-TR'; m.rate = 0.8; window.speechSynthesis.speak(m); }
-
-    function initGallery() {
-        const container = document.getElementById('gallery-container');
-        verbs.forEach(v => {
-            const div = document.createElement('div');
-            div.className = 'verb-item';
-            div.onclick = () => speak(v.w);
-            div.innerHTML = `<img src="${v.img}"><b>${v.w}</b><small style="color:gray; font-size:11px;">(${v.t})</small>`;
-            container.appendChild(div);
-        });
-    }
 
     function startQuiz() {
         document.getElementById('lesson-section').style.display = 'none';
         document.getElementById('quiz-section').style.display = 'block';
-        
-        let tempVerbs = [...verbs].sort(() => Math.random() - 0.5);
-        tempVerbs.forEach(v => {
-            let p = persons[Math.floor(Math.random()*persons.length)];
-            pool.push({ verb: v, person: p, answer: v.root + "yor" + p.s });
-        });
+        pool = [...scenarios].sort(() => Math.random() - 0.5);
         show();
     }
 
@@ -142,33 +126,26 @@
         if (current >= pool.length) {
             document.getElementById('quiz-section').innerHTML = `
                 <div class="q-card">
-                    <img src="https://img.freepik.com/free-vector/award-concept-illustration_114360-3163.jpg" style="width:150px;">
-                    <h2 style="color:var(--green)">Tebrikler! 🎉</h2>
-                    <p>You have mastered 10 verbs and their conjugations.</p>
-                    <button class='btn-main' onclick='location.reload()'>Restart Lesson</button>
+                    <h2 style="color:var(--green)">Tebrikler! 🏆</h2>
+                    <p>You mastered "-yor" with full sentences.</p>
+                    <button class='btn-main' onclick='location.reload()'>Restart</button>
                     <a href='index.html' class='btn-main' style='background:var(--blue); text-decoration:none;'>Back to Home</a>
                 </div>`;
             return;
         }
         const item = pool[current];
-        document.getElementById('q-img').src = item.verb.img;
-        document.getElementById('q-prompt').innerHTML = `
-            <span style="display:inline-block; background:var(--blue); color:white; padding:6px 18px; border-radius:20px; font-size:20px; margin-bottom:10px;">${item.person.p}</span>
-            <br>
-            <span style="font-size:18px; color:#555; font-weight:normal;">${item.verb.w} <small style="color:#aaa;">(${item.verb.t})</small></span>
-            <br><b style="font-size:26px;">... ?</b>`;
+        document.getElementById('q-img').src = item.img;
+        document.getElementById('q-sentence').innerHTML = `${item.p} ${item.obj} <b>.......</b> <span class="translation">(${item.t})</span>`;
         document.getElementById('prog').innerText = `${current + 1} / ${pool.length}`;
         document.getElementById('fb-msg').innerText = "";
         
         const btnContainer = document.getElementById('btn-container');
         btnContainer.innerHTML = '';
 
-        // Doğru şıkkı ve 2 yanlış şıkkı hazırla
-        let options = [item.answer];
+        let options = [item.verb];
         while(options.length < 3) {
-            let randomP = persons[Math.floor(Math.random()*persons.length)];
-            let wrong = item.verb.root + "yor" + randomP.s;
-            if(!options.includes(wrong)) options.push(wrong);
+            let randomScenario = scenarios[Math.floor(Math.random()*scenarios.length)];
+            if(!options.includes(randomScenario.verb)) options.push(randomScenario.verb);
         }
 
         options.sort(() => Math.random() - 0.5).forEach(opt => {
@@ -178,24 +155,22 @@
             b.onclick = () => check(opt);
             btnContainer.appendChild(b);
         });
-        speak(item.person.p);
+        speak(item.p + " " + item.obj);
     }
 
     function check(ans) {
         const item = pool[current];
         const fb = document.getElementById('fb-msg');
-        if (ans === item.answer) {
+        if (ans === item.verb) {
             fb.style.color = "var(--green)";
-            fb.innerText = "Correct! ✅";
-            document.getElementById('q-prompt').innerHTML = `
-                <span style="display:inline-block; background:var(--blue); color:white; padding:6px 18px; border-radius:20px; font-size:20px; margin-bottom:10px;">${item.person.p}</span>
-                <br><span style="color:var(--green); font-size:26px; font-weight:bold;">${item.answer}</span>`;
-            speak(item.person.p + " " + item.answer);
+            fb.innerText = "Doğru! ✅";
+            document.getElementById('q-sentence').innerHTML = `${item.p} ${item.obj} <span style="color:var(--green)">${item.verb}</span> <span class="translation">(${item.t})</span>`;
+            speak(item.p + " " + item.obj + " " + item.verb);
             current++;
-            setTimeout(show, 2000);
+            setTimeout(show, 2500);
         } else {
             fb.style.color = "var(--red)";
-            fb.innerText = "Try again! ❌";
+            fb.innerText = "Tekrar dene! ❌";
             speak(ans);
         }
     }
