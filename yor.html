@@ -4,65 +4,165 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Present Continuous (-yor) | Fatih Mehmet CANITEZ</title>
+    <!-- İKON KÜTÜPHANESİ -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --blue: #2980b9; --dark: #2c3e50; --red: #e74c3c; --green: #27ae60; --bg: #f4f7f6; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; padding: 15px; text-align: center; }
-        .card { max-width: 600px; margin: auto; background: white; padding: 25px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 6px solid var(--blue); }
-        .q-img { width: 100%; max-width: 250px; height: 180px; object-fit: contain; border-radius: 20px; margin-bottom: 15px; }
-        .sentence { font-size: 24px; font-weight: bold; margin-bottom: 20px; }
-        .btn-opt { display: block; width: 100%; padding: 15px; margin: 10px 0; font-size: 18px; font-weight: bold; border: 2px solid var(--blue); background: white; color: var(--blue); border-radius: 12px; cursor: pointer; transition: 0.2s; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; padding: 15px; color: var(--dark); }
+        .container { max-width: 650px; margin: 0 auto; }
+        
+        .browser-alert { background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 12px; border-radius: 12px; text-align: center; font-size: 13px; font-weight: bold; margin-bottom: 15px; }
+        .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; border-top: 6px solid var(--blue); }
+        h1 { color: var(--red); font-size: 22px; text-align: center; margin: 10px 0; }
+
+        /* KURAL TABLOSU */
+        .grammar-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; background: #f0f7ff; border-radius: 15px; overflow: hidden; }
+        .grammar-table td { padding: 10px; text-align: center; border: 1px solid #e1f0fa; font-size: 14px; }
+        .red-bold { color: var(--red); font-weight: bold; }
+
+        /* QUIZ ALANI */
+        #quiz-section { display: none; text-align: center; }
+        .q-card { background: white; padding: 30px 20px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .q-img { width: 100%; max-width: 280px; height: 180px; object-fit: contain; border-radius: 20px; margin-bottom: 20px; }
+        .sentence-box { font-size: 24px; font-weight: bold; margin-bottom: 20px; }
+        .sentence-box b { color: var(--red); border-bottom: 2px dashed #ccc; }
+        .translation { font-size: 14px; color: #95a5a6; font-weight: normal; display: block; margin-top: 8px; }
+
+        .btn-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+        .btn-opt { padding: 16px; font-size: 19px; font-weight: bold; border: 2px solid var(--blue); background: white; color: var(--blue); border-radius: 12px; cursor: pointer; transition: 0.2s; }
         .btn-opt:hover { background: var(--blue); color: white; }
-        #fb { font-weight: bold; font-size: 20px; margin-top: 15px; }
-        #starter { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 1000; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+
+        .btn-main { display: block; width: 100%; padding: 18px; background: var(--green); color: white; border: none; border-radius: 15px; font-weight: bold; font-size: 18px; cursor: pointer; margin-top: 20px; text-decoration: none; text-align: center; }
+        
+        #fb-msg { margin-top: 20px; font-weight: bold; font-size: 18px; min-height: 24px; }
+        #starter { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 1000; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; }
+        
+        .footer-contact { margin-top: 30px; padding: 20px; border-top: 1px solid #eee; text-align: center; }
+        .wa-link { color: var(--green); text-decoration: none; font-weight: 800; font-size: 16px; display: block; margin-top: 5px; }
     </style>
 </head>
 <body>
 
 <div id="starter">
-    <h1>Şimdiki Zaman (-yor)</h1>
-    <button onclick="document.getElementById('starter').style.display='none'; window.speechSynthesis.cancel();" style="padding:20px 40px; background:var(--green); color:white; border:none; border-radius:15px; font-size:20px; cursor:pointer;">BAŞLAT / START</button>
+    <div class="container">
+        <i class="fa-solid fa-person-walking" style="font-size: 60px; color: var(--blue); margin-bottom: 20px;"></i>
+        <h2>Present Continuous (-yor)</h2>
+        <p>Learn Turkish verb conjugation with subjects</p>
+        <button class="btn-main" style="width:250px; margin:0 auto;" onclick="unlockAudio()">🔊 START LESSON</button>
+    </div>
 </div>
 
-<div class="card">
-    <div style="text-align:left; margin-bottom:10px;"><a href="index.html" style="text-decoration:none; color:var(--blue); font-weight:bold;">🏠 HOME</a></div>
-    <div id="prog" style="text-align:right; color:gray; font-size:12px;">1 / 10</div>
-    <img id="q-img" class="q-img" src="https://img.freepik.com/free-vector/flat-world-book-day-illustration_23-2148875560.jpg">
-    <div class="sentence" id="q-text">Ben kitap .......</div>
-    <div id="options"></div>
-    <div id="fb"></div>
+<div class="container">
+    <div class="browser-alert">
+        <i class="fa-solid fa-circle-info"></i> <b>SOUND:</b> Best on <b>Chrome</b> or <b>Safari</b>.
+    </div>
+
+    <!-- DERS ANLATIMI -->
+    <div id="lesson-section">
+        <div class="card">
+            <div style="text-align:left; margin-bottom:10px;"><a href="index.html" style="text-decoration:none; color:var(--blue); font-weight:bold;"><i class="fa-solid fa-house"></i> HOME</a></div>
+            <h1>Verb Conjugation (-yor)</h1>
+            
+            <table class="grammar-table">
+                <tr><td>👤 Ben</td><td class="red-bold">........-um</td></tr>
+                <tr><td>👤 Sen</td><td class="red-bold">........-sun</td></tr>
+                <tr><td>👤 O</td><td class="red-bold">........ (no suffix)</td></tr>
+                <tr><td>👥 Biz</td><td class="red-bold">........-uz</td></tr>
+                <tr><td>👥 Siz</td><td class="red-bold">........-sunuz</td></tr>
+                <tr><td>👥 Onlar</td><td class="red-bold">........-lar</td></tr>
+            </table>
+
+            <button class="btn-main" onclick="startQuiz()">START PRACTICE 🎯</button>
+        </div>
+    </div>
+
+    <!-- QUIZ ALANI -->
+    <div id="quiz-section">
+        <div class="q-card">
+            <div id="prog" style="text-align:right; color:#aaa; font-size:12px; margin-bottom:10px;">1 / 10</div>
+            <img id="q-img" class="q-img" src="" alt="verb">
+            <div class="sentence-box" id="q-text"></div>
+            <div class="btn-grid" id="btn-container"></div>
+            <div id="fb-msg"></div>
+        </div>
+    </div>
+
+    <div class="footer-contact">
+        <span style="font-size:13px; color:#7f8c8d;">Teacher Fatih Mehmet CANITEZ</span>
+        <a href="https://wa.me/905054466760" target="_blank" class="wa-link">🟢 WhatsApp Support: +90 505 446 67 60</a>
+    </div>
 </div>
 
 <script>
-    const data = [
-        { p: "Ben", obj: "kitap", verb: "okuyorum", img: "https://img.freepik.com/free-vector/flat-world-book-day-illustration_23-2148875560.jpg" },
-        { p: "Sen", obj: "su", verb: "içiyorsun", img: "https://img.freepik.com/free-vector/thirsty-concept-illustration_114360-7053.jpg" },
-        { p: "O", obj: "elma", verb: "yiyor", img: "https://img.freepik.com/free-vector/eating-healthy-food-concept-illustration_114360-2235.jpg" }
+    const dataPool = [
+        { p: "Ben", obj: "kitap", verb: "okuyorum", img: "https://img.freepik.com/free-vector/flat-world-book-day-illustration_23-2148875560.jpg", t: "I am reading a book." },
+        { p: "Sen", obj: "su", verb: "içiyorsun", img: "https://img.freepik.com/free-vector/thirsty-concept-illustration_114360-7053.jpg", t: "You are drinking water." },
+        { p: "O", obj: "elma", verb: "yiyor", img: "https://img.freepik.com/free-vector/eating-healthy-food-concept-illustration_114360-2235.jpg", t: "He/She is eating an apple." },
+        { p: "Biz", obj: "müzik", verb: "dinliyoruz", img: "https://img.freepik.com/free-vector/listening-podcast-concept-illustration_114360-6316.jpg", t: "We are listening to music." },
+        { p: "Siz", obj: "okula", verb: "gidiyorsunuz", img: "https://img.freepik.com/free-vector/walking-concept-illustration_114360-1555.jpg", t: "You all are going to school." },
+        { p: "Onlar", obj: "parkta", verb: "koşuyorlar", img: "https://img.freepik.com/free-vector/jogging-concept-illustration_114360-155.jpg", t: "They are running in the park." },
+        { p: "Ben", obj: "mektup", verb: "yazıyorum", img: "https://img.freepik.com/free-vector/writing-concept-illustration_114360-4043.jpg", t: "I am writing a letter." },
+        { p: "Sen", obj: "denizde", verb: "yüzüyorsun", img: "https://img.freepik.com/free-vector/swimming-pool-concept-illustration_114360-8456.jpg", t: "You are swimming in the sea." },
+        { p: "Biz", obj: "televizyon", verb: "izliyoruz", img: "https://img.freepik.com/free-vector/online-movie-concept-illustration_114360-5344.jpg", t: "We are watching television." },
+        { p: "O", obj: "yatağında", verb: "uyuyor", img: "https://img.freepik.com/free-vector/sleep-analysis-concept-illustration_114360-7212.jpg", t: "He/She is sleeping in bed." }
     ];
-    let step = 0;
+
+    let current = 0; let pool = [];
+    function unlockAudio() { window.speechSynthesis.cancel(); speak(""); document.getElementById('starter').style.display = 'none'; }
+    function speak(t) { window.speechSynthesis.cancel(); const m = new SpeechSynthesisUtterance(t); m.lang = 'tr-TR'; m.rate = 0.8; window.speechSynthesis.speak(m); }
+
+    function startQuiz() {
+        document.getElementById('lesson-section').style.display = 'none';
+        document.getElementById('quiz-section').style.display = 'block';
+        pool = [...dataPool].sort(() => Math.random() - 0.5);
+        show();
+    }
+
     function show() {
-        const item = data[step];
+        if (current >= pool.length) {
+            document.getElementById('quiz-section').innerHTML = `<h2>Tebrikler! 🏆</h2><p>You mastered full sentences in present tense!</p><button class='btn-main' onclick='location.reload()'>Restart</button><a href='index.html' class='btn-main' style='background:var(--blue); text-decoration:none;'>Back to Menu</a>`;
+            return;
+        }
+        const item = pool[current];
         document.getElementById('q-img').src = item.img;
-        document.getElementById('q-text').innerHTML = `${item.p} ${item.obj} <b style="color:var(--red)">.......</b>`;
-        const optDiv = document.getElementById('options');
-        optDiv.innerHTML = '';
-        [item.verb, "okuyoruz", "içiyor"].sort().forEach(o => {
+        document.getElementById('q-text').innerHTML = `${item.p} ${item.obj} <b style="color:var(--blue)">.......</b><br><small class="translation">(${item.t})</small>`;
+        document.getElementById('prog').innerText = `${current + 1} / ${pool.length}`;
+        document.getElementById('fb-msg').innerText = "";
+        
+        const btnContainer = document.getElementById('btn-container');
+        btnContainer.innerHTML = '';
+
+        let options = [item.verb];
+        while(options.length < 3) {
+            let rand = dataPool[Math.floor(Math.random()*dataPool.length)].verb;
+            if(!options.includes(rand)) options.push(rand);
+        }
+
+        options.sort(() => Math.random() - 0.5).forEach(opt => {
             const b = document.createElement('button');
             b.className = 'btn-opt';
-            b.innerText = o;
-            b.onclick = () => {
-                if(o === item.verb) {
-                    document.getElementById('fb').innerHTML = "Correct! ✅";
-                    step++;
-                    setTimeout(() => { if(step < data.length) show(); else alert("Finish!"); }, 1500);
-                } else {
-                    document.getElementById('fb').innerHTML = "Try again! ❌";
-                }
-            };
-            optDiv.appendChild(b);
+            b.innerText = opt;
+            b.onclick = () => check(opt);
+            btnContainer.appendChild(b);
         });
+        speak(item.p + " " + item.obj);
     }
-    show();
+
+    function check(ans) {
+        const item = pool[current];
+        const fb = document.getElementById('fb-msg');
+        if (ans === item.verb) {
+            fb.style.color = "var(--green)";
+            fb.innerText = "Correct! ✅";
+            document.getElementById('q-text').innerHTML = `${item.p} ${item.obj} <span style="color:var(--green)">${item.verb}</span><br><small class="translation">(${item.t})</small>`;
+            speak(item.p + " " + item.obj + " " + item.verb);
+            current++;
+            setTimeout(show, 2000);
+        } else {
+            fb.style.color = "var(--red)";
+            fb.innerText = "Try again! ❌";
+        }
+    }
 </script>
 </body>
 </html>
