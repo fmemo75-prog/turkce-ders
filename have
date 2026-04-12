@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Türkçe'de VAR & YOK — Turkish Grammar Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0e17;
+    --surface: #1a1927;
+    --surface2: #232235;
+    --surface3: #2c2b40;
+    --accent: #ff6b6b;
+    --accent2: #4ecdc4;
+    --accent3: #ffe66d;
+    --accent4: #a8dadc;
+    --purple: #c77dff;
+    --green: #06d6a0;
+    --text: #fffffe;
+    --text2: #a7a9be;
+    --text3: #6c6d7e;
+    --positive: #06d6a0;
+    --negative: #ff6b6b;
+    --past: #4ecdc4;
+    --future: #ffe66d;
+    --radius: 14px;
+    --radius-sm: 8px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* --- NOISE TEXTURE OVERLAY --- */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  .wrap {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* BROWSER TIP */
+  .browser-tip {
+    background: #2a2400;
+    border: 1px solid #ffe66d44;
+    border-radius: var(--radius-sm);
+    padding: .7rem 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+    font-size: .82rem;
+    color: #ffe66d;
+    animation: fadeIn .5s ease;
+  }
+  .browser-tip .tip-icon { font-size: 1.1rem; flex-shrink: 0; }
+  .browser-tip strong { color: #fff; }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 2.5rem 2rem 2rem;
+    margin-bottom: 2rem;
+    background: var(--surface);
+    border: 1px solid #ffffff10;
+    animation: slideUp .6s ease;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 260px; height: 260px;
+    background: radial-gradient(circle, #ff6b6b33 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, #4ecdc433 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: #ff6b6b22;
+    color: var(--accent);
+    border: 1px solid #ff6b6b44;
+    border-radius: 20px;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: .25rem .85rem;
+    margin-bottom: .85rem;
+  }
+  .hero h1 {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: .6rem;
+    position: relative;
+  }
+  .hero h1 .var { color: var(--positive); }
+  .hero h1 .yok { color: var(--negative); }
+  .hero p {
+    font-size: .95rem;
+    color: var(--text2);
+    max-width: 520px;
+    position: relative;
+  }
+  .hero-flags {
+    position: absolute;
+    top: 1.5rem; right: 1.5rem;
+    font-size: 1.8rem;
+    opacity: .5;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--surface);
+    border: 1px solid #ffffff0d;
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    animation: fadeIn .5s ease;
+  }
+  .card-header {
+    padding: .9rem 1.4rem;
+    border-bottom: 1px solid #ffffff0a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+  }
+  .card-header h2 {
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+  .card-header h2 .num {
+    font-family: 'Space Mono', monospace;
+    font-size: .78rem;
+    background: var(--surface3);
+    color: var(--text2);
+    padding: .15rem .5rem;
+    border-radius: 6px;
+  }
+  .pill {
+    font-size: .68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    padding: .22rem .65rem;
+    border-radius: 20px;
+    border: 1px solid;
+  }
+  .pill-purple { background: #c77dff22; color: var(--purple); border-color: #c77dff44; }
+  .pill-teal { background: #4ecdc422; color: var(--accent2); border-color: #4ecdc444; }
+  .card-body { padding: 1.4rem; }
+
+  /* THEORY */
+  .theory-intro {
+    font-size: .9rem;
+    color: var(--text2);
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+    background: var(--surface2);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.1rem;
+    border-left: 3px solid var(--purple);
+  }
+  .theory-intro strong { color: var(--text); }
+  .theory-intro .formula {
+    margin-top: .65rem;
+    font-family: 'Space Mono', monospace;
+    font-size: .78rem;
+    color: var(--purple);
+    background: #c77dff11;
+    padding: .4rem .75rem;
+    border-radius: 6px;
+    display: inline-block;
+  }
+
+  .grammar-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .85rem;
+    margin-bottom: 1.1rem;
+  }
+  @media (max-width: 520px) { .grammar-grid { grid-template-columns: 1fr; } }
+
+  .g-box {
+    border-radius: 12px;
+    padding: 1rem;
+    border: 1px solid;
+    position: relative;
+    overflow: hidden;
+  }
+  .g-box::before {
+    content: attr(data-icon);
+    position: absolute;
+    top: .5rem; right: .75rem;
+    font-size: 1.5rem;
+    opacity: .15;
+  }
+  .g-box.pos { background: #06d6a011; border-color: #06d6a033; }
+  .g-box.neg { background: #ff6b6b11; border-color: #ff6b6b33; }
+  .g-box.past { background: #4ecdc411; border-color: #4ecdc433; }
+  .g-box.fut { background: #ffe66d11; border-color: #ffe66d33; }
+  .g-box h3 {
+    font-size: .78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-bottom: .65rem;
+  }
+  .g-box.pos h3 { color: var(--positive); }
+  .g-box.neg h3 { color: var(--negative); }
+  .g-box.past h3 { color: var(--past); }
+  .g-box.fut h3 { color: var(--future); }
+  .g-box ul { list-style: none; }
+  .g-box ul li {
+    font-size: .84rem;
+    padding: .22rem 0;
+    color: var(--text2);
+    display: flex;
+    align-items: baseline;
+    gap: .4rem;
+  }
+  .g-box ul li::before { content: '→'; font-size: .7rem; opacity: .4; flex-shrink: 0; }
+  .g-box ul li strong { color: var(--text); font-weight: 700; }
+
+  .pattern-row {
+    background: var(--surface2);
+    border-radius: 10px;
+    padding: .85rem 1rem;
+    font-size: .83rem;
+    color: var(--text2);
+    line-height: 1.7;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem .75rem;
+    align-items: center;
+  }
+  .pattern-row b { color: var(--text); }
+  .pt { background: var(--surface3); padding: .2rem .55rem; border-radius: 6px; font-family: 'Space Mono', monospace; font-size: .76rem; }
+  .pt.p { color: var(--positive); }
+  .pt.n { color: var(--negative); }
+  .pt.pa { color: var(--past); }
+  .pt.f { color: var(--future); }
+
+  /* AUDIO EXAMPLES */
+  .tts-banner {
+    background: #c77dff11;
+    border: 1px solid #c77dff33;
+    border-radius: 10px;
+    padding: .75rem 1rem;
+    margin-bottom: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    font-size: .82rem;
+    color: var(--text2);
+  }
+  .tts-banner span { font-size: 1.2rem; }
+  .tts-banner p { flex: 1; }
+  .btn-play-all {
+    background: var(--purple);
+    color: #fff;
+    border: none;
+    padding: .45rem 1rem;
+    border-radius: 8px;
+    font-size: .8rem;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: .35rem;
+    transition: opacity .2s;
+  }
+  .btn-play-all:hover { opacity: .8; }
+
+  .ex-list { display: flex; flex-direction: column; gap: .1rem; }
+  .ex-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: .75rem .85rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background .18s;
+    border: 1px solid transparent;
+  }
+  .ex-row:hover { background: var(--surface2); border-color: #ffffff08; }
+  .ex-row.playing { background: #c77dff11; border-color: #c77dff33; }
+  .ex-emoji { font-size: 1.6rem; width: 38px; text-align: center; flex-shrink: 0; }
+  .ex-content { flex: 1; }
+  .ex-tr {
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: .1rem;
+  }
+  .ex-en { font-size: .8rem; color: var(--text3); }
+  .ex-tense-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-pos { background: var(--positive); }
+  .dot-neg { background: var(--negative); }
+  .dot-past { background: var(--past); }
+  .dot-fut { background: var(--future); }
+  .btn-speak {
+    background: var(--surface3);
+    border: 1px solid #ffffff15;
+    color: var(--text2);
+    padding: .3rem .65rem;
+    border-radius: 7px;
+    font-size: .75rem;
+    font-family: 'Nunito', sans-serif;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all .18s;
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+  }
+  .btn-speak:hover { background: var(--purple); color: #fff; border-color: var(--purple); }
+  .btn-speak.active { background: var(--purple); color: #fff; border-color: var(--purple); }
+
+  /* QUIZ */
+  .quiz-card {
+    background: var(--surface);
+    border: 1px solid #ffffff0d;
+    border-radius: var(--radius);
+    overflow: hidden;
+    animation: fadeIn .5s ease;
+  }
+  .quiz-topbar {
+    background: linear-gradient(135deg, #232235, #1a1927);
+    padding: 1rem 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ffffff0a;
+  }
+  .quiz-title {
+    font-family: 'Space Mono', monospace;
+    font-size: .9rem;
+    font-weight: 700;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+  .quiz-meta { display: flex; align-items: center; gap: .75rem; }
+  .q-counter {
+    font-family: 'Space Mono', monospace;
+    font-size: .78rem;
+    color: var(--text3);
+  }
+  .prog-track {
+    width: 100px; height: 5px;
+    background: var(--surface3);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .prog-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent2), var(--purple));
+    border-radius: 10px;
+    transition: width .5s ease;
+  }
+  .score-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: .75rem;
+    color: var(--accent3);
+    background: #ffe66d15;
+    border: 1px solid #ffe66d33;
+    padding: .2rem .6rem;
+    border-radius: 6px;
+  }
+  .quiz-body { padding: 1.75rem 1.4rem 1.4rem; min-height: 340px; }
+
+  .q-scene { font-size: 3.5rem; text-align: center; margin-bottom: .75rem; animation: bounceIn .4s ease; }
+  .q-text {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: .3rem;
+    color: var(--text);
+  }
+  .q-hint {
+    font-size: .78rem;
+    text-align: center;
+    color: var(--text3);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+  .options { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; margin-bottom: 1.1rem; }
+  @media (max-width: 440px) { .options { grid-template-columns: 1fr; } }
+  .opt {
+    background: var(--surface2);
+    border: 1px solid #ffffff12;
+    color: var(--text);
+    padding: .8rem 1rem;
+    border-radius: 10px;
+    font-size: .9rem;
+    font-family: 'Space Mono', monospace;
+    font-weight: 400;
+    cursor: pointer;
+    text-align: left;
+    transition: all .18s;
+    line-height: 1.3;
+  }
+  .opt:hover:not(:disabled) { background: var(--surface3); border-color: var(--purple); color: var(--purple); transform: translateY(-1px); }
+  .opt.correct { background: #06d6a015; border-color: var(--green); color: var(--green); }
+  .opt.wrong { background: #ff6b6b15; border-color: var(--accent); color: var(--accent); }
+  .opt:disabled { cursor: default; }
+
+  .feedback {
+    border-radius: 10px;
+    padding: .85rem 1rem;
+    font-size: .85rem;
+    line-height: 1.6;
+    display: none;
+    animation: slideUp .3s ease;
+  }
+  .feedback.show { display: block; }
+  .feedback.ok { background: #06d6a015; border: 1px solid #06d6a040; color: #06d6a0; }
+  .feedback.bad { background: #ff6b6b15; border: 1px solid #ff6b6b40; color: #ff9999; }
+  .feedback strong { color: var(--text); }
+
+  .quiz-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; }
+  .q-label { font-size: .8rem; color: var(--text3); }
+  .btn-next {
+    background: var(--purple);
+    color: #fff;
+    border: none;
+    padding: .55rem 1.4rem;
+    border-radius: 8px;
+    font-size: .85rem;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s, transform .2s;
+  }
+  .btn-next.show { opacity: 1; pointer-events: all; }
+  .btn-next:hover { transform: translateX(3px); }
+
+  /* RESULT */
+  .result {
+    text-align: center;
+    padding: 2rem 1rem;
+    animation: bounceIn .5s ease;
+  }
+  .result .trophy { font-size: 4rem; margin-bottom: 1rem; }
+  .result h3 { font-family: 'Space Mono', monospace; font-size: 1.4rem; font-weight: 700; margin-bottom: .5rem; }
+  .result p { font-size: .9rem; color: var(--text2); margin-bottom: 1.5rem; }
+  .result .pct { font-size: 3rem; font-weight: 800; color: var(--accent3); display: block; }
+  .btn-restart {
+    background: linear-gradient(135deg, var(--accent2), var(--purple));
+    color: #fff;
+    border: none;
+    padding: .7rem 2rem;
+    border-radius: 10px;
+    font-size: .9rem;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity .2s;
+  }
+  .btn-restart:hover { opacity: .85; }
+
+  /* TENSE LEGEND */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-bottom: 1.25rem;
+  }
+  .leg-item {
+    display: flex;
+    align-items: center;
+    gap: .35rem;
+    font-size: .78rem;
+    color: var(--text2);
+    background: var(--surface2);
+    padding: .3rem .65rem;
+    border-radius: 20px;
+  }
+  .leg-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ANIMATIONS */
+  @keyframes slideUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+  @keyframes bounceIn { 0% { opacity:0; transform:scale(.85); } 70% { transform:scale(1.04); } 100% { opacity:1; transform:scale(1); } }
+
+  /* FOOTER */
+  .lesson-footer {
+    text-align: center;
+    padding-top: 2rem;
+    font-size: .78rem;
+    color: var(--text3);
+    border-top: 1px solid #ffffff08;
+    margin-top: 2.5rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- BROWSER TIP -->
+  <div class="browser-tip">
+    <span class="tip-icon">💡</span>
+    <p><strong>Best experience:</strong> Please open this page in <strong>Google Chrome</strong> or <strong>Safari</strong> for full text-to-speech support. The Facebook in-app browser may not support audio playback.</p>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-flags">🇹🇷 🇬🇧</div>
+    <div class="hero-tag">Turkish Grammar · A1–A2</div>
+    <h1>Turkish "<span class="var">var</span>" &amp; "<span class="yok">yok</span>"</h1>
+    <p>How to express <em>having</em>, <em>not having</em>, and possession across all tenses — with audio practice &amp; exercises.</p>
+  </div>
+
+  <!-- THEORY -->
+  <div class="card">
+    <div class="card-header">
+      <h2><span class="num">01</span> How it works</h2>
+      <span class="pill pill-purple">Theory</span>
+    </div>
+    <div class="card-body">
+      <div class="theory-intro">
+        Unlike English, Turkish has <strong>no verb "to have."</strong> Instead, it uses <strong>var</strong> (exists / there is) and <strong>yok</strong> (doesn't exist / there isn't). Ownership is expressed with a <strong>possessive suffix</strong> on the noun, then var or yok follows.<br>
+        <span class="formula">[Noun + possessive suffix] + var / yok</span><br>
+        <span class="formula" style="margin-top:.35rem;color:#4ecdc4">Arabam var → My car exists → I have a car</span>
+      </div>
+
+      <div class="grammar-grid">
+        <div class="g-box pos" data-icon="✅">
+          <h3>✅ Present — Positive</h3>
+          <ul>
+            <li><strong>Arabam var</strong> — I have a car</li>
+            <li><strong>Param var</strong> — I have money</li>
+            <li><strong>Evim var</strong> — I have a house</li>
+            <li><strong>Vaktin var mı?</strong> — Do you have time?</li>
+          </ul>
+        </div>
+        <div class="g-box neg" data-icon="❌">
+          <h3>❌ Present — Negative</h3>
+          <ul>
+            <li><strong>Arabam yok</strong> — I don't have a car</li>
+            <li><strong>Param yok</strong> — I have no money</li>
+            <li><strong>Evim yok</strong> — I have no house</li>
+            <li><strong>Vaktin yok mu?</strong> — Don't you have time?</li>
+          </ul>
+        </div>
+        <div class="g-box past" data-icon="🕐">
+          <h3>🕐 Past Tense</h3>
+          <ul>
+            <li><strong>Arabam vardı</strong> — I had a car</li>
+            <li><strong>Param yoktu</strong> — I had no money</li>
+            <li><strong>Evim vardı</strong> — I had a house</li>
+            <li><strong>Vaktim yoktu</strong> — I had no time</li>
+          </ul>
+        </div>
+        <div class="g-box fut" data-icon="🔮">
+          <h3>🔮 Future Tense</h3>
+          <ul>
+            <li><strong>Param olacak</strong> — I will have money</li>
+            <li><strong>İşim olmayacak</strong> — I won't have work</li>
+            <li><strong>Evim olacak</strong> — I will have a house</li>
+            <li><strong>Vaktim olacak</strong> — I will have time</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pattern-row">
+        <b>Quick ref:</b>
+        <span>Present+</span><span class="pt p">var</span>
+        <span>Present−</span><span class="pt n">yok</span>
+        <span>Past+</span><span class="pt pa">vardı</span>
+        <span>Past−</span><span class="pt pa">yoktu</span>
+        <span>Future+</span><span class="pt f">olacak</span>
+        <span>Future−</span><span class="pt f">olmayacak</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUDIO EXAMPLES -->
+  <div class="card">
+    <div class="card-header">
+      <h2><span class="num">02</span> Listen &amp; learn</h2>
+      <span class="pill pill-teal">Audio</span>
+    </div>
+    <div class="card-body">
+      <div class="tts-banner">
+        <span>🔊</span>
+        <p>Tap any row or the play button to hear Turkish pronunciation using your device's TTS engine.</p>
+        <button class="btn-play-all" onclick="speakAll()">▶ Play all</button>
+      </div>
+
+      <div class="legend">
+        <div class="leg-item"><div class="leg-dot" style="background:var(--positive)"></div>Present +</div>
+        <div class="leg-item"><div class="leg-dot" style="background:var(--negative)"></div>Present −</div>
+        <div class="leg-item"><div class="leg-dot" style="background:var(--past)"></div>Past</div>
+        <div class="leg-item"><div class="leg-dot" style="background:var(--future)"></div>Future</div>
+      </div>
+
+      <div class="ex-list" id="ex-list">
+        <!-- rows injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-card">
+    <div class="quiz-topbar">
+      <div class="quiz-title">⚡ 10 Exercises</div>
+      <div class="quiz-meta">
+        <span class="q-counter" id="q-counter">1 / 10</span>
+        <div class="prog-track"><div class="prog-fill" id="prog" style="width:0%"></div></div>
+        <span class="score-badge" id="score-badge">0 pts</span>
+      </div>
+    </div>
+    <div class="quiz-body" id="quiz-body"></div>
+  </div>
+
+  <div class="lesson-footer">
+    Türkçe Dilbilgisi · VAR &amp; YOK &nbsp;|&nbsp; Made with ♥ for Turkish learners
+  </div>
+
+</div>
+
+<script>
+/* ---- EXAMPLES DATA ---- */
+const examples = [
+  { emoji:'🚗', tr:'Arabam var.', en:'I have a car. (lit. My car exists.)', tense:'pos' },
+  { emoji:'💸', tr:'Param yok.', en:"I have no money. (lit. My money doesn't exist.)", tense:'neg' },
+  { emoji:'🏠', tr:'Evimiz vardı.', en:'We had a house. (past — sold/gone now)', tense:'past' },
+  { emoji:'☕', tr:'Kahven var mı?', en:'Do you have coffee?', tense:'pos' },
+  { emoji:'💼', tr:'İşim yoktu.', en:"I didn't have a job. (past negative)", tense:'past' },
+  { emoji:'📱', tr:'Telefonum olacak.', en:'I will have a phone. (future)', tense:'fut' },
+  { emoji:'🐕', tr:'Köpeğimiz yok.', en:"We don't have a dog.", tense:'neg' },
+  { emoji:'📚', tr:'Vaktim olmayacak.', en:"I won't have time. (future negative)", tense:'fut' },
+  { emoji:'👶', tr:'Çocuğumuz olacak.', en:'We will have a child. (future)', tense:'fut' },
+  { emoji:'🗝️', tr:'Anahtarın var mı?', en:'Do you have a key?', tense:'pos' },
+];
+
+const dotMap = { pos:'dot-pos', neg:'dot-neg', past:'dot-past', fut:'dot-fut' };
+
+/* Build example rows */
+const exList = document.getElementById('ex-list');
+examples.forEach((ex, i) => {
+  const row = document.createElement('div');
+  row.className = 'ex-row';
+  row.id = 'ex-row-' + i;
+  row.onclick = () => speak(ex.tr, i);
+  row.innerHTML = `
+    <div class="ex-emoji">${ex.emoji}</div>
+    <div class="ex-content">
+      <div class="ex-tr">${ex.tr}</div>
+      <div class="ex-en">${ex.en}</div>
+    </div>
+    <div class="ex-tense-dot ${dotMap[ex.tense]}"></div>
+    <button class="btn-speak" id="btn-${i}" onclick="event.stopPropagation();speak('${ex.tr.replace(/'/g,"\\'")}',${i})">🔊 Dinle</button>
+  `;
+  exList.appendChild(row);
+});
+
+/* ---- TTS ---- */
+let currentPlayIdx = -1;
+
+function getBestTurkishVoice() {
+  const voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+  const tr = voices.filter(v => v.lang && v.lang.startsWith('tr'));
+  if (tr.length) {
+    const pref = tr.find(v => /Yelda|Cem|Sibel|Filiz|Female/i.test(v.name));
+    return pref || tr[0];
+  }
+  return null;
+}
+
+function speak(text, idx) {
+  if (!window.speechSynthesis) {
+    alert('Speech synthesis is not supported in this browser. Please use Chrome or Safari.');
+    return;
+  }
+  window.speechSynthesis.cancel();
+  // clear active states
+  document.querySelectorAll('.btn-speak').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.ex-row').forEach(r => r.classList.remove('playing'));
+
+  if (idx !== undefined) {
+    const btn = document.getElementById('btn-' + idx);
+    const row = document.getElementById('ex-row-' + idx);
+    if (btn) btn.classList.add('active');
+    if (row) row.classList.add('playing');
+    currentPlayIdx = idx;
+  }
+
+  const u = new SpeechSynthesisUtterance(text);
+  const v = getBestTurkishVoice();
+  if (v) { u.voice = v; u.lang = v.lang; } else { u.lang = 'tr-TR'; }
+  u.rate = 0.86; u.pitch = 1.05;
+  u.onend = () => {
+    if (idx !== undefined) {
+      const btn = document.getElementById('btn-' + idx);
+      const row = document.getElementById('ex-row-' + idx);
+      if (btn) btn.classList.remove('active');
+      if (row) row.classList.remove('playing');
+    }
+  };
+  window.speechSynthesis.speak(u);
+}
+
+let allPlayIdx = 0;
+function speakAll() {
+  allPlayIdx = 0;
+  function playNext() {
+    if (allPlayIdx >= examples.length) return;
+    const ex = examples[allPlayIdx];
+    const i = allPlayIdx;
+    document.querySelectorAll('.btn-speak').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.ex-row').forEach(r => r.classList.remove('playing'));
+    const btn = document.getElementById('btn-' + i);
+    const row = document.getElementById('ex-row-' + i);
+    if (btn) btn.classList.add('active');
+    if (row) { row.classList.add('playing'); row.scrollIntoView({ behavior:'smooth', block:'nearest' }); }
+    const u = new SpeechSynthesisUtterance(ex.tr);
+    const v = getBestTurkishVoice();
+    if (v) { u.voice = v; u.lang = v.lang; } else { u.lang = 'tr-TR'; }
+    u.rate = 0.86; u.pitch = 1.05;
+    u.onend = () => {
+      if (btn) btn.classList.remove('active');
+      if (row) row.classList.remove('playing');
+      allPlayIdx++;
+      setTimeout(playNext, 700);
+    };
+    window.speechSynthesis.speak(u);
+  }
+  playNext();
+}
+
+if (window.speechSynthesis) {
+  window.speechSynthesis.onvoiceschanged = () => {};
+  setTimeout(() => window.speechSynthesis.getVoices(), 200);
+}
+
+/* ---- QUIZ ---- */
+const questions = [
+  {
+    scene:'🚗', q:'Translate: "I have a car."', hint:'araba + possessive -m + var',
+    opts:['Arabam var','Arabam yok','Arabam vardı','Arabam olacak'], ans:0,
+    explain:"'Arabam' = my car. 'var' = exists. Present positive."
+  },
+  {
+    scene:'💸', q:'Translate: "I have no money."', hint:'para + possessive -m + yok',
+    opts:['Param var','Param olacak','Param yok','Param yoktu'], ans:2,
+    explain:"'yok' expresses non-existence. 'Param yok' = My money doesn't exist = I have no money."
+  },
+  {
+    scene:'🏠', q:'Translate: "She had a house." (past)', hint:'ev + possessive -i + vardı',
+    opts:['Evi var','Evi olacak','Evi yoktu','Evi vardı'], ans:3,
+    explain:"Past positive = 'vardı'. 'Evi vardı' = Her house existed (in the past)."
+  },
+  {
+    scene:'📱', q:'Translate: "Do you have a phone?" (question)', hint:'telefon + possessive -un + var mı?',
+    opts:['Telefonun yok mu?','Telefonun var mı?','Telefonun vardı mı?','Telefonun olacak mı?'], ans:1,
+    explain:"Questions use 'var mı?' — the particle 'mı' turns it into a yes/no question."
+  },
+  {
+    scene:'🐕', q:'Translate: "We didn\'t have a dog." (past negative)', hint:'köpek + possessive -imiz + yoktu',
+    opts:['Köpeğimiz vardı','Köpeğimiz yok','Köpeğimiz yoktu','Köpeğimiz olmayacak'], ans:2,
+    explain:"Past negative = 'yoktu'. 'Köpeğimiz yoktu' = Our dog didn't exist (back then)."
+  },
+  {
+    scene:'🔮', q:'Translate: "I will have money." (future)', hint:'para + possessive -m + olacak',
+    opts:['Param vardı','Param var','Param olacak','Param olmayacak'], ans:2,
+    explain:"Future positive uses 'olacak' (will be / will exist). 'Param olacak' = I will have money."
+  },
+  {
+    scene:'🏗️', q:'Translate: "They won\'t have a house." (future negative)', hint:'ev + possessive -leri + olmayacak',
+    opts:['Evleri olacak','Evleri olmayacak','Evleri yoktu','Evleri var'], ans:1,
+    explain:"Future negative = 'olmayacak'. 'Evleri olmayacak' = Their house won't exist = They won't have a house."
+  },
+  {
+    scene:'☕', q:'Translate: "There is no coffee here." (no owner)', hint:'No possessive needed — just kahve + yok',
+    opts:['Kahve var','Kahvem yok','Kahve yok','Kahve olmayacak'], ans:2,
+    explain:"When there's no owner, no possessive suffix is needed. 'Kahve yok' = coffee doesn't exist (here)."
+  },
+  {
+    scene:'🕐', q:'Translate: "Did you have time?" (past question)', hint:'vakit + possessive -in + var mıydı?',
+    opts:['Vaktın yok muydu?','Vaktın olmayacak mı?','Vaktın var mı?','Vaktın var mıydı?'], ans:3,
+    explain:"Past question: 'var mıydı?' (was there?). Combines past suffix with question particle."
+  },
+  {
+    scene:'💼', q:'Translate: "We will have work." (future positive)', hint:'iş + possessive -imiz + olacak',
+    opts:['İşimiz vardı','İşimiz yok','İşimiz olmayacak','İşimiz olacak'], ans:3,
+    explain:"'İşimiz olacak' = Our work will exist = We will have work. Future positive with 'olacak'."
+  },
+];
+
+let cur = 0, score = 0, answered = false;
+
+function renderQ() {
+  answered = false;
+  const qb = document.getElementById('quiz-body');
+  if (cur >= questions.length) {
+    const pct = Math.round(score / questions.length * 100);
+    const trophies = pct >= 80 ? '🏆' : pct >= 50 ? '🥈' : '📚';
+    const msgs = pct >= 80 ? 'Mükemmel! Outstanding work!' : pct >= 50 ? 'İyi! Good progress, keep going!' : 'Practice makes perfect — try again!';
+    qb.innerHTML = `<div class="result">
+      <div class="trophy">${trophies}</div>
+      <span class="pct">${pct}%</span>
+      <h3>${score} / ${questions.length} correct</h3>
+      <p>${msgs}</p>
+      <button class="btn-restart" onclick="restart()">🔄 Try again</button>
+    </div>`;
+    document.getElementById('prog').style.width = '100%';
+    return;
+  }
+  const q = questions[cur];
+  const opts = q.opts.map((o, i) => `<button class="opt" id="opt${i}" onclick="choose(${i})">${o}</button>`).join('');
+  qb.innerHTML = `
+    <div class="q-scene">${q.scene}</div>
+    <div class="q-text">${q.q}</div>
+    <div class="q-hint">💡 ${q.hint}</div>
+    <div class="options">${opts}</div>
+    <div class="feedback" id="fb"></div>
+    <div class="quiz-footer">
+      <span class="q-label">Question ${cur + 1} of ${questions.length}</span>
+      <button class="btn-next" id="btn-next" onclick="nextQ()">Next →</button>
+    </div>
+  `;
+  document.getElementById('prog').style.width = (cur / questions.length * 100) + '%';
+  document.getElementById('q-counter').textContent = (cur + 1) + ' / ' + questions.length;
+}
+
+function choose(i) {
+  if (answered) return;
+  answered = true;
+  const q = questions[cur];
+  const fb = document.getElementById('fb');
+  for (let j = 0; j < q.opts.length; j++) {
+    const btn = document.getElementById('opt' + j);
+    btn.disabled = true;
+    if (j === q.ans) btn.classList.add('correct');
+    else if (j === i) btn.classList.add('wrong');
+  }
+  if (i === q.ans) {
+    score++;
+    speak(q.opts[q.ans]);
+    fb.className = 'feedback show ok';
+    fb.innerHTML = '✅ <strong>Doğru! Correct!</strong> — ' + q.explain;
+  } else {
+    fb.className = 'feedback show bad';
+    fb.innerHTML = '❌ Not quite. Correct answer: <strong>' + q.opts[q.ans] + '</strong> — ' + q.explain;
+  }
+  document.getElementById('score-badge').textContent = score + ' pts';
+  document.getElementById('btn-next').classList.add('show');
+}
+
+function nextQ() { cur++; renderQ(); }
+function restart() { cur = 0; score = 0; document.getElementById('score-badge').textContent = '0 pts'; renderQ(); }
+
+renderQ();
+</script>
+</body>
+</html>
