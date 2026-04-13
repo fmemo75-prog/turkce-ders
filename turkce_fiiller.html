@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Türkçe Günlük Rutin Fiilleri</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,sans-serif;background:#f5f5f0;color:#1a1a1a;padding:1rem}
+.app{max-width:720px;margin:0 auto}
+.hdr{text-align:center;margin-bottom:1.25rem;padding:1rem 1.25rem;background:#fff;border-radius:12px;border:1px solid #e0e0d8}
+.hdr h1{font-size:22px;font-weight:500;margin-bottom:4px}
+.hdr p{font-size:13px;color:#666}
+.tabs{display:flex;gap:8px;margin-bottom:1.25rem;flex-wrap:wrap}
+.tab{flex:1;min-width:100px;padding:9px 10px;border:1px solid #ccc;border-radius:8px;background:#fff;color:#555;cursor:pointer;font-size:13px;text-align:center;transition:all 0.15s}
+.tab.active{background:#E6F1FB;border-color:#378ADD;color:#0C447C;font-weight:500}
+.tab:hover:not(.active){background:#f0f0ea}
+.sec{display:none}.sec.active{display:block}
+
+/* verb cards */
+.snd-note{background:#EEEDFE;border:1px solid #CECBF6;color:#3C3489;padding:7px 12px;border-radius:8px;font-size:12px;margin-bottom:10px;text-align:center}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.vcard{background:#fff;border:1px solid #e0e0d8;border-radius:12px;padding:12px 14px;cursor:pointer;transition:all 0.15s;position:relative}
+.vcard:hover{border-color:#378ADD;background:#E6F1FB}
+.vcard .emoji{font-size:22px;margin-bottom:5px;display:block}
+.vcard .tr-word{font-size:15px;font-weight:500;color:#1a1a1a}
+.vcard .pron{font-size:11px;color:#185FA5;margin:2px 0 1px}
+.vcard .en-word{font-size:12px;color:#555;margin-bottom:4px}
+.vcard .en-usage{font-size:11px;color:#3C3489;background:#EEEDFE;padding:3px 7px;border-radius:4px;display:inline-block;margin-bottom:4px}
+.vcard .play-btn{position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:50%;background:#E6F1FB;border:1px solid #B5D4F4;display:flex;align-items:center;justify-content:center;font-size:11px;cursor:pointer;color:#0C447C}
+.vcard.playing{border-color:#1D9E75;background:#E1F5EE}
+.ex-det{margin-top:7px;padding-top:7px;border-top:1px solid #e8e8e0;display:none}
+.ex-det .ex-tr{font-size:12px;color:#1a1a1a;margin-bottom:2px}
+.ex-det .ex-en{font-size:11px;color:#666;font-style:italic}
+.vcard.open .ex-det{display:block}
+
+/* grammar tab */
+.tense-box{background:#EEEDFE;border:1px solid #CECBF6;border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.25rem}
+.tense-box h2{font-size:15px;font-weight:500;color:#3C3489;margin-bottom:10px}
+.tense-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:500px){.tense-grid{grid-template-columns:1fr}}
+.tense-card{background:#fff;border:1px solid #CECBF6;border-radius:8px;padding:10px 12px}
+.tense-card .label{font-size:11px;font-weight:500;color:#534AB7;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px}
+.tense-card .tr-ex{font-size:15px;color:#1a1a1a;font-weight:500;margin-bottom:2px}
+.tense-card .en-ex{font-size:12px;color:#555;font-style:italic;margin-bottom:6px}
+.tense-card .note{font-size:11px;color:#3C3489;background:#EEEDFE;padding:4px 8px;border-radius:4px}
+.sfx-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.sfx{padding:4px 10px;border-radius:8px;font-size:12px;font-weight:500}
+.sfx.aorist{background:#E6F1FB;color:#0C447C;border:1px solid #B5D4F4}
+.sfx.prog{background:#EAF3DE;color:#3B6D11;border:1px solid #C0DD97}
+.sfx-leg{font-size:11px;color:#666;margin-top:6px}
+.green-box{background:#E1F5EE;border:1px solid #9FE1CB;border-radius:12px;padding:1rem 1.25rem}
+.green-box h2{font-size:15px;font-weight:500;color:#085041;margin-bottom:10px}
+.conj-table{width:100%;font-size:13px;border-collapse:collapse}
+.conj-table th{text-align:left;padding:6px 8px;font-weight:500;border-bottom:1px solid #9FE1CB}
+.conj-table td{padding:5px 8px;border-bottom:1px solid #d0ede5}
+.conj-table .col-inf{color:#1a1a1a}
+.conj-table .col-aor{color:#185FA5;font-weight:500}
+.conj-table .col-pro{color:#3B6D11;font-weight:500}
+
+/* exercise tab */
+.ex-area{background:#fff;border:1px solid #e0e0d8;border-radius:12px;padding:1.25rem}
+.ex-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.ex-prog{font-size:13px;color:#666}
+.score-bdg{background:#EAF3DE;border:1px solid #C0DD97;color:#3B6D11;padding:4px 12px;border-radius:8px;font-size:13px;font-weight:500}
+.hint-box{background:#FAEEDA;border:1px solid #FAC775;color:#633806;padding:7px 12px;border-radius:8px;font-size:12px;margin-bottom:1rem}
+.ex-img{font-size:52px;text-align:center;margin:0.75rem 0;line-height:1}
+.ex-sent{font-size:17px;color:#1a1a1a;text-align:center;margin-bottom:4px;line-height:1.6}
+.ex-sent-en{font-size:13px;color:#666;text-align:center;font-style:italic;margin-bottom:1rem}
+.blank{display:inline-block;min-width:120px;height:26px;border-bottom:2px solid #378ADD;vertical-align:bottom;text-align:center;font-weight:500;color:#185FA5;font-size:15px;padding:0 4px}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem}
+.cbtn{padding:10px 14px;border:1px solid #ccc;border-radius:8px;background:#fff;color:#1a1a1a;cursor:pointer;font-size:14px;transition:all 0.15s;text-align:center;font-family:inherit}
+.cbtn:hover:not(:disabled){background:#f0f0ea}
+.cbtn.correct{background:#EAF3DE;border-color:#639922;color:#3B6D11;font-weight:500}
+.cbtn.wrong{background:#FCEBEB;border-color:#E24B4A;color:#791F1F}
+.cbtn:disabled{cursor:default}
+.fb{text-align:center;padding:10px 14px;border-radius:8px;margin-bottom:1rem;font-size:14px;font-weight:500;display:none}
+.fb.ok{background:#EAF3DE;color:#3B6D11;border:1px solid #C0DD97;display:block}
+.fb.nope{background:#FCEBEB;color:#791F1F;border:1px solid #F7C1C1;display:block}
+.fb-sub{font-size:12px;font-weight:400;margin-top:3px}
+.nxt-btn{width:100%;padding:10px;background:#E6F1FB;border:1px solid #B5D4F4;border-radius:8px;color:#0C447C;font-size:14px;font-weight:500;cursor:pointer;display:none;font-family:inherit}
+.nxt-btn:hover{background:#B5D4F4}
+.nxt-btn.show{display:block}
+.fin{text-align:center;padding:2rem 1rem}
+.fin .big{font-size:60px;margin-bottom:1rem}
+.fin h2{font-size:20px;font-weight:500;margin-bottom:8px}
+.fin p{color:#666;margin-bottom:1rem;font-size:14px}
+.rst-btn{padding:10px 24px;background:#E6F1FB;border:1px solid #378ADD;border-radius:8px;color:#0C447C;font-size:14px;cursor:pointer;font-weight:500;font-family:inherit}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="hdr">
+    <h1>🇹🇷 Günlük Rutin Fiilleri</h1>
+    <p>15 essential verbs • Pronunciation + Grammar + Exercises</p>
+  </div>
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('learn',this)">📚 Fiiller</div>
+    <div class="tab" onclick="showTab('grammar',this)">🔤 Geniş Zaman</div>
+    <div class="tab" onclick="showTab('exercise',this)">✏️ Alıştırma</div>
+  </div>
+
+  <div class="sec active" id="learn">
+    <div class="snd-note">🔊 Karta tıkla → örnek cümle açılır ve sesli okunur &nbsp;|&nbsp; 🔊 simgesine bas → sadece fiili duyarsın</div>
+    <div class="vgrid" id="verbGrid"></div>
+  </div>
+
+  <div class="sec" id="grammar">
+    <div class="tense-box">
+      <h2>Geniş Zaman vs. Şimdiki Zaman — Aorist vs. Present Progressive</h2>
+      <div class="tense-grid">
+        <div class="tense-card">
+          <div class="label">Geniş Zaman (Aorist) — -r / -ar / -er / -ir</div>
+          <div class="tr-ex">Ben her sabah uyan<strong style="color:#185FA5">ırım</strong>.</div>
+          <div class="en-ex">I wake up every morning.</div>
+          <div class="note">Habitual, general truth, routine — just like English simple present: "I wake up", "She drinks tea"</div>
+        </div>
+        <div class="tense-card">
+          <div class="label">Şimdiki Zaman (Progressive) — -iyor</div>
+          <div class="tr-ex">Şu an uyan<strong style="color:#3B6D11">ıyorum</strong>.</div>
+          <div class="en-ex">I am waking up right now.</div>
+          <div class="note">Action happening at this moment — like English present continuous: "I am waking up", "She is drinking"</div>
+        </div>
+        <div class="tense-card">
+          <div class="label">Aorist = English Simple Present</div>
+          <div class="tr-ex">Ben çay iç<strong style="color:#185FA5">erim</strong>.</div>
+          <div class="en-ex">I drink tea. (I always / usually do)</div>
+          <div class="note">Think of -r suffix as the "habit suffix" — it describes what you normally do, just like "I drink", "I sleep"</div>
+        </div>
+        <div class="tense-card">
+          <div class="label">-iyor = English -ing form</div>
+          <div class="tr-ex">Ben çay iç<strong style="color:#3B6D11">iyorum</strong>.</div>
+          <div class="en-ex">I am drinking tea. (right now)</div>
+          <div class="note">The -iyor suffix always signals an ongoing action — just like English "be + -ing"</div>
+        </div>
+      </div>
+      <div class="sfx-row">
+        <span class="sfx aorist">-r / -ar / -er / -ir → Aorist (habit)</span>
+        <span class="sfx prog">-iyor / -ıyor → Progressive (now)</span>
+      </div>
+      <div class="sfx-leg">Aorist suffix changes with vowel harmony: uyan<em>ır</em>ım, iç<em>er</em>im, git<em>ir</em>im, kal<em>kar</em>ım</div>
+    </div>
+    <div class="green-box">
+      <h2>Conjugation table — Ben (I)</h2>
+      <div style="overflow-x:auto">
+        <table class="conj-table">
+          <thead><tr>
+            <th style="color:#085041">Infinitive</th>
+            <th style="color:#0C447C">Aorist (habit)</th>
+            <th style="color:#3B6D11">Progressive (now)</th>
+          </tr></thead>
+          <tbody id="conjTable"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec" id="exercise">
+    <div id="exContainer"></div>
+  </div>
+</div>
+
+<script>
+const V=[
+  {tr:"uyanmak",pron:"u-YAN-mak",en:"to wake up",enUsage:"aorist: uyanırım = I wake up",emoji:"☀️",exTr:"Ben her sabah saat 7'de uyanırım.",exEn:"I wake up at 7 every morning.",aorist:"uyanırım",prog:"uyanıyorum"},
+  {tr:"kalkmak",pron:"KAL-kmak",en:"to get up / rise",enUsage:"aorist: kalkarım = I get up",emoji:"🛏️",exTr:"Yataktan kalkmak zamanı geldi.",exEn:"It's time to get out of bed.",aorist:"kalkarım",prog:"kalkıyorum"},
+  {tr:"yıkanmak",pron:"yı-KAN-mak",en:"to wash / shower",enUsage:"aorist: yıkanırım = I shower",emoji:"🚿",exTr:"Ben her sabah duş alarak yıkanırım.",exEn:"I shower every morning.",aorist:"yıkanırım",prog:"yıkanıyorum"},
+  {tr:"giyinmek",pron:"gi-YİN-mek",en:"to get dressed",enUsage:"aorist: giyinirim = I get dressed",emoji:"👕",exTr:"Okula gitmeden önce giyinirim.",exEn:"I get dressed before going to school.",aorist:"giyinirim",prog:"giyiniyorum"},
+  {tr:"kahvaltı etmek",pron:"kah-VAL-tı et-mek",en:"to have breakfast",enUsage:"aorist: kahvaltı ederim = I have breakfast",emoji:"🍳",exTr:"Ben her sabah kahvaltı ederim.",exEn:"I have breakfast every morning.",aorist:"kahvaltı ederim",prog:"kahvaltı ediyorum"},
+  {tr:"çay / kahve içmek",pron:"çay / KAH-ve iç-mek",en:"to drink tea / coffee",enUsage:"aorist: içerim = I drink",emoji:"☕",exTr:"Sabah kahvaltıda bir fincan çay içerim.",exEn:"I drink a cup of tea at breakfast.",aorist:"içerim",prog:"içiyorum"},
+  {tr:"işe gitmek",pron:"i-ŞE git-mek",en:"to go to work",enUsage:"aorist: işe giderim = I go to work",emoji:"💼",exTr:"Ben her gün sabah 9'da işe giderim.",exEn:"I go to work at 9 every day.",aorist:"işe giderim",prog:"işe gidiyorum"},
+  {tr:"öğle yemeği yemek",pron:"öğ-LE ye-me-ği ye-mek",en:"to eat lunch",enUsage:"aorist: yerim = I eat lunch",emoji:"🥗",exTr:"Öğle yemeğini iş yerinde yerim.",exEn:"I eat lunch at the office.",aorist:"öğle yemeği yerim",prog:"öğle yemeği yiyorum"},
+  {tr:"çalışmak",pron:"ça-LIŞ-mak",en:"to work / study",enUsage:"aorist: çalışırım = I work",emoji:"💻",exTr:"Ofiste sekiz saat çalışırım.",exEn:"I work eight hours at the office.",aorist:"çalışırım",prog:"çalışıyorum"},
+  {tr:"alışveriş yapmak",pron:"a-lış-ve-RİŞ yap-mak",en:"to go shopping",enUsage:"aorist: yaparım = I go shopping",emoji:"🛒",exTr:"Hafta sonu alışveriş yaparım.",exEn:"I go shopping on weekends.",aorist:"alışveriş yaparım",prog:"alışveriş yapıyorum"},
+  {tr:"eve dönmek",pron:"e-VE dön-mek",en:"to return home",enUsage:"aorist: dönerim = I return home",emoji:"🏠",exTr:"Akşam işten eve dönerim.",exEn:"I return home from work in the evening.",aorist:"eve dönerim",prog:"eve dönüyorum"},
+  {tr:"yemek pişirmek",pron:"ye-MEK pi-şir-mek",en:"to cook",enUsage:"aorist: pişiririm = I cook",emoji:"🍲",exTr:"Akşam yemeğini kendim pişiririm.",exEn:"I cook dinner myself.",aorist:"pişiririm",prog:"pişiriyorum"},
+  {tr:"dinlenmek",pron:"din-LEN-mek",en:"to rest / relax",enUsage:"aorist: dinlenirim = I rest",emoji:"🛋️",exTr:"Akşamları televizyon izleyerek dinlenirim.",exEn:"I relax by watching TV in the evenings.",aorist:"dinlenirim",prog:"dinleniyorum"},
+  {tr:"uyumak",pron:"u-YU-mak",en:"to sleep",enUsage:"aorist: uyurum = I sleep",emoji:"😴",exTr:"Her gece saat 23'te uyurum.",exEn:"I sleep at 11 pm every night.",aorist:"uyurum",prog:"uyuyorum"},
+  {tr:"spor yapmak",pron:"spor YAP-mak",en:"to exercise / work out",enUsage:"aorist: yaparım = I work out",emoji:"🏃",exTr:"Ben her sabah spor yaparım.",exEn:"I work out every morning.",aorist:"spor yaparım",prog:"spor yapıyorum"},
+];
+
+const EX=[
+  {img:"🛏️",tr:"Yataktan ______ zamanı geldi.",en:"It's time to ______ of bed.",ans:"kalkmak",opts:["uyumak","kalkmak"],vi:1},
+  {img:"🚿",tr:"Her sabah duşta ______.",en:"I ______ every morning.",ans:"yıkanırım",opts:["yıkanırım","giyinirim"],vi:2},
+  {img:"☀️",tr:"Ben her sabah saat 7'de ______.",en:"I ______ at 7 every morning.",ans:"uyanırım",opts:["uyurum","uyanırım"],vi:0},
+  {img:"👕",tr:"Okula gitmeden önce ______.",en:"I ______ before going to school.",ans:"giyinirim",opts:["yıkanırım","giyinirim"],vi:3},
+  {img:"🍳",tr:"Ben her sabah ______.",en:"I ______ every morning.",ans:"kahvaltı ederim",opts:["kahvaltı ederim","çay içerim"],vi:4},
+  {img:"☕",tr:"Sabah bir fincan çay ______.",en:"I ______ a cup of tea in the morning.",ans:"içerim",opts:["içerim","çalışırım"],vi:5},
+  {img:"💼",tr:"Her gün sabah 9'da ______.",en:"I ______ at 9 every day.",ans:"işe giderim",opts:["eve dönerim","işe giderim"],vi:6},
+  {img:"🥗",tr:"Öğle arasında ______.",en:"I ______ during lunch break.",ans:"öğle yemeği yerim",opts:["öğle yemeği yerim","akşam yemeği yerim"],vi:7},
+  {img:"💻",tr:"Ofiste 8 saat ______.",en:"I ______ for 8 hours at the office.",ans:"çalışırım",opts:["dinlenirim","çalışırım"],vi:8},
+  {img:"🛒",tr:"Hafta sonu markete ______.",en:"I ______ on weekends.",ans:"alışveriş yaparım",opts:["alışveriş yaparım","yemek pişiririm"],vi:9},
+  {img:"🏠",tr:"Akşam işten ______.",en:"I ______ from work in the evening.",ans:"eve dönerim",opts:["işe giderim","eve dönerim"],vi:10},
+  {img:"🍲",tr:"Akşam yemeğini kendim ______.",en:"I ______ dinner myself.",ans:"pişiririm",opts:["pişiririm","yerim"],vi:11},
+  {img:"🛋️",tr:"Akşam televizyon izleyerek ______.",en:"I ______ by watching TV in the evenings.",ans:"dinlenirim",opts:["çalışırım","dinlenirim"],vi:12},
+  {img:"😴",tr:"Her gece saat 23'te ______.",en:"I ______ at 11 pm every night.",ans:"uyurum",opts:["uyanırım","uyurum"],vi:13},
+  {img:"🏃",tr:"Ben her sabah ______.",en:"I ______ every morning.",ans:"spor yaparım",opts:["spor yaparım","yıkanırım"],vi:14},
+];
+
+let cur=0,score=0,ans=false,openCard=null;
+
+function speak(text){
+  if(!window.speechSynthesis)return;
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang="tr-TR";u.rate=0.85;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(u);
+}
+
+function buildGrid(){
+  const g=document.getElementById('verbGrid');
+  g.innerHTML='';
+  V.forEach((v)=>{
+    const c=document.createElement('div');
+    c.className='vcard';
+    c.innerHTML=`
+      <button class="play-btn" onclick="event.stopPropagation();speak('${v.tr}')" title="Hear pronunciation">🔊</button>
+      <span class="emoji">${v.emoji}</span>
+      <div class="tr-word">${v.tr}</div>
+      <div class="pron">/${v.pron}/</div>
+      <div class="en-word">${v.en}</div>
+      <div class="en-usage">${v.enUsage}</div>
+      <div class="ex-det">
+        <div class="ex-tr">📝 ${v.exTr}</div>
+        <div class="ex-en">✦ ${v.exEn}</div>
+      </div>`;
+    c.addEventListener('click',()=>{
+      if(openCard&&openCard!==c)openCard.classList.remove('open');
+      c.classList.toggle('open');
+      openCard=c.classList.contains('open')?c:null;
+      speak(v.exTr);
+    });
+    g.appendChild(c);
+  });
+}
+
+function buildConjTable(){
+  const tb=document.getElementById('conjTable');
+  if(!tb)return;
+  tb.innerHTML='';
+  V.forEach(v=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <td class="col-inf">${v.emoji} ${v.tr}</td>
+      <td class="col-aor">${v.aorist}</td>
+      <td class="col-pro">${v.prog}</td>`;
+    tb.appendChild(tr);
+  });
+}
+
+function buildEx(){
+  const c=document.getElementById('exContainer');
+  if(cur>=EX.length){
+    c.innerHTML=`<div class="fin">
+      <div class="big">🏆</div>
+      <h2>Tebrikler! Bitirdiniz!</h2>
+      <p>Score: <strong>${score}</strong> / ${EX.length*10}</p>
+      <p>${score>=130?"Mükemmel! Perfect score!":score>=80?"Çok iyi! Well done!":"Keep practising — tekrar deneyin!"}</p>
+      <button class="rst-btn" onclick="cur=0;score=0;ans=false;buildEx()">🔄 Tekrar Başla / Try Again</button>
+    </div>`;return;
+  }
+  const e=EX[cur];
+  const sh=[...e.opts].sort(()=>Math.random()-0.5);
+  const safeAns=e.ans.replace(/'/g,"\\'");
+  c.innerHTML=`<div class="ex-area">
+    <div class="ex-hdr">
+      <span class="ex-prog">${cur+1} / ${EX.length}</span>
+      <span class="score-bdg">⭐ ${score}</span>
+    </div>
+    <div class="hint-box">💡 Hint: <strong>${V[e.vi].tr}</strong> → <em>${V[e.vi].en}</em> &nbsp;|&nbsp; aorist: <strong>${V[e.vi].aorist}</strong></div>
+    <div class="ex-img">${e.img}</div>
+    <div class="ex-sent">${e.tr.replace('______','<span class="blank" id="blk">______</span>')}</div>
+    <div class="ex-sent-en">${e.en}</div>
+    <div class="choices" id="cho">
+      ${sh.map(o=>`<button class="cbtn" onclick="check('${o.replace(/'/g,"\\'")}','${safeAns}',this)">${o}</button>`).join('')}
+    </div>
+    <div class="fb" id="fb"></div>
+    <button class="nxt-btn" id="nxt" onclick="nextEx()">${cur<EX.length-1?'Sonraki →':'Finish 🎉'}</button>
+  </div>`;
+}
+
+function check(chosen,correct,btn){
+  if(ans)return;
+  ans=true;
+  document.querySelectorAll('.cbtn').forEach(b=>b.disabled=true);
+  const fb=document.getElementById('fb');
+  const blk=document.getElementById('blk');
+  if(chosen===correct){
+    btn.classList.add('correct');
+    blk.textContent=correct;blk.style.borderBottomColor='#639922';
+    fb.className='fb ok';
+    fb.innerHTML='🎉 Harika! Correct!<div class="fb-sub">This is the aorist (geniş zaman) form — habitual action.</div>';
+    score+=10;
+    playTone(true);
+    document.querySelector('.score-bdg').textContent='⭐ '+score;
+  }else{
+    btn.classList.add('wrong');
+    blk.textContent=correct;blk.style.borderBottomColor='#E24B4A';
+    document.querySelectorAll('.cbtn').forEach(b=>{if(b.textContent===correct)b.classList.add('correct');});
+    fb.className='fb nope';
+    fb.innerHTML='💡 Correct answer: <strong>'+correct+'</strong><div class="fb-sub">Remember: aorist (-r) = habitual / "I always do this"</div>';
+    playTone(false);
+  }
+  document.getElementById('nxt').classList.add('show');
+  speak(correct);
+}
+
+function nextEx(){cur++;ans=false;buildEx();}
+
+function playTone(ok){
+  try{
+    const ac=new(window.AudioContext||window.webkitAudioContext)();
+    const o=ac.createOscillator(),g=ac.createGain();
+    o.connect(g);g.connect(ac.destination);
+    if(ok){o.frequency.setValueAtTime(523,ac.currentTime);o.frequency.setValueAtTime(784,ac.currentTime+0.12);g.gain.setValueAtTime(0.25,ac.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.45);}
+    else{o.frequency.setValueAtTime(320,ac.currentTime);o.frequency.setValueAtTime(260,ac.currentTime+0.18);g.gain.setValueAtTime(0.2,ac.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.4);}
+    o.start();o.stop(ac.currentTime+0.5);
+  }catch(e){}
+}
+
+function showTab(tab,el){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(tab).classList.add('active');
+  el.classList.add('active');
+  if(tab==='exercise')buildEx();
+  if(tab==='grammar')buildConjTable();
+}
+
+buildGrid();
+</script>
+</body>
+</html>
