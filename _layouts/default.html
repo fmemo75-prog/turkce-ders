@@ -1,7 +1,7 @@
 ---
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <!-- Google Analytics (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CBK2NC3T9X"></script>
@@ -14,37 +14,46 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} | Fatih Mehmet CANITEZ</title>
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ page.name | remove: ".html" | replace: "-", " " | capitalize }}{% endif %} | Fatih Mehmet CANITEZ</title>
     
     <style>
         :root { --primary-blue: #2c3e50; --turkish-red: #e74c3c; --bg-light: #f4f7f6; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg-light); margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg-light); margin: 0; padding: 0; }
         
-        /* ENGLISH FB WARNING */
-        #fb-warning { 
-            display: none; background-color: #ffeb3b; color: #856404; padding: 15px; 
-            text-align: center; font-weight: bold; border-bottom: 2px solid #fbc02d; 
-            position: sticky; top: 0; z-index: 9999; font-size: 14px;
+        /* FACEBOOK UYARISI */
+        #fb-warning { display: none; background: #ffeb3b; color: #856404; padding: 15px; text-align: center; font-weight: bold; border-bottom: 2px solid #fbc02d; position: sticky; top: 0; z-index: 9999; font-size: 14px; }
+
+        header { background: var(--primary-blue); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; color: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header-title { color: white; text-decoration: none; font-weight: bold; font-size: 1rem; }
+
+        .container { max-width: 850px; margin: 25px auto; background: white; padding: 35px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 6px solid var(--turkish-red); }
+        
+        /* İkizlenme Kalkanı */
+        .lesson-body html, .lesson-body body { display: contents; }
+
+        /* ARAÇ ÇUBUĞU (WHATSAPP & PDF) */
+        .action-bar { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .btn { padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 14px; color: white !important; transition: 0.3s; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-home { background: var(--primary-blue); }
+        .btn-whatsapp { background: #25D366; }
+        .btn-print { background: #7f8c8d; }
+        .btn:hover { opacity: 0.9; transform: translateY(-2px); }
+
+        /* YAZDIRMA AYARI (PDF BASARKEN GÖRÜNMEYECEK YERLER) */
+        @media print {
+            header, footer, .action-bar, #fb-warning, #google_translate_element { display: none !important; }
+            body { background: white; }
+            .container { box-shadow: none; border: none; margin: 0; width: 100%; max-width: 100%; padding: 0; }
         }
 
-        header { background: var(--primary-blue); padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .header-title { color: white; text-decoration: none; font-weight: bold; font-size: 1rem; }
-        
-        .container { max-width: 850px; margin: 20px auto; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 6px solid var(--turkish-red); }
-        
-        .action-bar { margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; display: flex; justify-content: center; gap: 10px; }
-        .btn { padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 13px; color: white !important; }
-        .btn-home { background: var(--primary-blue); }
-
-        /* Conflict Shield */
-        .lesson-body html, .lesson-body body { display: contents; }
-        @media (max-width: 600px) { .container { margin: 10px; padding: 15px; width: calc(100% - 20px); } }
+        @media (max-width: 600px) { .container { margin: 10px; padding: 20px; width: calc(100% - 20px); } header { flex-direction: column; gap: 10px; } }
     </style>
 </head>
 <body>
+    <!-- Facebook Uyarısı -->
     <div id="fb-warning">
         ⚠️ <b>AUDIO ISSUE:</b> Facebook browser might block audio. <br> 
-        Click <b>(...)</b> and select <b>"Open in External Browser"</b> (Chrome/Safari).
+        Click <b>(...)</b> and select <b>"Open in External Browser"</b>.
     </div>
 
     <header>
@@ -55,12 +64,30 @@
     <div class="container lesson-body">
       {{ content }}
 
+      <!-- OTOMATİK ARAÇ ÇUBUĞU: Sadece alt derslerde çıkar -->
       {% if page.url != "/" and page.url != "/index.html" %}
       <div class="action-bar">
-          <a href="{{ site.baseurl }}/" class="btn btn-home">🏠 Back to Home</a>
+          <!-- WhatsApp Paylaş -->
+          <a href="https://api.whatsapp.com/send?text=Check this lesson: {{ site.url }}{{ page.url }}" target="_blank" class="btn btn-whatsapp">
+            🟢 WhatsApp
+          </a>
+          
+          <!-- PDF / Yazdır -->
+          <button onclick="window.print()" class="btn btn-print">
+            🖨️ Print / PDF
+          </button>
+
+          <!-- Geri Dön -->
+          <a href="{{ site.baseurl }}/" class="btn btn-home">
+            🏠 Home
+          </a>
       </div>
       {% endif %}
     </div>
+
+    <footer style="text-align: center; padding: 20px; font-size: 11px; color: #999;">
+        © {{ site.time | date: '%Y' }} | Fatih Mehmet CANITEZ
+    </footer>
 
     <script>
         if(navigator.userAgent.indexOf("FBAN") > -1 || navigator.userAgent.indexOf("FBAV") > -1) {
