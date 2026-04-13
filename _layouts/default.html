@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <!-- 1. Google Analytics (Türkçe Ders Takip Kimliği) -->
+    <!-- Google Analytics (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CBK2NC3T9X"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -14,37 +14,46 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} | Türkçe Öğreniyorum</title>
+    
+    <!-- AKILLI BAŞLIK SİSTEMİ: Başlık yoksa dosya adını kullanır -->
+    <title>
+      {% if page.title %}{{ page.title }}{% else %}{{ page.name | remove: ".html" | remove: ".md" | replace: "-", " " | capitalize }}{% endif %} | Türkçe Öğreniyorum
+    </title>
     
     <style>
         :root { --lesson-blue: #2c3e50; --lesson-accent: #e67e22; --lesson-bg: #f4f7f6; }
-        * { box-sizing: border-box; }
         body { background-color: var(--lesson-bg); font-family: 'Segoe UI', Tahoma, sans-serif; line-height: 1.7; color: #333; margin: 0; padding: 0; }
         
-        /* HEADER */
-        header { background: var(--lesson-blue); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; color: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .header-title { color: white; text-decoration: none; font-weight: bold; font-size: 1.2rem; }
+        /* FACEBOOK UYARI PENCERESİ STİLİ */
+        #fb-browser-warning {
+            display: none; /* Varsayılan olarak gizli */
+            background-color: #ffeb3b; color: #856404;
+            padding: 15px; text-align: center; font-weight: bold;
+            border-bottom: 2px solid #fbc02d; position: sticky; top: 0; z-index: 9999;
+        }
 
-        /* ANA KONTEYNER */
-        .container { max-width: 900px; margin: 30px auto; background: white; padding: 35px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-top: 6px solid var(--lesson-accent); }
-
-        /* İKİZLENME ÖNLEYİCİ KRİTİK CSS */
-        /* Eğer ders dosyasının içinde yanlışlıkla <html> veya <body> kaldıysa onları pasifize eder */
-        .lesson-content html, .lesson-content body, .lesson-content head { display: contents; }
-        .lesson-content meta, .lesson-content title, .lesson-content link, .lesson-content script:not([src*="google"]) { display: none !important; }
-
-        /* ARAÇ ÇUBUĞU (PAYLAŞ & YAZDIR) */
+        header { background: var(--lesson-blue); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; color: white; }
+        .header-title { color: white; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+        .container { max-width: 900px; margin: 30px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-top: 6px solid var(--lesson-accent); }
+        
+        /* İkizlenme Önleyici CSS */
+        .lesson-content html, .lesson-content body { display: contents; }
+        
         .action-bar { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-        .btn { padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 14px; color: white !important; display: inline-block; transition: 0.3s; }
+        .btn { padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 14px; color: white !important; }
         .btn-home { background: var(--lesson-blue); }
         .btn-whatsapp { background: #25D366; }
-        .btn-print { background: #7f8c8d; cursor: pointer; border: none; }
 
-        @media print { header, .action-bar, footer, #google_translate_element { display: none !important; } .container { box-shadow: none; margin: 0; width: 100%; padding: 0; } }
-        @media (max-width: 600px) { .container { margin: 10px; padding: 20px; width: calc(100% - 20px); } header { flex-direction: column; text-align: center; gap: 10px; } }
+        @media (max-width: 600px) { .container { margin: 10px; padding: 20px; width: calc(100% - 20px); } }
     </style>
 </head>
 <body>
+
+    <!-- FACEBOOK UYARI ALANI -->
+    <div id="fb-browser-warning">
+        ⚠️ <b>Dikkat:</b> Facebook tarayıcısında sesler çalışmayabilir. <br> 
+        Lütfen sağ üstteki <b>(...)</b> üç noktaya tıklayıp <b>"Harici Tarayıcıda Aç"</b> (Chrome, Safari vb.) deyin.
+    </div>
 
     <header>
         <a href="{{ site.baseurl }}/" class="header-title">📖 Türkçe Dersleri Portal</a>
@@ -52,24 +61,28 @@
     </header>
 
     <div class="container lesson-content">
-      <!-- DERS İÇERİĞİ -->
       {{ content }}
 
-      <!-- OTOMATİK ARAÇLAR (SADECE DERSLERDE) -->
       {% if page.url != "/" and page.url != "/index.html" %}
       <div class="action-bar">
           <a href="{{ site.baseurl }}/" class="btn btn-home">🏠 Ders Listesi</a>
-          <a href="https://api.whatsapp.com/send?text=Bu dersi mutlaka çalışmalısın: {{ site.url }}{{ page.url }}" target="_blank" class="btn btn-whatsapp">🟢 WhatsApp ile Paylaş</a>
-          <button onclick="window.print()" class="btn btn-print">🖨️ Yazdır / PDF</button>
+          <a href="https://api.whatsapp.com/send?text=Bu dersi mutlaka çalış: {{ site.url }}{{ page.url }}" target="_blank" class="btn btn-whatsapp">🟢 WhatsApp Paylaş</a>
+          <button onclick="window.print()" style="background:#7f8c8d; border:none; color:white; padding:10px 20px; border-radius:50px; cursor:pointer; font-weight:bold;">🖨️ Yazdır</button>
       </div>
       {% endif %}
     </div>
 
-    <footer style="text-align: center; padding: 30px; color: #888; font-size: 13px;">
-        © {{ site.time | date: '%Y' }} Fatih Mehmet Canıtez - Türkçe Dil Eğitim Portalı
-    </footer>
+    <!-- Facebook Tarayıcı Tespiti Yapan Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var ua = navigator.userAgent || navigator.vendor || window.opera;
+            var isFacebook = (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
+            if (isFacebook) {
+                document.getElementById("fb-browser-warning").style.display = "block";
+            }
+        });
+    </script>
 
-    <!-- Google Translate Script -->
     <script type="text/javascript">
       function googleTranslateElementInit() {
         new google.translate.TranslateElement({pageLanguage: 'tr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
