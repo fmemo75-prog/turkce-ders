@@ -3,145 +3,59 @@ layout: default
 title: Fatih Mehmet CANITEZ | Turkish for Foreigners
 ---
 
-<<<<<<< HEAD
-<!-- 1. SENİN TASARIMIN: HEADER VE PROFİL -->
-<div align="center" style="margin-bottom: 30px;">
-    <div style="width: 120px; height: 120px; border-radius: 50%; border: 4px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.1); overflow: hidden; margin-bottom: 15px;">
-        <img src="fatih-photo.jpeg" style="width: 100%; height: 100%; object-fit: cover;">
-    </div>
-    <h1 style="margin: 0; font-size: 24px; color: #2c3e50;">Fatih Mehmet CANITEZ</h1>
+<!-- 1. SENİN ANA TASARIMIN -->
+<div align="center">
+    <img src="fatih-photo.jpeg" style="width: 120px; height: 120px; border-radius: 50%; border: 4px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.1); object-fit: cover;">
+    <h1 style="margin: 10px 0 0 0; color: #2c3e50;">Fatih Mehmet CANITEZ</h1>
     <span style="color: #e74c3c; font-weight: 800; text-transform: uppercase;">TURKISH FOR FOREIGNERS</span>
 </div>
 
-=======
-<!-- 1. BÖLÜM: ANA KİMLİK VE BUTONLAR -->
-<div align="center" style="margin-bottom: 30px;">
-    <div style="width: 120px; height: 120px; border-radius: 50%; border: 4px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.1); overflow: hidden; margin-bottom: 15px; margin-left: auto; margin-right: auto;">
-        <img src="fatih-photo.jpeg" style="width: 100%; height: 100%; object-fit: cover;" alt="Fatih CANITEZ">
-    </div>
-    <h1 style="margin: 0; font-size: 24px; color: #2c3e50;">Fatih Mehmet CANITEZ</h1>
-    <span style="color: #e74c3c; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">TURKISH FOR FOREIGNERS</span>
-</div>
-
-<!-- İletişim Butonu -->
->>>>>>> 9cca50f459f5bbf72a0faaf58969f6644566d3a1
-<div style="background: white; padding: 15px; border-radius: 20px; text-align: center; border: 1px solid #eee; margin-bottom: 20px;">
+<div style="background: white; padding: 15px; border-radius: 20px; text-align: center; border: 1px solid #eee; margin: 20px 0;">
     <a href="https://wa.me/905054466760" target="_blank" style="color:#27ae60; text-decoration:none; font-weight:bold; font-size:18px;">🟢 WhatsApp: +90 505 446 67 60</a>
 </div>
 
-<<<<<<< HEAD
-<a href="courses.html" style="display: flex; align-items: center; justify-content: center; gap: 10px; background: #FF0000; color: white; text-decoration: none; padding: 15px; border-radius: 15px; margin-bottom: 20px; font-weight: bold;">📺 YouTube: LESSONS & BOOKS</a>
+<a href="courses.html" style="display: block; background: #FF0000; color: white !important; text-decoration: none; padding: 18px; border-radius: 15px; margin-bottom: 20px; font-weight: bold; text-align: center;">📺 YouTube: LESSONS & BOOKS</a>
 
 <div style="text-align: center; margin-bottom: 30px;">
-    <p>Daha fazla ders notu ve döküman için blog sayfamı ziyaret edin:</p>
     <a href="https://ikinciyabancidilfransizca.blogspot.com/" target="_blank" style="color: blue; font-weight: bold; text-decoration: underline;">Dil Dersleri Blog Sayfası (Tıklayın)</a>
-    <br><br>
-    <a href="https://fmemo75-prog.github.io/carpetguide/" target="_blank" style="color: #8b0000; font-weight: bold;">🏺 Discover Cappadocia & Turkish Carpets</a>
 </div>
 
-<!-- 2. SENİN GOOGLE SHEETS LİSTEN -->
-<div style="font-size:12px; font-weight:bold; color:#7f8c8d; margin-bottom: 10px; text-transform:uppercase;">📌 Practice Exercises (From Google Sheets)</div>
-<div id="exercise-list">
-    <div style="text-align:center; padding:20px; color:#999;">Loading lessons from Sheets...</div>
-</div>
+<!-- 2. GOOGLE SHEETS LİSTEN -->
+<div style="font-size:12px; font-weight:bold; color:#7f8c8d; margin-bottom: 10px; text-transform:uppercase;">📌 Practice Exercises (From Sheets)</div>
+<div id="exercise-list"><div style="text-align:center; padding:20px;">Loading...</div></div>
 
-<hr style="margin: 40px 0; border: 0; border-top: 1px solid #eee;">
+<hr style="margin: 40px 0;">
 
-<!-- 3. BENİM OTOMATİK LİSTEM (Yeni Eklenenleri Buradan Takip Et) -->
-<div style="font-size:12px; font-weight:bold; color:#7f8c8d; margin-bottom: 10px; text-transform:uppercase;">📂 All Interactive Lessons (Auto-Detected)</div>
-<div style="display: grid; gap: 10px;">
-    {% assign sorted_pages = site.html_pages | sort: "name" %}
-    {% for lesson in sorted_pages %}
-        {% if lesson.url != "/" and lesson.url != "/index.html" and lesson.layout == "default" %}
-            <a href="{{ site.baseurl }}{{ lesson.url }}" style="display: flex; align-items: center; justify-content: space-between; background: #fff; padding: 15px; border-radius: 15px; text-decoration: none; color: inherit; font-weight: bold; border: 1px solid #eee;">
-=======
-<!-- YouTube Butonu -->
-<a href="courses.html" style="display: flex; align-items: center; justify-content: center; gap: 10px; background: #FF0000; color: white !important; text-decoration: none; padding: 18px; border-radius: 15px; margin-bottom: 20px; font-weight: bold; text-align: center;">📺 YouTube: LESSONS & BOOKS</a>
-
-<!-- Blog ve Diğer Linkler -->
-<div style="text-align: center; margin-bottom: 35px; background: #fff; padding: 15px; border-radius: 15px; border: 1px solid #eee;">
-    <p style="margin-bottom: 5px;">Daha fazla ders notu ve döküman için:</p>
-    <a href="https://ikinciyabancidilfransizca.blogspot.com/" target="_blank" style="color: #3498db; font-weight: bold; text-decoration: underline;">Dil Dersleri Blog Sayfası (Tıklayın)</a>
-    <br><br>
-    <a href="https://fmemo75-prog.github.io/carpetguide/" target="_blank" style="color: #8b0000; font-weight: bold; text-decoration: none; border: 1px solid #8b0000; padding: 5px 10px; border-radius: 5px;">🏺 Discover Cappadocia & Turkish Carpets</a>
-</div>
-
-<hr style="margin: 40px 0; border: 0; border-top: 2px solid #eee;">
-
-<!-- 2. BÖLÜM: GOOGLE SHEETS LİSTESİ (DİNAMİK) -->
-<div style="font-size:12px; font-weight:bold; color:#7f8c8d; margin-bottom: 15px; text-transform:uppercase; letter-spacing: 1px;">📌 Practice Exercises (From Google Sheets)</div>
-<div id="exercise-list">
-    <div style="text-align:center; padding:20px; color:#999;">Loading lessons from Google Sheets...</div>
-</div>
-
-<br>
-
-<!-- 3. BÖLÜM: GITHUB KLASÖRÜNDEKİ DERSLER (OTOMATİK) -->
-<div style="font-size:12px; font-weight:bold; color:#7f8c8d; margin: 25px 0 15px 0; text-transform:uppercase; letter-spacing: 1px;">📂 All Interactive Lessons (Auto-Detected)</div>
-<div style="display: grid; gap: 10px;">
-    {% assign sorted_pages = site.html_pages | sort: "name" %}
-    {% for lesson in sorted_pages %}
-        <!-- index, courses ve layoutsuz sayfaları listeden gizle -->
-        {% if lesson.url != "/" and lesson.url != "/index.html" and lesson.url != "/courses.html" and lesson.layout == "default" %}
-            <a href="{{ site.baseurl }}{{ lesson.url }}" style="display: flex; align-items: center; justify-content: space-between; background: #fff; padding: 15px; border-radius: 12px; text-decoration: none; color: inherit; font-weight: bold; border: 1px solid #eee; transition: 0.2s;">
->>>>>>> 9cca50f459f5bbf72a0faaf58969f6644566d3a1
-                <span>📝 {{ lesson.name | remove: ".html" | replace: "-", " " | capitalize }}</span>
-                <span style="color: #27ae60;">✔</span>
+<!-- 3. OTOMATİK DERS LİSTESİ (EN SONDA) -->
+<div style="font-size:12px; font-weight:bold; color:#7f8c8d; margin-bottom: 10px; text-transform:uppercase;">📂 Archive: All Interactive Lessons</div>
+<div style="display: grid; gap: 8px;">
+    {% for lesson in site.html_pages %}
+        {% if lesson.url != "/" and lesson.url != "/index.html" and lesson.url != "/courses.html" %}
+            <a href="{{ site.baseurl }}{{ lesson.url }}" style="display: block; background: #fff; padding: 12px; border-radius: 10px; text-decoration: none; color: #333; font-weight: bold; border: 1px solid #eee;">
+                📝 {{ lesson.name | remove: ".html" | replace: "-", " " | capitalize }}
             </a>
         {% endif %}
     {% endfor %}
 </div>
 
-<<<<<<< HEAD
 <!-- Google Sheets Script -->
-=======
-<!-- Google Sheets Çekme Scripti -->
->>>>>>> 9cca50f459f5bbf72a0faaf58969f6644566d3a1
 <script>
     const spreadsheetId = '1z2a9QpIPGiUoObHqfioTgo_laXXKMP5e3n0pRJA7XcA';
     const url = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:json`;
-
     async function loadData() {
         const listDiv = document.getElementById('exercise-list');
         try {
             const response = await fetch(url);
             const text = await response.text();
-            const jsonText = text.substring(47, text.length - 2);
-            const json = JSON.parse(jsonText);
+            const json = JSON.parse(text.substring(47, text.length - 2));
             const rows = json.table.rows;
-
-            if (rows && rows.length > 0) {
-                listDiv.innerHTML = "";
-                rows.forEach((row, index) => {
-                    const title = row.c[0] ? row.c[0].v : "Untitled";
-                    const link = row.c[1] ? row.c[1].v : "#";
-                    const icon = row.c[2] ? row.c[2].v : "📝";
-                    listDiv.innerHTML += `
-<<<<<<< HEAD
-                        <a href="${link}" style="display: flex; align-items: center; justify-content: space-between; background: white; padding: 15px; border-radius: 15px; text-decoration: none; color: inherit; font-weight: bold; margin-bottom: 10px; border: 1px solid #eee;">
-                            <div><span style="font-size:10px; color:#3498db; display:block;">EXERCISE ${index + 1}</span><span>${icon} ${title}</span></div>
-=======
-                        <a href="${link}" style="display: flex; align-items: center; justify-content: space-between; background: white; padding: 15px; border-radius: 12px; text-decoration: none; color: inherit; font-weight: bold; margin-bottom: 10px; border: 1px solid #eee;">
-                            <div>
-                                <span style="font-size:10px; color:#3498db; display:block; margin-bottom:3px;">EXERCISE ${index + 1}</span>
-                                <span>${icon} ${title}</span>
-                            </div>
->>>>>>> 9cca50f459f5bbf72a0faaf58969f6644566d3a1
-                            <span>🔊</span>
-                        </a>`;
-                });
-            }
-<<<<<<< HEAD
-        } catch (e) { listDiv.innerHTML = "Error loading Sheets data."; }
+            listDiv.innerHTML = "";
+            rows.forEach((row, index) => {
+                const title = row.c[0] ? row.c[0].v : "Untitled";
+                const link = row.c[1] ? row.c[1].v : "#";
+                listDiv.innerHTML += `<a href="${link}" style="display:flex; justify-content:space-between; background:white; padding:12px; border-radius:12px; text-decoration:none; color:inherit; font-weight:bold; margin-bottom:8px; border:1px solid #eee;"><span>📝 ${title}</span><span>🔊</span></a>`;
+            });
+        } catch (e) { listDiv.innerHTML = "Error loading Sheets."; }
     }
     window.onload = loadData;
 </script>
-=======
-        } catch (e) { 
-            console.error(e);
-            listDiv.innerHTML = "<div style='color:red; text-align:center;'>Error loading exercises. Please check your connection.</div>"; 
-        }
-    }
-    window.onload = loadData;
-</script>
->>>>>>> 9cca50f459f5bbf72a0faaf58969f6644566d3a1
