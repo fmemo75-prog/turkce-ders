@@ -1,31 +1,60 @@
 ---
-layout: default
-title: Türkçe Dersleri Ana Sayfası
 ---
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <!-- Google Analytics (G-CBK2NC3T9X) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CBK2NC3T9X"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CBK2NC3T9X');
+    </script>
 
-# 📖 Tüm Türkçe Dersleri (Otomatik Liste)
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      {% if page.title %}{{ page.title }}{% else %}{{ page.name | remove: ".html" | replace: "-", " " | capitalize }}{% endif %} | Fatih Mehmet CANITEZ
+    </title>
+    
+    <style>
+        :root { --primary: #2c3e50; --turkish: #e74c3c; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 0; }
+        
+        #fb-warning { display: none; background: #ffeb3b; color: #856404; padding: 15px; text-align: center; font-weight: bold; border-bottom: 2px solid #fbc02d; position: sticky; top: 0; z-index: 9999; }
+        
+        header { background: var(--primary); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header-title { color: white; text-decoration: none; font-weight: bold; }
+        
+        .container { max-width: 800px; margin: 20px auto; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 6px solid var(--turkish); }
+        
+        /* İkizlenme Koruması */
+        .lesson-body html, .lesson-body body { display: contents; }
+        
+        footer { text-align: center; padding: 20px; font-size: 11px; color: #999; }
+    </style>
+</head>
+<body>
+    <div id="fb-warning">⚠️ Facebook tarayıcısında sesler çalışmayabilir. Lütfen Chrome veya Safari ile açın.</div>
 
-<table border="1" style="width:100%; border-collapse: collapse; margin-top: 20px;">
-  <tr style="background-color: #2c3e50; color: white;">
-    <th style="padding: 12px; text-align: left;">Ders Adı / Lesson Name</th>
-    <th style="padding: 12px; width: 150px;">Durum</th>
-  </tr>
+    <header>
+        <a href="{{ site.baseurl }}/" class="header-title">📖 Türkçe Eğitim Portalı</a>
+        <div id="google_translate_element"></div>
+    </header>
 
-  <!-- AKILLI DÖNGÜ: İsimleri Dosyadan Temizleyerek Çeker -->
-  {% assign sorted_pages = site.html_pages | sort: "name" %}
-  {% for lesson in sorted_pages %}
-    {% if lesson.url != "/" and lesson.url != "/index.html" and lesson.layout == "default" %}
-    <tr>
-      <td style="padding: 12px;">
-        <a href="{{ site.baseurl }}{{ lesson.url | remove: '.html' }}" style="font-weight: bold; text-decoration: none; color: #e67e22; font-size: 1.1em;">
-          <!-- Dosya adını al, temizle ve her kelimenin baş harfini büyüt -->
-          {{ lesson.name | remove: ".html" | remove: ".htlm" | replace: "-", " " | replace: "_", " " | capitalize }}
-        </a>
-      </td>
-      <td style="padding: 10px; text-align: center; color: #27ae60; font-weight: bold;">
-        ✅ Hazır
-      </td>
-    </tr>
-    {% endif %}
-  {% endfor %}
-</table>
+    <div class="container lesson-body">
+      {{ content }}
+    </div>
+
+    <footer>© 2024 Multi-Language Academy | Fatih Mehmet CANITEZ</footer>
+
+    <script>
+        if(navigator.userAgent.indexOf("FBAN") > -1 || navigator.userAgent.indexOf("FBAV") > -1) {
+            document.getElementById("fb-warning").style.display = "block";
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>function googleTranslateElementInit() { new google.translate.TranslateElement({pageLanguage: 'tr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element'); }</script>
+</body>
+</html>
