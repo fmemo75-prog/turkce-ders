@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turkish Present Tense Negative — Şimdiki Zaman Olumsuz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #f7f6f2;
+  --surface:  #ffffff;
+  --surface2: #f0efe9;
+  --border:   #e2e0d8;
+  --text:     #1a1917;
+  --text2:    #5a5850;
+  --text3:    #9a9890;
+  --red:      #c0392b;
+  --red-bg:   #fdf1f0;
+  --red-bd:   #f5c6c2;
+  --green:    #1a7f4b;
+  --green-bg: #f0faf4;
+  --green-bd: #b8e6cc;
+  --blue:     #1a5fb4;
+  --blue-bg:  #f0f4ff;
+  --blue-bd:  #b8ccf5;
+  --amber:    #7d4e00;
+  --amber-bg: #fffbf0;
+  --amber-bd: #f5dfa0;
+  --purple:   #5c2d91;
+  --purple-bg:#f8f4ff;
+  --purple-bd:#d4b8f5;
+  --mono:     'JetBrains Mono', monospace;
+  --sans:     'Inter', sans-serif;
+  --r:        10px;
+  --r-lg:     14px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.page { max-width: 760px; margin: 0 auto; padding: 2rem 1.25rem 5rem; }
+
+/* browser tip */
+.tip-bar {
+  background: var(--amber-bg);
+  border: 1px solid var(--amber-bd);
+  border-radius: var(--r);
+  padding: .65rem 1rem;
+  font-size: .82rem;
+  color: var(--amber);
+  margin-bottom: 1.5rem;
+  display: flex; gap: .5rem; align-items: flex-start;
+}
+.tip-bar b { color: #4a2d00; }
+
+/* hero */
+.hero {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 2rem 1.75rem 1.75rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 180px; height: 180px;
+  background: radial-gradient(circle at top right, #fdf1f0 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-label {
+  display: inline-block;
+  background: var(--red-bg);
+  color: var(--red);
+  border: 1px solid var(--red-bd);
+  border-radius: 20px;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: .2rem .8rem;
+  margin-bottom: .85rem;
+}
+.hero h1 {
+  font-family: var(--mono);
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: .5rem;
+  color: var(--text);
+}
+.hero h1 em { color: var(--red); font-style: normal; }
+.hero p { font-size: .93rem; color: var(--text2); max-width: 500px; }
+
+/* section card */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+.card-head {
+  padding: .85rem 1.4rem;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between; gap: .75rem;
+}
+.card-head h2 {
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--text);
+  display: flex; align-items: center; gap: .5rem;
+}
+.step-num {
+  font-family: var(--mono);
+  font-size: .72rem;
+  font-weight: 700;
+  background: var(--surface2);
+  color: var(--text3);
+  padding: .15rem .5rem;
+  border-radius: 6px;
+}
+.pill {
+  font-size: .68rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .06em;
+  padding: .2rem .65rem; border-radius: 20px;
+  border: 1px solid;
+}
+.pill-red   { background: var(--red-bg);   color: var(--red);   border-color: var(--red-bd); }
+.pill-blue  { background: var(--blue-bg);  color: var(--blue);  border-color: var(--blue-bd); }
+.pill-green { background: var(--green-bg); color: var(--green); border-color: var(--green-bd); }
+.card-body  { padding: 1.4rem; }
+
+/* theory */
+.theory-block {
+  background: var(--surface2);
+  border-radius: var(--r);
+  padding: 1.1rem 1.2rem;
+  margin-bottom: 1.2rem;
+  font-size: .9rem;
+  color: var(--text2);
+  line-height: 1.75;
+  border-left: 3px solid var(--red);
+}
+.theory-block strong { color: var(--text); }
+.theory-block .formula {
+  display: block;
+  font-family: var(--mono);
+  font-size: .82rem;
+  color: var(--red);
+  background: var(--red-bg);
+  border: 1px solid var(--red-bd);
+  border-radius: 7px;
+  padding: .5rem .85rem;
+  margin-top: .75rem;
+  line-height: 1.6;
+}
+.theory-block .formula span { color: var(--text2); font-size: .78rem; }
+
+.suffix-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .85rem;
+  margin-bottom: 1.2rem;
+  border-radius: var(--r);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.suffix-table th {
+  background: var(--surface2);
+  color: var(--text2);
+  font-weight: 600;
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  padding: .55rem .85rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.suffix-table td {
+  padding: .5rem .85rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.suffix-table tr:last-child td { border-bottom: none; }
+.suffix-table tr:nth-child(even) td { background: #fafaf8; }
+.suffix-table td:first-child { font-family: var(--mono); color: var(--text); font-weight: 500; }
+.suffix-table td:nth-child(2) { color: var(--red); font-family: var(--mono); }
+.suffix-table td:nth-child(3) { color: var(--text2); font-size: .82rem; }
+
+.note-box {
+  background: var(--blue-bg);
+  border: 1px solid var(--blue-bd);
+  border-radius: var(--r);
+  padding: .85rem 1rem;
+  font-size: .84rem;
+  color: var(--blue);
+  line-height: 1.65;
+}
+.note-box strong { color: #0d3d8f; }
+
+/* examples */
+.tts-strip {
+  background: var(--purple-bg);
+  border: 1px solid var(--purple-bd);
+  border-radius: var(--r);
+  padding: .7rem 1rem;
+  margin-bottom: 1.1rem;
+  display: flex; align-items: center; gap: .75rem;
+  font-size: .82rem; color: var(--purple);
+}
+.tts-strip p { flex: 1; }
+.btn-all {
+  background: var(--purple);
+  color: #fff; border: none;
+  padding: .4rem 1rem;
+  border-radius: 7px; font-size: .8rem;
+  font-family: var(--sans); font-weight: 600;
+  cursor: pointer; white-space: nowrap;
+  display: flex; align-items: center; gap: .35rem;
+  transition: opacity .2s;
+}
+.btn-all:hover { opacity: .85; }
+
+.ex-item {
+  display: flex; align-items: flex-start; gap: .9rem;
+  padding: .8rem .9rem;
+  border-radius: var(--r);
+  cursor: pointer;
+  transition: background .16s;
+  border: 1px solid transparent;
+  margin-bottom: .3rem;
+}
+.ex-item:hover { background: var(--surface2); border-color: var(--border); }
+.ex-item.playing { background: var(--purple-bg); border-color: var(--purple-bd); }
+.ex-icon { font-size: 1.5rem; flex-shrink: 0; width: 36px; text-align: center; margin-top: .1rem; }
+.ex-content { flex: 1; }
+.ex-tr {
+  font-size: .97rem; font-weight: 600; color: var(--text);
+  margin-bottom: .18rem;
+}
+.ex-tr .neg-part { color: var(--red); }
+.ex-en { font-size: .82rem; color: var(--text3); }
+.btn-speak {
+  background: var(--surface2); border: 1px solid var(--border);
+  color: var(--text2); padding: .28rem .6rem;
+  border-radius: 7px; font-size: .74rem;
+  font-family: var(--sans); cursor: pointer;
+  display: flex; align-items: center; gap: .3rem;
+  flex-shrink: 0; transition: all .16s; margin-top: .1rem;
+}
+.btn-speak:hover { background: var(--purple); color: #fff; border-color: var(--purple); }
+.btn-speak.active { background: var(--purple); color: #fff; border-color: var(--purple); }
+
+/* quiz */
+.quiz-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+.quiz-top {
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  padding: .9rem 1.4rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+}
+.quiz-top-title {
+  font-family: var(--mono); font-weight: 700; font-size: .88rem; color: var(--text);
+}
+.quiz-meta { display: flex; align-items: center; gap: .75rem; }
+.qc { font-family: var(--mono); font-size: .78rem; color: var(--text3); }
+.prog-wrap { width: 110px; height: 5px; background: var(--border); border-radius: 10px; overflow: hidden; }
+.prog-bar { height: 100%; background: var(--red); border-radius: 10px; transition: width .45s ease; }
+.pts-badge {
+  font-family: var(--mono); font-size: .75rem;
+  background: var(--amber-bg); color: var(--amber);
+  border: 1px solid var(--amber-bd);
+  padding: .18rem .6rem; border-radius: 6px;
+}
+
+.quiz-body { padding: 1.75rem 1.4rem 1.4rem; min-height: 320px; }
+
+/* mc question */
+.q-type-label {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em;
+  padding: .2rem .7rem; border-radius: 20px; margin-bottom: .85rem;
+  border: 1px solid;
+}
+.q-type-label.mc  { background: var(--blue-bg);  color: var(--blue);  border-color: var(--blue-bd); }
+.q-type-label.inp { background: var(--green-bg); color: var(--green); border-color: var(--green-bd); }
+
+.q-scene   { font-size: 3rem; text-align: center; margin-bottom: .6rem; }
+.q-text    { font-size: 1.05rem; font-weight: 600; text-align: center; margin-bottom: .3rem; color: var(--text); line-height: 1.4; }
+.q-hint    { font-size: .8rem; color: var(--text3); text-align: center; margin-bottom: 1.25rem; font-style: italic; }
+
+.mc-opts   { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; margin-bottom: 1rem; }
+@media (max-width: 430px) { .mc-opts { grid-template-columns: 1fr; } }
+.mc-btn {
+  background: var(--surface2); border: 1px solid var(--border);
+  color: var(--text); padding: .75rem 1rem;
+  border-radius: var(--r); font-family: var(--mono); font-size: .88rem;
+  cursor: pointer; text-align: left; line-height: 1.3;
+  transition: all .16s;
+}
+.mc-btn:hover:not(:disabled) { border-color: var(--red); color: var(--red); background: var(--red-bg); }
+.mc-btn.correct { background: var(--green-bg); border-color: var(--green-bd); color: var(--green); font-weight: 600; }
+.mc-btn.wrong   { background: var(--red-bg);   border-color: var(--red-bd);   color: var(--red); }
+.mc-btn:disabled { cursor: default; }
+
+/* input question */
+.inp-wrap { margin-bottom: 1rem; }
+.inp-prompt {
+  background: var(--surface2); border-radius: var(--r);
+  padding: .85rem 1rem; margin-bottom: .85rem;
+  font-size: .9rem; color: var(--text2); line-height: 1.6;
+}
+.inp-prompt strong { color: var(--text); font-family: var(--mono); font-size: .95rem; }
+.inp-prompt .inf-form { color: var(--blue); font-family: var(--mono); }
+.inp-row { display: flex; gap: .6rem; align-items: center; }
+.inp-field {
+  flex: 1; padding: .65rem .9rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r); font-size: .92rem;
+  font-family: var(--mono); color: var(--text);
+  background: var(--surface); outline: none;
+  transition: border-color .18s;
+}
+.inp-field:focus { border-color: var(--red); }
+.inp-field.correct { border-color: var(--green); background: var(--green-bg); }
+.inp-field.wrong   { border-color: var(--red);   background: var(--red-bg); }
+.btn-check {
+  background: var(--red); color: #fff; border: none;
+  padding: .65rem 1.2rem; border-radius: var(--r);
+  font-size: .85rem; font-family: var(--sans); font-weight: 600;
+  cursor: pointer; white-space: nowrap; transition: opacity .2s;
+}
+.btn-check:hover { opacity: .85; }
+.inp-alts {
+  margin-top: .5rem; font-size: .78rem; color: var(--text3);
+}
+
+/* feedback */
+.feedback {
+  border-radius: var(--r); padding: .8rem 1rem;
+  font-size: .85rem; line-height: 1.6;
+  display: none; margin-bottom: .5rem;
+}
+.feedback.show { display: block; }
+.feedback.ok  { background: var(--green-bg); border: 1px solid var(--green-bd); color: var(--green); }
+.feedback.bad { background: var(--red-bg);   border: 1px solid var(--red-bd);   color: var(--red); }
+.feedback strong { color: var(--text); }
+
+.quiz-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; }
+.q-info { font-size: .8rem; color: var(--text3); }
+.btn-next {
+  background: var(--red); color: #fff; border: none;
+  padding: .52rem 1.4rem; border-radius: var(--r);
+  font-size: .85rem; font-family: var(--sans); font-weight: 600;
+  cursor: pointer; opacity: 0; pointer-events: none;
+  transition: opacity .3s, transform .2s;
+}
+.btn-next.show { opacity: 1; pointer-events: all; }
+.btn-next:hover { transform: translateX(3px); }
+
+/* result */
+.result { text-align: center; padding: 2.5rem 1rem; }
+.result .trophy { font-size: 4rem; margin-bottom: .75rem; }
+.result .big-pct { font-family: var(--mono); font-size: 3.5rem; font-weight: 700; color: var(--red); display: block; margin-bottom: .25rem; }
+.result h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: .4rem; }
+.result p  { font-size: .9rem; color: var(--text2); margin-bottom: 1.5rem; }
+.btn-restart {
+  background: var(--red); color: #fff; border: none;
+  padding: .65rem 2rem; border-radius: var(--r);
+  font-size: .9rem; font-family: var(--sans); font-weight: 600;
+  cursor: pointer; transition: opacity .2s;
+}
+.btn-restart:hover { opacity: .85; }
+
+/* footer */
+.page-footer {
+  text-align: center; margin-top: 3rem;
+  font-size: .78rem; color: var(--text3);
+  border-top: 1px solid var(--border); padding-top: 1.5rem;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- browser tip -->
+  <div class="tip-bar">
+    <span>💡</span>
+    <span><b>Tip:</b> Open in <b>Google Chrome</b> or <b>Safari</b> for the best text-to-speech experience. The Facebook in-app browser may not support audio.</span>
+  </div>
+
+  <!-- hero -->
+  <div class="hero">
+    <div class="hero-label">Turkish Grammar · A1–A2</div>
+    <h1>Present Tense <em>Negative</em><br>Şimdiki Zaman Olumsuz</h1>
+    <p>How to say what is <em>not happening</em> right now — with examples, audio, and interactive exercises.</p>
+  </div>
+
+  <!-- THEORY -->
+  <div class="card">
+    <div class="card-head">
+      <h2><span class="step-num">01</span> How it works</h2>
+      <span class="pill pill-red">Theory</span>
+    </div>
+    <div class="card-body">
+
+      <div class="theory-block">
+        In Turkish, the present continuous tense uses the suffix <strong>-yor</strong>. To make it <strong>negative</strong>, you insert <strong>-mi / -mı / -mu / -mü</strong> between the verb stem and <strong>-yor</strong>. The negative marker always uses the <strong>four-way vowel harmony</strong> based on the last vowel of the stem.
+        <span class="formula">
+          Verb stem + <strong>mi/mı/mu/mü</strong> + yor + personal ending<br>
+          <span>e.g. gel → gel<strong>mi</strong>yor → he/she is not coming</span>
+        </span>
+      </div>
+
+      <table class="suffix-table">
+        <thead>
+          <tr><th>Last vowel in stem</th><th>Negative suffix</th><th>Example</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>e, i</td><td>-miyor</td><td>gel<strong>mi</strong>yor — not coming</td></tr>
+          <tr><td>a, ı</td><td>-mıyor</td><td>yaz<strong>mı</strong>yor — not writing</td></tr>
+          <tr><td>o, u</td><td>-muyor</td><td>oku<strong>mu</strong>yor — not reading</td></tr>
+          <tr><td>ö, ü</td><td>-müyor</td><td>gör<strong>mü</strong>yor — not seeing</td></tr>
+        </tbody>
+      </table>
+
+      <table class="suffix-table">
+        <thead>
+          <tr><th>Pronoun</th><th>Personal ending</th><th>Full example (gelmek)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Ben (I)</td><td>-um / -ım / -um / -üm</td><td>gel<strong>mi</strong>yorum — I am not coming</td></tr>
+          <tr><td>Sen (you)</td><td>-sun / -sın / -sun / -sün</td><td>gel<strong>mi</strong>yorsun — you are not coming</td></tr>
+          <tr><td>O (he/she/it)</td><td>— (no ending)</td><td>gel<strong>mi</strong>yor — he/she is not coming</td></tr>
+          <tr><td>Biz (we)</td><td>-uz / -ız / -uz / -üz</td><td>gel<strong>mi</strong>yoruz — we are not coming</td></tr>
+          <tr><td>Siz (you-pl)</td><td>-sunuz / -sınız</td><td>gel<strong>mi</strong>yorsunuz — you are not coming</td></tr>
+          <tr><td>Onlar (they)</td><td>-lar / -ler</td><td>gel<strong>mi</strong>yorlar — they are not coming</td></tr>
+        </tbody>
+      </table>
+
+      <div class="note-box">
+        <strong>Watch out:</strong> If the verb stem ends in a vowel (e.g. <em>ye-</em>, <em>de-</em>), the final vowel is <strong>dropped</strong> before adding the suffix: <em>ye → yi → yimiyor</em> (not eating), <em>de → di → demiyor</em> (not saying).
+      </div>
+    </div>
+  </div>
+
+  <!-- EXAMPLES -->
+  <div class="card">
+    <div class="card-head">
+      <h2><span class="step-num">02</span> 10 Example sentences</h2>
+      <span class="pill pill-blue">Audio</span>
+    </div>
+    <div class="card-body">
+      <div class="tts-strip">
+        <span>🔊</span>
+        <p>Tap any sentence to hear the pronunciation, or play them all in order.</p>
+        <button class="btn-all" onclick="speakAll()">▶ Play all</button>
+      </div>
+      <div id="ex-list"></div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-wrap">
+    <div class="quiz-top">
+      <div class="quiz-top-title">⚡ 10 Exercises</div>
+      <div class="quiz-meta">
+        <span class="qc" id="qc">1 / 10</span>
+        <div class="prog-wrap"><div class="prog-bar" id="prog" style="width:0%"></div></div>
+        <span class="pts-badge" id="pts">0 pts</span>
+      </div>
+    </div>
+    <div class="quiz-body" id="quiz-body"></div>
+  </div>
+
+  <div class="page-footer">
+    Turkish Grammar · Şimdiki Zaman Olumsuz &nbsp;·&nbsp; Present Tense Negative
+  </div>
+
+</div>
+
+<script>
+/* ========= EXAMPLES ========= */
+const examples = [
+  { icon:'🏃', tr:'Koşmuyorum.', neg:'muyor', en:'I am not running.' },
+  { icon:'📖', tr:'Okumuyorsun.', neg:'muyor', en:'You are not reading.' },
+  { icon:'🎵', tr:'Müzik dinlemiyor.', neg:'miyor', en:'He/She is not listening to music.' },
+  { icon:'🍕', tr:'Pizza yemiyoruz.', neg:'miyor', en:'We are not eating pizza.' },
+  { icon:'💤', tr:'Uyumuyorlar.', neg:'muyor', en:'They are not sleeping.' },
+  { icon:'✍️', tr:'Ödev yapmıyorum.', neg:'mıyor', en:'I am not doing homework.' },
+  { icon:'📺', tr:'Televizyon seyretmiyorsunuz.', neg:'miyor', en:'You (plural) are not watching television.' },
+  { icon:'🌧️', tr:'Yağmur yağmıyor.', neg:'mıyor', en:'It is not raining.' },
+  { icon:'📱', tr:'Telefona bakmıyorsun.', neg:'mıyor', en:'You are not looking at your phone.' },
+  { icon:'🚗', tr:'Araba sürmüyor.', neg:'müyor', en:'He/She is not driving a car.' },
+];
+
+function highlight(tr) {
+  return tr.replace(/(m[ıiuü]yor)/g, '<span class="neg-part">$1</span>');
+}
+
+const exList = document.getElementById('ex-list');
+examples.forEach((ex, i) => {
+  const div = document.createElement('div');
+  div.className = 'ex-item';
+  div.id = 'ex-' + i;
+  div.onclick = () => speak(ex.tr, i);
+  div.innerHTML = `
+    <div class="ex-icon">${ex.icon}</div>
+    <div class="ex-content">
+      <div class="ex-tr">${highlight(ex.tr)}</div>
+      <div class="ex-en">${ex.en}</div>
+    </div>
+    <button class="btn-speak" id="bs-${i}" onclick="event.stopPropagation();speak('${ex.tr.replace(/'/g,"\\'")}',${i})">🔊</button>
+  `;
+  exList.appendChild(div);
+});
+
+/* ========= TTS ========= */
+function getBestVoice() {
+  const vv = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+  const tr = vv.filter(v => v.lang && v.lang.toLowerCase().startsWith('tr'));
+  if (tr.length) {
+    const pref = tr.find(v => /yelda|cem|sibel|filiz|türkçe|turkish/i.test(v.name));
+    return pref || tr[0];
+  }
+  return null;
+}
+
+function speak(text, idx) {
+  if (!window.speechSynthesis) { alert('Please use Chrome or Safari for audio support.'); return; }
+  window.speechSynthesis.cancel();
+  document.querySelectorAll('.btn-speak').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.ex-item').forEach(r => r.classList.remove('playing'));
+  if (idx !== undefined) {
+    const b = document.getElementById('bs-' + idx);
+    const r = document.getElementById('ex-' + idx);
+    if (b) b.classList.add('active');
+    if (r) r.classList.add('playing');
+  }
+  const u = new SpeechSynthesisUtterance(text);
+  const v = getBestVoice();
+  if (v) { u.voice = v; u.lang = v.lang; } else { u.lang = 'tr-TR'; }
+  u.rate = 0.85; u.pitch = 1.05;
+  u.onend = () => {
+    if (idx !== undefined) {
+      const b = document.getElementById('bs-' + idx);
+      const r = document.getElementById('ex-' + idx);
+      if (b) b.classList.remove('active');
+      if (r) r.classList.remove('playing');
+    }
+  };
+  window.speechSynthesis.speak(u);
+}
+
+let allIdx = 0;
+function speakAll() {
+  allIdx = 0;
+  function go() {
+    if (allIdx >= examples.length) return;
+    const ex = examples[allIdx], i = allIdx;
+    document.querySelectorAll('.btn-speak').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.ex-item').forEach(r => r.classList.remove('playing'));
+    const b = document.getElementById('bs-' + i);
+    const r = document.getElementById('ex-' + i);
+    if (b) b.classList.add('active');
+    if (r) { r.classList.add('playing'); r.scrollIntoView({ behavior:'smooth', block:'nearest' }); }
+    const u = new SpeechSynthesisUtterance(ex.tr);
+    const v = getBestVoice();
+    if (v) { u.voice = v; u.lang = v.lang; } else { u.lang = 'tr-TR'; }
+    u.rate = 0.85; u.pitch = 1.05;
+    u.onend = () => {
+      if (b) b.classList.remove('active');
+      if (r) r.classList.remove('playing');
+      allIdx++; setTimeout(go, 650);
+    };
+    window.speechSynthesis.speak(u);
+  }
+  go();
+}
+if (window.speechSynthesis) setTimeout(() => window.speechSynthesis.getVoices(), 200);
+
+/* ========= QUIZ ========= */
+// Questions 1-5: multiple choice
+// Questions 6-10: type the negative form
+const questions = [
+  // MC (type:'mc')
+  {
+    type:'mc',
+    scene:'🏊', q:'Choose the correct negative form:',
+    sub:'"She is not swimming."',
+    hint:'yüzmek → yüz + müyor (back vowel ü)',
+    opts:['Yüzüyor.','Yüzmüyor.','Yüzmuyor.','Yüzmiyor.'],
+    ans:1,
+    explain:'<strong>yüz</strong> → last vowel is <strong>ü</strong> → negative suffix is <strong>-müyor</strong> → yüz<strong>müyor</strong>.'
+  },
+  {
+    type:'mc',
+    scene:'🎤', q:'Choose the correct negative form:',
+    sub:'"I am not singing."',
+    hint:'şarkı söylemek → söyle → söylemiyor (stem ends in e → miyor)',
+    opts:['Şarkı söylüyorum.','Şarkı söylemuyor.','Şarkı söylemiyorum.','Şarkı söylemuyorum.'],
+    ans:2,
+    explain:'<strong>söyle</strong> → ends in <strong>e</strong> → drop <strong>e</strong>, add <strong>-miyor</strong> → söyle<strong>miyor</strong>um.'
+  },
+  {
+    type:'mc',
+    scene:'🏋️', q:'Choose the correct negative form:',
+    sub:'"We are not exercising."',
+    hint:'spor yapmak → yap + mıyor (last vowel a → mıyor)',
+    opts:['Spor yapmıyoruz.','Spor yapmuyor.','Spor yapmiyoruz.','Spor yapmıyorum.'],
+    ans:0,
+    explain:'<strong>yap</strong> → last vowel is <strong>a</strong> → negative suffix is <strong>-mıyor</strong> → yap<strong>mıyor</strong>uz.'
+  },
+  {
+    type:'mc',
+    scene:'😴', q:'Choose the correct negative form:',
+    sub:'"You (singular) are not sleeping."',
+    hint:'uyumak → uyu → last vowel u → muyor',
+    opts:['Uyumuyorsunuz.','Uyumuyorsun.','Uyumuyorum.','Uyumuyor.'],
+    ans:1,
+    explain:'<strong>uyu</strong> → last vowel <strong>u</strong> → <strong>-muyor</strong> → uyu<strong>muyor</strong>sun (sen = -sun ending).'
+  },
+  {
+    type:'mc',
+    scene:'📝', q:'Choose the correct negative form:',
+    sub:'"They are not writing."',
+    hint:'yazmak → yaz + mıyor (last vowel a)',
+    opts:['Yazıyorlar.','Yazmuyorlar.','Yazmıyorlar.','Yazmiyorlar.'],
+    ans:2,
+    explain:'<strong>yaz</strong> → last vowel <strong>a</strong> → <strong>-mıyor</strong> → yaz<strong>mıyor</strong>lar.'
+  },
+  // INPUT (type:'inp')
+  {
+    type:'inp',
+    scene:'🍳',
+    instruction:'Make the sentence negative.',
+    given:'Ben yemek <span class="inf-form">pişiriyorum</span>.',
+    givenEn:'I am cooking food.',
+    prompt:'Ben yemek ___________.',
+    hint:'pişirmek → pişir → last vowel i → -miyor + um',
+    answer:'pişirmiyorum',
+    alts:['pişirmiyorum'],
+    explain:'<strong>pişir</strong> → last vowel <strong>i</strong> → pişir<strong>miyor</strong>um.'
+  },
+  {
+    type:'inp',
+    scene:'🚴',
+    instruction:'Make the sentence negative.',
+    given:'O bisiklete <span class="inf-form">biniyor</span>.',
+    givenEn:'He/She is riding a bicycle.',
+    prompt:'O bisiklete ___________.',
+    hint:'binmek → bin → last vowel i → -miyor (no personal ending for O)',
+    answer:'binmiyor',
+    alts:['binmiyor'],
+    explain:'<strong>bin</strong> → last vowel <strong>i</strong> → bin<strong>miyor</strong>. Third person (O) has no extra ending.'
+  },
+  {
+    type:'inp',
+    scene:'🎨',
+    instruction:'Make the sentence negative.',
+    given:'Biz resim <span class="inf-form">çiziyoruz</span>.',
+    givenEn:'We are drawing pictures.',
+    prompt:'Biz resim ___________.',
+    hint:'çizmek → çiz → last vowel i → -miyor + uz',
+    answer:'çizmiyoruz',
+    alts:['çizmiyoruz'],
+    explain:'<strong>çiz</strong> → last vowel <strong>i</strong> → çiz<strong>miyor</strong>uz.'
+  },
+  {
+    type:'inp',
+    scene:'📞',
+    instruction:'Make the sentence negative.',
+    given:'Sen <span class="inf-form">arıyorsun</span>.',
+    givenEn:'You are calling.',
+    prompt:'Sen ___________.',
+    hint:'aramak → ara → stem ends in a, drop a → -mıyor + sun',
+    answer:'aramıyorsun',
+    alts:['aramıyorsun'],
+    explain:'<strong>ara</strong> → drop vowel at end of stem → ar + <strong>-mıyor</strong>sun → ara<strong>mıyor</strong>sun.'
+  },
+  {
+    type:'inp',
+    scene:'🌍',
+    instruction:'Make the sentence negative.',
+    given:'Onlar Türkçe <span class="inf-form">öğreniyorlar</span>.',
+    givenEn:'They are learning Turkish.',
+    prompt:'Onlar Türkçe ___________.',
+    hint:'öğrenmek → öğren → last vowel e → -miyor + lar',
+    answer:'öğrenmiyorlar',
+    alts:['öğrenmiyorlar'],
+    explain:'<strong>öğren</strong> → last vowel <strong>e</strong> → öğren<strong>miyor</strong>lar.'
+  },
+];
+
+let cur = 0, score = 0, done = false;
+
+function updateMeta() {
+  document.getElementById('qc').textContent = (cur + 1) + ' / ' + questions.length;
+  document.getElementById('prog').style.width = (cur / questions.length * 100) + '%';
+  document.getElementById('pts').textContent = score + ' pts';
+}
+
+function renderQ() {
+  done = false;
+  updateMeta();
+  const qb = document.getElementById('quiz-body');
+  if (cur >= questions.length) {
+    const pct = Math.round(score / questions.length * 100);
+    const trophy = pct >= 80 ? '🏆' : pct >= 50 ? '🥈' : '📚';
+    const msg = pct >= 80 ? 'Harika! Excellent work!' : pct >= 50 ? 'İyi iş! Good effort — keep going!' : 'Keep practicing — you can do it!';
+    qb.innerHTML = `<div class="result">
+      <div class="trophy">${trophy}</div>
+      <span class="big-pct">${pct}%</span>
+      <h3>${score} / ${questions.length} correct</h3>
+      <p>${msg}</p>
+      <button class="btn-restart" onclick="restart()">🔄 Try again</button>
+    </div>`;
+    document.getElementById('prog').style.width = '100%';
+    return;
+  }
+  const q = questions[cur];
+  if (q.type === 'mc') renderMC(q, qb);
+  else renderINP(q, qb);
+}
+
+function renderMC(q, qb) {
+  const opts = q.opts.map((o, i) => `<button class="mc-btn" id="opt${i}" onclick="chooseMC(${i})">${o}</button>`).join('');
+  qb.innerHTML = `
+    <div class="q-type-label mc">Multiple choice · Question ${cur + 1}</div>
+    <div class="q-scene">${q.scene}</div>
+    <div class="q-text">${q.q}</div>
+    <div class="q-hint" style="font-weight:600;color:var(--text2);font-style:normal;font-size:.95rem;margin-bottom:.4rem">"${q.sub.replace(/"/g,'')}"</div>
+    <div class="q-hint">${q.hint}</div>
+    <div class="mc-opts">${opts}</div>
+    <div class="feedback" id="fb"></div>
+    <div class="quiz-foot">
+      <span class="q-info">Question ${cur + 1} of ${questions.length}</span>
+      <button class="btn-next" id="btn-next" onclick="nextQ()">Next →</button>
+    </div>`;
+}
+
+function chooseMC(i) {
+  if (done) return;
+  done = true;
+  const q = questions[cur];
+  for (let j = 0; j < q.opts.length; j++) {
+    const b = document.getElementById('opt' + j);
+    b.disabled = true;
+    if (j === q.ans) b.classList.add('correct');
+    else if (j === i) b.classList.add('wrong');
+  }
+  const fb = document.getElementById('fb');
+  if (i === q.ans) {
+    score++;
+    speak(q.opts[q.ans]);
+    fb.className = 'feedback show ok';
+    fb.innerHTML = '✅ Doğru! Correct! — ' + q.explain;
+  } else {
+    fb.className = 'feedback show bad';
+    fb.innerHTML = '❌ Not quite. Answer: <strong>' + q.opts[q.ans] + '</strong> — ' + q.explain;
+  }
+  document.getElementById('pts').textContent = score + ' pts';
+  document.getElementById('btn-next').classList.add('show');
+}
+
+function renderINP(q, qb) {
+  qb.innerHTML = `
+    <div class="q-type-label inp">Write the answer · Question ${cur + 1}</div>
+    <div class="q-scene">${q.scene}</div>
+    <div class="inp-wrap">
+      <div class="inp-prompt">
+        <div style="margin-bottom:.4rem;font-size:.75rem;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;font-weight:600;">Make this sentence negative:</div>
+        <strong>${q.given}</strong><br>
+        <span style="font-size:.8rem;color:var(--text3)">${q.givenEn}</span>
+      </div>
+      <div style="font-size:.88rem;color:var(--text2);margin-bottom:.6rem">${q.prompt}</div>
+      <div class="inp-row">
+        <input class="inp-field" id="inp-field" type="text" placeholder="Type the negative verb form…" autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="if(event.key==='Enter')checkINP()">
+        <button class="btn-check" onclick="checkINP()">Check</button>
+      </div>
+      <div class="inp-alts" id="inp-alts" style="display:none"></div>
+    </div>
+    <div style="font-size:.78rem;color:var(--text3);margin-top:.25rem;font-style:italic">Hint: ${q.hint}</div>
+    <div class="feedback" id="fb"></div>
+    <div class="quiz-foot">
+      <span class="q-info">Question ${cur + 1} of ${questions.length}</span>
+      <button class="btn-next" id="btn-next" onclick="nextQ()">Next →</button>
+    </div>`;
+  setTimeout(() => { const f = document.getElementById('inp-field'); if (f) f.focus(); }, 100);
+}
+
+function normalize(s) {
+  return s.trim().toLowerCase().replace(/[.,!?]/g,'');
+}
+
+function checkINP() {
+  if (done) return;
+  const q = questions[cur];
+  const field = document.getElementById('inp-field');
+  const val = normalize(field.value);
+  if (!val) return;
+  done = true;
+  field.disabled = true;
+  const fb = document.getElementById('fb');
+  const correct = q.alts.map(normalize);
+  if (correct.includes(val)) {
+    score++;
+    field.classList.add('correct');
+    speak(q.answer);
+    fb.className = 'feedback show ok';
+    fb.innerHTML = '✅ Doğru! Correct! — ' + q.explain;
+  } else {
+    field.classList.add('wrong');
+    fb.className = 'feedback show bad';
+    fb.innerHTML = '❌ Not quite. Correct form: <strong>' + q.answer + '</strong> — ' + q.explain;
+  }
+  document.getElementById('pts').textContent = score + ' pts';
+  document.getElementById('btn-next').classList.add('show');
+}
+
+function nextQ() { cur++; renderQ(); }
+function restart() { cur = 0; score = 0; updateMeta(); renderQ(); }
+
+renderQ();
+</script>
+</body>
+</html>
