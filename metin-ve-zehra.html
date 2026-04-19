@@ -38,92 +38,58 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:16px;line-height:1.65;}
 .wrap{max-width:860px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
-
-/* TIP */
 .tip{background:var(--amber-bg);border:1px solid var(--amber-bd);border-radius:var(--r);padding:.7rem 1rem;margin-bottom:1.5rem;font-size:.82rem;color:var(--amber);display:flex;gap:.6rem;align-items:flex-start;}
 .tip strong{color:#4a2d00;}
-
-/* HERO */
 .hero{background:linear-gradient(135deg,#1a1a2e 0%,#2d1b69 50%,#1a4f7a 100%);border-radius:var(--r-lg);padding:2rem 2rem 1.75rem;margin-bottom:1.75rem;color:#fff;position:relative;overflow:hidden;}
 .hero::after{content:'🇹🇷';position:absolute;top:1.25rem;right:1.5rem;font-size:2rem;opacity:.4;}
 .hero-tag{display:inline-block;background:rgba(255,255,255,.18);color:#fff;border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .8rem;margin-bottom:.8rem;}
 .hero h1{font-size:clamp(1.5rem,3.5vw,2.1rem);font-weight:800;line-height:1.15;margin-bottom:.5rem;}
 .hero p{font-size:.92rem;opacity:.85;max-width:500px;}
-
-/* LISTEN BANNER */
 .listen-banner{background:#1a2d5a;border-radius:var(--r);padding:1rem 1.2rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:.85rem;}
 .listen-icon{font-size:2rem;flex-shrink:0;}
 .listen-text h3{font-size:.9rem;font-weight:700;color:#fff;margin-bottom:.2rem;}
 .listen-text p{font-size:.8rem;color:rgba(255,255,255,.75);}
 .btn-listen-all{background:#fff;color:#1a2d5a;border:none;padding:.5rem 1.1rem;border-radius:8px;font-size:.82rem;font-family:var(--sans);font-weight:700;cursor:pointer;white-space:nowrap;margin-left:auto;flex-shrink:0;transition:opacity .2s;}
 .btn-listen-all:hover{opacity:.85;}
-
-/* SECTION CARD */
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);margin-bottom:1.5rem;overflow:hidden;}
 .card-head{padding:.85rem 1.4rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:.75rem;}
 .card-head h2{font-size:.95rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:.5rem;}
 .step-num{font-family:var(--mono);font-size:.72rem;background:var(--surface2);color:var(--text3);padding:.15rem .5rem;border-radius:6px;}
-.pill{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:.2rem .65rem;border-radius:20px;border:1px solid;}
-.pill-blue{background:var(--blue-bg);color:var(--blue);border-color:var(--blue-bd);}
-.pill-green{background:var(--green-bg);color:var(--green);border-color:var(--green-bd);}
-.pill-red{background:var(--red-bg);color:var(--red);border-color:var(--red-bd);}
 .card-body{padding:1.4rem;}
-
-/* SCENE STRIP WITH IMAGE */
 .scene-strip{display:flex;gap:1.25rem;margin-bottom:1.25rem;align-items:flex-start;}
 .scene-img-wrap{flex-shrink:0;width:220px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);}
 .scene-img-wrap img{width:100%;display:block;object-fit:cover;}
 .scene-desc{font-size:.88rem;color:var(--text2);line-height:1.75;}
-.scene-desc strong{color:var(--text);}
 @media(max-width:520px){.scene-strip{flex-direction:column;}.scene-img-wrap{width:100%;}}
-
-/* DIALOG */
 .dialog{display:flex;flex-direction:column;gap:.5rem;}
 .bubble-row{display:flex;gap:.75rem;align-items:flex-start;}
 .bubble-row.zehra{flex-direction:row-reverse;}
-.avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;font-weight:700;font-size:.8rem;letter-spacing:-.02em;}
+.avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;font-weight:700;}
 .av-metin{background:#dbeafe;color:#1e40af;}
 .av-zehra{background:#fce7f3;color:#9d174d;}
 .bubble{border-radius:14px;padding:.75rem 1rem;max-width:68%;position:relative;}
 .bubble-metin{background:#dbeafe;border-bottom-left-radius:4px;}
 .bubble-zehra{background:#fce7f3;border-bottom-right-radius:4px;}
-.bubble .tr{font-size:.95rem;font-weight:600;color:var(--text);cursor:pointer;display:flex;align-items:center;gap:.4rem;}
+.bubble .tr{font-size:.95rem;font-weight:600;color:var(--text);cursor:pointer;}
 .bubble .en{font-size:.78rem;color:var(--text3);margin-top:.2rem;}
-.speak-btn{background:none;border:none;font-size:.9rem;cursor:pointer;opacity:.5;transition:opacity .2s;flex-shrink:0;padding:0;}
-.speak-btn:hover,.speak-btn.active{opacity:1;}
-.bubble-row.zehra .bubble{text-align:right;}
-.bubble-row.zehra .tr{justify-content:flex-end;}
-
-/* VOCAB */
 .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem;}
-.vocab-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:.6rem .85rem;cursor:pointer;transition:background .16s;}
-.vocab-card:hover{background:var(--blue-bg);border-color:var(--blue-bd);}
+.vocab-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:.6rem .85rem;cursor:pointer;}
 .vocab-tr{font-size:.88rem;font-weight:700;color:var(--text);}
 .vocab-en{font-size:.78rem;color:var(--text3);}
-
-/* QUIZ */
-.quiz-top{background:var(--surface2);border-bottom:1px solid var(--border);padding:.9rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
-.quiz-title{font-family:var(--mono);font-size:.88rem;font-weight:500;color:var(--text);}
-.quiz-meta{display:flex;align-items:center;gap:.75rem;}
-.qc{font-family:var(--mono);font-size:.78rem;color:var(--text3);}
+.quiz-top{background:var(--surface2);border-bottom:1px solid var(--border);padding:.9rem 1.4rem;display:flex;align-items:center;justify-content:space-between;}
 .prog-wrap{width:100px;height:5px;background:var(--border);border-radius:10px;overflow:hidden;}
-.prog-bar{height:100%;background:var(--red);border-radius:10px;transition:width .45s;}
-.pts{font-family:var(--mono);font-size:.75rem;background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bd);padding:.18rem .6rem;border-radius:6px;}
-.quiz-body{padding:1.75rem 1.4rem 1.4rem;min-height:320px;}
-.mc-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:.75rem 1rem;border-radius:var(--r);font-size:.88rem;cursor:pointer;text-align:left;transition:all .16s;font-family:var(--sans);width:100%;margin-bottom:0.5rem;}
-.mc-btn:hover:not(:disabled){border-color:var(--red);color:var(--red);background:var(--red-bg);}
-.mc-btn.correct{background:var(--green-bg);border-color:var(--green-bd);color:var(--green);font-weight:700;}
-.mc-btn.wrong{background:var(--red-bg);border-color:var(--red-bd);color:var(--red);}
-.feedback{border-radius:var(--r);padding:.8rem 1rem;font-size:.85rem;line-height:1.6;display:none;margin-top:.5rem;}
+.prog-bar{height:100%;background:var(--red);transition:width .45s;}
+.quiz-body{padding:1.4rem;min-height:250px;}
+.mc-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:.75rem 1rem;border-radius:var(--r);font-size:.88rem;cursor:pointer;width:100%;margin-bottom:0.5rem;text-align:left;}
+.mc-btn:hover{border-color:var(--red);background:var(--red-bg);}
+.feedback{border-radius:var(--r);padding:.8rem 1rem;font-size:.85rem;display:none;margin-top:.5rem;}
 .feedback.show{display:block;}
-.feedback.ok{background:var(--green-bg);border:1px solid var(--green-bd);color:var(--green);}
-.feedback.bad{background:var(--red-bg);border:1px solid var(--red-bd);color:var(--red);}
-.btn-next{background:var(--red);color:#fff;border:none;padding:.52rem 1.4rem;border-radius:var(--r);font-size:.85rem;font-family:var(--sans);font-weight:700;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s;}
+.feedback.ok{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bd);}
+.feedback.bad{background:var(--red-bg);color:var(--red);border:1px solid var(--red-bd);}
+.btn-next{background:var(--red);color:#fff;border:none;padding:.5rem 1.2rem;border-radius:var(--r);cursor:pointer;opacity:0;pointer-events:none;}
 .btn-next.show{opacity:1;pointer-events:all;}
-
-/* FREE WRITE */
-.free-area{width:100%;min-height:150px;padding:.85rem 1rem;border:1.5px solid var(--border);border-radius:var(--r);font-size:.9rem;font-family:var(--sans);background:var(--surface);resize:vertical;outline:none;}
-.btn-speak-free{background:var(--blue);color:#fff;border:none;padding:.5rem 1.1rem;border-radius:8px;font-size:.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:.35rem;}
+.free-area{width:100%;min-height:120px;padding:.85rem 1rem;border:1.5px solid var(--border);border-radius:var(--r);outline:none;font-family:var(--sans);}
+.btn-speak-free{background:var(--blue);color:#fff;border:none;padding:.5rem 1.1rem;border-radius:8px;font-weight:700;cursor:pointer;}
 </style>
 </head>
 <body>
@@ -131,11 +97,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:16
 
   <div class="tip">
     <span>💡</span>
-<<<<<<< HEAD
-    <span><strong>Görsel Notu:</strong> Resminiz <code>images/ders-1.png</code> yolundan yükleniyor. Eğer GitHub'da görünmezse dosya adındaki büyük/küçük harfleri kontrol edin.</span>
-=======
-    <span><strong>En iyi deneyim:</strong> Ses desteği için <strong>Chrome</strong> veya <strong>Safari</strong> kullanın. Görsel GitHub üzerinden <code>images/ders-1.png</code> yolundan yüklenir.</span>
->>>>>>> dbbc041205ef3f164602f938d9f22bd38713527a
+    <span><strong>Not:</strong> Ses desteği için Chrome/Safari önerilir. Görsel <code>images/ders-1.png</code> yolundan yükleniyor.</span>
   </div>
 
   <div class="hero">
@@ -148,25 +110,17 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:16
     <div class="listen-icon">🎧</div>
     <div class="listen-text">
       <h3>Diyaloğu Dinleyin</h3>
-      <p>Karakterlerin seslerini (Kadın/Erkek) duymak için oynat butonuna basın.</p>
+      <p>Karakter sesleri için "Diyaloğu Oynat" butonuna basın.</p>
     </div>
-    <button class="btn-listen-all" onclick="playAll()">▶ Tümünü Oynat</button>
+    <button class="btn-listen-all" onclick="playAll()">▶ Diyaloğu Oynat</button>
   </div>
 
   <div class="card">
-    <div class="card-head">
-      <h2><span class="step-num">01</span> Diyalog</h2>
-    </div>
+    <div class="card-head"><h2><span class="step-num">01</span> Diyalog</h2></div>
     <div class="card-body">
       <div class="scene-strip">
-        <div class="scene-img-wrap">
-          <!-- KLASÖR YAPINA GÖRE GÜNCELLENDİ -->
-          <img src="images/ders-1.png" alt="Metin ve Zehra" onerror="this.src='https://via.placeholder.com/220x150?text=Resim+Bulunamadi'">
-        </div>
-        <div class="scene-desc">
-          <strong>Sahne:</strong> Metin ve Zehra sokakta karşılaşır ve kahve içmeye giderler.<br><br>
-          <span style="color:#1e40af">● Metin (Erkek)</span> | <span style="color:#9d174d">● Zehra (Kadın)</span>
-        </div>
+        <div class="scene-img-wrap"><img src="images/ders-1.png" alt="Sahne" onerror="this.src='https://via.placeholder.com/220x150?text=Resim+Yok'"></div>
+        <div class="scene-desc"><strong>Sahne:</strong> Metin ve Zehra sokakta karşılaşır ve kahve içmeye karar verirler.</div>
       </div>
       <div class="dialog" id="dialog-list"></div>
     </div>
@@ -177,21 +131,19 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:16
     <div class="card-body"><div class="vocab-grid" id="vocab-grid"></div></div>
   </div>
 
-  <div class="card" id="quiz-card">
+  <div class="card">
     <div class="quiz-top">
-      <div class="quiz-title">⚡ Soru Cevap</div>
-      <div class="quiz-meta"><span class="qc" id="qc">1 / 5</span><div class="prog-wrap"><div class="prog-bar" id="prog" style="width:0%"></div></div></div>
+      <div><strong>Anlama Kontrolü</strong></div>
+      <div class="prog-wrap"><div class="prog-bar" id="prog" style="width:0%"></div></div>
     </div>
     <div class="quiz-body" id="quiz-body"></div>
   </div>
 
   <div class="card">
-    <div class="card-head"><h2><span class="step-num">03</span> Yazma Pratiği</h2></div>
+    <div class="card-head"><h2><span class="step-num">03</span> Serbest Yazma</h2></div>
     <div class="card-body">
-      <textarea class="free-area" id="free-text" placeholder="Ali: Merhaba! Selin: Selam!..."></textarea>
-      <div style="margin-top:10px; display:flex; justify-content:flex-end;">
-        <button class="btn-speak-free" onclick="speakFree()">🔊 Sesli Oku</button>
-      </div>
+      <textarea class="free-area" id="free-text" placeholder="Diyaloğu buraya yazın..."></textarea>
+      <div style="margin-top:10px;text-align:right;"><button class="btn-speak-free" onclick="speakFree()">🔊 Sesli Oku</button></div>
     </div>
   </div>
 
@@ -207,54 +159,44 @@ const dialogue = [
   {who:'Z', tr:'Evet! Sevgi şimdi İzmir\'de yaşıyor. Üniversitede okuyor.', en:'Yes! Sevgi lives in İzmir now. She\'s studying at university.'},
   {who:'M', tr:'Vay be! Harika! Peki, bir kahve içelim mi?', en:'Wow! Great! Well, shall we have a coffee?'},
   {who:'Z', tr:'Tabii ki! Neden olmasın? Burada güzel bir kafe var.', en:'Of course! Why not? There\'s a nice café here.'},
-  {who:'M', tr:'Görüşmek üzere! Kendine iyi bak.', en:'See you! Take care of yourself.'},
+  {who:'M', tr:'Görüşmek üzere! Kendine iyi bak.', en:'See you! Take care of yourself.'}
 ];
 
 const vocab = [
   {tr:'nasılsın', en:'how are you'},
   {tr:'meşgul', en:'busy'},
-  {tr:'harika', en:'great'},
+  {tr:'haber almak', en:'to hear from'},
   {tr:'tabii ki', en:'of course'},
-  {tr:'hesap', en:'bill'},
   {tr:'görüşmek üzere', en:'see you'}
 ];
 
-// SES SİSTEMİ
 function getBestVoice(gender) {
   const vv = window.speechSynthesis.getVoices();
-  const trVoices = vv.filter(v => v.lang.startsWith('tr'));
-  if (trVoices.length === 0) return null;
-
-  const femaleNames = ['sibel', 'yelda', 'filiz', 'dilara', 'hülya', 'gül', 'female'];
-  const maleNames = ['cem', 'tolga', 'engin', 'male'];
-
-  let target = gender === 'female' ? femaleNames : maleNames;
-  let voice = trVoices.find(v => target.some(n => v.name.toLowerCase().includes(n)));
-  
-  return voice || trVoices[0];
+  const tr = vv.filter(v => v.lang.startsWith('tr'));
+  if(!tr.length) return null;
+  const f = ['sibel','yelda','filiz','dilara','female'];
+  const m = ['cem','tolga','male'];
+  const target = gender === 'female' ? f : m;
+  return tr.find(v => target.some(n => v.name.toLowerCase().includes(n))) || tr[0];
 }
 
 function speak(text, gender = 'female') {
   window.speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
-  const v = getBestVoice(gender);
-  if(v) u.voice = v;
+  u.voice = getBestVoice(gender);
   u.lang = 'tr-TR';
   u.rate = 0.85;
   window.speechSynthesis.speak(u);
 }
 
-// DİYALOG OLUŞTUR
 const dl = document.getElementById('dialog-list');
 dialogue.forEach((line, i) => {
   const isZ = line.who === 'Z';
   const row = document.createElement('div');
   row.className = 'bubble-row' + (isZ ? ' zehra' : '');
-  row.innerHTML = `
-    <div class="avatar ${isZ ? 'av-zehra' : 'av-metin'}">${isZ ? 'Z' : 'M'}</div>
-    <div class="bubble ${isZ ? 'bubble-zehra' : 'bubble-metin'}">
-      <div class="tr" onclick="speak('${line.tr.replace(/'/g,"\\'")}', '${isZ?'female':'male'}')">${line.tr} 🔊</div>
-      <div class="en">${line.en}</div>
+  row.innerHTML = `<div class="avatar ${isZ?'av-zehra':'av-metin'}">${line.who}</div>
+    <div class="bubble ${isZ?'bubble-zehra':'bubble-metin'}" onclick="speak('${line.tr.replace(/'/g,"\\'")}','${isZ?'female':'male'}')">
+      <div class="tr">${line.tr} 🔊</div><div class="en">${line.en}</div>
     </div>`;
   dl.appendChild(row);
 });
@@ -263,20 +205,13 @@ function playAll() {
   let i = 0;
   function next() {
     if (i >= dialogue.length) return;
-    const line = dialogue[i];
-    speak(line.tr, line.who === 'Z' ? 'female' : 'male');
+    speak(dialogue[i].tr, dialogue[i].who==='Z'?'female':'male');
     i++;
-    const check = setInterval(() => {
-      if (!window.speechSynthesis.speaking) {
-        clearInterval(check);
-        setTimeout(next, 500);
-      }
-    }, 100);
+    const c = setInterval(() => { if(!window.speechSynthesis.speaking){ clearInterval(c); setTimeout(next, 500); } }, 100);
   }
   next();
 }
 
-// KELİME GRİDİ
 const vg = document.getElementById('vocab-grid');
 vocab.forEach(v => {
   const c = document.createElement('div');
@@ -286,34 +221,29 @@ vocab.forEach(v => {
   vg.appendChild(c);
 });
 
-// BASİT QUIZ
 const questions = [
-  {q:'Metin ve Zehra nerede?', opts:['Okulda','Sokakta','İzmir\'de'], ans:1},
-  {q:'Sevgi şimdi nerede yaşıyor?', opts:['Ankara','İstanbul','İzmir'], ans:2}
+  {q:'Metin ve Zehra nerede karşılaşıyor?', opts:['Okulda','Sokakta','Kafe içinde'], ans:1},
+  {q:'Zehra neden çok meşgul?', opts:['Yeni bir işe başladı','Sınavları var','İzmir\'e taşındı'], ans:0}
 ];
 let cur=0;
 function renderQ() {
   const qb = document.getElementById('quiz-body');
-  if(cur >= questions.length) { qb.innerHTML="<h3>Tebrikler! Bittti.</h3>"; return; }
+  if(cur >= questions.length) { qb.innerHTML="<h3>Harika! Tüm soruları yanıtladınız.</h3>"; return; }
   const q = questions[cur];
-  qb.innerHTML = `<div class="q-text">${q.q}</div>` + 
+  qb.innerHTML = `<p><strong>Soru:</strong> ${q.q}</p>` + 
     q.opts.map((o,i) => `<button class="mc-btn" onclick="check(${i})">${o}</button>`).join('') +
-    `<div id="fb" class="feedback"></div><button id="bn" class="btn-next" onclick="cur++;renderQ()">Sıradaki</button>`;
+    `<div id="fb" class="feedback"></div><button id="bn" class="btn-next" onclick="cur++;renderQ()">Sıradaki →</button>`;
 }
 function check(i) {
   const fb = document.getElementById('fb');
-  fb.className = "feedback show " + (i===questions[cur].ans ? "ok" : "bad");
-  fb.innerHTML = i===questions[cur].ans ? "Doğru!" : "Yanlış!";
-  document.getElementById('bn').classList.add('show');
+  const correct = i === questions[cur].ans;
+  fb.className = "feedback show " + (correct ? "ok" : "bad");
+  fb.innerHTML = correct ? "Doğru!" : "Yanlış, tekrar dene.";
+  if(correct) { document.getElementById('bn').classList.add('show'); document.getElementById('prog').style.width = ((cur+1)/questions.length*100)+'%'; }
 }
 renderQ();
 
-function speakFree() {
-  const t = document.getElementById('free-text').value;
-  if(t) speak(t, 'female');
-}
-
-// Seslerin yüklenmesini bekle
+function speakFree() { speak(document.getElementById('free-text').value, 'female'); }
 window.speechSynthesis.onvoiceschanged = () => {};
 </script>
 </body>
