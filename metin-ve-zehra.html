@@ -14,147 +14,133 @@ title: Ders Başlığı
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#faf9f5;
-  --surface:#ffffff;
-  --surface2:#f3f1ea;
-  --surface3:#e8e5d8;
-  --border:#ddd9c8;
-  --text:#1c1a14;
-  --text2:#5a5641;
-  --text3:#9a957c;
-  --red:#c0392b;
-  --red-bg:#fdf1f0;
-  --red-bd:#f5c6c2;
-  --green:#1a7f4b;
-  --green-bg:#f0faf4;
-  --green-bd:#b8e6cc;
-  --blue:#1a5fb4;
-  --blue-bg:#f0f4ff;
-  --blue-bd:#b8ccf5;
-  --amber:#7d4e00;
-  --amber-bg:#fffbef;
-  --amber-bd:#f5dfa0;
-  --purple:#5c2d91;
-  --sans:'Nunito',sans-serif;
-  --mono:'DM Mono',monospace;
-  --r:10px;
-  --r-lg:16px;
+  --bg:#faf9f5; --surface:#ffffff; --surface2:#f3f1ea; --border:#ddd9c8;
+  --text:#1c1a14; --text2:#5a5641; --text3:#9a957c; --red:#c0392b;
+  --red-bg:#fdf1f0; --red-bd:#f5c6c2; --green:#1a7f4b; --green-bg:#f0faf4;
+  --green-bd:#b8e6cc; --blue:#1a5fb4; --blue-bg:#f0f4ff; --blue-bd:#b8ccf5;
+  --amber:#7d4e00; --amber-bg:#fffbef; --amber-bd:#f5dfa0;
+  --sans:'Nunito',sans-serif; --mono:'DM Mono',monospace; --r:10px; --r-lg:16px;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:16px;line-height:1.65;}
 .wrap{max-width:860px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
-.tip{background:var(--amber-bg);border:1px solid var(--amber-bd);border-radius:var(--r);padding:.7rem 1rem;margin-bottom:1.5rem;font-size:.82rem;color:var(--amber);display:flex;gap:.6rem;align-items:flex-start;}
-.tip strong{color:#4a2d00;}
-.hero{background:linear-gradient(135deg,#1a1a2e 0%,#2d1b69 50%,#1a4f7a 100%);border-radius:var(--r-lg);padding:2rem 2rem 1.75rem;margin-bottom:1.75rem;color:#fff;position:relative;overflow:hidden;}
-.hero::after{content:'🇹🇷';position:absolute;top:1.25rem;right:1.5rem;font-size:2rem;opacity:.4;}
-.hero-tag{display:inline-block;background:rgba(255,255,255,.18);color:#fff;border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .8rem;margin-bottom:.8rem;}
-.hero h1{font-size:clamp(1.5rem,3.5vw,2.1rem);font-weight:800;line-height:1.15;margin-bottom:.5rem;}
-.hero p{font-size:.92rem;opacity:.85;max-width:500px;}
-.listen-banner{background:#1a2d5a;border-radius:var(--r);padding:1rem 1.2rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:.85rem;}
-.listen-icon{font-size:2rem;flex-shrink:0;}
-.listen-text h3{font-size:.9rem;font-weight:700;color:#fff;margin-bottom:.2rem;}
-.listen-text p{font-size:.8rem;color:rgba(255,255,255,.75);}
-.btn-listen-all{background:#fff;color:#1a2d5a;border:none;padding:.5rem 1.1rem;border-radius:8px;font-size:.82rem;font-family:var(--sans);font-weight:700;cursor:pointer;white-space:nowrap;margin-left:auto;flex-shrink:0;transition:opacity .2s;}
-.btn-listen-all:hover{opacity:.85;}
+
+/* HERO & BANNER */
+.hero{background:linear-gradient(135deg,#1a1a2e 0%,#2d1b69 50%,#1a4f7a 100%);border-radius:var(--r-lg);padding:2rem;margin-bottom:1.75rem;color:#fff;position:relative;}
+.hero-tag{display:inline-block;background:rgba(255,255,255,.18);color:#fff;border-radius:20px;font-size:.72rem;font-weight:700;padding:.2rem .8rem;margin-bottom:.8rem;text-transform:uppercase;}
+.listen-banner{background:#1a2d5a;border-radius:var(--r);padding:1rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:.85rem;color:#fff;}
+.btn-listen-all{background:#fff;color:#1a2d5a;border:none;padding:.5rem 1.1rem;border-radius:8px;font-weight:700;cursor:pointer;margin-left:auto;}
+
+/* CARD & DIALOG */
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);margin-bottom:1.5rem;overflow:hidden;}
-.card-head{padding:.85rem 1.4rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:.75rem;}
-.card-head h2{font-size:.95rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:.5rem;}
-.step-num{font-family:var(--mono);font-size:.72rem;background:var(--surface2);color:var(--text3);padding:.15rem .5rem;border-radius:6px;}
+.card-head{padding:.85rem 1.4rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
 .card-body{padding:1.4rem;}
-.scene-strip{display:flex;gap:1.25rem;margin-bottom:1.25rem;align-items:flex-start;}
-.scene-img-wrap{flex-shrink:0;width:220px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);}
-.scene-img-wrap img{width:100%;display:block;object-fit:cover;}
-.scene-desc{font-size:.88rem;color:var(--text2);line-height:1.75;}
-@media(max-width:520px){.scene-strip{flex-direction:column;}.scene-img-wrap{width:100%;}}
-.dialog{display:flex;flex-direction:column;gap:.5rem;}
-.bubble-row{display:flex;gap:.75rem;align-items:flex-start;}
+.scene-strip{display:flex;gap:1.25rem;margin-bottom:1.25rem;}
+.scene-img-wrap{width:220px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);flex-shrink:0;}
+.scene-img-wrap img{width:100%;display:block;}
+.bubble-row{display:flex;gap:.75rem;margin-bottom:.5rem;}
 .bubble-row.zehra{flex-direction:row-reverse;}
-.avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;font-weight:700;}
+.avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;}
 .av-metin{background:#dbeafe;color:#1e40af;}
 .av-zehra{background:#fce7f3;color:#9d174d;}
-.bubble{border-radius:14px;padding:.75rem 1rem;max-width:68%;position:relative;}
+.bubble{border-radius:14px;padding:.75rem 1rem;max-width:70%;cursor:pointer;transition:transform 0.1s;}
+.bubble:active{transform:scale(0.98);}
 .bubble-metin{background:#dbeafe;border-bottom-left-radius:4px;}
 .bubble-zehra{background:#fce7f3;border-bottom-right-radius:4px;}
-.bubble .tr{font-size:.95rem;font-weight:600;color:var(--text);cursor:pointer;}
+.bubble .tr{font-size:.95rem;font-weight:600;}
 .bubble .en{font-size:.78rem;color:var(--text3);margin-top:.2rem;}
-.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem;}
+
+/* QUIZ STYLES */
+.quiz-container{padding:1rem;}
+.q-text{font-size:1.05rem;font-weight:700;margin-bottom:1rem;color:var(--text);}
+.mc-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:.85rem 1rem;border-radius:var(--r);font-size:.9rem;cursor:pointer;width:100%;margin-bottom:0.6rem;text-align:left;transition:all 0.2s;}
+.mc-btn:hover:not(:disabled){border-color:var(--blue);background:var(--blue-bg);}
+.mc-btn.correct{background:var(--green-bg);border-color:var(--green);color:var(--green);font-weight:700;}
+.mc-btn.wrong{background:var(--red-bg);border-color:var(--red);color:var(--red);}
+.feedback-box{padding:0.8rem;border-radius:var(--r);margin-top:0.5rem;display:none;font-size:0.9rem;font-weight:600;}
+.feedback-box.show{display:block;}
+.feedback-box.ok{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bd);}
+.feedback-box.bad{background:var(--red-bg);color:var(--red);border:1px solid var(--red-bd);}
+.quiz-footer{display:flex;justify-content:space-between;align-items:center;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border);}
+.btn-next-q{background:var(--red);color:#fff;border:none;padding:.6rem 1.4rem;border-radius:var(--r);font-weight:700;cursor:pointer;display:none;}
+.btn-next-q.show{display:block;}
+.prog-bar-wrap{width:100%;height:6px;background:var(--border);border-radius:10px;margin-top:1rem;overflow:hidden;}
+.prog-bar-fill{height:100%;background:var(--green);width:0%;transition:width 0.4s;}
+
+/* VOCAB & FREE */
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.6rem;}
 .vocab-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:.6rem .85rem;cursor:pointer;}
-.vocab-tr{font-size:.88rem;font-weight:700;color:var(--text);}
-.vocab-en{font-size:.78rem;color:var(--text3);}
-.quiz-top{background:var(--surface2);border-bottom:1px solid var(--border);padding:.9rem 1.4rem;display:flex;align-items:center;justify-content:space-between;}
-.prog-wrap{width:100px;height:5px;background:var(--border);border-radius:10px;overflow:hidden;}
-.prog-bar{height:100%;background:var(--red);transition:width .45s;}
-.quiz-body{padding:1.4rem;min-height:250px;}
-.mc-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:.75rem 1rem;border-radius:var(--r);font-size:.88rem;cursor:pointer;width:100%;margin-bottom:0.5rem;text-align:left;}
-.mc-btn:hover{border-color:var(--red);background:var(--red-bg);}
-.feedback{border-radius:var(--r);padding:.8rem 1rem;font-size:.85rem;display:none;margin-top:.5rem;}
-.feedback.show{display:block;}
-.feedback.ok{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bd);}
-.feedback.bad{background:var(--red-bg);color:var(--red);border:1px solid var(--red-bd);}
-.btn-next{background:var(--red);color:#fff;border:none;padding:.5rem 1.2rem;border-radius:var(--r);cursor:pointer;opacity:0;pointer-events:none;}
-.btn-next.show{opacity:1;pointer-events:all;}
-.free-area{width:100%;min-height:120px;padding:.85rem 1rem;border:1.5px solid var(--border);border-radius:var(--r);outline:none;font-family:var(--sans);}
-.btn-speak-free{background:var(--blue);color:#fff;border:none;padding:.5rem 1.1rem;border-radius:8px;font-weight:700;cursor:pointer;}
+.free-area{width:100%;min-height:120px;padding:1rem;border:1.5px solid var(--border);border-radius:var(--r);outline:none;font-family:inherit;}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <div class="tip">
-    <span>💡</span>
-    <span><strong>Not:</strong> Ses desteği için Chrome/Safari önerilir. Görsel <code>images/ders-1.png</code> yolundan yükleniyor.</span>
-  </div>
-
   <div class="hero">
     <div class="hero-tag">Turkish A1 · Listening</div>
     <h1>Metin ve Zehra</h1>
-    <p>Sokakta karşılaşan iki arkadaşın diyaloğunu dinleyin ve pratik yapın.</p>
+    <p>Sokakta karşılaşan iki arkadaşın diyaloğunu dinleyin ve anlama sorularını yanıtlayın.</p>
   </div>
 
   <div class="listen-banner">
-    <div class="listen-icon">🎧</div>
-    <div class="listen-text">
-      <h3>Diyaloğu Dinleyin</h3>
-      <p>Karakter sesleri için "Diyaloğu Oynat" butonuna basın.</p>
+    <div>
+      <h3 style="font-size:0.95rem;">Diyaloğu Dinleyin</h3>
+      <p style="font-size:0.8rem; opacity:0.8;">Cümlelere tıklayarak karakter seslerini duyabilirsiniz.</p>
     </div>
-    <button class="btn-listen-all" onclick="playAll()">▶ Diyaloğu Oynat</button>
+    <button class="btn-listen-all" onclick="playAll()">▶ Tümünü Oynat</button>
   </div>
 
+  <!-- BÖLÜM 1: DİYALOG -->
   <div class="card">
-    <div class="card-head"><h2><span class="step-num">01</span> Diyalog</h2></div>
+    <div class="card-head"><h2>01 Diyalog</h2></div>
     <div class="card-body">
       <div class="scene-strip">
-        <div class="scene-img-wrap"><img src="images/ders-1.png" alt="Sahne" onerror="this.src='https://via.placeholder.com/220x150?text=Resim+Yok'"></div>
-        <div class="scene-desc"><strong>Sahne:</strong> Metin ve Zehra sokakta karşılaşır ve kahve içmeye karar verirler.</div>
+        <div class="scene-img-wrap">
+          <img src="images/ders-1.png" alt="Sahne" onerror="this.src='https://via.placeholder.com/220x150?text=images/ders-1.png+yok'">
+        </div>
+        <div class="scene-desc">
+          <strong>Sahne:</strong> İstanbul'da bir sokak. Metin ve Zehra tesadüfen karşılaşırlar.<br><br>
+          <small>● M: Metin (Erkek) ● Z: Zehra (Kadın)</small>
+        </div>
       </div>
-      <div class="dialog" id="dialog-list"></div>
+      <div id="dialog-list"></div>
     </div>
   </div>
 
+  <!-- BÖLÜM 2: ANLAMA KONTROLÜ (QUIZ) -->
   <div class="card">
-    <div class="card-head"><h2><span class="step-num">02</span> Kelimeler</h2></div>
-    <div class="card-body"><div class="vocab-grid" id="vocab-grid"></div></div>
-  </div>
-
-  <div class="card">
-    <div class="quiz-top">
-      <div><strong>Anlama Kontrolü</strong></div>
-      <div class="prog-wrap"><div class="prog-bar" id="prog" style="width:0%"></div></div>
-    </div>
-    <div class="quiz-body" id="quiz-body"></div>
-  </div>
-
-  <div class="card">
-    <div class="card-head"><h2><span class="step-num">03</span> Serbest Yazma</h2></div>
+    <div class="card-head"><h2>02 Anlama Kontrolü</h2></div>
     <div class="card-body">
-      <textarea class="free-area" id="free-text" placeholder="Diyaloğu buraya yazın..."></textarea>
-      <div style="margin-top:10px;text-align:right;"><button class="btn-speak-free" onclick="speakFree()">🔊 Sesli Oku</button></div>
+      <div id="quiz-area" class="quiz-container">
+        <!-- Quiz içeriği JS ile yüklenecek -->
+      </div>
+      <div class="prog-bar-wrap"><div id="prog-fill" class="prog-bar-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- BÖLÜM 3: KELİMELER -->
+  <div class="card">
+    <div class="card-head"><h2>03 Önemli Kelimeler</h2></div>
+    <div class="card-body">
+      <div class="vocab-grid" id="vocab-grid"></div>
+    </div>
+  </div>
+
+  <!-- BÖLÜM 4: YAZMA -->
+  <div class="card">
+    <div class="card-head"><h2>04 Yazma Pratiği</h2></div>
+    <div class="card-body">
+      <textarea class="free-area" id="free-text" placeholder="Kendi kısa diyaloğunuzu buraya yazın..."></textarea>
+      <div style="margin-top:10px;text-align:right;">
+        <button class="btn-listen-all" style="background:var(--blue); color:#fff;" onclick="speak(document.getElementById('free-text').value, 'female')">🔊 Sesli Oku</button>
+      </div>
     </div>
   </div>
 
 </div>
 
 <script>
+/* VERİLER */
 const dialogue = [
   {who:'M', tr:'Zehra! Ne sürpriz! Nasılsın?', en:'Zehra! What a surprise! How are you?'},
   {who:'Z', tr:'Metin! İyiyim, teşekkürler. Sen nasılsın?', en:'Metin! I\'m fine, thank you. How are you?'},
@@ -167,88 +153,130 @@ const dialogue = [
   {who:'M', tr:'Görüşmek üzere! Kendine iyi bak.', en:'See you! Take care of yourself.'}
 ];
 
-const vocab = [
-  {tr:'nasılsın', en:'how are you'},
-  {tr:'meşgul', en:'busy'},
-  {tr:'haber almak', en:'to hear from'},
-  {tr:'tabii ki', en:'of course'},
-  {tr:'görüşmek üzere', en:'see you'}
+const quizData = [
+  {q:'Metin ve Zehra nerede karşılaşıyor?', opts:['Okulda','Sokakta','İzmir\'de','Trende'], ans:1},
+  {q:'Zehra neden çok meşgul?', opts:['Sınavları var','Çok uyuyor','Yeni bir işe başladı','Tatile gidiyor'], ans:2},
+  {q:'Sevgi şu an nerede yaşıyor?', opts:['İstanbul','Ankara','İzmir','Bursa'], ans:2},
+  {q:'Metin ve Zehra beraber ne yapmaya karar veriyor?', opts:['Yemek yemek','Kahve içmek','Sinemaya gitmek','Ders çalışmak'], ans:1}
 ];
 
-function getBestVoice(gender) {
-  const vv = window.speechSynthesis.getVoices();
-  const tr = vv.filter(v => v.lang.startsWith('tr'));
-  if(!tr.length) return null;
-  const f = ['sibel','yelda','filiz','dilara','female'];
-  const m = ['cem','tolga','male'];
-  const target = gender === 'female' ? f : m;
-  return tr.find(v => target.some(n => v.name.toLowerCase().includes(n))) || tr[0];
-}
+const vocab = [
+  {tr:'sürpriz', en:'surprise'}, {tr:'meşgul', en:'busy'}, {tr:'haber almak', en:'to hear from'},
+  {tr:'harika', en:'wonderful'}, {tr:'tabii ki', en:'of course'}, {tr:'görüşmek üzere', en:'see you'}
+];
 
-function speak(text, gender = 'female') {
+/* SES SİSTEMİ */
+function speak(text, gender) {
   window.speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
-  u.voice = getBestVoice(gender);
-  u.lang = 'tr-TR';
-  u.rate = 0.85;
+  const voices = window.speechSynthesis.getVoices();
+  const trVoices = voices.filter(v => v.lang.startsWith('tr'));
+  
+  if(trVoices.length > 0) {
+    const fNames = ['sibel','yelda','filiz','female'];
+    const mNames = ['cem','tolga','male'];
+    const target = gender === 'female' ? fNames : mNames;
+    u.voice = trVoices.find(v => target.some(n => v.name.toLowerCase().includes(n))) || trVoices[0];
+  }
+  u.lang = 'tr-TR'; u.rate = 0.85;
   window.speechSynthesis.speak(u);
 }
 
-const dl = document.getElementById('dialog-list');
-dialogue.forEach((line, i) => {
-  const isZ = line.who === 'Z';
-  const row = document.createElement('div');
-  row.className = 'bubble-row' + (isZ ? ' zehra' : '');
-  row.innerHTML = `<div class="avatar ${isZ?'av-zehra':'av-metin'}">${line.who}</div>
-    <div class="bubble ${isZ?'bubble-zehra':'bubble-metin'}" onclick="speak('${line.tr.replace(/'/g,"\\'")}','${isZ?'female':'male'}')">
-      <div class="tr">${line.tr} 🔊</div><div class="en">${line.en}</div>
+/* DİYALOĞU OLUŞTUR */
+const dList = document.getElementById('dialog-list');
+dialogue.forEach((l, i) => {
+  const isZ = l.who === 'Z';
+  const div = document.createElement('div');
+  div.className = 'bubble-row' + (isZ ? ' zehra' : '');
+  div.innerHTML = `
+    <div class="avatar ${isZ?'av-zehra':'av-metin'}">${l.who}</div>
+    <div class="bubble ${isZ?'bubble-zehra':'bubble-metin'}" onclick="speak('${l.tr.replace(/'/g,"\\'")}', '${isZ?'female':'male'}')">
+      <div class="tr">${l.tr} 🔊</div>
+      <div class="en">${l.en}</div>
     </div>`;
-  dl.appendChild(row);
+  dList.appendChild(div);
 });
 
 function playAll() {
   let i = 0;
-  function next() {
-    if (i >= dialogue.length) return;
-    speak(dialogue[i].tr, dialogue[i].who==='Z'?'female':'male');
+  function run() {
+    if(i >= dialogue.length) return;
+    speak(dialogue[i].tr, dialogue[i].who === 'Z' ? 'female' : 'male');
     i++;
-    const c = setInterval(() => { if(!window.speechSynthesis.speaking){ clearInterval(c); setTimeout(next, 500); } }, 100);
+    const check = setInterval(() => {
+      if(!window.speechSynthesis.speaking) { clearInterval(check); setTimeout(run, 600); }
+    }, 100);
   }
-  next();
+  run();
 }
 
-const vg = document.getElementById('vocab-grid');
+/* KELİMELER */
+const vGrid = document.getElementById('vocab-grid');
 vocab.forEach(v => {
   const c = document.createElement('div');
   c.className = 'vocab-card';
   c.onclick = () => speak(v.tr, 'female');
   c.innerHTML = `<div class="vocab-tr">🔊 ${v.tr}</div><div class="vocab-en">${v.en}</div>`;
-  vg.appendChild(c);
+  vGrid.appendChild(c);
 });
 
-const questions = [
-  {q:'Metin ve Zehra nerede karşılaşıyor?', opts:['Okulda','Sokakta','Kafe içinde'], ans:1},
-  {q:'Zehra neden çok meşgul?', opts:['Yeni bir işe başladı','Sınavları var','İzmir\'e taşındı'], ans:0}
-];
-let cur=0;
-function renderQ() {
-  const qb = document.getElementById('quiz-body');
-  if(cur >= questions.length) { qb.innerHTML="<h3>Harika! Tüm soruları yanıtladınız.</h3>"; return; }
-  const q = questions[cur];
-  qb.innerHTML = `<p><strong>Soru:</strong> ${q.q}</p>` + 
-    q.opts.map((o,i) => `<button class="mc-btn" onclick="check(${i})">${o}</button>`).join('') +
-    `<div id="fb" class="feedback"></div><button id="bn" class="btn-next" onclick="cur++;renderQ()">Sıradaki →</button>`;
-}
-function check(i) {
-  const fb = document.getElementById('fb');
-  const correct = i === questions[cur].ans;
-  fb.className = "feedback show " + (correct ? "ok" : "bad");
-  fb.innerHTML = correct ? "Doğru!" : "Yanlış, tekrar dene.";
-  if(correct) { document.getElementById('bn').classList.add('show'); document.getElementById('prog').style.width = ((cur+1)/questions.length*100)+'%'; }
-}
-renderQ();
+/* QUIZ MANTIĞI */
+let currentQ = 0;
+let quizFinished = false;
 
-function speakFree() { speak(document.getElementById('free-text').value, 'female'); }
+function renderQuiz() {
+  const area = document.getElementById('quiz-area');
+  if(currentQ >= quizData.length) {
+    area.innerHTML = `<div style="text-align:center; padding:1rem;"><h3>🏆 Harika! Hepsini bitirdiniz.</h3><button onclick="location.reload()" class="btn-listen-all" style="margin-top:15px; background:var(--green); color:white; float:none;">Tekrar Başla</button></div>`;
+    quizFinished = true;
+    return;
+  }
+
+  const data = quizData[currentQ];
+  area.innerHTML = `
+    <div class="q-text">Soru ${currentQ + 1}: ${data.q}</div>
+    <div id="options-box">
+      ${data.opts.map((o, i) => `<button class="mc-btn" onclick="handleAnswer(${i})">${o}</button>`).join('')}
+    </div>
+    <div id="quiz-feedback" class="feedback-box"></div>
+    <div class="quiz-footer">
+      <small>Soru ${currentQ + 1} / ${quizData.length}</small>
+      <button id="next-q-btn" class="btn-next-q" onclick="nextQuestion()">Sıradaki →</button>
+    </div>
+  `;
+  document.getElementById('prog-fill').style.width = (currentQ / quizData.length * 100) + '%';
+}
+
+function handleAnswer(index) {
+  const data = quizData[currentQ];
+  const buttons = document.querySelectorAll('.mc-btn');
+  const feedback = document.getElementById('quiz-feedback');
+  const nextBtn = document.getElementById('next-q-btn');
+
+  // Butonları kilitle
+  buttons.forEach(b => b.disabled = true);
+
+  if(index === data.ans) {
+    buttons[index].classList.add('correct');
+    feedback.innerHTML = "✅ Doğru cevap! Tebrikler.";
+    feedback.className = "feedback-box show ok";
+    nextBtn.classList.add('show');
+  } else {
+    buttons[index].classList.add('wrong');
+    buttons[data.ans].classList.add('correct');
+    feedback.innerHTML = "❌ Yanlış cevap. Doğrusu işaretlendi.";
+    feedback.className = "feedback-box show bad";
+    nextBtn.classList.add('show');
+  }
+}
+
+function nextQuestion() {
+  currentQ++;
+  renderQuiz();
+}
+
+// Başlat
+renderQuiz();
 window.speechSynthesis.onvoiceschanged = () => {};
 </script>
 </body>
