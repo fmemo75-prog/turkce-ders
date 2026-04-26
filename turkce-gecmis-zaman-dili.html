@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turkish Definite Past Tense — Di'li Geçmiş Zaman</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Outfit:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f4ee;
+  --s1:#ffffff;
+  --s2:#f0ede4;
+  --s3:#e5e0d4;
+  --border:#d8d2c2;
+  --text:#1c1a14;
+  --text2:#5a5540;
+  --text3:#9a9278;
+  --amber:#8a5c00;
+  --amber-bg:#fffbef;
+  --amber-bd:#e8d08a;
+  --teal:#0e7c72;
+  --teal-bg:#edfaf8;
+  --teal-bd:#9de0d8;
+  --rose:#b0283c;
+  --rose-bg:#fdf0f2;
+  --rose-bd:#f5b8c0;
+  --violet:#5c35a0;
+  --violet-bg:#f5f0ff;
+  --violet-bd:#c9b4f0;
+  --green:#166534;
+  --green-bg:#f0faf4;
+  --green-bd:#86efac;
+  --display:'Playfair Display',serif;
+  --body:'Outfit',sans-serif;
+  --mono:'Fira Code',monospace;
+  --r:10px;
+  --r-lg:16px;
+  --shadow:0 1px 8px rgba(30,27,20,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:16px;line-height:1.65;min-height:100vh;}
+
+.wrap{max-width:820px;margin:0 auto;padding:2rem 1.25rem 5rem;}
+
+/* TIP */
+.tip{background:var(--amber-bg);border:1px solid var(--amber-bd);border-radius:var(--r);padding:.7rem 1rem;margin-bottom:1.75rem;font-size:.82rem;color:var(--amber);display:flex;gap:.6rem;align-items:flex-start;}
+.tip strong{color:#5a3a00;}
+
+/* HERO */
+.hero{position:relative;border-radius:var(--r-lg);overflow:hidden;padding:2.75rem 2.25rem 2.25rem;margin-bottom:2rem;box-shadow:0 4px 20px rgba(30,27,20,.12);}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#1a2e20 0%,#2a1a50 45%,#301020 100%);}
+.hero-glow1{position:absolute;top:-40px;right:-40px;width:280px;height:280px;background:radial-gradient(circle,rgba(14,124,114,.3) 0%,transparent 65%);pointer-events:none;}
+.hero-glow2{position:absolute;bottom:-60px;left:-20px;width:260px;height:260px;background:radial-gradient(circle,rgba(92,53,160,.25) 0%,transparent 65%);pointer-events:none;}
+.hero-content{position:relative;z-index:1;}
+.hero-badge{display:inline-block;background:rgba(157,224,216,.18);color:#9de0d8;border:1px solid rgba(157,224,216,.35);border-radius:20px;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.22rem .85rem;margin-bottom:.85rem;}
+.hero h1{font-family:var(--display);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:800;line-height:1.1;margin-bottom:.6rem;color:#fff;}
+.hero h1 .hi{color:#9de0d8;}
+.hero-sub{font-size:.93rem;color:rgba(255,255,255,.72);max-width:520px;}
+.hero-di{position:absolute;top:1.5rem;right:2rem;font-family:var(--mono);font-size:2.5rem;font-weight:700;color:rgba(157,224,216,.15);line-height:1;z-index:1;}
+
+/* CARD */
+.card{background:var(--s1);border:1px solid var(--border);border-radius:var(--r-lg);margin-bottom:1.75rem;overflow:hidden;box-shadow:var(--shadow);}
+.card-head{padding:.9rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:.75rem;background:var(--s2);}
+.card-head h2{font-family:var(--display);font-size:1rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:.5rem;}
+.step{font-family:var(--mono);font-size:.7rem;background:var(--s3);color:var(--text3);padding:.15rem .5rem;border-radius:5px;}
+.tag{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:.2rem .65rem;border-radius:20px;border:1px solid;}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border-color:var(--teal-bd);}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border-color:var(--amber-bd);}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border-color:var(--violet-bd);}
+.card-body{padding:1.5rem;}
+
+/* THEORY */
+.intro{font-size:.92rem;color:var(--text2);line-height:1.8;margin-bottom:1.25rem;}
+.intro strong{color:var(--text);}
+.intro em{color:var(--teal);font-style:normal;}
+
+.rule-box{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:1.1rem 1.2rem;margin-bottom:1.25rem;border-left:3px solid var(--teal);}
+.rule-box h3{font-size:.85rem;font-weight:700;color:var(--teal);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em;}
+.rule-box p{font-size:.88rem;color:var(--text2);line-height:1.75;}
+.formula{font-family:var(--mono);font-size:.82rem;background:rgba(45,212,191,.1);color:var(--teal);padding:.4rem .8rem;border-radius:6px;display:inline-block;margin-top:.5rem;border:1px solid var(--teal-bd);}
+.formula + .formula{margin-top:.35rem;}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem;}
+@media(max-width:500px){.grid-2{grid-template-columns:1fr;}}
+.mini-card{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:.9rem 1rem;}
+.mini-card h4{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem;}
+.mini-card.positive h4{color:var(--teal);}
+.mini-card.negative h4{color:var(--rose);}
+.mini-card.question h4{color:var(--violet);}
+.mini-card.harmony h4{color:var(--amber);}
+.mini-card ul{list-style:none;}
+.mini-card ul li{font-size:.84rem;color:var(--text2);padding:.22rem 0;display:flex;gap:.4rem;align-items:baseline;}
+.mini-card ul li::before{content:'→';font-size:.7rem;opacity:.4;flex-shrink:0;}
+.mini-card ul li strong{color:var(--text);font-family:var(--mono);}
+
+.table-wrap{overflow-x:auto;margin-bottom:1.25rem;}
+.conj-table{width:100%;border-collapse:collapse;font-size:.84rem;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);}
+.conj-table th{background:var(--s3);color:var(--text2);font-weight:600;font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;padding:.55rem .9rem;text-align:left;border-bottom:1px solid var(--border);}
+.conj-table td{padding:.5rem .9rem;border-bottom:1px solid var(--border);vertical-align:middle;color:var(--text2);}
+.conj-table tr:last-child td{border-bottom:none;}
+.conj-table tr:hover td{background:var(--s2);}
+.conj-table td:first-child{color:var(--text3);font-family:var(--mono);font-size:.78rem;}
+.conj-table td:nth-child(2){color:var(--teal);font-family:var(--mono);font-weight:500;}
+.conj-table td:nth-child(3){font-family:var(--mono);color:var(--text);}
+
+.note-box{background:var(--violet-bg);border:1px solid var(--violet-bd);border-radius:var(--r);padding:.85rem 1rem;font-size:.84rem;color:var(--violet);line-height:1.65;}
+.note-box strong{color:#3b1f6e;}
+
+/* EXAMPLES */
+.tts-bar{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:.75rem 1rem;margin-bottom:1.1rem;display:flex;align-items:center;gap:.75rem;font-size:.82rem;color:var(--text2);}
+.tts-bar p{flex:1;}
+.btn-all{background:var(--teal);color:#fff;border:none;padding:.42rem 1rem;border-radius:7px;font-size:.8rem;font-family:var(--body);font-weight:700;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:.35rem;transition:opacity .2s;}
+.btn-all:hover{opacity:.85;}
+
+.ex-item{display:flex;align-items:flex-start;gap:.85rem;padding:.75rem .9rem;border-radius:var(--r);cursor:pointer;transition:background .15s;border:1px solid transparent;margin-bottom:.2rem;}
+.ex-item:hover{background:var(--s2);border-color:var(--border);}
+.ex-item.playing{background:var(--teal-bg);border-color:var(--teal-bd);}
+.ex-num{font-family:var(--mono);font-size:.7rem;color:var(--text3);width:22px;flex-shrink:0;margin-top:.2rem;}
+.ex-content{flex:1;}
+.ex-tr{font-size:.97rem;font-weight:600;color:var(--text);margin-bottom:.15rem;line-height:1.4;}
+.ex-tr .past-form{color:var(--teal);text-decoration:underline;text-decoration-style:dotted;text-decoration-color:var(--teal);}
+.ex-tr .time-form{color:var(--amber);font-style:italic;}
+.ex-en{font-size:.8rem;color:var(--text3);}
+.ex-note{font-size:.76rem;color:var(--violet);margin-top:.15rem;font-style:italic;}
+.btn-speak{background:var(--s2);border:1px solid var(--border);color:var(--text2);padding:.28rem .6rem;border-radius:7px;font-size:.74rem;font-family:var(--body);cursor:pointer;flex-shrink:0;transition:all .15s;margin-top:.05rem;}
+.btn-speak:hover,.btn-speak.active{background:var(--teal);color:#fff;border-color:var(--teal);}
+
+/* QUIZ */
+.quiz-top{background:var(--s2);border-bottom:1px solid var(--border);padding:.9rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.quiz-title{font-family:var(--mono);font-size:.85rem;color:var(--text);}
+.quiz-meta{display:flex;align-items:center;gap:.75rem;}
+.qnum{font-family:var(--mono);font-size:.78rem;color:var(--text3);}
+.prog-track{width:110px;height:5px;background:var(--s3);border-radius:10px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--violet));border-radius:10px;transition:width .45s ease;}
+.pts-tag{font-family:var(--mono);font-size:.75rem;background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bd);padding:.18rem .6rem;border-radius:6px;}
+.quiz-body{padding:1.75rem 1.5rem 1.5rem;min-height:340px;}
+
+.q-type-tag{display:inline-flex;align-items:center;gap:.4rem;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:.2rem .7rem;border-radius:20px;margin-bottom:.85rem;border:1px solid;}
+.q-type-tag.mc{background:var(--violet-bg);color:var(--violet);border-color:var(--violet-bd);}
+.q-type-tag.fill{background:var(--green-bg);color:var(--green);border-color:var(--green-bd);}
+
+.q-scene{font-size:3rem;text-align:center;margin-bottom:.65rem;}
+.q-text{font-family:var(--display);font-size:1.05rem;font-weight:700;text-align:center;margin-bottom:.3rem;line-height:1.4;color:var(--text);}
+.q-hint{font-size:.78rem;color:var(--text3);text-align:center;margin-bottom:1.3rem;font-style:italic;}
+
+.mc-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1rem;}
+@media(max-width:430px){.mc-grid{grid-template-columns:1fr;}}
+.mc-opt{background:var(--s2);border:1px solid var(--border);color:var(--text);padding:.75rem 1rem;border-radius:var(--r);font-family:var(--mono);font-size:.87rem;cursor:pointer;text-align:left;transition:all .15s;line-height:1.3;}
+.mc-opt:hover:not(:disabled){border-color:var(--violet);color:var(--violet);background:var(--violet-bg);}
+.mc-opt.correct{background:var(--green-bg);border-color:var(--green-bd);color:var(--green);font-weight:600;}
+.mc-opt.wrong{background:var(--rose-bg);border-color:var(--rose-bd);color:var(--rose);}
+.mc-opt:disabled{cursor:default;}
+
+.fill-prompt{background:var(--s2);border-radius:var(--r);padding:.85rem 1rem;margin-bottom:.85rem;font-size:.92rem;color:var(--text2);line-height:1.65;border:1px solid var(--border);}
+.fill-prompt strong{color:var(--text);font-family:var(--mono);}
+.fill-row{display:flex;gap:.6rem;align-items:center;margin-bottom:.5rem;}
+.fill-field{flex:1;padding:.65rem .9rem;border:1.5px solid var(--border);border-radius:var(--r);font-size:.92rem;font-family:var(--mono);color:var(--text);background:var(--s1);outline:none;transition:border-color .18s;}
+.fill-field:focus{border-color:var(--teal);}
+.fill-field.ok{border-color:var(--green);background:var(--green-bg);}
+.fill-field.bad{border-color:var(--rose);background:var(--rose-bg);}
+.btn-check{background:var(--teal);color:#fff;border:none;padding:.65rem 1.2rem;border-radius:var(--r);font-size:.85rem;font-family:var(--body);font-weight:700;cursor:pointer;transition:opacity .2s;white-space:nowrap;}
+.btn-check:hover{opacity:.85;}
+
+.feedback{border-radius:var(--r);padding:.85rem 1rem;font-size:.85rem;line-height:1.65;display:none;margin-bottom:.5rem;}
+.feedback.show{display:block;}
+.feedback.ok{background:var(--green-bg);border:1px solid var(--green-bd);color:var(--green);}
+.feedback.bad{background:var(--rose-bg);border:1px solid var(--rose-bd);color:var(--rose);}
+.feedback strong{color:var(--text);}
+
+.quiz-foot{display:flex;justify-content:space-between;align-items:center;margin-top:1.1rem;}
+.q-info{font-size:.8rem;color:var(--text3);}
+.btn-next{background:var(--teal);color:#fff;border:none;padding:.55rem 1.4rem;border-radius:var(--r);font-size:.85rem;font-family:var(--body);font-weight:700;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s,transform .2s;}
+.btn-next.show{opacity:1;pointer-events:all;}
+.btn-next:hover{transform:translateX(3px);}
+
+/* RESULT */
+.result{text-align:center;padding:2.5rem 1rem;}
+.trophy-big{font-size:4rem;margin-bottom:.75rem;}
+.pct-big{font-family:var(--mono);font-size:3.5rem;font-weight:700;color:var(--teal);display:block;margin-bottom:.3rem;}
+.result h3{font-family:var(--display);font-size:1.3rem;font-weight:700;margin-bottom:.4rem;}
+.result p{font-size:.9rem;color:var(--text2);margin-bottom:1.5rem;}
+.btn-restart{background:var(--teal);color:#fff;border:none;padding:.7rem 2rem;border-radius:var(--r);font-size:.9rem;font-family:var(--body);font-weight:700;cursor:pointer;transition:opacity .2s;}
+.btn-restart:hover{opacity:.85;}
+
+/* FOOTER */
+.page-footer{text-align:center;margin-top:3rem;font-size:.78rem;color:var(--text3);border-top:1px solid var(--border);padding-top:1.5rem;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- TIP -->
+  <div class="tip">
+    <span>💡</span>
+    <span><strong>Best experience:</strong> Open in <strong>Google Chrome</strong> or <strong>Safari</strong> for full text-to-speech support. The Facebook in-app browser may limit audio.</span>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-glow1"></div>
+    <div class="hero-glow2"></div>
+    <div class="hero-di">-DI</div>
+    <div class="hero-content">
+      <div class="hero-badge">Turkish Grammar · A1–A2</div>
+      <h1>Definite <span class="hi">Past Tense</span><br>Di'li Geçmiş Zaman</h1>
+      <p class="hero-sub">Events you personally witnessed or experienced — how to form it, how to use it, and how to practise.</p>
+    </div>
+  </div>
+
+  <!-- THEORY -->
+  <div class="card">
+    <div class="card-head">
+      <h2><span class="step">01</span> What is the Definite Past?</h2>
+      <span class="tag tag-teal">Theory</span>
+    </div>
+    <div class="card-body">
+      <p class="intro">
+        The <strong>Di'li Geçmiş Zaman</strong> (also called the <em>witnessed past</em> or <em>simple past</em>) is used for actions you <strong>personally saw, heard, or experienced</strong> — things you know for certain because you were there. It is the most direct and common past tense in Turkish.
+      </p>
+      <p class="intro" style="margin-top:-.5rem">
+        Compare it to the <em>miş'li geçmiş</em> (reported past), which is used for things you heard about second-hand. The di'li past says: <strong>"I know — I was there."</strong>
+      </p>
+
+      <div class="rule-box">
+        <h3>Formation formula</h3>
+        <p>Remove the infinitive <strong>-mek / -mak</strong> to get the verb stem. Then add the past suffix <strong>-di / -dı / -du / -dü</strong> (or <strong>-ti / -tı / -tu / -tü</strong> after voiceless consonants) followed by the personal ending.</p>
+        <span class="formula">Verb stem + -di/dı/du/dü (or -ti/tı/tu/tü) + personal ending</span><br>
+        <span class="formula" style="background:rgba(167,139,250,.1);color:var(--violet);border-color:var(--violet-bd)">gel + di + m → geldim (I came)</span>
+      </div>
+
+      <!-- Vowel harmony -->
+      <div class="grid-2">
+        <div class="mini-card harmony">
+          <h4>🎯 Vowel Harmony — which suffix?</h4>
+          <ul>
+            <li><strong>e, i</strong> → -di &nbsp;(geldim, içtim)</li>
+            <li><strong>a, ı</strong> → -dı &nbsp;(yaptım, aldım)</li>
+            <li><strong>o, u</strong> → -du &nbsp;(oldu, uyudum)</li>
+            <li><strong>ö, ü</strong> → -dü &nbsp;(gördüm, güldüm)</li>
+          </ul>
+        </div>
+        <div class="mini-card negative" style="border-left:3px solid var(--rose)">
+          <h4 style="color:var(--rose)">🔇 Voiceless consonant rule</h4>
+          <ul>
+            <li>If stem ends in <strong>ç f h k p s ş t</strong></li>
+            <li>Use <strong>-ti / -tı / -tu / -tü</strong></li>
+            <li><strong>iç</strong>ti → içtim (I drank)</li>
+            <li><strong>yap</strong>tı → yaptım (I did)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Conjugation table -->
+      <div class="table-wrap">
+        <table class="conj-table">
+          <thead>
+            <tr><th>Pronoun</th><th>Suffix</th><th>gelmek (to come)</th><th>yapmak (to do)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Ben (I)</td><td>-dim / -dım</td><td>gel<strong>dim</strong></td><td>yap<strong>tım</strong></td></tr>
+            <tr><td>Sen (you)</td><td>-din / -dın</td><td>gel<strong>din</strong></td><td>yap<strong>tın</strong></td></tr>
+            <tr><td>O (he/she/it)</td><td>-di / -dı</td><td>gel<strong>di</strong></td><td>yap<strong>tı</strong></td></tr>
+            <tr><td>Biz (we)</td><td>-dik / -dık</td><td>gel<strong>dik</strong></td><td>yap<strong>tık</strong></td></tr>
+            <tr><td>Siz (you-pl)</td><td>-diniz / -dınız</td><td>gel<strong>diniz</strong></td><td>yap<strong>tınız</strong></td></tr>
+            <tr><td>Onlar (they)</td><td>-diler / -dılar</td><td>gel<strong>diler</strong></td><td>yap<strong>tılar</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid-2">
+        <div class="mini-card negative">
+          <h4>❌ Negative — değil or -me/-ma</h4>
+          <ul>
+            <li>Add <strong>-me / -ma</strong> after stem:</li>
+            <li><strong>gelmedim</strong> — I didn't come</li>
+            <li><strong>yapmadım</strong> — I didn't do</li>
+            <li><strong>gitmedik</strong> — we didn't go</li>
+          </ul>
+        </div>
+        <div class="mini-card question">
+          <h4>❓ Question — add mı/mi/mu/mü</h4>
+          <ul>
+            <li>Add question particle <strong>mı/mi</strong>:</li>
+            <li><strong>geldin mi?</strong> — did you come?</li>
+            <li><strong>yaptın mı?</strong> — did you do it?</li>
+            <li><strong>gitti mi?</strong> — did he/she go?</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="note-box">
+        <strong>Common time expressions used with Di'li past:</strong> dün (yesterday) · geçen hafta (last week) · geçen yıl (last year) · dün gece (last night) · bu sabah (this morning) · az önce (just now) · o zaman (at that time) · çocukken (when I was a child)
+      </div>
+    </div>
+  </div>
+
+  <!-- EXAMPLES -->
+  <div class="card">
+    <div class="card-head">
+      <h2><span class="step">02</span> 10 Example Sentences</h2>
+      <span class="tag tag-amber">Audio</span>
+    </div>
+    <div class="card-body">
+      <div class="tts-bar">
+        <span>🔊</span>
+        <p>Tap any sentence to hear it. Past tense verb is <span style="color:var(--teal)">highlighted</span>, time expression is <span style="color:var(--amber)">in amber</span>.</p>
+        <button class="btn-all" onclick="speakAll()">▶ Play all</button>
+      </div>
+      <div id="ex-list"></div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="card" id="quiz-card">
+    <div class="quiz-top">
+      <div class="quiz-title">⚡ 10 Exercises</div>
+      <div class="quiz-meta">
+        <span class="qnum" id="qnum">1 / 10</span>
+        <div class="prog-track"><div class="prog-fill" id="prog" style="width:0%"></div></div>
+        <span class="pts-tag" id="pts-tag">0 pts</span>
+      </div>
+    </div>
+    <div class="quiz-body" id="quiz-body"></div>
+  </div>
+
+  <div class="page-footer">Turkish Grammar · Di'li Geçmiş Zaman · Definite Past Tense · A1–A2</div>
+</div>
+
+<script>
+/* ─── EXAMPLES ─── */
+const examples = [
+  {
+    tr:'Dün sinemaya gittim.',
+    verb:'gittim', time:'Dün',
+    en:'I went to the cinema yesterday.',
+    note:'gitmek → git + ti + m (voiceless t → -ti)'
+  },
+  {
+    tr:'Geçen hafta İstanbul\'a geldiler.',
+    verb:'geldiler', time:'Geçen hafta',
+    en:'They came to Istanbul last week.',
+    note:'gelmek → gel + di + ler (stem ends in l, voiced → -di)'
+  },
+  {
+    tr:'Bu sabah kahvaltı yaptık.',
+    verb:'yaptık', time:'Bu sabah',
+    en:'We had breakfast this morning.',
+    note:'yapmak → yap + tı + k (voiceless p → -tı)'
+  },
+  {
+    tr:'Dün gece çok yağmur yağdı.',
+    verb:'yağdı', time:'Dün gece',
+    en:'It rained a lot last night.',
+    note:'yağmak → yağ + dı (last vowel a, voiced ğ → -dı)'
+  },
+  {
+    tr:'Geçen yıl Almanya\'da yaşadım.',
+    verb:'yaşadım', time:'Geçen yıl',
+    en:'I lived in Germany last year.',
+    note:'yaşamak → yaşa + dı + m (last vowel a → -dı)'
+  },
+  {
+    tr:'Az önce telefon çaldı.',
+    verb:'çaldı', time:'Az önce',
+    en:'The phone rang just now.',
+    note:'çalmak → çal + dı (last vowel a → -dı, voiced l)'
+  },
+  {
+    tr:'Dün sabah erken kalktın.',
+    verb:'kalktın', time:'Dün sabah',
+    en:'You woke up early yesterday morning.',
+    note:'kalkmak → kalk + tı + n (voiceless k → -tı)'
+  },
+  {
+    tr:'O zaman çok güldük.',
+    verb:'güldük', time:'O zaman',
+    en:'We laughed a lot at that time.',
+    note:'gülmek → gül + dü + k (last vowel ü → -dü)'
+  },
+  {
+    tr:'Çocukken çok kitap okudun.',
+    verb:'okudun', time:'Çocukken',
+    en:'You read a lot of books when you were a child.',
+    note:'okumak → oku + du + n (last vowel u → -du)'
+  },
+  {
+    tr:'Dün akşam film izlemedim.',
+    verb:'izlemedim', time:'Dün akşam',
+    en:'I didn\'t watch a film last evening.',
+    note:'izlemek → izle + me + di + m (negative: -me inserted)'
+  },
+];
+
+/* ─── TTS ─── */
+function getBestVoice(){
+  const vv=window.speechSynthesis?window.speechSynthesis.getVoices():[];
+  const tr=vv.filter(v=>v.lang&&v.lang.toLowerCase().startsWith('tr'));
+  if(tr.length){const p=tr.find(v=>/yelda|cem|sibel|filiz/i.test(v.name));return p||tr[0];}
+  return null;
+}
+function speak(text,idx){
+  if(!window.speechSynthesis){alert('Please use Chrome or Safari for audio.');return;}
+  window.speechSynthesis.cancel();
+  document.querySelectorAll('.btn-speak').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.ex-item').forEach(r=>r.classList.remove('playing'));
+  if(idx!=null){
+    const b=document.getElementById('bs-'+idx);
+    const r=document.getElementById('ei-'+idx);
+    if(b)b.classList.add('active');
+    if(r)r.classList.add('playing');
+  }
+  const u=new SpeechSynthesisUtterance(text);
+  const v=getBestVoice();
+  if(v){u.voice=v;u.lang=v.lang;}else{u.lang='tr-TR';}
+  u.rate=0.85;u.pitch=1.05;
+  u.onend=()=>{
+    if(idx!=null){
+      const b=document.getElementById('bs-'+idx);
+      const r=document.getElementById('ei-'+idx);
+      if(b)b.classList.remove('active');
+      if(r)r.classList.remove('playing');
+    }
+  };
+  window.speechSynthesis.speak(u);
+}
+let allI=0;
+function speakAll(){
+  allI=0;
+  function go(){
+    if(allI>=examples.length)return;
+    const ex=examples[allI],i=allI;
+    speak(ex.tr,i);
+    const chk=setInterval(()=>{
+      if(!window.speechSynthesis.speaking){clearInterval(chk);allI++;setTimeout(go,600);}
+    },200);
+  }
+  go();
+}
+if(window.speechSynthesis)setTimeout(()=>window.speechSynthesis.getVoices(),200);
+
+/* Build list */
+const exList=document.getElementById('ex-list');
+examples.forEach((ex,i)=>{
+  /* highlight verb and time */
+  let html=ex.tr;
+  html=html.replace(ex.verb,`<span class="past-form">${ex.verb}</span>`);
+  html=html.replace(ex.time,`<span class="time-form">${ex.time}</span>`);
+  const div=document.createElement('div');
+  div.className='ex-item';div.id='ei-'+i;
+  div.onclick=()=>speak(ex.tr,i);
+  div.innerHTML=`
+    <span class="ex-num">${String(i+1).padStart(2,'0')}</span>
+    <div class="ex-content">
+      <div class="ex-tr">${html}</div>
+      <div class="ex-en">${ex.en}</div>
+      <div class="ex-note">${ex.note}</div>
+    </div>
+    <button class="btn-speak" id="bs-${i}" onclick="event.stopPropagation();speak('${ex.tr.replace(/'/g,"\\'")}',${i})">🔊</button>`;
+  exList.appendChild(div);
+});
+
+/* ─── QUIZ ─── */
+const questions=[
+  /* ── 5 MULTIPLE CHOICE ── */
+  {
+    type:'mc', scene:'🎬',
+    q:'Choose the correct past tense: "She watched a film yesterday."',
+    hint:'izlemek → stem: izle. Last vowel e → -di. Voiceless? No.',
+    opts:['Dün film izledi.','Dün film izlemiş.','Dün film izliyor.','Dün film izleyecek.'],
+    ans:0,
+    explain:'<strong>izle + di</strong> (last vowel e → -di) + 3rd person = no ending. "Dün film <strong>izledi</strong>." ✓'
+  },
+  {
+    type:'mc', scene:'🍽️',
+    q:'"We didn\'t eat breakfast this morning." — which is correct?',
+    hint:'yemek → ye. Negative: ye + me + di + k',
+    opts:['Bu sabah kahvaltı yedik.','Bu sabah kahvaltı yemedik.','Bu sabah kahvaltı yiyemedik.','Bu sabah kahvaltı yememişiz.'],
+    ans:1,
+    explain:'Negative past: stem <strong>ye</strong> + negative <strong>-me</strong> + past <strong>-di</strong> + biz ending <strong>-k</strong> = ye<strong>medik</strong>.'
+  },
+  {
+    type:'mc', scene:'📞',
+    q:'"Did you call?" — choose the correct question form.',
+    hint:'aramak → ara + dı + n, then add question particle.',
+    opts:['Aradın mı?','Aradın mısın?','Arıyor musun?','Arayacak mısın?'],
+    ans:0,
+    explain:'Past tense question: <strong>ara + dı + n</strong> = aradın, then + <strong>mı</strong>? = "Aradın mı?" ✓'
+  },
+  {
+    type:'mc', scene:'🏃',
+    q:'Choose the correct past tense: "I ran in the park yesterday."',
+    hint:'koşmak → koş. Voiceless ş → use -tu. Last vowel o → -tu.',
+    opts:['Dün parkta koştum.','Dün parkta koşdum.','Dün parkta koşudum.','Dün parkta koşidum.'],
+    ans:0,
+    explain:'<strong>koş</strong> ends in voiceless ş → use <strong>-tu</strong> (last vowel o). Ben ending = -m. "koş<strong>tum</strong>" ✓'
+  },
+  {
+    type:'mc', scene:'✈️',
+    q:'"They went to Ankara last week." — which is correct?',
+    hint:'gitmek → git. Voiceless t → -ti. Onlar: -ler.',
+    opts:['Geçen hafta Ankara\'ya gittiler.','Geçen hafta Ankara\'ya gidiler.','Geçen hafta Ankara\'ya gittilir.','Geçen hafta Ankara\'ya gitdiler.'],
+    ans:0,
+    explain:'<strong>git</strong> ends in voiceless t → <strong>-ti</strong>. Onlar ending = -ler: git<strong>tiler</strong>. ✓'
+  },
+  /* ── 5 FILL IN ── */
+  {
+    type:'fill', scene:'☕',
+    q:'Complete: "I drank coffee this morning."',
+    hint:'içmek → iç (voiceless ç → -ti). Last vowel i → -ti. Ben: -m.',
+    prompt:'Bu sabah kahve _________.',
+    promptEn:'I drank coffee this morning. (içmek — Ben)',
+    answer:'içtim',
+    alts:['içtim','ictim'],
+    explain:'<strong>iç</strong> → voiceless ç → <strong>-ti</strong>, last vowel i; Ben = +m → <strong>içtim</strong>.'
+  },
+  {
+    type:'fill', scene:'📚',
+    q:'Complete: "You studied last night." (Sen)',
+    hint:'çalışmak → çalış (voiceless ş → -tı). Last vowel a → -tı. Sen: -n.',
+    prompt:'Dün gece _________ .',
+    promptEn:'You studied last night. Use çalışmak → Sen.',
+    answer:'çalıştın',
+    alts:['çalıştın','calistın','çalıstın','calistin'],
+    explain:'<strong>çalış</strong> → voiceless ş → <strong>-tı</strong>; Sen ending = +n → <strong>çalıştın</strong>.'
+  },
+  {
+    type:'fill', scene:'🌧️',
+    q:'Complete: "It rained last week." (3rd person singular)',
+    hint:'yağmak → yağ. Voiced ğ → -dı. Last vowel a → -dı. O: no ending.',
+    prompt:'Geçen hafta yağmur _________ .',
+    promptEn:'It rained last week. Use yağmak → O.',
+    answer:'yağdı',
+    alts:['yağdı','yagdi','yagdı'],
+    explain:'<strong>yağ</strong> → voiced ğ → <strong>-dı</strong> (last vowel a). 3rd person O = no ending → <strong>yağdı</strong>.'
+  },
+  {
+    type:'fill', scene:'🎉',
+    q:'Complete: "We had fun last year." (Biz)',
+    hint:'eğlenmek → eğlen. Last vowel e → -di. Biz: -k.',
+    prompt:'Geçen yıl çok _________ .',
+    promptEn:'We had a lot of fun last year. Use eğlenmek → Biz.',
+    answer:'eğlendik',
+    alts:['eğlendik','eglendik'],
+    explain:'<strong>eğlen</strong> → voiced n → <strong>-di</strong> (last vowel e); Biz = +k → <strong>eğlendik</strong>.'
+  },
+  {
+    type:'fill', scene:'🔴',
+    q:'Complete: "I didn\'t sleep last night." — negative (Ben)',
+    hint:'uyumak → uyu + ma (negative) + dı + m. Last vowel u → -dı.',
+    prompt:'Dün gece _________ .',
+    promptEn:"I didn't sleep last night. Use uyumak → negative → Ben.",
+    answer:'uyumadım',
+    alts:['uyumadım','uyumadim'],
+    explain:'Negative: <strong>uyu + ma</strong> (neg.) + <strong>dı</strong> (last vowel u → dı) + m (Ben) → <strong>uyumadım</strong>.'
+  },
+];
+
+let cur=0,score=0,answered=false;
+function updateMeta(){
+  document.getElementById('qnum').textContent=(cur+1)+' / '+questions.length;
+  document.getElementById('prog').style.width=(cur/questions.length*100)+'%';
+  document.getElementById('pts-tag').textContent=score+' pts';
+}
+function renderQ(){
+  answered=false;updateMeta();
+  const qb=document.getElementById('quiz-body');
+  if(cur>=questions.length){
+    const pct=Math.round(score/questions.length*100);
+    const t=pct>=80?'🏆':pct>=50?'🥈':'📚';
+    const msg=pct>=80?'Mükemmel! Excellent work!':pct>=50?'İyi iş! Good effort — keep going!':'Keep practicing — you\'re almost there!';
+    qb.innerHTML=`<div class="result"><div class="trophy-big">${t}</div><span class="pct-big">${pct}%</span><h3>${score} / ${questions.length} correct</h3><p>${msg}</p><button class="btn-restart" onclick="restart()">🔄 Try again</button></div>`;
+    document.getElementById('prog').style.width='100%';
+    return;
+  }
+  const q=questions[cur];
+  if(q.type==='mc')renderMC(q,qb);
+  else renderFill(q,qb);
+}
+
+function renderMC(q,qb){
+  const opts=q.opts.map((o,i)=>`<button class="mc-opt" id="opt${i}" onclick="chooseMC(${i})">${o}</button>`).join('');
+  qb.innerHTML=`
+    <div class="q-type-tag mc">Multiple Choice · Q${cur+1}</div>
+    <div class="q-scene">${q.scene}</div>
+    <div class="q-text">${q.q}</div>
+    <div class="q-hint">💡 ${q.hint}</div>
+    <div class="mc-grid">${opts}</div>
+    <div class="feedback" id="fb"></div>
+    <div class="quiz-foot"><span class="q-info">Question ${cur+1} of ${questions.length}</span><button class="btn-next" id="btn-next" onclick="nextQ()">Next →</button></div>`;
+}
+function chooseMC(i){
+  if(answered)return;answered=true;
+  const q=questions[cur];
+  for(let j=0;j<q.opts.length;j++){
+    const b=document.getElementById('opt'+j);b.disabled=true;
+    if(j===q.ans)b.classList.add('correct');else if(j===i)b.classList.add('wrong');
+  }
+  const fb=document.getElementById('fb');
+  if(i===q.ans){score++;speak(q.opts[q.ans]);fb.className='feedback show ok';fb.innerHTML='✅ Doğru! Correct! — '+q.explain;}
+  else{fb.className='feedback show bad';fb.innerHTML='❌ Not quite. Correct: <strong>'+q.opts[q.ans]+'</strong> — '+q.explain;}
+  document.getElementById('pts-tag').textContent=score+' pts';
+  document.getElementById('btn-next').classList.add('show');
+}
+
+function renderFill(q,qb){
+  qb.innerHTML=`
+    <div class="q-type-tag fill">Write the form · Q${cur+1}</div>
+    <div class="q-scene">${q.scene}</div>
+    <div class="fill-prompt">
+      <div style="font-size:.73rem;text-transform:uppercase;letter-spacing:.05em;font-weight:700;color:var(--text3);margin-bottom:.35rem">Complete with the correct past tense form:</div>
+      <strong>${q.prompt}</strong><br>
+      <span style="font-size:.8rem;color:var(--text3)">${q.promptEn}</span>
+    </div>
+    <div class="fill-row">
+      <input class="fill-field" id="ff" type="text" placeholder="Type the past tense verb…" autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="if(event.key==='Enter')checkFill()">
+      <button class="btn-check" onclick="checkFill()">Check</button>
+    </div>
+    <div style="font-size:.78rem;color:var(--text3);font-style:italic;margin-bottom:.35rem">💡 ${q.hint}</div>
+    <div class="feedback" id="fb"></div>
+    <div class="quiz-foot"><span class="q-info">Question ${cur+1} of ${questions.length}</span><button class="btn-next" id="btn-next" onclick="nextQ()">Next →</button></div>`;
+  setTimeout(()=>{const f=document.getElementById('ff');if(f)f.focus();},100);
+}
+
+function norm(s){
+  return s.trim().toLowerCase().replace(/[.,!?]/g,'')
+    .replace(/ğ/g,'g').replace(/ş/g,'s').replace(/ç/g,'c')
+    .replace(/ı/g,'i').replace(/ö/g,'o').replace(/ü/g,'u');
+}
+function checkFill(){
+  if(answered)return;
+  const q=questions[cur];const f=document.getElementById('ff');
+  const val=f.value.trim();if(!val)return;
+  answered=true;f.disabled=true;
+  const ok=q.alts.some(a=>a.toLowerCase()===val.toLowerCase()||norm(a)===norm(val));
+  const fb=document.getElementById('fb');
+  if(ok){score++;f.classList.add('ok');speak(q.answer);fb.className='feedback show ok';fb.innerHTML='✅ Doğru! Correct! — '+q.explain;}
+  else{f.classList.add('bad');fb.className='feedback show bad';fb.innerHTML='❌ Correct form: <strong>'+q.answer+'</strong> — '+q.explain;}
+  document.getElementById('pts-tag').textContent=score+' pts';
+  document.getElementById('btn-next').classList.add('show');
+}
+function nextQ(){cur++;renderQ();}
+function restart(){cur=0;score=0;updateMeta();renderQ();}
+renderQ();
+</script>
+</body>
+</html>
