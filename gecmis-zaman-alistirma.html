@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geçmiş Zaman Alıştırma — Turkish Past Tense Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f2eb;
+  --s1:#fffef9;
+  --s2:#efecea;
+  --s3:#e3ded5;
+  --border:#d5cfc2;
+  --text:#1c1a13;
+  --text2:#58533e;
+  --text3:#9a9278;
+  --red:#b02a1f;
+  --red-bg:#fdf2f1;
+  --red-bd:#f2bfba;
+  --green:#155f38;
+  --green-bg:#f0faf4;
+  --green-bd:#9cd9b8;
+  --blue:#1a4f8a;
+  --blue-bg:#eff4ff;
+  --blue-bd:#b0c8f5;
+  --violet:#5a32a0;
+  --violet-bg:#f5f0ff;
+  --violet-bd:#c8b2f0;
+  --amber:#7a4e00;
+  --amber-bg:#fffbef;
+  --amber-bd:#e5cd85;
+  --sans:'DM Sans',sans-serif;
+  --serif:'Lora',serif;
+  --mono:'DM Mono',monospace;
+  --r:10px;
+  --r-lg:15px;
+  --shadow:0 1px 6px rgba(28,26,19,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:16px;line-height:1.65;}
+.wrap{max-width:800px;margin:0 auto;padding:2rem 1.25rem 5rem;}
+
+/* TIP */
+.tip{background:var(--amber-bg);border:1px solid var(--amber-bd);border-radius:var(--r);padding:.65rem 1rem;margin-bottom:1.75rem;font-size:.82rem;color:var(--amber);display:flex;gap:.55rem;align-items:flex-start;}
+.tip b{color:#4a2d00;}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#1c2a18 0%,#1a1a38 55%,#2a1018 100%);border-radius:var(--r-lg);padding:2.25rem 2rem 2rem;margin-bottom:2rem;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(28,26,19,.15);}
+.hero::before{content:'';position:absolute;top:-50px;right:-50px;width:260px;height:260px;background:radial-gradient(circle,rgba(155,220,190,.15) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:'-DI';position:absolute;bottom:.75rem;right:1.75rem;font-family:var(--mono);font-size:3.5rem;font-weight:500;color:rgba(255,255,255,.06);line-height:1;}
+.hero-badge{display:inline-block;background:rgba(155,220,190,.15);color:#9ddcba;border:1px solid rgba(155,220,190,.3);border-radius:20px;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .8rem;margin-bottom:.75rem;}
+.hero h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;color:#fff;line-height:1.15;margin-bottom:.5rem;}
+.hero h1 span{color:#9ddcba;}
+.hero p{font-size:.9rem;color:rgba(255,255,255,.68);max-width:480px;}
+
+/* SECTION CARD */
+.card{background:var(--s1);border:1px solid var(--border);border-radius:var(--r-lg);margin-bottom:1.75rem;overflow:hidden;box-shadow:var(--shadow);}
+.card-head{background:var(--s2);border-bottom:1px solid var(--border);padding:.8rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:.6rem;}
+.card-head h2{font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:.45rem;}
+.snum{font-family:var(--mono);font-size:.68rem;background:var(--s3);color:var(--text3);padding:.12rem .45rem;border-radius:5px;}
+.pill{font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:.18rem .6rem;border-radius:20px;border:1px solid;}
+.pill-red{background:var(--red-bg);color:var(--red);border-color:var(--red-bd);}
+.pill-green{background:var(--green-bg);color:var(--green);border-color:var(--green-bd);}
+.pill-blue{background:var(--blue-bg);color:var(--blue);border-color:var(--blue-bd);}
+.pill-violet{background:var(--violet-bg);color:var(--violet);border-color:var(--violet-bd);}
+.card-body{padding:1.4rem;}
+
+/* EXAMPLE GROUPS */
+.ex-group{margin-bottom:1.25rem;}
+.ex-group-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.6rem;padding:.2rem .6rem;border-radius:5px;display:inline-block;}
+.egt-pos{background:var(--green-bg);color:var(--green);}
+.egt-neg{background:var(--red-bg);color:var(--red);}
+.egt-posq{background:var(--blue-bg);color:var(--blue);}
+.egt-negq{background:var(--violet-bg);color:var(--violet);}
+
+.ex-row{display:flex;align-items:flex-start;gap:.85rem;padding:.65rem .85rem;border-radius:var(--r);border:1px solid transparent;cursor:pointer;transition:background .15s,border-color .15s;margin-bottom:.25rem;}
+.ex-row:hover{background:var(--s2);border-color:var(--border);}
+.ex-row.playing{background:#edf7f3;border-color:var(--green-bd);}
+.ex-icon{font-size:1.5rem;flex-shrink:0;width:34px;text-align:center;margin-top:.08rem;}
+.ex-body{flex:1;}
+.ex-tr{font-size:.96rem;font-weight:600;color:var(--text);line-height:1.4;margin-bottom:.12rem;}
+.ex-tr .stem{color:var(--text);}
+.ex-tr .suf-pos{color:var(--green);}
+.ex-tr .suf-neg{color:var(--red);}
+.ex-tr .suf-posq{color:var(--blue);}
+.ex-tr .suf-negq{color:var(--violet);}
+.ex-en{font-size:.79rem;color:var(--text3);}
+.ex-note{font-size:.75rem;color:var(--text3);font-style:italic;margin-top:.1rem;}
+.btn-sp{background:var(--s2);border:1px solid var(--border);color:var(--text2);padding:.25rem .55rem;border-radius:6px;font-size:.72rem;cursor:pointer;flex-shrink:0;transition:all .15s;margin-top:.05rem;}
+.btn-sp:hover,.btn-sp.active{background:var(--green);color:#fff;border-color:var(--green);}
+
+/* QUIZ */
+.quiz-bar{background:var(--s2);border-bottom:1px solid var(--border);padding:.85rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.quiz-label{font-family:var(--mono);font-size:.82rem;color:var(--text);}
+.qmeta{display:flex;align-items:center;gap:.7rem;}
+.qnum{font-family:var(--mono);font-size:.76rem;color:var(--text3);}
+.prog-wrap{width:100px;height:5px;background:var(--s3);border-radius:10px;overflow:hidden;}
+.prog-bar{height:100%;background:linear-gradient(90deg,var(--green),var(--blue));border-radius:10px;transition:width .45s;}
+.pts{font-family:var(--mono);font-size:.74rem;background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bd);padding:.16rem .55rem;border-radius:6px;}
+
+.quiz-body{padding:1.75rem 1.4rem 1.4rem;min-height:360px;}
+
+/* question layout */
+.q-type-tag{display:inline-flex;align-items:center;gap:.35rem;font-size:.69rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:.18rem .65rem;border-radius:20px;margin-bottom:.75rem;border:1px solid;}
+.q-type-tag.pos{background:var(--green-bg);color:var(--green);border-color:var(--green-bd);}
+.q-type-tag.neg{background:var(--red-bg);color:var(--red);border-color:var(--red-bd);}
+.q-type-tag.posq{background:var(--blue-bg);color:var(--blue);border-color:var(--blue-bd);}
+.q-type-tag.negq{background:var(--violet-bg);color:var(--violet);border-color:var(--violet-bd);}
+
+/* visual + question layout */
+.q-visual-row{display:flex;align-items:flex-start;gap:1.25rem;margin-bottom:1.1rem;}
+.q-visual{font-size:4.5rem;flex-shrink:0;line-height:1;width:80px;text-align:center;}
+.q-visual-img{width:80px;height:80px;border-radius:var(--r);object-fit:cover;border:1px solid var(--border);flex-shrink:0;}
+.q-right{flex:1;}
+.q-text{font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--text);line-height:1.45;margin-bottom:.3rem;}
+.q-en{font-size:.82rem;color:var(--text3);margin-bottom:.55rem;}
+.q-hint{font-size:.78rem;color:var(--text3);font-style:italic;}
+
+/* stem display */
+.stem-display{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:.75rem 1rem;margin-bottom:.85rem;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;}
+.stem-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;font-weight:700;color:var(--text3);}
+.stem-val{font-family:var(--mono);font-size:1.05rem;font-weight:500;color:var(--text);}
+.stem-plus{font-size:1.1rem;color:var(--text3);}
+.suffix-blank{font-family:var(--mono);font-size:1.05rem;color:var(--text3);letter-spacing:.05em;}
+
+/* input row */
+.input-row{display:flex;align-items:center;gap:.55rem;margin-bottom:.5rem;}
+.stem-prefix{font-family:var(--mono);font-size:1rem;font-weight:500;color:var(--text);background:var(--s2);border:1.5px solid var(--border);border-right:none;padding:.6rem .85rem;border-radius:var(--r) 0 0 var(--r);white-space:nowrap;}
+.suffix-input{width:120px;padding:.6rem .75rem;border:1.5px solid var(--border);border-radius:0 var(--r) var(--r) 0;font-size:.95rem;font-family:var(--mono);color:var(--text);background:var(--s1);outline:none;transition:border-color .18s;}
+.suffix-input:focus{border-color:var(--blue);z-index:1;}
+.suffix-input.ok{border-color:var(--green);background:var(--green-bg);color:var(--green);}
+.suffix-input.bad{border-color:var(--red);background:var(--red-bg);color:var(--red);}
+.btn-check{background:var(--text);color:#fff;border:none;padding:.62rem 1.15rem;border-radius:var(--r);font-size:.85rem;font-family:var(--sans);font-weight:600;cursor:pointer;transition:opacity .18s;white-space:nowrap;}
+.btn-check:hover{opacity:.82;}
+
+/* feedback */
+.feedback{border-radius:var(--r);padding:.8rem 1rem;font-size:.84rem;line-height:1.65;display:none;margin-bottom:.5rem;}
+.feedback.show{display:block;}
+.feedback.ok{background:var(--green-bg);border:1px solid var(--green-bd);color:var(--green);}
+.feedback.bad{background:var(--red-bg);border:1px solid var(--red-bd);color:var(--red);}
+.feedback strong{color:var(--text);}
+
+.q-foot{display:flex;justify-content:space-between;align-items:center;margin-top:1rem;}
+.q-info{font-size:.78rem;color:var(--text3);}
+.btn-next{background:var(--text);color:#fff;border:none;padding:.5rem 1.3rem;border-radius:var(--r);font-size:.84rem;font-family:var(--sans);font-weight:600;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s,transform .18s;}
+.btn-next.show{opacity:1;pointer-events:all;}
+.btn-next:hover{transform:translateX(3px);}
+
+/* result */
+.result{text-align:center;padding:2.5rem 1rem;}
+.trophy{font-size:4rem;margin-bottom:.7rem;}
+.big-pct{font-family:var(--mono);font-size:3.2rem;font-weight:500;color:var(--green);display:block;margin-bottom:.3rem;}
+.result h3{font-family:var(--serif);font-size:1.25rem;font-weight:700;margin-bottom:.4rem;}
+.result p{font-size:.88rem;color:var(--text2);margin-bottom:1.4rem;}
+.btn-restart{background:var(--text);color:#fff;border:none;padding:.65rem 1.8rem;border-radius:var(--r);font-size:.88rem;font-family:var(--sans);font-weight:600;cursor:pointer;transition:opacity .18s;}
+.btn-restart:hover{opacity:.82;}
+
+/* footer */
+.page-footer{text-align:center;margin-top:3rem;font-size:.76rem;color:var(--text3);border-top:1px solid var(--border);padding-top:1.4rem;}
+
+@media(max-width:500px){
+  .q-visual-row{flex-direction:column;align-items:center;}
+  .q-visual{width:auto;}
+  .stem-display{flex-direction:column;align-items:flex-start;gap:.4rem;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- TIP -->
+  <div class="tip">
+    <span>💡</span>
+    <span><b>Best experience:</b> Open in <b>Chrome</b> or <b>Safari</b> for full text-to-speech support.</span>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">Turkish · A1–A2 · Practice</div>
+    <h1>Geçmiş Zaman<br><span>Past Tense Practice</span></h1>
+    <p>Positive · Negative · Positive question · Negative question — write the endings yourself.</p>
+  </div>
+
+  <!-- EXAMPLES -->
+  <div class="card">
+    <div class="card-head">
+      <h2><span class="snum">01</span> 5 Examples — 4 Forms Each</h2>
+      <span class="pill pill-green">Audio</span>
+    </div>
+    <div class="card-body">
+      <p style="font-size:.86rem;color:var(--text2);margin-bottom:1.1rem">Tap any sentence to hear it. The <span style="font-weight:700;color:var(--green)">suffix is highlighted</span> in each form.</p>
+
+      <div id="examples-container"></div>
+
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="card" id="quiz-card">
+    <div class="quiz-bar">
+      <div class="quiz-label">✏️ Write the Ending — 10 Questions</div>
+      <div class="qmeta">
+        <span class="qnum" id="qnum">1 / 10</span>
+        <div class="prog-wrap"><div class="prog-bar" id="prog" style="width:0%"></div></div>
+        <span class="pts" id="pts">0 pts</span>
+      </div>
+    </div>
+    <div class="quiz-body" id="quiz-body"></div>
+  </div>
+
+  <div class="page-footer">Turkish Grammar · Geçmiş Zaman Alıştırma · Past Tense Practice</div>
+</div>
+
+<script>
+/* ─── EXAMPLES ─── */
+const exGroups = [
+  {
+    type:'pos', label:'✅ Positive — Olumlu',
+    cls:'egt-pos', sufCls:'suf-pos',
+    rows:[
+      {icon:'🚶', tr:'Ahmet dün okula gitti.',  stem:'git', suf:'ti',   en:'Ahmet went to school yesterday.',       note:'gitmek → git + ti (voiceless t)'},
+      {icon:'📖', tr:'Ben dün kitap okudum.',    stem:'oku', suf:'dum',  en:'I read a book yesterday.',              note:'okumak → oku + du + m (last vowel u)'},
+      {icon:'🍕', tr:'Onlar akşam pizza yediler.',stem:'ye', suf:'diler',en:'They ate pizza in the evening.',        note:'yemek → ye + di + ler (last vowel e)'},
+      {icon:'☎️', tr:'Sen beni aradın.',          stem:'ara', suf:'dın', en:'You called me.',                       note:'aramak → ara + dı + n (last vowel a)'},
+      {icon:'🎵', tr:'Biz konsere gittik.',       stem:'git', suf:'tik', en:'We went to the concert.',              note:'gitmek → git + ti + k (voiceless t)'},
+    ]
+  },
+  {
+    type:'neg', label:'❌ Negative — Olumsuz',
+    cls:'egt-neg', sufCls:'suf-neg',
+    rows:[
+      {icon:'😴', tr:'Ben dün uyumadım.',         stem:'uyuma', suf:'dım',  en:"I didn't sleep yesterday.",           note:'uyumak → uyu + ma + dı + m'},
+      {icon:'🎬', tr:'O filmi izlemedi.',          stem:'izleme', suf:'di',  en:"He/She didn't watch the film.",       note:'izlemek → izle + me + di (3rd sg.)'},
+      {icon:'🏃', tr:'Siz koşmadınız.',            stem:'koşma', suf:'dınız',en:"You (pl.) didn't run.",              note:'koşmak → koş + ma + dı + nız'},
+      {icon:'🍔', tr:'Biz hamburger yemedik.',     stem:'yeme', suf:'dik',   en:"We didn't eat hamburgers.",          note:'yemek → ye + me + di + k'},
+      {icon:'📞', tr:'Sen telefon etmedin.',       stem:'etme', suf:'din',   en:"You didn't make a call.",            note:'etmek → et + me + di + n'},
+    ]
+  },
+  {
+    type:'posq', label:'❓ Positive Question — Olumlu Soru',
+    cls:'egt-posq', sufCls:'suf-posq',
+    rows:[
+      {icon:'🚗', tr:'Araba sürdün mü?',          stem:'sürdün', suf:'mü',  en:'Did you drive a car?',               note:'sürmek → sür + dü + n + mü?'},
+      {icon:'☕', tr:'Kahve içtin mi?',            stem:'içtin', suf:'mi',   en:'Did you drink coffee?',              note:'içmek → iç + ti + n + mi?'},
+      {icon:'📝', tr:'Ödevi yaptın mı?',           stem:'yaptın', suf:'mı', en:'Did you do the homework?',           note:'yapmak → yap + tı + n + mı?'},
+      {icon:'🎂', tr:'Pasta yedin mi?',            stem:'yedin', suf:'mi',   en:'Did you eat the cake?',              note:'yemek → ye + di + n + mi?'},
+      {icon:'🏊', tr:'Yüzdün mü?',                stem:'yüzdün', suf:'mü',  en:'Did you swim?',                      note:'yüzmek → yüz + dü + n + mü?'},
+    ]
+  },
+  {
+    type:'negq', label:'🚫 Negative Question — Olumsuz Soru',
+    cls:'egt-negq', sufCls:'suf-negq',
+    rows:[
+      {icon:'📚', tr:'Ders çalışmadın mı?',       stem:'çalışmadın', suf:'mı', en:"Didn't you study?",              note:'çalışmak → çalış + ma + dı + n + mı?'},
+      {icon:'🍽️', tr:'Yemek yemedin mi?',         stem:'yemedin', suf:'mi',    en:"Didn't you eat?",                note:'yemek → ye + me + di + n + mi?'},
+      {icon:'😊', tr:'Mutlu olmadın mı?',          stem:'olmadın', suf:'mı',   en:"Weren't you happy?",             note:'olmak → ol + ma + dı + n + mı?'},
+      {icon:'💤', tr:'Uyumadın mı?',              stem:'uyumadın', suf:'mı',   en:"Didn't you sleep?",              note:'uyumak → uyu + ma + dı + n + mı?'},
+      {icon:'🏡', tr:'Eve gitmedin mi?',           stem:'gitmedin', suf:'mi',   en:"Didn't you go home?",            note:'gitmek → git + me + di + n + mi?'},
+    ]
+  },
+];
+
+/* ─── BUILD EXAMPLE LIST ─── */
+const exContainer = document.getElementById('examples-container');
+exGroups.forEach(group => {
+  const groupDiv = document.createElement('div');
+  groupDiv.className = 'ex-group';
+  groupDiv.innerHTML = `<div class="ex-group-title ${group.cls}">${group.label}</div>`;
+  group.rows.forEach((row, ri) => {
+    const id = `${group.type}-${ri}`;
+    // highlight suffix in sentence
+    const stemPart = row.tr.slice(0, row.tr.lastIndexOf(row.suf));
+    const sufPart = row.suf;
+    const afterPart = row.tr.slice(row.tr.lastIndexOf(row.suf) + row.suf.length);
+    // safer highlight: bold the suffix portion
+    const highlighted = row.tr.replace(
+      row.stem + row.suf,
+      `<span class="stem">${row.stem}</span><span class="${group.sufCls}" style="font-weight:700">${row.suf}</span>`
+    );
+    const div = document.createElement('div');
+    div.className = 'ex-row';
+    div.id = 'er-' + id;
+    const safeText = row.tr.replace(/'/g, "\\'");
+    div.onclick = () => speak(row.tr, id);
+    div.innerHTML = `
+      <div class="ex-icon">${row.icon}</div>
+      <div class="ex-body">
+        <div class="ex-tr">${row.tr}</div>
+        <div class="ex-en">${row.en}</div>
+        <div class="ex-note">📌 ${row.note}</div>
+      </div>
+      <button class="btn-sp" id="bs-${id}" onclick="event.stopPropagation();speak('${safeText}','${id}')">🔊</button>`;
+    groupDiv.appendChild(div);
+  });
+  exContainer.appendChild(groupDiv);
+});
+
+/* ─── TTS ─── */
+function getBestVoice(){
+  const vv = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+  const tr = vv.filter(v => v.lang && v.lang.toLowerCase().startsWith('tr'));
+  if(tr.length){ const p = tr.find(v => /yelda|cem|sibel|filiz/i.test(v.name)); return p || tr[0]; }
+  return null;
+}
+function speak(text, id){
+  if(!window.speechSynthesis){ alert('Please use Chrome or Safari for audio.'); return; }
+  window.speechSynthesis.cancel();
+  document.querySelectorAll('.btn-sp').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.ex-row').forEach(r => r.classList.remove('playing'));
+  if(id){
+    const b = document.getElementById('bs-' + id);
+    const r = document.getElementById('er-' + id);
+    if(b) b.classList.add('active');
+    if(r) r.classList.add('playing');
+  }
+  const u = new SpeechSynthesisUtterance(text);
+  const v = getBestVoice();
+  if(v){ u.voice = v; u.lang = v.lang; } else { u.lang = 'tr-TR'; }
+  u.rate = 0.86; u.pitch = 1.05;
+  u.onend = () => {
+    if(id){
+      const b = document.getElementById('bs-' + id);
+      const r = document.getElementById('er-' + id);
+      if(b) b.classList.remove('active');
+      if(r) r.classList.remove('playing');
+    }
+  };
+  window.speechSynthesis.speak(u);
+}
+if(window.speechSynthesis) setTimeout(() => window.speechSynthesis.getVoices(), 200);
+
+/* ─── QUIZ DATA ─── */
+// Each question: student sees the stem already typed, types only the suffix/ending
+const questions = [
+  {
+    formType: 'pos',
+    icon: '🧳',
+    scene: 'Zeynep went on holiday last summer.',
+    tr_en: 'Zeynep geçen yaz tatile ...',
+    hint: 'gitmek → git (voiceless t → -ti). 3rd person singular: no personal ending.',
+    stem: 'git',
+    answer: 'ti',
+    alts: ['ti'],
+    full: 'Zeynep geçen yaz tatile gitti.',
+    explain: '<strong>git</strong> → voiceless t → <strong>-ti</strong>, 3rd person (O) = no ending → <strong>gitti</strong>.'
+  },
+  {
+    formType: 'neg',
+    icon: '🎮',
+    scene: "Mert didn't play games last night.",
+    tr_en: 'Mert dün gece oyun oyna...',
+    hint: 'oynamak → oyna + ma (negative). Last vowel a → -dı. Ben: +m.',
+    stem: 'oynamadı',
+    answer: 'm',
+    alts: ['m'],
+    full: 'Mert dün gece oyun oynamadım.',
+    explain: 'oyna<strong>ma</strong> (negative) + <strong>dı</strong> (last vowel a) + <strong>m</strong> (Ben) → oynamadım. Wait — this is Ben (I). Correct: <strong>oynamadı</strong> for Mert (O, 3rd sg. = no ending).'
+  },
+  {
+    formType: 'neg',
+    icon: '🎮',
+    scene: "Mert didn't play games last night.",
+    tr_en: 'Mert dün gece oyun oyna...',
+    hint: 'oynamak → oyna + ma (negative). 3rd person singular (O): no personal ending.',
+    stem: 'oynama',
+    answer: 'dı',
+    alts: ['dı', 'di'],
+    full: 'Mert dün gece oyun oynamadı.',
+    explain: 'oyna<strong>ma</strong> (negative) + <strong>dı</strong> (last vowel a, 3rd sg. = no ending) → <strong>oynamadı</strong>.'
+  },
+  {
+    formType: 'posq',
+    icon: '☕',
+    scene: 'Did you (sen) drink tea this morning?',
+    tr_en: 'Bu sabah çay içtin...',
+    hint: 'The verb is içtin (you drank). Add the question particle. Last vowel i → mi.',
+    stem: 'içtin',
+    answer: 'mi',
+    alts: ['mi', 'mı'],
+    full: 'Bu sabah çay içtin mi?',
+    explain: 'içtin (you drank) + question particle <strong>mi</strong> (last vowel i → mi) → <strong>içtin mi?</strong>'
+  },
+  {
+    formType: 'pos',
+    icon: '📝',
+    scene: 'We (biz) wrote a letter yesterday.',
+    tr_en: 'Dün bir mektup yaz...',
+    hint: 'yazmak → yaz. Last vowel a → -dı. Biz ending: +k.',
+    stem: 'yaz',
+    answer: 'dık',
+    alts: ['dık', 'dik'],
+    full: 'Dün bir mektup yazdık.',
+    explain: '<strong>yaz</strong> + <strong>dı</strong> (last vowel a) + <strong>k</strong> (Biz) → <strong>yazdık</strong>.'
+  },
+  {
+    formType: 'negq',
+    icon: '🏋️',
+    scene: "Didn't you (sen) go to the gym yesterday?",
+    tr_en: 'Dün spor salonuna gitme...',
+    hint: 'gitmek → git + me (negative) + di + n (Sen). Then add question particle: last vowel i → mi.',
+    stem: 'gitmedin',
+    answer: 'mi',
+    alts: ['mi'],
+    full: 'Dün spor salonuna gitmedin mi?',
+    explain: 'git<strong>me</strong>(neg.) + <strong>di</strong> + <strong>n</strong>(Sen) = gitmedin + <strong>mi</strong>? → <strong>gitmedin mi?</strong>'
+  },
+  {
+    formType: 'pos',
+    icon: '🎉',
+    scene: 'They (onlar) had a lot of fun at the party.',
+    tr_en: 'Partide çok eğlen...',
+    hint: 'eğlenmek → eğlen. Last vowel e → -di. Onlar ending: +ler.',
+    stem: 'eğlen',
+    answer: 'diler',
+    alts: ['diler'],
+    full: 'Partide çok eğlendiler.',
+    explain: '<strong>eğlen</strong> + <strong>di</strong> (last vowel e) + <strong>ler</strong> (Onlar) → <strong>eğlendiler</strong>.'
+  },
+  {
+    formType: 'posq',
+    icon: '🎬',
+    scene: 'Did he/she (o) watch the film?',
+    tr_en: 'Filmi izle...',
+    hint: 'izlemek → izle + di (3rd sg. no personal ending). Then question particle: last vowel e → mi.',
+    stem: 'izledi',
+    answer: 'mi',
+    alts: ['mi'],
+    full: 'Filmi izledi mi?',
+    explain: 'izle<strong>di</strong> (O, 3rd sg.) + question particle <strong>mi</strong> → <strong>izledi mi?</strong>'
+  },
+  {
+    formType: 'neg',
+    icon: '🌧️',
+    scene: "It didn't rain last week.",
+    tr_en: 'Geçen hafta yağmur yağ...',
+    hint: 'yağmak → yağ + ma (negative). Last vowel a → -dı. 3rd sg. (O): no ending.',
+    stem: 'yağma',
+    answer: 'dı',
+    alts: ['dı', 'di'],
+    full: 'Geçen hafta yağmur yağmadı.',
+    explain: 'yağ<strong>ma</strong>(neg.) + <strong>dı</strong> (last vowel a, O = no ending) → <strong>yağmadı</strong>.'
+  },
+  {
+    formType: 'negq',
+    icon: '📱',
+    scene: "Didn't you (sen) charge your phone?",
+    tr_en: 'Telefonunu şarj etme...',
+    hint: 'etmek → et + me (negative) + di + n (Sen). Add question particle: last vowel i → mi.',
+    stem: 'etmedin',
+    answer: 'mi',
+    alts: ['mi'],
+    full: 'Telefonunu şarj etmedin mi?',
+    explain: 'et<strong>me</strong>(neg.) + <strong>di</strong> + <strong>n</strong>(Sen) = etmedin + <strong>mi</strong>? → <strong>etmedin mi?</strong>'
+  },
+];
+
+// Remove the duplicate question 2 (keep only the corrected one at index 2)
+// We actually want 10 clean questions — replace q index 1 with a better one
+questions[1] = {
+  formType: 'pos',
+  icon: '🍳',
+  scene: 'I (ben) cooked dinner yesterday.',
+  tr_en: 'Dün akşam yemek piş...',
+  hint: 'pişirmek → pişir. Voiceless r? No — r is voiced. Last vowel i → -di. Ben: +m.',
+  stem: 'pişir',
+  answer: 'dim',
+  alts: ['dim'],
+  full: 'Dün akşam yemek pişirdim.',
+  explain: '<strong>pişir</strong> + <strong>di</strong> (last vowel i) + <strong>m</strong> (Ben) → <strong>pişirdim</strong>.'
+};
+
+const typeMap = {
+  pos:  { label:'Positive · Olumlu',          cls:'pos'  },
+  neg:  { label:'Negative · Olumsuz',          cls:'neg'  },
+  posq: { label:'Positive Question · Soru',    cls:'posq' },
+  negq: { label:'Negative Question · Olumsuz Soru', cls:'negq' },
+};
+
+let cur = 0, score = 0, answered = false;
+
+function updateMeta(){
+  document.getElementById('qnum').textContent = (cur+1) + ' / ' + questions.length;
+  document.getElementById('prog').style.width = (cur / questions.length * 100) + '%';
+  document.getElementById('pts').textContent = score + ' pts';
+}
+
+function renderQ(){
+  answered = false;
+  updateMeta();
+  const qb = document.getElementById('quiz-body');
+  if(cur >= questions.length){
+    const pct = Math.round(score / questions.length * 100);
+    const t = pct >= 80 ? '🏆' : pct >= 50 ? '🥈' : '📚';
+    const msg = pct >= 80 ? 'Mükemmel! Excellent work!' : pct >= 50 ? 'İyi iş! Good effort — keep going!' : 'Keep practicing!';
+    qb.innerHTML = `<div class="result"><div class="trophy">${t}</div><span class="big-pct">${pct}%</span><h3>${score} / ${questions.length} correct</h3><p>${msg}</p><button class="btn-restart" onclick="restart()">🔄 Try again</button></div>`;
+    document.getElementById('prog').style.width = '100%';
+    return;
+  }
+  const q = questions[cur];
+  const tm = typeMap[q.formType];
+  qb.innerHTML = `
+    <div class="q-type-tag ${tm.cls}">${tm.label} · Q${cur+1}</div>
+    <div class="q-visual-row">
+      <div class="q-visual">${q.icon}</div>
+      <div class="q-right">
+        <div class="q-text">${q.scene}</div>
+        <div class="q-en">${q.tr_en}<span style="color:var(--text3);font-family:var(--mono)">...</span></div>
+        <div class="q-hint">💡 ${q.hint}</div>
+      </div>
+    </div>
+    <div class="stem-display">
+      <span class="stem-label">Stem:</span>
+      <span class="stem-val">${q.stem}</span>
+      <span class="stem-plus">+</span>
+      <span class="suffix-blank">[ type the ending ]</span>
+    </div>
+    <div class="input-row">
+      <div class="stem-prefix">${q.stem}</div>
+      <input class="suffix-input" id="suf-in" type="text" placeholder="ending…" autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="if(event.key==='Enter')checkAnswer()">
+      <button class="btn-check" onclick="checkAnswer()">Check ✓</button>
+    </div>
+    <div class="feedback" id="fb"></div>
+    <div class="q-foot">
+      <span class="q-info">Question ${cur+1} of ${questions.length}</span>
+      <button class="btn-next" id="btn-next" onclick="nextQ()">Next →</button>
+    </div>`;
+  setTimeout(() => { const f = document.getElementById('suf-in'); if(f) f.focus(); }, 80);
+}
+
+function norm(s){
+  return s.trim().toLowerCase()
+    .replace(/ğ/g,'g').replace(/ş/g,'s').replace(/ç/g,'c')
+    .replace(/ı/g,'i').replace(/ö/g,'o').replace(/ü/g,'u');
+}
+
+function checkAnswer(){
+  if(answered) return;
+  const q = questions[cur];
+  const f = document.getElementById('suf-in');
+  const val = f.value.trim();
+  if(!val) return;
+  answered = true;
+  f.disabled = true;
+  const isOk = q.alts.some(a =>
+    a.toLowerCase() === val.toLowerCase() || norm(a) === norm(val)
+  );
+  const fb = document.getElementById('fb');
+  if(isOk){
+    score++;
+    f.classList.add('ok');
+    speak(q.full);
+    fb.className = 'feedback show ok';
+    fb.innerHTML = `✅ Doğru! Correct! → <strong style="font-family:var(--mono)">${q.full}</strong><br><span style="font-size:.82rem">${q.explain}</span>`;
+  } else {
+    f.classList.add('bad');
+    fb.className = 'feedback show bad';
+    fb.innerHTML = `❌ The correct ending is <strong style="font-family:var(--mono)">-${q.answer}</strong> → <strong style="font-family:var(--mono)">${q.full}</strong><br><span style="font-size:.82rem">${q.explain}</span>`;
+  }
+  document.getElementById('pts').textContent = score + ' pts';
+  document.getElementById('btn-next').classList.add('show');
+}
+
+function nextQ(){ cur++; renderQ(); }
+function restart(){ cur = 0; score = 0; updateMeta(); renderQ(); }
+renderQ();
+</script>
+</body>
+</html>
