@@ -14,46 +14,30 @@ title: Fatih Mehmet CANITEZ | Turkish for Foreigners
   }
 
   .profile-card {
-    background: white;
-    border: 1px solid #eee;
-    border-radius: 16px;
-    padding: 1.5rem;
-    display: flex; align-items: center; gap: 16px;
+    background: white; border: 1px solid #eee; border-radius: 16px;
+    padding: 1.5rem; display: flex; align-items: center; gap: 16px;
     margin-bottom: 1rem;
   }
-  .avatar {
-    width: 72px; height: 72px; border-radius: 50%;
-    overflow: hidden; flex-shrink: 0;
-    border: 2px solid #eee;
-  }
+  .avatar { width: 72px; height: 72px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 2px solid #eee; }
   .avatar img { width: 100%; height: 100%; object-fit: cover; }
   .profile-info h1 { font-size: 18px; font-weight: 600; color: #2c3e50; margin-bottom: 4px; }
   .profile-info .subtitle { font-size: 12px; font-weight: 700; color: #e74c3c; text-transform: uppercase; letter-spacing: 0.07em; }
 
-  .contact-row {
-    display: flex; gap: 10px; margin-bottom: 1rem;
-  }
+  .contact-row { display: flex; gap: 10px; margin-bottom: 1rem; }
   .btn-whatsapp {
-    flex: 1; background: #eafaf1; border: 1px solid #a9dfbf;
-    border-radius: 12px;
-    padding: 12px 16px; text-decoration: none;
-    color: #1e8449; font-weight: 600; font-size: 14px;
+    flex: 1; background: #eafaf1; border: 1px solid #a9dfbf; border-radius: 12px;
+    padding: 12px 16px; text-decoration: none; color: #1e8449; font-weight: 600; font-size: 14px;
     display: flex; align-items: center; gap: 8px;
   }
   .btn-youtube {
-    flex: 1; background: #fdf0f0; border: 1px solid #f5b7b1;
-    border-radius: 12px;
-    padding: 12px 16px; text-decoration: none;
-    color: #922b21; font-weight: 600; font-size: 14px;
+    flex: 1; background: #fdf0f0; border: 1px solid #f5b7b1; border-radius: 12px;
+    padding: 12px 16px; text-decoration: none; color: #922b21; font-weight: 600; font-size: 14px;
     display: flex; align-items: center; gap: 8px;
   }
 
   .carpet-box {
-    background: #fdf5e6;
-    border: 1px solid #e8d5b7;
-    border-left: 3px solid #8b0000;
-    border-radius: 12px;
-    padding: 12px 16px; margin-bottom: 1.5rem;
+    background: #fdf5e6; border: 1px solid #e8d5b7; border-left: 3px solid #8b0000;
+    border-radius: 12px; padding: 12px 16px; margin-bottom: 1.5rem;
     display: flex; align-items: center; gap: 10px;
   }
   .carpet-box a { color: #8b0000; text-decoration: none; font-size: 14px; font-weight: 600; }
@@ -64,22 +48,15 @@ title: Fatih Mehmet CANITEZ | Turkish for Foreigners
     margin-bottom: 12px; padding-left: 2px;
   }
 
-  .exercise-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 1.5rem;
-  }
+  .exercise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 1.5rem; }
   .exercise-card {
-    background: white;
-    border: 1px solid #eee;
-    border-radius: 12px;
-    padding: 12px 14px;
-    text-decoration: none; color: inherit;
+    background: white; border: 1px solid #eee; border-radius: 12px;
+    padding: 12px 14px; text-decoration: none; color: inherit;
     display: flex; flex-direction: column; gap: 4px;
+    transition: background .15s, border-color .15s;
   }
   .exercise-card:hover { background: #f8f9fa; border-color: #ddd; }
-  .exercise-card .ex-num { font-size: 10px; color: #3498db; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+  .exercise-card .ex-num   { font-size: 10px; color: #3498db; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
   .exercise-card .ex-title { font-size: 14px; font-weight: 600; color: #2c3e50; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .exercise-card .ex-sound { font-size: 11px; color: #999; margin-top: 2px; }
 
@@ -124,7 +101,7 @@ title: Fatih Mehmet CANITEZ | Turkish for Foreigners
 
   <div class="section-label">📌 Practice Exercises</div>
   <div class="exercise-grid" id="exercise-list">
-    <div style="grid-column:1/-1; text-align:center; padding:2rem; color:#999;">Loading lessons...</div>
+    <div style="grid-column:1/-1;text-align:center;padding:2rem;color:#999;">Loading lessons…</div>
   </div>
 
   <div class="footer-greet">
@@ -134,35 +111,97 @@ title: Fatih Mehmet CANITEZ | Turkish for Foreigners
 </div>
 
 <script>
-  const spreadsheetId = '1z2a9QpIPGiUoObHqfioTgo_laXXKMP5e3n0pRJA7XcA';
-  const url = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:json`;
+/* ─────────────────────────────────────────────────────────────
+   GitHub API — otomatik ders listesi
+   Yeni .html dosyası ekleyip push'layınca sayfa kendisi güncellenir.
+   Sheets, JSON, script — hiçbir şey gerekmez.
+───────────────────────────────────────────────────────────── */
 
-  async function loadData() {
-    const grid = document.getElementById('exercise-list');
-    try {
-      const response = await fetch(url);
-      const text = await response.text();
-      const json = JSON.parse(text.substring(47, text.length - 2));
-      const rows = json.table.rows;
-      if (rows && rows.length > 0) {
-        grid.innerHTML = "";
-        rows.forEach((row, i) => {
-          const title = row.c[0] ? row.c[0].v : "Untitled";
-          const link  = row.c[1] ? row.c[1].v : "#";
-          grid.innerHTML += `
-            <a href="${link}" class="exercise-card">
-              <span class="ex-num">Exercise ${i + 1}</span>
-              <span class="ex-title">${title}</span>
-              <span class="ex-sound">🔊 listen</span>
-            </a>`;
-        });
-      } else {
-        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:2rem;color:#999;">No lessons found.</div>';
-      }
-    } catch(e) {
-      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:2rem;color:#999;">Error loading data.</div>';
+const GITHUB_USER = "fmemo75-prog";
+const GITHUB_REPO = "turkce-ders";
+
+/* Bilinen dosya adları → güzel başlık eşlemesi.
+   Yeni bir ders ekleyince buraya da bir satır ekle — isteğe bağlı.
+   Eklemezsen dosya adından otomatik başlık üretilir.          */
+const KNOWN_TITLES = {
+  "have.html":                         "Var & Yok — To Have",
+  "turkce-simdiki-zaman-olumsuz.html": "Şimdiki Zaman Olumsuz",
+  "metin-ve-zehra.html":               "Dinleme: Metin ve Zehra",
+  "metin-ve-zehra-dinleme.html":       "Dinleme: Metin ve Zehra",
+  "turkce-accusative-i-hali.html":     "Accusative Case — İ Hali",
+  "turkce-gecmis-zaman-dili.html":     "Geçmiş Zaman — Di'li",
+  "gecmis-zaman-alistirma.html":       "Geçmiş Zaman Alıştırma",
+  "turkce_fiiller.html":               "Temel Türkçe Fiiller",
+  "possessives.html":                  "İyelik Ekleri",
+};
+
+/* Bu dosyalar listede görünmesin */
+const SKIP = new Set([
+  "index.html", "courses.html", "deneme.html",
+  "tts-voice-check.html", "404.html"
+]);
+
+/* Dosya adından okunabilir başlık üret */
+function autoTitle(filename) {
+  return filename
+    .replace(/\.html$/i, "")
+    .replace(/[-_]/g, " ")
+    .replace(/\b\w/g, c => c.toUpperCase())
+    .replace(/\bTurkce\b/g,    "Türkçe")
+    .replace(/\bGecmis\b/g,    "Geçmiş")
+    .replace(/\bSimdiki\b/g,   "Şimdiki")
+    .replace(/\bAlistirma\b/g, "Alıştırma")
+    .replace(/\bOlumsuz\b/g,   "Olumsuz")
+    .replace(/\bZaman\b/g,     "Zaman")
+    .replace(/\bDinleme\b/g,   "Dinleme")
+    .replace(/\bFiiller\b/g,   "Fiiller");
+}
+
+async function loadLessons() {
+  const grid = document.getElementById("exercise-list");
+
+  try {
+    const res = await fetch(
+      `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/`,
+      { headers: { Accept: "application/vnd.github.v3+json" } }
+    );
+    if (!res.ok) throw new Error("GitHub API " + res.status);
+
+    const files = await res.json();
+
+    const lessons = files
+      .filter(f =>
+        f.type === "file" &&
+        f.name.toLowerCase().endsWith(".html") &&
+        !SKIP.has(f.name.toLowerCase())
+      )
+      .map(f => ({
+        file:  f.name,
+        title: KNOWN_TITLES[f.name] || autoTitle(f.name),
+      }));
+
+    if (!lessons.length) {
+      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:2rem;color:#999;">No lessons yet.</div>';
+      return;
     }
-  }
 
-  window.onload = loadData;
+    grid.innerHTML = lessons
+      .map((lesson, i) => `
+        <a href="${lesson.file}" class="exercise-card">
+          <span class="ex-num">Exercise ${i + 1}</span>
+          <span class="ex-title">${lesson.title}</span>
+          <span class="ex-sound">🔊 listen &amp; practice</span>
+        </a>`)
+      .join("");
+
+  } catch (err) {
+    grid.innerHTML = `
+      <div style="grid-column:1/-1;text-align:center;padding:2rem;color:#999;">
+        Could not load lessons.<br>
+        <small style="font-size:11px">${err.message}</small>
+      </div>`;
+  }
+}
+
+window.onload = loadLessons;
 </script>
