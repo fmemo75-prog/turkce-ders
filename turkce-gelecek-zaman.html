@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turkish Future Tense — Gelecek Zaman</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f2eb;
+  --s1:#fffef9;
+  --s2:#efecea;
+  --s3:#e3ded5;
+  --border:#d5cfc2;
+  --text:#1c1a13;
+  --text2:#58533e;
+  --text3:#9a9278;
+  --teal:#0e7c72;
+  --teal-bg:#edfaf8;
+  --teal-bd:#9de0d8;
+  --red:#b02a1f;
+  --red-bg:#fdf2f1;
+  --red-bd:#f2bfba;
+  --green:#155f38;
+  --green-bg:#f0faf4;
+  --green-bd:#9cd9b8;
+  --blue:#1a4f8a;
+  --blue-bg:#eff4ff;
+  --blue-bd:#b0c8f5;
+  --violet:#5a32a0;
+  --violet-bg:#f5f0ff;
+  --violet-bd:#c8b2f0;
+  --amber:#7a4e00;
+  --amber-bg:#fffbef;
+  --amber-bd:#e5cd85;
+  --sans:'DM Sans',sans-serif;
+  --serif:'Lora',serif;
+  --mono:'DM Mono',monospace;
+  --r:10px;
+  --r-lg:15px;
+  --shadow:0 1px 6px rgba(28,26,19,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:16px;line-height:1.65;}
+.wrap{max-width:820px;margin:0 auto;padding:2rem 1.25rem 5rem;}
+
+/* TIP */
+.tip{background:var(--amber-bg);border:1px solid var(--amber-bd);border-radius:var(--r);padding:.65rem 1rem;margin-bottom:1.75rem;font-size:.82rem;color:var(--amber);display:flex;gap:.55rem;align-items:flex-start;}
+.tip b{color:#4a2d00;}
+
+/* HERO */
+.hero{border-radius:var(--r-lg);padding:2.5rem 2rem 2rem;margin-bottom:2rem;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(28,26,19,.13);}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0a2218 0%,#1a1040 50%,#251530 100%);}
+.hero-glow{position:absolute;top:-50px;right:-50px;width:280px;height:280px;background:radial-gradient(circle,rgba(14,124,114,.2) 0%,transparent 65%);pointer-events:none;}
+.hero-glow2{position:absolute;bottom:-60px;left:-30px;width:240px;height:240px;background:radial-gradient(circle,rgba(90,50,160,.18) 0%,transparent 65%);pointer-events:none;}
+.hero-label{position:relative;display:inline-block;background:rgba(157,224,216,.15);color:#9de0d8;border:1px solid rgba(157,224,216,.3);border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .8rem;margin-bottom:.75rem;}
+.hero h1{position:relative;font-family:var(--serif);font-size:clamp(1.7rem,4vw,2.3rem);font-weight:700;color:#fff;line-height:1.12;margin-bottom:.5rem;}
+.hero h1 em{color:#9de0d8;font-style:normal;}
+.hero p{position:relative;font-size:.9rem;color:rgba(255,255,255,.68);max-width:480px;}
+.hero-suffix{position:absolute;bottom:1rem;right:1.75rem;font-family:var(--mono);font-size:3rem;font-weight:500;color:rgba(255,255,255,.06);line-height:1;}
+
+/* CARD */
+.card{background:var(--s1);border:1px solid var(--border);border-radius:var(--r-lg);margin-bottom:1.75rem;overflow:hidden;box-shadow:var(--shadow);}
+.card-head{background:var(--s2);border-bottom:1px solid var(--border);padding:.82rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:.6rem;}
+.card-head h2{font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:.45rem;}
+.snum{font-family:var(--mono);font-size:.68rem;background:var(--s3);color:var(--text3);padding:.12rem .45rem;border-radius:5px;}
+.pill{font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:.18rem .6rem;border-radius:20px;border:1px solid;}
+.pill-teal  {background:var(--teal-bg);  color:var(--teal);  border-color:var(--teal-bd);}
+.pill-amber {background:var(--amber-bg); color:var(--amber); border-color:var(--amber-bd);}
+.pill-green {background:var(--green-bg); color:var(--green); border-color:var(--green-bd);}
+.card-body{padding:1.4rem;}
+
+/* THEORY */
+.intro{font-size:.9rem;color:var(--text2);line-height:1.8;margin-bottom:1.1rem;}
+.intro strong{color:var(--text);}
+
+.rule-box{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.15rem;margin-bottom:1.1rem;border-left:4px solid var(--teal);}
+.rule-box h3{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--teal);margin-bottom:.45rem;}
+.rule-box p{font-size:.88rem;color:var(--text2);line-height:1.75;}
+.formula{font-family:var(--mono);font-size:.82rem;background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bd);padding:.38rem .75rem;border-radius:6px;display:inline-block;margin-top:.45rem;}
+
+/* 4-BOX GRID */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1.1rem;}
+@media(max-width:500px){.form-grid{grid-template-columns:1fr;}}
+.fbox{border-radius:var(--r);padding:.9rem 1rem;border:1px solid;}
+.fbox h4{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.55rem;}
+.fbox ul{list-style:none;}
+.fbox ul li{font-size:.84rem;color:var(--text2);padding:.2rem 0;display:flex;gap:.4rem;align-items:baseline;}
+.fbox ul li::before{content:'→';font-size:.68rem;opacity:.35;flex-shrink:0;}
+.fbox ul li strong{font-family:var(--mono);color:var(--text);}
+.fbox.pos  {background:var(--green-bg);  border-color:var(--green-bd);}  .fbox.pos  h4{color:var(--green);}
+.fbox.neg  {background:var(--red-bg);    border-color:var(--red-bd);}    .fbox.neg  h4{color:var(--red);}
+.fbox.posq {background:var(--blue-bg);   border-color:var(--blue-bd);}   .fbox.posq h4{color:var(--blue);}
+.fbox.negq {background:var(--violet-bg); border-color:var(--violet-bd);} .fbox.negq h4{color:var(--violet);}
+
+/* CONJUGATION TABLE */
+.tbl-wrap{overflow-x:auto;margin-bottom:1.1rem;}
+.conj-tbl{width:100%;border-collapse:collapse;font-size:.84rem;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+.conj-tbl th{background:var(--s2);color:var(--text2);font-weight:600;font-size:.73rem;text-transform:uppercase;letter-spacing:.05em;padding:.52rem .9rem;text-align:left;border-bottom:1px solid var(--border);}
+.conj-tbl td{padding:.48rem .9rem;border-bottom:1px solid var(--border);color:var(--text2);}
+.conj-tbl tr:last-child td{border-bottom:none;}
+.conj-tbl tr:hover td{background:var(--s2);}
+.conj-tbl td:first-child{color:var(--text3);font-family:var(--mono);font-size:.76rem;}
+.conj-tbl td:nth-child(2){color:var(--teal);font-family:var(--mono);font-weight:500;}
+.conj-tbl td:nth-child(3){font-family:var(--mono);color:var(--text);}
+.conj-tbl td:nth-child(4){font-family:var(--mono);color:var(--red);}
+
+.note-box{background:var(--violet-bg);border:1px solid var(--violet-bd);border-radius:var(--r);padding:.82rem 1rem;font-size:.84rem;color:var(--violet);line-height:1.65;}
+.note-box strong{color:#3b1f6e;}
+
+/* EXAMPLES */
+.tts-bar{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:.7rem 1rem;margin-bottom:1rem;display:flex;align-items:center;gap:.75rem;font-size:.82rem;color:var(--text2);}
+.tts-bar p{flex:1;}
+.btn-all{background:var(--teal);color:#fff;border:none;padding:.4rem 1rem;border-radius:7px;font-size:.8rem;font-family:var(--sans);font-weight:700;cursor:pointer;white-space:nowrap;transition:opacity .2s;}
+.btn-all:hover{opacity:.85;}
+
+/* FORM LEGEND */
+.legend{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.85rem;}
+.leg{font-size:.72rem;font-weight:700;padding:.18rem .6rem;border-radius:20px;border:1px solid;}
+.leg-pos  {background:var(--green-bg);  color:var(--green);  border-color:var(--green-bd);}
+.leg-neg  {background:var(--red-bg);    color:var(--red);    border-color:var(--red-bd);}
+.leg-posq {background:var(--blue-bg);   color:var(--blue);   border-color:var(--blue-bd);}
+.leg-negq {background:var(--violet-bg); color:var(--violet); border-color:var(--violet-bd);}
+
+.ex-item{display:flex;align-items:flex-start;gap:.8rem;padding:.68rem .85rem;border-radius:var(--r);cursor:pointer;border:1px solid transparent;transition:background .15s;margin-bottom:.2rem;}
+.ex-item:hover{background:var(--s2);border-color:var(--border);}
+.ex-item.playing{background:var(--teal-bg);border-color:var(--teal-bd);}
+.ex-icon{font-size:1.45rem;flex-shrink:0;width:34px;text-align:center;margin-top:.1rem;}
+.ex-body{flex:1;}
+.ex-tr{font-size:.96rem;font-weight:600;color:var(--text);line-height:1.4;margin-bottom:.12rem;}
+.suf-pos  {color:var(--green);}
+.suf-neg  {color:var(--red);}
+.suf-posq {color:var(--blue);}
+.suf-negq {color:var(--violet);}
+.ex-en{font-size:.79rem;color:var(--text3);}
+.ex-note{font-size:.74rem;color:var(--text3);font-style:italic;margin-top:.1rem;}
+.btn-sp{background:var(--s2);border:1px solid var(--border);color:var(--text2);padding:.25rem .55rem;border-radius:6px;font-size:.72rem;cursor:pointer;flex-shrink:0;transition:all .15s;margin-top:.05rem;}
+.btn-sp:hover,.btn-sp.active{background:var(--teal);color:#fff;border-color:var(--teal);}
+
+/* QUIZ */
+.quiz-bar{background:var(--s2);border-bottom:1px solid var(--border);padding:.85rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.quiz-lbl{font-family:var(--mono);font-size:.82rem;color:var(--text);}
+.qmeta{display:flex;align-items:center;gap:.7rem;}
+.qnum{font-family:var(--mono);font-size:.76rem;color:var(--text3);}
+.prog-wrap{width:100px;height:5px;background:var(--s3);border-radius:10px;overflow:hidden;}
+.prog-bar{height:100%;background:linear-gradient(90deg,var(--teal),var(--violet));border-radius:10px;transition:width .45s;}
+.pts{font-family:var(--mono);font-size:.74rem;background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bd);padding:.16rem .55rem;border-radius:6px;}
+.quiz-body{padding:1.75rem 1.4rem 1.4rem;min-height:360px;}
+
+.q-type-tag{display:inline-flex;align-items:center;gap:.35rem;font-size:.69rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:.18rem .65rem;border-radius:20px;margin-bottom:.75rem;border:1px solid;}
+.q-type-tag.mc  {background:var(--blue-bg);   color:var(--blue);   border-color:var(--blue-bd);}
+.q-type-tag.fill{background:var(--green-bg);  color:var(--green);  border-color:var(--green-bd);}
+
+.q-vis-row{display:flex;align-items:flex-start;gap:1.1rem;margin-bottom:1rem;}
+.q-icon{font-size:4rem;flex-shrink:0;line-height:1;width:72px;text-align:center;}
+.q-right{flex:1;}
+.q-text{font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--text);line-height:1.4;margin-bottom:.28rem;}
+.q-en{font-size:.82rem;color:var(--text3);margin-bottom:.45rem;}
+.q-hint{font-size:.77rem;color:var(--text3);font-style:italic;}
+
+/* MC */
+.mc-grid{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;margin-bottom:1rem;}
+@media(max-width:430px){.mc-grid{grid-template-columns:1fr;}}
+.mc-opt{background:var(--s2);border:1px solid var(--border);color:var(--text);padding:.72rem 1rem;border-radius:var(--r);font-family:var(--mono);font-size:.86rem;cursor:pointer;text-align:left;transition:all .15s;}
+.mc-opt:hover:not(:disabled){border-color:var(--teal);color:var(--teal);background:var(--teal-bg);}
+.mc-opt.correct{background:var(--green-bg);border-color:var(--green-bd);color:var(--green);font-weight:600;}
+.mc-opt.wrong  {background:var(--red-bg);  border-color:var(--red-bd);  color:var(--red);}
+.mc-opt:disabled{cursor:default;}
+
+/* FILL */
+.stem-display{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:.7rem 1rem;margin-bottom:.8rem;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;}
+.stem-lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;font-weight:700;color:var(--text3);}
+.stem-val{font-family:var(--mono);font-size:1.02rem;font-weight:500;color:var(--text);}
+.stem-plus{font-size:1rem;color:var(--text3);}
+.stem-blank{font-family:var(--mono);font-size:.95rem;color:var(--text3);}
+.input-row{display:flex;align-items:center;gap:.5rem;margin-bottom:.45rem;}
+.stem-prefix{font-family:var(--mono);font-size:.97rem;font-weight:500;color:var(--text);background:var(--s2);border:1.5px solid var(--border);border-right:none;padding:.58rem .82rem;border-radius:var(--r) 0 0 var(--r);white-space:nowrap;}
+.suf-field{width:130px;padding:.58rem .7rem;border:1.5px solid var(--border);border-radius:0 var(--r) var(--r) 0;font-size:.93rem;font-family:var(--mono);color:var(--text);background:var(--s1);outline:none;transition:border-color .18s;}
+.suf-field:focus{border-color:var(--teal);}
+.suf-field.ok {border-color:var(--green);background:var(--green-bg);color:var(--green);}
+.suf-field.bad{border-color:var(--red);  background:var(--red-bg);  color:var(--red);}
+.btn-check{background:var(--text);color:#fff;border:none;padding:.6rem 1.1rem;border-radius:var(--r);font-size:.84rem;font-family:var(--sans);font-weight:600;cursor:pointer;transition:opacity .18s;white-space:nowrap;}
+.btn-check:hover{opacity:.82;}
+
+/* FEEDBACK */
+.feedback{border-radius:var(--r);padding:.78rem 1rem;font-size:.84rem;line-height:1.65;display:none;margin-bottom:.5rem;}
+.feedback.show{display:block;}
+.feedback.ok {background:var(--green-bg);border:1px solid var(--green-bd);color:var(--green);}
+.feedback.bad{background:var(--red-bg);  border:1px solid var(--red-bd);  color:var(--red);}
+.feedback strong{color:var(--text);}
+
+.q-foot{display:flex;justify-content:space-between;align-items:center;margin-top:1rem;}
+.q-info{font-size:.78rem;color:var(--text3);}
+.btn-next{background:var(--text);color:#fff;border:none;padding:.5rem 1.3rem;border-radius:var(--r);font-size:.83rem;font-family:var(--sans);font-weight:600;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s,transform .18s;}
+.btn-next.show{opacity:1;pointer-events:all;}
+.btn-next:hover{transform:translateX(3px);}
+
+/* RESULT */
+.result{text-align:center;padding:2.5rem 1rem;}
+.trophy{font-size:3.8rem;margin-bottom:.7rem;}
+.big-pct{font-family:var(--mono);font-size:3.2rem;font-weight:500;color:var(--teal);display:block;margin-bottom:.3rem;}
+.result h3{font-family:var(--serif);font-size:1.25rem;font-weight:700;margin-bottom:.4rem;}
+.result p{font-size:.88rem;color:var(--text2);margin-bottom:1.4rem;}
+.btn-restart{background:var(--text);color:#fff;border:none;padding:.65rem 1.8rem;border-radius:var(--r);font-size:.88rem;font-family:var(--sans);font-weight:600;cursor:pointer;transition:opacity .18s;}
+.btn-restart:hover{opacity:.82;}
+
+.page-footer{text-align:center;margin-top:3rem;font-size:.76rem;color:var(--text3);border-top:1px solid var(--border);padding-top:1.4rem;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- TIP -->
+<div class="tip">
+  <span>💡</span>
+  <span><b>Best experience:</b> Open in <b>Chrome</b> or <b>Safari</b> for full text-to-speech support.</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-suffix">-ECEK</div>
+  <div class="hero-label">Turkish Grammar · A1–A2</div>
+  <h1>Future Tense<br><em>Gelecek Zaman</em></h1>
+  <p>How to talk about what will happen — positive, negative, and question forms with full audio.</p>
+</div>
+
+<!-- THEORY -->
+<div class="card">
+  <div class="card-head">
+    <h2><span class="snum">01</span> How the Future Tense Works</h2>
+    <span class="pill pill-teal">Theory</span>
+  </div>
+  <div class="card-body">
+
+    <p class="intro">
+      Turkish future tense is formed by adding <strong>-ecek / -acak</strong> to the verb stem, followed by a personal ending. The choice between <strong>-ecek</strong> and <strong>-acak</strong> follows <strong>vowel harmony</strong> — based on the last vowel of the stem.
+    </p>
+
+    <div class="rule-box">
+      <h3>Formation</h3>
+      <p>Remove the infinitive <strong>-mek / -mak</strong> to get the stem. Then add the future suffix + personal ending.<br>
+      If the stem ends in a <strong>vowel</strong>, drop that vowel before adding <strong>-ecek/-acak</strong>.</p>
+      <span class="formula">stem + -ecek/-acak + personal ending</span><br>
+      <span class="formula" style="margin-top:.35rem;background:var(--green-bg);color:var(--green);border-color:var(--green-bd)">gel + eceğ + im → geleceğim &nbsp;(I will come)</span><br>
+      <span class="formula" style="margin-top:.35rem;background:var(--amber-bg);color:var(--amber);border-color:var(--amber-bd)">Note: k → ğ before a vowel ending &nbsp;(gidecek + im → gideceğim)</span>
+    </div>
+
+    <!-- vowel harmony -->
+    <div class="form-grid" style="grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1.1rem;">
+      <div style="background:var(--teal-bg);border:1px solid var(--teal-bd);border-radius:var(--r);padding:.9rem 1rem;">
+        <h4 style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--teal);margin-bottom:.5rem;">🎯 Vowel Harmony</h4>
+        <ul style="list-style:none;">
+          <li style="font-size:.84rem;color:var(--text2);padding:.2rem 0">Last vowel <strong style="color:var(--text)">e, i, ö, ü</strong> → <strong style="font-family:var(--mono);color:var(--teal)">-ecek</strong></li>
+          <li style="font-size:.84rem;color:var(--text2);padding:.2rem 0">Last vowel <strong style="color:var(--text)">a, ı, o, u</strong> → <strong style="font-family:var(--mono);color:var(--teal)">-acak</strong></li>
+          <li style="font-size:.84rem;color:var(--text2);padding:.2rem 0;margin-top:.35rem">gel → <strong style="font-family:var(--mono)">gelecek</strong></li>
+          <li style="font-size:.84rem;color:var(--text2);padding:.2rem 0">yap → <strong style="font-family:var(--mono)">yapacak</strong></li>
+        </ul>
+      </div>
+      <div style="background:var(--red-bg);border:1px solid var(--red-bd);border-radius:var(--r);padding:.9rem 1rem;">
+        <h4 style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--red);margin-bottom:.5rem;">⚠️ Stem ends in vowel</h4>
+        <ul style="list-style:none;">
+          <li style="font-size:.84rem;color:var(--text2);padding:.2rem 0">Drop the final vowel of stem:</li>
+          <li style="font-size:.84rem;color:var(--text2);padding:.2rem 0">ye → y + <strong style="font-family:var(--mono)">-ecek</strong> → yiyecek</li>
+          <li style="font-size:.84rem;color:var(--text2);padding:.2rem 0">söyle → söyle<strong style="font-family:var(--mono)">-yecek</strong> → söyleyecek</li>
+          <li style="font-size:.84rem;color:var(--text2);padding:.2rem 0">ara → ar + <strong style="font-family:var(--mono)">-ayacak</strong> → arayacak</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Full conjugation table -->
+    <div class="tbl-wrap">
+      <table class="conj-tbl">
+        <thead>
+          <tr>
+            <th>Pronoun</th>
+            <th>Ending</th>
+            <th>✅ gelmek (to come)</th>
+            <th>❌ gelmemek (negative)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Ben (I)</td>      <td>-eceğim/-acağım</td>   <td>geleceğim</td>    <td>gelmeyeceğim</td></tr>
+          <tr><td>Sen (you)</td>    <td>-eceksin/-acaksın</td>  <td>geleceksin</td>   <td>gelmeyeceksin</td></tr>
+          <tr><td>O (he/she/it)</td><td>-ecek/-acak</td>        <td>gelecek</td>      <td>gelmeyecek</td></tr>
+          <tr><td>Biz (we)</td>     <td>-eceğiz/-acağız</td>    <td>geleceğiz</td>    <td>gelmeyeceğiz</td></tr>
+          <tr><td>Siz (you-pl)</td> <td>-eceksiniz/-acaksınız</td><td>geleceksiniz</td><td>gelmeyeceksiniz</td></tr>
+          <tr><td>Onlar (they)</td> <td>-ecekler/-acaklar</td>  <td>gelecekler</td>   <td>gelmeyecekler</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 4 forms -->
+    <div class="form-grid">
+      <div class="fbox pos">
+        <h4>✅ Positive</h4>
+        <ul>
+          <li><strong>Gideceğim.</strong> — I will go.</li>
+          <li><strong>Yiyecek.</strong> — He/She will eat.</li>
+          <li><strong>Çalışacağız.</strong> — We will work.</li>
+        </ul>
+      </div>
+      <div class="fbox neg">
+        <h4>❌ Negative — add -me/-ma</h4>
+        <ul>
+          <li><strong>Gitmeyeceğim.</strong> — I won't go.</li>
+          <li><strong>Yemeyecek.</strong> — He/She won't eat.</li>
+          <li><strong>Çalışmayacağız.</strong> — We won't work.</li>
+        </ul>
+      </div>
+      <div class="fbox posq">
+        <h4>❓ Positive Question</h4>
+        <ul>
+          <li><strong>Gidecek misin?</strong> — Will you go?</li>
+          <li><strong>Yiyecek mi?</strong> — Will he/she eat?</li>
+          <li><strong>Çalışacak mısın?</strong> — Will you work?</li>
+        </ul>
+      </div>
+      <div class="fbox negq">
+        <h4>🚫 Negative Question</h4>
+        <ul>
+          <li><strong>Gitmeyecek misin?</strong> — Won't you go?</li>
+          <li><strong>Yemeyecek mi?</strong> — Won't he/she eat?</li>
+          <li><strong>Çalışmayacak mısın?</strong> — Won't you work?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note-box">
+      <strong>Time expressions for the future:</strong>
+      yarın (tomorrow) · yarın sabah (tomorrow morning) · bu akşam (this evening) · gelecek hafta (next week) · gelecek yıl (next year) · birazdan (in a little while) · yakında (soon) · bir gün (one day)
+    </div>
+  </div>
+</div>
+
+<!-- EXAMPLES -->
+<div class="card">
+  <div class="card-head">
+    <h2><span class="snum">02</span> 12 Example Sentences</h2>
+    <span class="pill pill-amber">Audio</span>
+  </div>
+  <div class="card-body">
+    <div class="tts-bar">
+      <span>🔊</span>
+      <p>Tap any sentence to hear it. The future suffix is <span style="font-weight:700;color:var(--teal)">coloured</span> by form type.</p>
+      <button class="btn-all" onclick="speakAll()">▶ Play all</button>
+    </div>
+    <div class="legend">
+      <span class="leg leg-pos">✅ Positive</span>
+      <span class="leg leg-neg">❌ Negative</span>
+      <span class="leg leg-posq">❓ Pos. Question</span>
+      <span class="leg leg-negq">🚫 Neg. Question</span>
+    </div>
+    <div id="ex-list"></div>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div class="card" id="quiz-card">
+  <div class="quiz-bar">
+    <div class="quiz-lbl">✏️ 10 Exercises</div>
+    <div class="qmeta">
+      <span class="qnum" id="qnum">1 / 10</span>
+      <div class="prog-wrap"><div class="prog-bar" id="prog" style="width:0%"></div></div>
+      <span class="pts" id="pts">0 pts</span>
+    </div>
+  </div>
+  <div class="quiz-body" id="quiz-body"></div>
+</div>
+
+<div class="page-footer">Turkish Grammar · Gelecek Zaman · Future Tense · A1–A2</div>
+</div>
+
+<script>
+/* ─── EXAMPLES ─── */
+const examples = [
+  {icon:'✈️', form:'pos',  tr:'Yarın İstanbul\'a gideceğim.',      suf:'gideceğim',    stem:'gid',   en:'I will go to Istanbul tomorrow.',         note:'gitmek → git → gide + ceğim (Ben, last vowel i)'},
+  {icon:'🍕', form:'pos',  tr:'Bu akşam pizza yiyeceğiz.',         suf:'yiyeceğiz',    stem:'yiyece',en:'We will eat pizza this evening.',           note:'yemek → ye (vowel stem) → yiye + ceğiz (Biz)'},
+  {icon:'📞', form:'pos',  tr:'Seni birazdan arayacak.',           suf:'arayacak',     stem:'araya', en:'He/She will call you in a little while.',   note:'aramak → ara (vowel stem) → araya + cak (O)'},
+  {icon:'🏫', form:'neg',  tr:'Yarın okula gitmeyeceğim.',         suf:'gitmeyeceğim', stem:'gitmeye',en:"I won't go to school tomorrow.",           note:'gitmek + me (neg.) → gitmeye + ceğim'},
+  {icon:'🌧️', form:'neg',  tr:'Bugün yağmur yağmayacak.',         suf:'yağmayacak',   stem:'yağmaya',en:"It won't rain today.",                    note:'yağmak + ma (neg.) → yağmaya + cak (O)'},
+  {icon:'🎉', form:'neg',  tr:'Gelecek hafta çalışmayacağız.',    suf:'çalışmayacağız',stem:'çalışmaya',en:"We won't work next week.",              note:'çalışmak + ma (neg.) → çalışmaya + cağız (Biz)'},
+  {icon:'🏃', form:'posq', tr:'Yarın koşacak mısın?',             suf:'koşacak mısın',stem:'koşacak',en:'Will you run tomorrow?',                  note:'koşmak → koş + acak + mısın? (Sen)'},
+  {icon:'🎬', form:'posq', tr:'Bu filmi izleyecek misiniz?',      suf:'izleyecek misiniz',stem:'izleyecek',en:'Will you (pl.) watch this film?',   note:'izlemek → izle + yecek + misiniz? (Siz)'},
+  {icon:'😴', form:'negq', tr:'Bu gece uyumayacak mısın?',        suf:'uyumayacak mısın',stem:'uyumaya',en:"Won't you sleep tonight?",             note:'uyumak + ma (neg.) → uyumaya + cak + mısın?'},
+  {icon:'🍔', form:'negq', tr:'Hamburger yemeyecek misin?',       suf:'yemeyecek misin',stem:'yemeye',en:"Won't you eat a hamburger?",             note:'yemek + me (neg.) → yemeye + cek + misin?'},
+  {icon:'📚', form:'pos',  tr:'Gelecek yıl Türkçe öğreneceğim.',  suf:'öğreneceğim',  stem:'öğrenece',en:'I will learn Turkish next year.',        note:'öğrenmek → öğren + eceğim (Ben, last vowel e)'},
+  {icon:'🚗', form:'pos',  tr:'Babam yarın araba alacak.',        suf:'alacak',       stem:'ala',   en:'My father will buy a car tomorrow.',       note:'almak → al + acak (O, last vowel a)'},
+];
+
+/* ─── TTS ─── */
+function getBestVoice(){
+  const vv = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+  const tr = vv.filter(v => v.lang && v.lang.toLowerCase().startsWith('tr'));
+  if(tr.length){ const p = tr.find(v => /yelda|cem|sibel|filiz/i.test(v.name)); return p || tr[0]; }
+  return null;
+}
+function speak(text, id){
+  if(!window.speechSynthesis){ alert('Please use Chrome or Safari for audio.'); return; }
+  window.speechSynthesis.cancel();
+  document.querySelectorAll('.btn-sp').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.ex-item').forEach(r => r.classList.remove('playing'));
+  if(id != null){
+    const b = document.getElementById('bs-' + id);
+    const r = document.getElementById('er-' + id);
+    if(b) b.classList.add('active');
+    if(r) r.classList.add('playing');
+  }
+  const u = new SpeechSynthesisUtterance(text);
+  const v = getBestVoice();
+  if(v){ u.voice = v; u.lang = v.lang; } else { u.lang = 'tr-TR'; }
+  u.rate = 0.86; u.pitch = 1.05;
+  u.onend = () => {
+    if(id != null){
+      const b = document.getElementById('bs-' + id);
+      const r = document.getElementById('er-' + id);
+      if(b) b.classList.remove('active');
+      if(r) r.classList.remove('playing');
+    }
+  };
+  window.speechSynthesis.speak(u);
+}
+let allI = 0;
+function speakAll(){
+  allI = 0;
+  function go(){
+    if(allI >= examples.length) return;
+    const ex = examples[allI], i = allI;
+    speak(ex.tr, i);
+    const chk = setInterval(() => {
+      if(!window.speechSynthesis.speaking){ clearInterval(chk); allI++; setTimeout(go, 600); }
+    }, 200);
+  }
+  go();
+}
+if(window.speechSynthesis) setTimeout(() => window.speechSynthesis.getVoices(), 200);
+
+/* Build example list */
+const sufClass = { pos:'suf-pos', neg:'suf-neg', posq:'suf-posq', negq:'suf-negq' };
+const exList = document.getElementById('ex-list');
+examples.forEach((ex, i) => {
+  // highlight the suffix portion
+  const highlighted = ex.tr.replace(ex.suf, `<span class="${sufClass[ex.form]}" style="font-weight:700">${ex.suf}</span>`);
+  const div = document.createElement('div');
+  div.className = 'ex-item'; div.id = 'er-' + i;
+  div.onclick = () => speak(ex.tr, i);
+  div.innerHTML = `
+    <div class="ex-icon">${ex.icon}</div>
+    <div class="ex-body">
+      <div class="ex-tr">${highlighted}</div>
+      <div class="ex-en">${ex.en}</div>
+      <div class="ex-note">📌 ${ex.note}</div>
+    </div>
+    <button class="btn-sp" id="bs-${i}" onclick="event.stopPropagation();speak('${ex.tr.replace(/'/g,"\\'")}',${i})">🔊</button>`;
+  exList.appendChild(div);
+});
+
+/* ─── QUIZ ─── */
+const questions = [
+  /* 5 MC */
+  {
+    type:'mc', form:'pos', icon:'🏊',
+    scene:'Will she swim tomorrow?',
+    subEn:'Choose the correct positive future form.',
+    hint:'yüzmek → yüz. Last vowel ü → -ecek. 3rd sg. (O): no personal ending.',
+    opts:['Yarın yüzecek.','Yarın yüzeceksin.','Yarın yüzüyor.','Yarın yüzdü.'],
+    ans:0,
+    explain:'<strong>yüz</strong> + <strong>ecek</strong> (last vowel ü → -ecek) + O = no ending → <strong>yüzecek</strong>.'
+  },
+  {
+    type:'mc', form:'neg', icon:'🎵',
+    scene:"He won't sing next week.",
+    subEn:'Choose the correct negative future form.',
+    hint:'şarkı söylemek → söyle + me (neg.) + yecek. 3rd sg.',
+    opts:['Gelecek hafta şarkı söyleyecek.','Gelecek hafta şarkı söylemeyecek.','Gelecek hafta şarkı söylemiyor.','Gelecek hafta şarkı söylemedi.'],
+    ans:1,
+    explain:'söyle + <strong>me</strong>(neg.) → söyleme + <strong>yecek</strong> (last vowel e, 3rd sg.) → <strong>söylemeyecek</strong>.'
+  },
+  {
+    type:'mc', form:'posq', icon:'☕',
+    scene:'Will you (sen) drink coffee tomorrow morning?',
+    subEn:'Choose the correct positive question form.',
+    hint:'içmek → iç + ecek + sin, then question particle mi.',
+    opts:['Yarın sabah kahve içecek misin?','Yarın sabah kahve içecek mi?','Yarın sabah kahve içeceksin mi?','Yarın sabah kahve içiyor musun?'],
+    ans:0,
+    explain:'iç + <strong>ecek</strong> + <strong>sin</strong>(Sen) = içeceksin → split: <strong>içecek misin?</strong> ✓'
+  },
+  {
+    type:'mc', form:'negq', icon:'🏡',
+    scene:"Won't they come home next week?",
+    subEn:'Choose the correct negative question form.',
+    hint:'gelmek + me (neg.) → gelme + yecek + ler (Onlar) + mi?',
+    opts:['Gelecek hafta eve gelmeyecekler mi?','Gelecek hafta eve gelmeyecek mi?','Gelecek hafta eve gelmeyecek misiniz?','Gelecek hafta eve gelmiyorlar mı?'],
+    ans:0,
+    explain:'gelme + <strong>yecek</strong> + <strong>ler</strong>(Onlar) = gelmeyecekler + <strong>mi?</strong> → <strong>gelmeyecekler mi?</strong>'
+  },
+  {
+    type:'mc', form:'pos', icon:'📖',
+    scene:'We will read a book this evening.',
+    subEn:'Choose the correct positive future form.',
+    hint:'okumak → oku (vowel stem, drop u). Last vowel u → -acak. Biz: -ağız.',
+    opts:['Bu akşam kitap okuyoruz.','Bu akşam kitap okuyacağız.','Bu akşam kitap okuduk.','Bu akşam kitap okuyacaksınız.'],
+    ans:1,
+    explain:'oku → drop stem vowel → ok + <strong>uyacak</strong> → okuyacak + <strong>ağız</strong>(Biz) → <strong>okuyacağız</strong>.'
+  },
+  /* 5 FILL */
+  {
+    type:'fill', form:'pos', icon:'🚀',
+    scene:'I will travel next year.',
+    hint:'seyahat etmek → et. Last vowel e → -ecek. Ben: -eceğim.',
+    stem:'et',
+    answer:'eceğim',
+    alts:['eceğim','ecegim'],
+    full:'Gelecek yıl seyahat edeceğim.',
+    fullNote:'et + eceğim → Actually: et softens to ed before vowel → ede + ceğim → edeceğim. Accept: edeceğim',
+    explain:'<strong>et</strong> → t softens to d before vowel suffix → <strong>ed</strong> + <strong>eceğim</strong> → <em>edeceğim</em> (Ben).',
+    altFull:'edeceğim',
+    altAlts:['edeceğim','edecegim']
+  },
+  {
+    type:'fill', form:'neg', icon:'🎮',
+    scene:"You (sen) won't play games tomorrow.",
+    hint:'oynamak → oyna + ma (neg.) + yacak + sın. Stem ends in vowel.',
+    stem:'oynamaya',
+    answer:'caksın',
+    alts:['caksın','caksin'],
+    full:'Yarın oyun oynamayacaksın.',
+    explain:'oyna + <strong>ma</strong>(neg.) → oynama + <strong>ya</strong>(buffer) + <strong>cak</strong>(last vowel a) + <strong>sın</strong>(Sen) → <em>oynamayacaksın</em>.'
+  },
+  {
+    type:'fill', form:'posq', icon:'🌍',
+    scene:'Will you (siz) travel abroad next year?',
+    hint:'seyahat etmek → edecek + siniz → split for question.',
+    stem:'edecek',
+    answer:'misiniz',
+    alts:['misiniz','mısınız'],
+    full:'Gelecek yıl yurt dışına seyahat edecek misiniz?',
+    explain:'edeceğ + <strong>siniz</strong>(Siz) = edeceksiniz → question split: edecek + <strong>misiniz?</strong>'
+  },
+  {
+    type:'fill', form:'pos', icon:'🍰',
+    scene:'She will bake a cake tomorrow.',
+    hint:'pişirmek → pişir. Last vowel i → -ecek. O: no ending.',
+    stem:'pişir',
+    answer:'ecek',
+    alts:['ecek'],
+    full:'Yarın pasta pişirecek.',
+    explain:'<strong>pişir</strong> + <strong>ecek</strong> (last vowel i → -ecek) + O = no ending → <em>pişirecek</em>.'
+  },
+  {
+    type:'fill', form:'negq', icon:'💤',
+    scene:"Won't you (sen) sleep early tonight?",
+    hint:'uyumak + ma (neg.) → uyuma + ya + cak + mısın?',
+    stem:'uyumaya',
+    answer:'cak mısın',
+    alts:['cak mısın','cak misin','cak misın'],
+    full:'Bu gece erken uyumayacak mısın?',
+    explain:'uyuma + <strong>ya</strong>(buffer) + <strong>cak</strong>(last vowel a) + <strong>mısın?</strong>(Sen neg.q) → <em>uyumayacak mısın?</em>'
+  },
+];
+
+let cur = 0, score = 0, answered = false;
+
+const formLabels = {
+  pos:  'Positive · Olumlu',
+  neg:  'Negative · Olumsuz',
+  posq: 'Positive Question',
+  negq: 'Negative Question',
+};
+const formCls = { pos:'mc', neg:'fill', posq:'mc', negq:'fill' };
+
+function updateMeta(){
+  document.getElementById('qnum').textContent = (cur+1) + ' / ' + questions.length;
+  document.getElementById('prog').style.width = (cur / questions.length * 100) + '%';
+  document.getElementById('pts').textContent = score + ' pts';
+}
+
+function renderQ(){
+  answered = false; updateMeta();
+  const qb = document.getElementById('quiz-body');
+  if(cur >= questions.length){
+    const pct = Math.round(score / questions.length * 100);
+    const t = pct >= 80 ? '🏆' : pct >= 50 ? '🥈' : '📚';
+    const msg = pct >= 80 ? 'Mükemmel! Excellent work!' : pct >= 50 ? 'İyi iş! Good effort!' : 'Keep practicing!';
+    qb.innerHTML = `<div class="result"><div class="trophy">${t}</div><span class="big-pct">${pct}%</span><h3>${score} / ${questions.length} correct</h3><p>${msg}</p><button class="btn-restart" onclick="restart()">🔄 Try again</button></div>`;
+    document.getElementById('prog').style.width = '100%';
+    return;
+  }
+  const q = questions[cur];
+  if(q.type === 'mc') renderMC(q, qb);
+  else renderFill(q, qb);
+}
+
+function renderMC(q, qb){
+  const opts = q.opts.map((o,i) => `<button class="mc-opt" id="opt${i}" onclick="chooseMC(${i})">${o}</button>`).join('');
+  qb.innerHTML = `
+    <div class="q-type-tag mc">${formLabels[q.form]} · Q${cur+1}</div>
+    <div class="q-vis-row">
+      <div class="q-icon">${q.icon}</div>
+      <div class="q-right">
+        <div class="q-text">${q.scene}</div>
+        <div class="q-en">${q.subEn}</div>
+        <div class="q-hint">💡 ${q.hint}</div>
+      </div>
+    </div>
+    <div class="mc-grid">${opts}</div>
+    <div class="feedback" id="fb"></div>
+    <div class="q-foot"><span class="q-info">Question ${cur+1} of ${questions.length}</span><button class="btn-next" id="btn-next" onclick="nextQ()">Next →</button></div>`;
+}
+function chooseMC(i){
+  if(answered) return; answered = true;
+  const q = questions[cur];
+  for(let j = 0; j < q.opts.length; j++){
+    const b = document.getElementById('opt' + j); b.disabled = true;
+    if(j === q.ans) b.classList.add('correct');
+    else if(j === i) b.classList.add('wrong');
+  }
+  const fb = document.getElementById('fb');
+  if(i === q.ans){
+    score++;
+    speak(q.opts[q.ans]);
+    fb.className = 'feedback show ok';
+    fb.innerHTML = '✅ Doğru! Correct! — ' + q.explain;
+  } else {
+    fb.className = 'feedback show bad';
+    fb.innerHTML = '❌ Correct answer: <strong>' + q.opts[q.ans] + '</strong> — ' + q.explain;
+  }
+  document.getElementById('pts').textContent = score + ' pts';
+  document.getElementById('btn-next').classList.add('show');
+}
+
+function renderFill(q, qb){
+  qb.innerHTML = `
+    <div class="q-type-tag fill">${formLabels[q.form]} · Q${cur+1}</div>
+    <div class="q-vis-row">
+      <div class="q-icon">${q.icon}</div>
+      <div class="q-right">
+        <div class="q-text">${q.scene}</div>
+        <div class="q-hint">💡 ${q.hint}</div>
+      </div>
+    </div>
+    <div class="stem-display">
+      <span class="stem-lbl">Stem:</span>
+      <span class="stem-val">${q.stem}</span>
+      <span class="stem-plus">+</span>
+      <span class="stem-blank">[ type the suffix ]</span>
+    </div>
+    <div class="input-row">
+      <div class="stem-prefix">${q.stem}</div>
+      <input class="suf-field" id="suf-in" type="text" placeholder="suffix…" autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="if(event.key==='Enter')checkFill()">
+      <button class="btn-check" onclick="checkFill()">Check ✓</button>
+    </div>
+    <div class="feedback" id="fb"></div>
+    <div class="q-foot"><span class="q-info">Question ${cur+1} of ${questions.length}</span><button class="btn-next" id="btn-next" onclick="nextQ()">Next →</button></div>`;
+  setTimeout(() => { const f = document.getElementById('suf-in'); if(f) f.focus(); }, 80);
+}
+
+function norm(s){
+  return s.trim().toLowerCase().replace(/[.,!?]/g,'')
+    .replace(/ğ/g,'g').replace(/ş/g,'s').replace(/ç/g,'c')
+    .replace(/ı/g,'i').replace(/ö/g,'o').replace(/ü/g,'u');
+}
+function checkFill(){
+  if(answered) return;
+  const q = questions[cur];
+  const f = document.getElementById('suf-in');
+  const val = f.value.trim(); if(!val) return;
+  answered = true; f.disabled = true;
+  // also accept altAlts if present
+  const allAlts = [...(q.alts || []), ...(q.altAlts || [])];
+  const isOk = allAlts.some(a =>
+    a.toLowerCase() === val.toLowerCase() || norm(a) === norm(val)
+  );
+  const fb = document.getElementById('fb');
+  const correctFull = q.altFull || q.full;
+  if(isOk){
+    score++;
+    f.classList.add('ok');
+    speak(q.full);
+    fb.className = 'feedback show ok';
+    fb.innerHTML = `✅ Doğru! → <strong style="font-family:var(--mono)">${correctFull}</strong><br><span style="font-size:.82rem">${q.explain}</span>`;
+  } else {
+    f.classList.add('bad');
+    fb.className = 'feedback show bad';
+    fb.innerHTML = `❌ Correct suffix: <strong style="font-family:var(--mono)">-${q.answer}</strong> → <strong style="font-family:var(--mono)">${correctFull}</strong><br><span style="font-size:.82rem">${q.explain}</span>`;
+  }
+  document.getElementById('pts').textContent = score + ' pts';
+  document.getElementById('btn-next').classList.add('show');
+}
+
+function nextQ(){ cur++; renderQ(); }
+function restart(){ cur = 0; score = 0; updateMeta(); renderQ(); }
+renderQ();
+</script>
+</body>
+</html>
