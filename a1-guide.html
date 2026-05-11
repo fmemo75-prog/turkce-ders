@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A1 Turkish — Student Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #1C1B2E;
+  --ink-mid: #4E4D6C;
+  --ink-light: #8E8DAA;
+  --red: #C0392B;
+  --red-soft: #FAF0EE;
+  --teal: #1A6B5A;
+  --teal-soft: #E8F5F1;
+  --amber: #B5620A;
+  --amber-soft: #FDF3E7;
+  --blue: #1A4D7C;
+  --blue-soft: #EAF1F9;
+  --surface: #F8F7F4;
+  --white: #FFFFFF;
+  --border: rgba(28, 27, 46, 0.1);
+  --border-mid: rgba(28, 27, 46, 0.18);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--surface);
+  color: var(--ink);
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--ink);
+  color: white;
+  padding: 72px 24px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: 'T';
+  position: absolute;
+  font-family: 'Fraunces', serif;
+  font-size: 340px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.04);
+  right: -20px;
+  top: -40px;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-tag {
+  display: inline-block;
+  background: var(--red);
+  color: white;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(32px, 6vw, 52px);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  color: white;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: #F0C070;
+}
+
+.hero p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.6);
+  max-width: 520px;
+  margin: 0 auto 32px;
+  font-weight: 300;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  color: var(--ink);
+  padding: 12px 28px;
+  border-radius: 40px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.hero-btn:hover { opacity: 0.85; }
+
+.hero-btn svg {
+  width: 16px; height: 16px;
+  fill: none; stroke: currentColor;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+
+/* ── NAV ── */
+.nav {
+  background: white;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 0 24px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.nav-inner {
+  display: inline-flex;
+  gap: 0;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.nav a {
+  display: inline-block;
+  padding: 14px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-mid);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+  letter-spacing: 0.01em;
+}
+
+.nav a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--red);
+}
+
+/* ── LAYOUT ── */
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section {
+  padding: 56px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+section:last-child { border-bottom: none; }
+
+.section-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: 300;
+  line-height: 1.25;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+
+.section-title em { font-style: italic; color: var(--ink-mid); }
+
+.lead {
+  font-size: 16px;
+  color: var(--ink-mid);
+  font-weight: 300;
+  max-width: 640px;
+  margin-bottom: 32px;
+  line-height: 1.75;
+}
+
+/* ── CARDS ── */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 20px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 6px 24px rgba(28,27,46,0.08);
+  transform: translateY(-2px);
+}
+
+.card-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 14px;
+  font-size: 20px;
+}
+
+.card-icon.red { background: var(--red-soft); }
+.card-icon.teal { background: var(--teal-soft); }
+.card-icon.amber { background: var(--amber-soft); }
+.card-icon.blue { background: var(--blue-soft); }
+
+.card h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 13px;
+  color: var(--ink-mid);
+  line-height: 1.6;
+}
+
+/* ── LEVEL TABLE ── */
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.level-card {
+  border-radius: 12px;
+  padding: 18px 16px;
+  border: 1px solid var(--border);
+}
+
+.level-card.active {
+  background: var(--ink);
+  color: white;
+  border-color: var(--ink);
+}
+
+.level-card.inactive {
+  background: white;
+  opacity: 0.55;
+}
+
+.level-code {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.level-card.active .level-code { color: #F0C070; }
+.level-card.inactive .level-code { color: var(--ink-mid); }
+
+.level-name {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.level-card.active .level-name { color: rgba(255,255,255,0.9); }
+.level-card.inactive .level-name { color: var(--ink-mid); }
+
+.level-desc {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.level-card.active .level-desc { color: rgba(255,255,255,0.6); }
+.level-card.inactive .level-desc { color: var(--ink-light); }
+
+.level-you {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: #F0C070;
+  color: var(--ink);
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+
+/* ── TOPICS ── */
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.topic-item {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.topic-num {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--red);
+  min-width: 24px;
+  line-height: 1.2;
+}
+
+.topic-text h4 {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+
+.topic-text p {
+  font-size: 12px;
+  color: var(--ink-light);
+  line-height: 1.5;
+}
+
+/* ── STEPS ── */
+.steps {
+  position: relative;
+  padding-left: 32px;
+  margin-top: 8px;
+}
+
+.steps::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 20px;
+  bottom: 20px;
+  width: 1px;
+  background: var(--border-mid);
+}
+
+.step {
+  position: relative;
+  margin-bottom: 28px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+
+.step::before {
+  content: attr(data-n);
+  position: absolute;
+  left: -32px;
+  top: 18px;
+  width: 22px;
+  height: 22px;
+  background: var(--ink);
+  color: white;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.step h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.step p {
+  font-size: 13px;
+  color: var(--ink-mid);
+  line-height: 1.6;
+}
+
+/* ── TIP BOX ── */
+.tip-box {
+  border-radius: 12px;
+  padding: 20px 22px;
+  margin: 24px 0;
+  border-left: 3px solid;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.tip-box.teal {
+  background: var(--teal-soft);
+  border-color: var(--teal);
+}
+
+.tip-box.amber {
+  background: var(--amber-soft);
+  border-color: var(--amber);
+}
+
+.tip-box.blue {
+  background: var(--blue-soft);
+  border-color: var(--blue);
+}
+
+.tip-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+
+.tip-box h4 {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.tip-box p {
+  font-size: 13px;
+  color: var(--ink-mid);
+  line-height: 1.6;
+}
+
+/* ── LISTENING ── */
+.listening-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.listen-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 18px;
+}
+
+.listen-card .listen-icon {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.listen-card h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.listen-card p {
+  font-size: 13px;
+  color: var(--ink-mid);
+  line-height: 1.6;
+}
+
+/* ── EFFICIENCY ── */
+.efficiency-list {
+  list-style: none;
+  margin-top: 8px;
+}
+
+.efficiency-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.efficiency-list li:last-child { border-bottom: none; }
+
+.eff-marker {
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  background: var(--red-soft);
+  color: var(--red);
+  font-size: 13px;
+  font-weight: 500;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.eff-content h4 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.eff-content p {
+  font-size: 13px;
+  color: var(--ink-mid);
+  line-height: 1.6;
+}
+
+/* ── FAQ ── */
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 20px 0;
+}
+
+.faq-item:first-child { padding-top: 0; }
+
+.faq-q {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.faq-q::before {
+  content: 'Q';
+  font-family: 'Fraunces', serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--red);
+  min-width: 18px;
+  margin-top: 1px;
+}
+
+.faq-a {
+  font-size: 14px;
+  color: var(--ink-mid);
+  line-height: 1.7;
+  padding-left: 28px;
+}
+
+/* ── CTA ── */
+.cta {
+  background: var(--ink);
+  color: white;
+  text-align: center;
+  padding: 64px 24px;
+}
+
+.cta h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 300;
+  color: white;
+  margin-bottom: 14px;
+}
+
+.cta p {
+  color: rgba(255,255,255,0.55);
+  font-weight: 300;
+  font-size: 15px;
+  margin-bottom: 32px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: white; color: var(--ink);
+  padding: 12px 28px; border-radius: 40px;
+  font-size: 14px; font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.btn-primary:hover { opacity: 0.88; }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: rgba(255,255,255,0.7);
+  padding: 12px 28px; border-radius: 40px;
+  border: 1px solid rgba(255,255,255,0.25);
+  font-size: 14px; font-weight: 400;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-secondary:hover { border-color: rgba(255,255,255,0.6); color: white; }
+
+.btn-primary svg, .btn-secondary svg {
+  width: 15px; height: 15px;
+  fill: none; stroke: currentColor;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 12px;
+  color: var(--ink-light);
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 560px) {
+  .hero { padding: 52px 20px 40px; }
+  section { padding: 40px 0; }
+  .steps { padding-left: 28px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-tag">Student Guide</span>
+  <h1>Learning Turkish<br>starts <em>here.</em></h1>
+  <p>Everything you need to know about A1 Turkish — what it means, what you'll learn, and how to get the most out of every lesson.</p>
+  <a href="https://fmemo75-prog.github.io/turkce-ders/index.html" target="_blank" class="hero-btn">
+    <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+    Open the Course on GitHub
+  </a>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#what-is-a1">What is A1?</a>
+    <a href="#topics">Topics Covered</a>
+    <a href="#how-to-use">How to Use</a>
+    <a href="#listening">Listening</a>
+    <a href="#study-tips">Study Tips</a>
+    <a href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<!-- WHAT IS A1 -->
+<section id="what-is-a1">
+  <div class="container">
+    <div class="section-label">The basics</div>
+    <h2 class="section-title">What does <em>A1</em> mean?</h2>
+    <p class="lead">A1 is the first level of the Common European Framework of Reference for Languages (CEFR). It is the absolute beginner level — the starting point for anyone learning Turkish from zero.</p>
+
+    <div class="level-grid">
+      <div class="level-card active">
+        <div class="level-code">A1</div>
+        <div class="level-name">Beginner</div>
+        <div class="level-desc">Understand and use familiar everyday expressions and very basic phrases.</div>
+        <span class="level-you">← You are here</span>
+      </div>
+      <div class="level-card inactive">
+        <div class="level-code">A2</div>
+        <div class="level-name">Elementary</div>
+        <div class="level-desc">Communicate in simple, routine tasks on familiar topics.</div>
+      </div>
+      <div class="level-card inactive">
+        <div class="level-code">B1</div>
+        <div class="level-name">Intermediate</div>
+        <div class="level-desc">Handle most situations encountered while travelling in Turkey.</div>
+      </div>
+      <div class="level-card inactive">
+        <div class="level-code">B2</div>
+        <div class="level-name">Upper-Intermediate</div>
+        <div class="level-desc">Understand complex texts and interact with fluency.</div>
+      </div>
+    </div>
+
+    <div class="tip-box teal" style="margin-top: 28px;">
+      <span class="tip-icon">🎯</span>
+      <div>
+        <h4>What can you do at A1?</h4>
+        <p>At the end of A1, you will be able to introduce yourself, ask and answer simple questions about personal details, interact in a simple way when the other person speaks slowly and clearly, and handle very basic everyday situations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOPICS -->
+<section id="topics">
+  <div class="container">
+    <div class="section-label">Curriculum</div>
+    <h2 class="section-title">What does A1 <em>cover?</em></h2>
+    <p class="lead">The A1 course introduces the fundamental building blocks of Turkish — vocabulary, pronunciation, and grammar — through practical, everyday themes.</p>
+
+    <div class="topics-grid">
+      <div class="topic-item">
+        <span class="topic-num">01</span>
+        <div class="topic-text">
+          <h4>Greetings & Introductions</h4>
+          <p>Merhaba, hoş geldiniz, tanışma ifadeleri</p>
+        </div>
+      </div>
+      <div class="topic-item">
+        <span class="topic-num">02</span>
+        <div class="topic-text">
+          <h4>Numbers & Alphabet</h4>
+          <p>The Turkish alphabet, pronunciation rules, counting</p>
+        </div>
+      </div>
+      <div class="topic-item">
+        <span class="topic-num">03</span>
+        <div class="topic-text">
+          <h4>Family & People</h4>
+          <p>Describing family members, relationships, ages</p>
+        </div>
+      </div>
+      <div class="topic-item">
+        <span class="topic-num">04</span>
+        <div class="topic-text">
+          <h4>Days, Months & Time</h4>
+          <p>Telling the time, days of the week, seasons</p>
+        </div>
+      </div>
+      <div class="topic-item">
+        <span class="topic-num">05</span>
+        <div class="topic-text">
+          <h4>Colors & Descriptions</h4>
+          <p>Adjectives, describing objects and people</p>
+        </div>
+      </div>
+      <div class="topic-item">
+        <span class="topic-num">06</span>
+        <div class="topic-text">
+          <h4>Food & Daily Life</h4>
+          <p>Ordering food, shopping, daily routine</p>
+        </div>
+      </div>
+      <div class="topic-item">
+        <span class="topic-num">07</span>
+        <div class="topic-text">
+          <h4>Places & Directions</h4>
+          <p>Locations, asking for directions, transportation</p>
+        </div>
+      </div>
+      <div class="topic-item">
+        <span class="topic-num">08</span>
+        <div class="topic-text">
+          <h4>Basic Grammar</h4>
+          <p>Present tense, subject pronouns, vowel harmony</p>
+        </div>
+      </div>
+      <div class="topic-item">
+        <span class="topic-num">09</span>
+        <div class="topic-text">
+          <h4>Hobbies & Interests</h4>
+          <p>Talking about what you like and do in free time</p>
+        </div>
+      </div>
+      <div class="topic-item">
+        <span class="topic-num">10</span>
+        <div class="topic-text">
+          <h4>Weather & Seasons</h4>
+          <p>Describing weather, talking about climate</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box amber" style="margin-top: 28px;">
+      <span class="tip-icon">💡</span>
+      <div>
+        <h4>Why these topics?</h4>
+        <p>These themes mirror real-life situations you will encounter from day one. Every lesson is built around a practical context so that what you learn is immediately useful — not just theoretical.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO USE -->
+<section id="how-to-use">
+  <div class="container">
+    <div class="section-label">Getting started</div>
+    <h2 class="section-title">How to use <em>the course</em></h2>
+    <p class="lead">The GitHub course is structured so you can follow it step by step — with or without a teacher. Here is the recommended workflow for each lesson.</p>
+
+    <div class="steps">
+      <div class="step" data-n="1">
+        <h3>Open the lesson page</h3>
+        <p>Visit the GitHub course link and navigate to the lesson for your current topic. Each lesson is a self-contained page with vocabulary, grammar notes, and audio.</p>
+      </div>
+      <div class="step" data-n="2">
+        <h3>Listen first — without reading</h3>
+        <p>Play the audio or video material at the top of the lesson before reading anything. Try to catch sounds, rhythm, and a few words. This activates your ear before your eyes.</p>
+      </div>
+      <div class="step" data-n="3">
+        <h3>Read through the vocabulary</h3>
+        <p>Go through the word list slowly. Say each word out loud. Do not try to memorise everything at once — familiarity comes with repetition.</p>
+      </div>
+      <div class="step" data-n="4">
+        <h3>Study the grammar notes</h3>
+        <p>Read the grammar section carefully. Turkish grammar is very regular and logical — once you understand a rule, it applies widely. Take notes in your own words.</p>
+      </div>
+      <div class="step" data-n="5">
+        <h3>Do the exercises</h3>
+        <p>Complete all exercises in the lesson. Mistakes are valuable — they show exactly where to focus. Do not skip exercises even if they feel easy.</p>
+      </div>
+      <div class="step" data-n="6">
+        <h3>Listen again — with understanding</h3>
+        <p>Return to the audio from step 2. Now that you know the vocabulary and grammar, listen again. Notice how much more you can understand. This comparison is motivating and solidifies learning.</p>
+      </div>
+      <div class="step" data-n="7">
+        <h3>Review before your next lesson</h3>
+        <p>Spend 10–15 minutes reviewing the previous lesson before your next live session. This ensures your teacher can build on what you already know rather than repeating explanations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LISTENING -->
+<section id="listening">
+  <div class="container">
+    <div class="section-label">A key skill</div>
+    <h2 class="section-title">Why is <em>listening</em> so important?</h2>
+    <p class="lead">Many learners focus only on grammar and vocabulary lists. But listening is the foundation of all language acquisition — and Turkish phonology is quite different from most European languages.</p>
+
+    <div class="listening-grid">
+      <div class="listen-card">
+        <div class="listen-icon">👂</div>
+        <h3>Your ear learns first</h3>
+        <p>Before you can speak correctly, your brain needs to build an internal model of how Turkish sounds. This only happens through repeated, attentive listening.</p>
+      </div>
+      <div class="listen-card">
+        <div class="listen-icon">🔤</div>
+        <h3>Turkish sounds are unique</h3>
+        <p>Letters like <strong>ğ</strong>, <strong>ı</strong>, <strong>ş</strong>, and <strong>ö</strong> do not exist in English or French. Without training your ear, you will consistently mispronounce these sounds without realising it.</p>
+      </div>
+      <div class="listen-card">
+        <div class="listen-icon">🌊</div>
+        <h3>Rhythm and flow</h3>
+        <p>Turkish has a distinctive rhythm — vowel harmony gives it a musical quality. Listening helps you internalise this flow naturally, so your speech sounds connected rather than word-by-word.</p>
+      </div>
+      <div class="listen-card">
+        <div class="listen-icon">🧠</div>
+        <h3>Comprehension builds vocabulary</h3>
+        <p>When you hear a word in context — with emotion, intonation, and surrounding words — it sticks far better than reading it from a list. Listening creates richer memory traces.</p>
+      </div>
+    </div>
+
+    <div class="tip-box blue" style="margin-top: 28px;">
+      <span class="tip-icon">🎧</span>
+      <div>
+        <h4>Practical listening tip</h4>
+        <p>Listen to each audio in the course at least three times: once before studying the lesson (for exposure), once during (for comprehension), and once after (for consolidation). Even 5 minutes of daily listening makes a significant difference over weeks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDY TIPS -->
+<section id="study-tips">
+  <div class="container">
+    <div class="section-label">Study strategies</div>
+    <h2 class="section-title">How to study <em>efficiently</em></h2>
+    <p class="lead">Progress in language learning is not about how long you study — it is about how consistently and actively you engage with the material.</p>
+
+    <ul class="efficiency-list">
+      <li>
+        <span class="eff-marker">01</span>
+        <div class="eff-content">
+          <h4>Study a little, every day</h4>
+          <p>20 minutes daily is far more effective than 2 hours once a week. Your brain consolidates language during sleep, so regular short sessions produce lasting results. Even reviewing flashcards on a bus counts.</p>
+        </div>
+      </li>
+      <li>
+        <span class="eff-marker">02</span>
+        <div class="eff-content">
+          <h4>Speak out loud — even alone</h4>
+          <p>Reading silently is passive. Speaking activates a completely different set of neural pathways. Talk to yourself in Turkish, repeat sentences aloud, describe what you see around you using the words you know.</p>
+        </div>
+      </li>
+      <li>
+        <span class="eff-marker">03</span>
+        <div class="eff-content">
+          <h4>Use a vocabulary notebook</h4>
+          <p>Write new words by hand in a dedicated notebook. Organise by theme (food, family, time…). Handwriting slows you down enough to actually process the word — and you can review anywhere without a screen.</p>
+        </div>
+      </li>
+      <li>
+        <span class="eff-marker">04</span>
+        <div class="eff-content">
+          <h4>Make sentences, not lists</h4>
+          <p>Instead of memorising "elma = apple", write "Ben bir elma yedim" (I ate an apple). Using a word in a sentence creates context, which dramatically improves retention.</p>
+        </div>
+      </li>
+      <li>
+        <span class="eff-marker">05</span>
+        <div class="eff-content">
+          <h4>Review spaced repetition</h4>
+          <p>Revisit vocabulary after 1 day, then 3 days, then 1 week, then 2 weeks. This spaced repetition pattern matches how memory consolidation works and prevents forgetting.</p>
+        </div>
+      </li>
+      <li>
+        <span class="eff-marker">06</span>
+        <div class="eff-content">
+          <h4>Prepare questions for your teacher</h4>
+          <p>When something is unclear, write it down immediately. Come to each lesson with specific questions. Your teacher can resolve in 2 minutes what might confuse you for weeks if you leave it unanswered.</p>
+        </div>
+      </li>
+      <li>
+        <span class="eff-marker">07</span>
+        <div class="eff-content">
+          <h4>Connect Turkish to your life</h4>
+          <p>Label objects in your home in Turkish. Set your phone to Turkish. Watch short Turkish videos on YouTube. The more you weave the language into your daily environment, the faster it becomes natural.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-label">Common questions</div>
+    <h2 class="section-title">Frequently asked <em>questions</em></h2>
+
+    <div class="faq-item">
+      <div class="faq-q">How long does it take to complete A1?</div>
+      <div class="faq-a">With regular lessons and independent study, most students reach A1 level in 3 to 6 months. The pace depends on how much time you invest between sessions and how consistently you practise.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is Turkish difficult for English speakers?</div>
+      <div class="faq-a">Turkish grammar is very different from English — it is an agglutinative language, meaning words are built by adding suffixes. However, it is extremely regular: once you learn a rule, it almost never has exceptions. Many students find this logical structure refreshing.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do I need to memorise a lot before the first lesson?</div>
+      <div class="faq-a">No. Come to the first lesson with an open mind and curiosity. The teacher will guide you from absolute zero. If you want to prepare, simply listen to a few minutes of spoken Turkish to start training your ear.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How should I use the GitHub course alongside my lessons?</div>
+      <div class="faq-a">The GitHub course is your reference and practice space between live sessions. Review each lesson before and after your class. Use the exercises to check your understanding and bring any questions to your next session.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What if I miss a lesson or fall behind?</div>
+      <div class="faq-a">It happens — life is busy. The most important thing is to return without pressure. Review the lesson material you missed via GitHub, do the exercises, and inform your teacher so they can give you a short recap at the start of the next session.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Will I be able to have basic conversations after A1?</div>
+      <div class="faq-a">Yes. After completing A1 you will be able to introduce yourself, talk about your family, handle simple shopping situations, ask for directions, and have short conversations on familiar topics — especially when the other person speaks clearly.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>Ready to start learning?</h2>
+  <p>Open the course, pick your first lesson, and take it one step at a time. Yavaş yavaş — little by little.</p>
+  <div class="cta-btns">
+    <a href="https://fmemo75-prog.github.io/turkce-ders/index.html" target="_blank" class="btn-primary">
+      <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      Open the Course
+    </a>
+    <a href="mailto:fmemo75@gmail.com" class="btn-secondary">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Contact your teacher
+    </a>
+  </div>
+</div>
+
+<footer>
+  Fatih Mehmet CANITEZ · Turkish Lessons · A1 Student Guide
+</footer>
+
+</body>
+</html>
