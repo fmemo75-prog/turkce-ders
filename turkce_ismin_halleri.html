@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Türkçe İsmin Halleri</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0f14;
+    --surface: #16181f;
+    --card: #1c1e27;
+    --border: #2a2d3a;
+    --text: #e8eaf2;
+    --muted: #6b7090;
+    --accent: #7c6dfa;
+    --accent2: #fa6d9a;
+    --green: #4ade80;
+    --red: #f87171;
+    --amber: #fbbf24;
+    --case-acc: #5b8df5;
+    --case-dat: #4ecdc4;
+    --case-loc: #a78bfa;
+    --case-abl: #fb923c;
+    --case-gen: #f472b6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Sora', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 0 0 60px;
+  }
+  header {
+    background: linear-gradient(135deg, #1a1040 0%, #0e0f14 60%);
+    border-bottom: 1px solid var(--border);
+    padding: 40px 40px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(124,109,250,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 200px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(250,109,154,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  h1 span { color: var(--accent); }
+  .header-sub {
+    font-size: 14px;
+    color: var(--muted);
+    max-width: 500px;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  .section { margin-top: 40px; }
+  .section-head {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 16px;
+  }
+  .section-head h2 {
+    font-size: 16px; font-weight: 600; color: var(--text);
+  }
+  .section-head .pill {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: rgba(124,109,250,0.15);
+    color: var(--accent);
+    border: 1px solid rgba(124,109,250,0.3);
+  }
+
+  /* Cases grid */
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 10px;
+  }
+  .case-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .case-card:hover { border-color: var(--cc); transform: translateY(-2px); }
+  .case-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--cc);
+  }
+  .cc-name {
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--cc);
+    margin-bottom: 6px;
+  }
+  .cc-tr { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+  .cc-suffix {
+    font-family: 'DM Mono', monospace;
+    font-size: 22px; font-weight: 500;
+    color: var(--cc);
+    margin-bottom: 8px;
+    display: block;
+  }
+  .cc-question { font-size: 12px; color: var(--muted); margin-bottom: 8px; line-height: 1.4; }
+  .cc-ex {
+    font-size: 12px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    padding: 7px 10px;
+    line-height: 1.5;
+    color: var(--text);
+    border-left: 2px solid var(--cc);
+  }
+  .cc-ex i { display: block; color: var(--muted); font-style: italic; font-size: 11px; margin-top: 2px; }
+
+  /* Verbs table */
+  .verbs-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .verbs-table th {
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--muted);
+    padding: 12px 16px;
+    background: var(--surface);
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .verbs-table td {
+    padding: 12px 16px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .verbs-table tr:last-child td { border-bottom: none; }
+  .verbs-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .vt-case {
+    font-size: 11px; font-weight: 600;
+    padding: 3px 10px; border-radius: 20px;
+    white-space: nowrap;
+  }
+  .vt-verb { font-weight: 600; color: var(--text); }
+  .vt-en { color: var(--muted); font-size: 12px; }
+  .vt-desc { color: var(--muted); line-height: 1.5; }
+  .vt-ex { font-style: italic; color: var(--text); font-size: 12px; }
+
+  /* Progress */
+  .progress-wrap {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 20px;
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 20px;
+  }
+  .prog-info { flex: 1; }
+  .prog-label { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+  .prog-bar-bg {
+    height: 6px; background: var(--border);
+    border-radius: 3px; overflow: hidden;
+  }
+  .prog-bar {
+    height: 6px; background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 3px;
+    transition: width 0.4s cubic-bezier(.4,0,.2,1);
+    width: 0%;
+  }
+  .prog-score {
+    font-size: 24px; font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  .prog-score span { color: var(--muted); font-size: 14px; font-weight: 400; }
+
+  /* Exercise cards */
+  .ex-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+  }
+  .ex-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px;
+    transition: border-color 0.2s;
+    position: relative;
+  }
+  .ex-card.solved { border-color: rgba(74,222,128,0.3); }
+  .ex-card.error { border-color: rgba(248,113,113,0.3); }
+  .ex-header {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 14px;
+  }
+  .ex-num {
+    font-size: 11px; font-weight: 600;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+  }
+  .ex-case-badge {
+    font-size: 11px; font-weight: 600;
+    padding: 2px 10px; border-radius: 20px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .tts-btn {
+    margin-left: auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 13px;
+    display: flex; align-items: center; gap: 5px;
+    transition: all 0.2s;
+    font-family: 'Sora', sans-serif;
+  }
+  .tts-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .tts-btn.playing { border-color: var(--green); color: var(--green); animation: pulse 1s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
+
+  .sentence {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    display: flex; align-items: baseline;
+    flex-wrap: wrap; gap: 4px;
+  }
+  .sent-word { color: var(--text); }
+  .sent-stem { color: var(--text); }
+  .sent-suffix-input {
+    font-family: 'DM Mono', monospace;
+    font-size: 17px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--border);
+    color: var(--accent);
+    width: 64px;
+    outline: none;
+    padding: 0 3px;
+    transition: border-color 0.2s;
+  }
+  .sent-suffix-input:focus { border-bottom-color: var(--accent); }
+  .sent-suffix-input.correct { border-bottom-color: var(--green); color: var(--green); }
+  .sent-suffix-input.wrong { border-bottom-color: var(--red); color: var(--red); }
+  .sent-suffix-static {
+    font-family: 'DM Mono', monospace;
+    font-size: 17px;
+    color: var(--accent);
+    min-width: 10px;
+  }
+
+  .ex-en {
+    font-size: 12px; font-style: italic;
+    color: var(--muted); margin-bottom: 12px;
+    line-height: 1.4;
+  }
+  .ex-footer {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .check-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 5px 14px;
+    cursor: pointer;
+    color: var(--text);
+    font-size: 12px; font-weight: 500;
+    font-family: 'Sora', sans-serif;
+    transition: all 0.2s;
+  }
+  .check-btn:hover { background: rgba(124,109,250,0.12); border-color: var(--accent); color: var(--accent); }
+  .check-btn:disabled { opacity: 0.4; cursor: default; }
+  .feedback { font-size: 12px; font-weight: 500; }
+  .feedback.ok { color: var(--green); }
+  .feedback.err { color: var(--red); }
+  .feedback.info { color: var(--muted); font-style: italic; }
+
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 40px 0 0;
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 28px 20px; }
+    h1 { font-size: 24px; }
+    .container { padding: 0 16px; }
+    .verbs-table th, .verbs-table td { padding: 10px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-label">Turkish Grammar</div>
+    <h1>İsmin <span>Halleri</span></h1>
+    <p class="header-sub">Turkish noun cases — reference table, verbs, and 10 interactive TTS exercises</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Cases -->
+  <div class="section">
+    <div class="section-head">
+      <h2>Case Suffixes</h2>
+      <span class="pill">5 cases</span>
+    </div>
+    <div class="cases-grid" id="cases-grid"></div>
+  </div>
+
+  <!-- Verbs -->
+  <div class="section">
+    <div class="section-head">
+      <h2>Verbs by Case</h2>
+      <span class="pill">5 verbs</span>
+    </div>
+    <table class="verbs-table">
+      <thead>
+        <tr>
+          <th>Case</th>
+          <th>Verb</th>
+          <th>English</th>
+          <th>How it works</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody id="verbs-tbody"></tbody>
+    </table>
+  </div>
+
+  <!-- Exercises -->
+  <div class="section">
+    <div class="section-head">
+      <h2>Interactive Exercises</h2>
+      <span class="pill">10 sentences</span>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">
+      Press <b style="color:var(--text)">▶ Play</b> to hear the sentence spoken in Turkish, then type the correct suffix into the blank and press <b style="color:var(--text)">Check</b> or <b style="color:var(--text)">Enter</b>.
+    </p>
+
+    <div class="progress-wrap">
+      <div class="prog-info">
+        <div class="prog-label">Progress</div>
+        <div class="prog-bar-bg"><div class="prog-bar" id="prog-bar"></div></div>
+      </div>
+      <div class="prog-score" id="prog-score">0 <span>/ 10</span></div>
+    </div>
+
+    <div class="ex-grid" id="ex-grid"></div>
+  </div>
+
+  <div class="divider"></div>
+  <p style="font-size:12px;color:var(--muted);margin-top:16px;text-align:center;padding-bottom:8px;">
+    TTS uses your browser's built-in speech synthesis — works best in Chrome/Edge with a Turkish voice installed.
+  </p>
+
+</div>
+
+<script>
+const CASES = [
+  { name:"Accusative", tr:"Belirtme Hali", suffix:"-ı / -i / -u / -ü", q:"What? / Whom? (definite direct object)", ex:"Kitabı okudum.", en:"I read the book.", cc:"var(--case-acc)" },
+  { name:"Dative",     tr:"Yönelme Hali",  suffix:"-a / -e",            q:"To where? Towards whom?",                ex:"Okula gidiyorum.", en:"I am going to school.", cc:"var(--case-dat)" },
+  { name:"Locative",   tr:"Bulunma Hali",  suffix:"-da / -de / -ta / -te", q:"At / In / On where?",                  ex:"Evde oturuyorum.", en:"I am sitting at home.", cc:"var(--case-loc)" },
+  { name:"Ablative",   tr:"Ayrılma Hali",  suffix:"-dan / -den / -tan / -ten", q:"From where? Away from whom?",      ex:"İstanbul'dan geldim.", en:"I came from Istanbul.", cc:"var(--case-abl)" },
+  { name:"Genitive",   tr:"İlgi Hali",     suffix:"-(n)ın / -(n)in / -(n)un / -(n)ün", q:"Whose? Of what?",          ex:"Arabanın rengi kırmızı.", en:"The car's colour is red.", cc:"var(--case-gen)" },
+];
+
+const VERBS = [
+  { case:"Accusative", color:"var(--case-acc)", verb:"görmek",        en:"to see",         desc:"The thing seen is the definite direct object → takes accusative suffix.",        ex:"Filmi gördüm. (I saw the film.)" },
+  { case:"Dative",     color:"var(--case-dat)", verb:"gitmek",        en:"to go",          desc:"The destination receives -a/-e, indicating direction of movement.",              ex:"Markete gittim. (I went to the market.)" },
+  { case:"Locative",   color:"var(--case-loc)", verb:"oturmak",       en:"to sit / live",  desc:"The place where something is located or happens takes -da/-de.",                ex:"Parkta oturuyorum. (I am sitting in the park.)" },
+  { case:"Ablative",   color:"var(--case-abl)", verb:"gelmek",        en:"to come",        desc:"The origin or starting point takes -dan/-den, expressing movement away from.", ex:"Okuldan geldim. (I came from school.)" },
+  { case:"Genitive",   color:"var(--case-gen)", verb:"sahip olmak",   en:"to own / have",  desc:"The possessor receives -(n)ın/in, linking it to the possessed noun.",           ex:"Arabanın rengi. (The colour of the car.)" },
+];
+
+const EXERCISES = [
+  { id:0,  caseName:"Accusative", color:"var(--case-acc)", stem:"kitab", suffix:"ı",   pre:"Ben",       post:"okudum.",       en:"I read the book.", full:"Ben kitabı okudum." },
+  { id:1,  caseName:"Dative",     color:"var(--case-dat)", stem:"okul",  suffix:"a",   pre:"Her gün",   post:"gidiyorum.",    en:"I go to school every day.", full:"Her gün okula gidiyorum." },
+  { id:2,  caseName:"Locative",   color:"var(--case-loc)", stem:"bahçe", suffix:"de",  pre:"Çocuklar",  post:"oynuyor.",      en:"The children are playing in the garden.", full:"Çocuklar bahçede oynuyor." },
+  { id:3,  caseName:"Ablative",   color:"var(--case-abl)", stem:"İstanbul", suffix:"dan", pre:"Dün",    post:"döndüm.",       en:"I returned from Istanbul yesterday.", full:"Dün İstanbul'dan döndüm." },
+  { id:4,  caseName:"Genitive",   color:"var(--case-gen)", stem:"kedi",  suffix:"nin", pre:"Bu",        post:"gözleri güzel.", en:"This cat's eyes are beautiful.", full:"Bu kedinin gözleri güzel." },
+  { id:5,  caseName:"Accusative", color:"var(--case-acc)", stem:"filmi", suffix:"",    pre:"Akşam",     post:"izledik.",      en:"We watched the film in the evening.", full:"Akşam filmi izledik.", prebuilt:true },
+  { id:6,  caseName:"Dative",     color:"var(--case-dat)", stem:"park",  suffix:"a",   pre:"Köpek",     post:"koşuyor.",      en:"The dog is running to the park.", full:"Köpek parka koşuyor." },
+  { id:7,  caseName:"Locative",   color:"var(--case-loc)", stem:"hastane", suffix:"de", pre:"Annem",    post:"çalışıyor.",    en:"My mother works at the hospital.", full:"Annem hastanede çalışıyor." },
+  { id:8,  caseName:"Ablative",   color:"var(--case-abl)", stem:"trenden",suffix:"",   pre:"Yolcu",     post:"indi.",         en:"The passenger got off the train.", full:"Yolcu trenden indi.", prebuilt:true },
+  { id:9,  caseName:"Genitive",   color:"var(--case-gen)", stem:"öğrenci", suffix:"nin", pre:"Bu",      post:"defteri kayıp.", en:"This student's notebook is lost.", full:"Bu öğrencinin defteri kayıp." },
+];
+
+let score = 0;
+const answered = new Set();
+
+/* ── Cases ── */
+const caseGrid = document.getElementById('cases-grid');
+CASES.forEach(c => {
+  const d = document.createElement('div');
+  d.className = 'case-card';
+  d.style.setProperty('--cc', c.cc);
+  d.innerHTML = `<div class="cc-name">${c.name}</div>
+<div class="cc-tr">${c.tr}</div>
+<code class="cc-suffix">${c.suffix}</code>
+<div class="cc-question">${c.q}</div>
+<div class="cc-ex">${c.ex}<i>${c.en}</i></div>`;
+  caseGrid.appendChild(d);
+});
+
+/* ── Verbs ── */
+const vtb = document.getElementById('verbs-tbody');
+VERBS.forEach(v => {
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td><span class="vt-case" style="background:color-mix(in srgb,${v.color} 18%,transparent);color:${v.color};border:1px solid color-mix(in srgb,${v.color} 40%,transparent)">${v.case}</span></td>
+<td><div class="vt-verb">${v.verb}</div></td>
+<td><div class="vt-en">${v.en}</div></td>
+<td class="vt-desc">${v.desc}</td>
+<td class="vt-ex">${v.ex}</td>`;
+  vtb.appendChild(tr);
+});
+
+/* ── Progress ── */
+function updateProgress() {
+  const pct = Math.round((score / 10) * 100);
+  document.getElementById('prog-bar').style.width = pct + '%';
+  document.getElementById('prog-score').innerHTML = score + ' <span>/ 10</span>';
+}
+
+/* ── TTS ── */
+function speak(text, btn) {
+  if (!window.speechSynthesis) { btn.textContent = 'No TTS'; return; }
+  window.speechSynthesis.cancel();
+  document.querySelectorAll('.tts-btn.playing').forEach(b => {
+    b.classList.remove('playing'); b.innerHTML = '▶ Play';
+  });
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'tr-TR'; u.rate = 0.82; u.pitch = 1;
+  u.onstart = () => { btn.classList.add('playing'); btn.innerHTML = '⏸ Playing'; };
+  u.onend = u.onerror = () => { btn.classList.remove('playing'); btn.innerHTML = '▶ Play'; };
+  window.speechSynthesis.speak(u);
+}
+
+/* ── Exercises ── */
+const exGrid = document.getElementById('ex-grid');
+EXERCISES.forEach(ex => {
+  const card = document.createElement('div');
+  card.className = 'ex-card';
+  card.id = 'card-' + ex.id;
+
+  const sentenceHTML = ex.prebuilt
+    ? `<span class="sent-word">${ex.pre}</span> <span class="sent-stem" style="color:${ex.color}">${ex.stem}</span> <span class="sent-word">${ex.post}</span>`
+    : `<span class="sent-word">${ex.pre}</span> <span class="sent-stem">${ex.stem}</span><input class="sent-suffix-input" id="inp-${ex.id}" type="text" placeholder="___" maxlength="8" autocomplete="off" spellcheck="false" aria-label="Type the suffix"> <span class="sent-word">${ex.post}</span>`;
+
+  card.innerHTML = `<div class="ex-header">
+  <span class="ex-num">#${ex.id + 1}</span>
+  <span class="ex-case-badge" style="background:color-mix(in srgb,${ex.color} 18%,transparent);color:${ex.color};border:1px solid color-mix(in srgb,${ex.color} 40%,transparent)">${ex.caseName}</span>
+  <button class="tts-btn" id="tts-${ex.id}" aria-label="Play sentence">▶ Play</button>
+</div>
+<div class="sentence">${sentenceHTML}</div>
+<div class="ex-en">${ex.en}</div>
+<div class="ex-footer">
+  ${ex.prebuilt
+    ? `<span class="feedback info" id="fb-${ex.id}">Listen &amp; repeat ↑</span>`
+    : `<button class="check-btn" id="chk-${ex.id}">Check</button><span class="feedback" id="fb-${ex.id}"></span>`
+  }
+</div>`;
+
+  exGrid.appendChild(card);
+
+  // TTS button
+  document.getElementById('tts-' + ex.id).addEventListener('click', function () {
+    speak(ex.full, this);
+  });
+
+  if (ex.prebuilt) {
+    // Auto-count prebuilt as correct
+    if (!answered.has(ex.id)) { score++; answered.add(ex.id); updateProgress(); }
+    return;
+  }
+
+  const inp = document.getElementById('inp-' + ex.id);
+  const chk = document.getElementById('chk-' + ex.id);
+  const fb  = document.getElementById('fb-' + ex.id);
+
+  function doCheck() {
+    if (answered.has(ex.id)) return;
+    const val = inp.value.trim().replace(/^-+/, '').toLowerCase();
+    const expected = ex.suffix.toLowerCase();
+    if (val === expected) {
+      inp.classList.add('correct'); inp.classList.remove('wrong');
+      fb.textContent = '✓ Correct!'; fb.className = 'feedback ok';
+      chk.disabled = true;
+      score++; answered.add(ex.id); updateProgress();
+      card.classList.add('solved');
+    } else {
+      inp.classList.add('wrong'); inp.classList.remove('correct');
+      fb.textContent = 'Try again — expected: -' + ex.suffix;
+      fb.className = 'feedback err';
+      card.classList.add('error');
+      setTimeout(() => card.classList.remove('error'), 600);
+    }
+  }
+
+  chk.addEventListener('click', doCheck);
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter') doCheck(); });
+});
+
+updateProgress();
+</script>
+</body>
+</html>
