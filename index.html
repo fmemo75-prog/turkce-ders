@@ -192,3 +192,26 @@ title: Fatih Mehmet CANITEZ | Turkish for Foreigners
 
   window.onload = loadData;
 </script>
+<!-- ════════ YORUM BÖLÜMÜ (DISQUS) ════════ -->
+<div style="max-width: 800px; margin: 50px auto; padding: 30px; background: #fff; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 5px solid #1a2a6c;">
+    <h2 style="color: #1a2a6c; text-align: center; margin-bottom: 20px;">💬 Soru ve Yorumlarınız</h2>
+    <p style="text-align: center; color: #666; font-size: 14px; margin-bottom: 30px;">Dersle ilgili sorularınızı aşağıya yazabilirsiniz. (Google, Facebook veya Misafir olarak yorum yapabilirsiniz).</p>
+    
+    <div id="disqus_thread"></div>
+</div>
+
+<script>
+    var disqus_config = function () {
+        this.page.url = window.location.href;  
+        this.page.identifier = window.location.pathname; 
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');
+        
+        /* SİZİN İSMİNİZ BURAYA OTOMATİK EKLENDİ */
+        s.src = 'https://fmemo75-prog-github-io-turkce.disqus.com/embed.js'; 
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
