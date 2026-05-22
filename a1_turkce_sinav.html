@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A1 Türkçe Deneme Sınavı</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1612;
+    --ink-muted: #5a5248;
+    --ink-faint: #9a9088;
+    --paper: #faf7f2;
+    --paper-warm: #f2ede4;
+    --paper-rule: #ddd6ca;
+    --accent: #8b3a1e;
+    --accent-light: #c4622d;
+    --correct: #2d6a4f;
+    --correct-bg: #d8f3dc;
+    --section-a: #7b2d8b;
+    --section-b: #1d6b8a;
+    --section-c: #2d6a4f;
+    --section-d: #8b3a1e;
+    --section-e: #5a4a1e;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  /* Header */
+  .exam-header {
+    border-top: 3px solid var(--ink);
+    border-bottom: 1px solid var(--paper-rule);
+    padding: 2rem 0 1.5rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+
+  .exam-header .level-badge {
+    display: inline-block;
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 3px 10px;
+    margin-bottom: 0.75rem;
+  }
+
+  .exam-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.4rem;
+  }
+
+  .exam-header .subtitle {
+    font-size: 14px;
+    color: var(--ink-muted);
+    font-style: italic;
+  }
+
+  .exam-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--paper-rule);
+    font-size: 13px;
+    color: var(--ink-muted);
+  }
+
+  .exam-meta span strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* Instructions */
+  .instructions {
+    background: var(--paper-warm);
+    border-left: 3px solid var(--accent);
+    padding: 1rem 1.4rem;
+    margin-bottom: 2.5rem;
+    font-size: 14px;
+    color: var(--ink-muted);
+  }
+
+  .instructions strong { color: var(--ink); }
+
+  /* Section */
+  .section {
+    margin-bottom: 3rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .section-tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 2px 8px;
+    color: white;
+  }
+
+  .tag-a { background: var(--section-a); }
+  .tag-b { background: var(--section-b); }
+  .tag-c { background: var(--section-c); }
+  .tag-d { background: var(--section-d); }
+  .tag-e { background: var(--section-e); }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .section-points {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+
+  .section-instruction {
+    font-size: 14px;
+    color: var(--ink-muted);
+    font-style: italic;
+    margin-bottom: 1.2rem;
+    padding: 0.6rem 1rem;
+    border-left: 2px solid var(--paper-rule);
+  }
+
+  /* Reading text box */
+  .reading-box {
+    background: white;
+    border: 1px solid var(--paper-rule);
+    border-radius: 3px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1.4rem;
+    font-size: 15px;
+    line-height: 1.8;
+    position: relative;
+  }
+
+  .reading-box::before {
+    content: attr(data-label);
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    background: white;
+    padding: 0 6px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* Questions */
+  .question {
+    margin-bottom: 1.4rem;
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+  }
+
+  .q-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    min-width: 28px;
+    padding-top: 1px;
+  }
+
+  .q-body {
+    flex: 1;
+  }
+
+  .q-text {
+    font-size: 15px;
+    margin-bottom: 0.6rem;
+    color: var(--ink);
+  }
+
+  .q-text .blank {
+    display: inline-block;
+    border-bottom: 1.5px solid var(--ink);
+    min-width: 80px;
+    height: 1.2em;
+    vertical-align: bottom;
+  }
+
+  .options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.3rem 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .option {
+    font-size: 14px;
+    color: var(--ink-muted);
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  .option-key {
+    font-weight: 600;
+    color: var(--ink);
+    min-width: 18px;
+  }
+
+  /* Dialogue box */
+  .dialogue {
+    background: var(--paper-warm);
+    border: 1px solid var(--paper-rule);
+    border-radius: 3px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1.2rem;
+    font-size: 15px;
+    line-height: 2;
+  }
+
+  .dialogue .speaker {
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  /* Writing area */
+  .writing-area {
+    border: 1px solid var(--paper-rule);
+    border-radius: 3px;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    background: white;
+  }
+
+  .writing-line {
+    border-bottom: 1px solid var(--paper-rule);
+    height: 32px;
+    margin-bottom: 4px;
+  }
+
+  /* Matching */
+  .match-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 0.5rem 0;
+  }
+
+  .match-col {
+    background: white;
+    border: 1px solid var(--paper-rule);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .match-col-header {
+    background: var(--paper-warm);
+    padding: 0.4rem 0.8rem;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    border-bottom: 1px solid var(--paper-rule);
+  }
+
+  .match-item {
+    padding: 0.5rem 0.8rem;
+    font-size: 14px;
+    border-bottom: 1px solid var(--paper-rule);
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .match-item:last-child { border-bottom: none; }
+
+  .match-key {
+    font-weight: 600;
+    color: var(--accent);
+    min-width: 20px;
+  }
+
+  .match-answer-box {
+    display: inline-block;
+    border-bottom: 1.5px solid var(--ink);
+    min-width: 30px;
+    height: 1.2em;
+    vertical-align: bottom;
+    margin-left: 4px;
+  }
+
+  /* Answer key */
+  .answer-key {
+    margin-top: 4rem;
+    border-top: 2px solid var(--ink);
+    padding-top: 2rem;
+  }
+
+  .answer-key h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .answer-key h2::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--paper-rule);
+  }
+
+  .answer-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .answer-item {
+    background: white;
+    border: 1px solid var(--paper-rule);
+    border-radius: 3px;
+    padding: 0.5rem 0.7rem;
+    font-size: 13px;
+    display: flex;
+    gap: 0.4rem;
+    align-items: baseline;
+  }
+
+  .answer-item .a-num {
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 12px;
+    min-width: 20px;
+  }
+
+  .answer-item .a-val {
+    color: var(--correct);
+    font-weight: 600;
+  }
+
+  .score-box {
+    margin-top: 2rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--paper-rule);
+    border-radius: 3px;
+    padding: 1rem 1.5rem;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .score-row {
+    font-size: 14px;
+    color: var(--ink-muted);
+  }
+
+  .score-row strong { color: var(--ink); }
+
+  @media print {
+    body { background: white; }
+    .answer-key { page-break-before: always; }
+  }
+
+  @media (max-width: 600px) {
+    .options { grid-template-columns: 1fr; }
+    .match-cols { grid-template-columns: 1fr; }
+    .answer-grid { grid-template-columns: repeat(3, 1fr); }
+    .exam-meta { flex-direction: column; gap: 0.5rem; align-items: center; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="exam-header">
+    <div class="level-badge">A1 Düzeyi</div>
+    <h1>Türkçe Deneme Sınavı</h1>
+    <div class="subtitle">Zaman Ekleri: -yor &nbsp;·&nbsp; -di/-dı/-du/-dü &nbsp;·&nbsp; -ecek/-acak</div>
+    <div class="exam-meta">
+      <span><strong>25</strong> Soru</span>
+      <span><strong>50</strong> Dakika</span>
+      <span><strong>100</strong> Puan</span>
+      <span><strong>4</strong> Beceri + Dil Bilgisi</span>
+    </div>
+  </div>
+
+  <div class="instructions">
+    <strong>Yönerge:</strong> Her soruyu dikkatlice okuyun. Çoktan seçmeli sorularda yalnızca bir şık doğrudur. Boşluk doldurma sorularında uygun zaman ekini yazın. Sürenizi iyi kullanın.
+  </div>
+
+  <!-- SECTION A: DİL BİLGİSİ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-tag tag-a">A Bölümü</span>
+      <span class="section-title">Dil Bilgisi – Zaman Ekleri</span>
+      <span class="section-points">1–8. sorular · 24 puan</span>
+    </div>
+    <div class="section-instruction">Aşağıdaki cümlelerde boşlukları uygun zaman ekiyle doldurun veya doğru şıkkı işaretleyin.</div>
+
+    <!-- Soru 1 -->
+    <div class="question">
+      <span class="q-num">1.</span>
+      <div class="q-body">
+        <div class="q-text">Ali her sabah kahve <span class="blank"></span>.</div>
+        <div class="options">
+          <div class="option"><span class="option-key">A)</span> içti</div>
+          <div class="option"><span class="option-key">B)</span> içiyor</div>
+          <div class="option"><span class="option-key">C)</span> içecek</div>
+          <div class="option"><span class="option-key">D)</span> içmek</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soru 2 -->
+    <div class="question">
+      <span class="q-num">2.</span>
+      <div class="q-body">
+        <div class="q-text">Dün markete <span class="blank"></span> ve elma aldım.</div>
+        <div class="options">
+          <div class="option"><span class="option-key">A)</span> gidiyorum</div>
+          <div class="option"><span class="option-key">B)</span> gideceğim</div>
+          <div class="option"><span class="option-key">C)</span> gittim</div>
+          <div class="option"><span class="option-key">D)</span> giderdim</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soru 3 -->
+    <div class="question">
+      <span class="q-num">3.</span>
+      <div class="q-body">
+        <div class="q-text">Yarın İstanbul'a <span class="blank"></span>.</div>
+        <div class="options">
+          <div class="option"><span class="option-key">A)</span> gidiyorsunuz</div>
+          <div class="option"><span class="option-key">B)</span> gittin</div>
+          <div class="option"><span class="option-key">C)</span> gideceksiniz</div>
+          <div class="option"><span class="option-key">D)</span> gittiniz</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soru 4 -->
+    <div class="question">
+      <span class="q-num">4.</span>
+      <div class="q-body">
+        <div class="q-text">Şu an ne <span class="blank"></span>? — Kitap okuyorum.</div>
+        <div class="options">
+          <div class="option"><span class="option-key">A)</span> yaptın</div>
+          <div class="option"><span class="option-key">B)</span> yapacaksın</div>
+          <div class="option"><span class="option-key">C)</span> yapıyorsun</div>
+          <div class="option"><span class="option-key">D)</span> yaptın mı</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soru 5: boşluk doldurma -->
+    <div class="question">
+      <span class="q-num">5.</span>
+      <div class="q-body">
+        <div class="q-text">Geçen yıl Türkiye'ye <span class="blank"></span>. (gitmek)</div>
+        <div style="font-size:13px; color:var(--ink-faint); margin-top:0.3rem;">Parantezdeki fiili doğru çekimde yazın: ___________</div>
+      </div>
+    </div>
+
+    <!-- Soru 6: boşluk doldurma -->
+    <div class="question">
+      <span class="q-num">6.</span>
+      <div class="q-body">
+        <div class="q-text">Annem şu an yemek <span class="blank"></span>. (pişirmek)</div>
+        <div style="font-size:13px; color:var(--ink-faint); margin-top:0.3rem;">Parantezdeki fiili doğru çekimde yazın: ___________</div>
+      </div>
+    </div>
+
+    <!-- Soru 7 -->
+    <div class="question">
+      <span class="q-num">7.</span>
+      <div class="q-body">
+        <div class="q-text">Hafta sonu sinemaya <span class="blank"></span>, film izleriz.</div>
+        <div class="options">
+          <div class="option"><span class="option-key">A)</span> gittik</div>
+          <div class="option"><span class="option-key">B)</span> gidiyoruz</div>
+          <div class="option"><span class="option-key">C)</span> gideceğiz</div>
+          <div class="option"><span class="option-key">D)</span> gittiniz</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soru 8 -->
+    <div class="question">
+      <span class="q-num">8.</span>
+      <div class="q-body">
+        <div class="q-text">Hangisi <em>geçmiş zaman</em> cümlesidir?</div>
+        <div class="options">
+          <div class="option"><span class="option-key">A)</span> Yarın yağmur yağacak.</div>
+          <div class="option"><span class="option-key">B)</span> Şu an uyuyor.</div>
+          <div class="option"><span class="option-key">C)</span> Dün çok çalıştım.</div>
+          <div class="option"><span class="option-key">D)</span> Her gün koşuyor.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION B: OKUMA ANLAMA -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-tag tag-b">B Bölümü</span>
+      <span class="section-title">Okuma Anlama</span>
+      <span class="section-points">9–15. sorular · 21 puan</span>
+    </div>
+    <div class="section-instruction">Aşağıdaki iki kısa metni okuyun ve soruları yanıtlayın.</div>
+
+    <div class="reading-box" data-label="Metin 1 — Mesaj">
+      <p>Merhaba Zeynep! Bugün öğleden sonra saat üçte parka gidiyorum. Sen de geliyor musun? Hava çok güzel. Eğlenceli olacak. Bekliyorum! 😊 — Elif</p>
+    </div>
+
+    <!-- Soru 9 -->
+    <div class="question">
+      <span class="q-num">9.</span>
+      <div class="q-body">
+        <div class="q-text">Elif parka ne zaman gidiyor?</div>
+        <div class="options">
+          <div class="option"><span class="option-key">A)</span> Sabah saat dokuzda</div>
+          <div class="option"><span class="option-key">B)</span> Öğleden sonra üçte</div>
+          <div class="option"><span class="option-key">C)</span> Akşam beşte</div>
+          <div class="option"><span class="option-key">D)</span> Yarın sabah</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soru 10 -->
+    <div class="question">
+      <span class="q-num">10.</span>
+      <div class="q-body">
+        <div class="q-text">"Eğlenceli olacak." cümlesinde hangi zaman eki kullanılmıştır?</div>
+        <div class="options">
+          <div class="option"><span class="option-key">A)</span> -yor (şimdiki zaman)</div>
+          <div class="option"><span class="option-key">B)</span> -di (geçmiş zaman)</div>
+          <div class="option"><span class="option-key">C)</span> -ecek (gelecek zaman)</div>
+          <div class="option"><span class="option-key">D)</span> -mek (mastar)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reading-box" data-label="Metin 2 — Günlük">
+      <p>Bugün sabah erken kalktım. Önce duş aldım, sonra kahvaltı yaptım. Öğleden sonra arkadaşımla buluştum ve kafede oturdu. Akşam eve döndüm ve çok yoruldum. Yarın daha az çalışacağım!</p>
+    </div>
+
+    <!-- Soru 11 -->
+    <div class="question">
+      <span class="q-num">11.</span>
+      <div class="q-body">
+        <div class="q-text">Bu günlük kim tarafından yazılmıştır?</div>
+        <div class="options">
+          <div class="option"><span class="option-key">A)</span> İki kişi tarafından</div>
+          <div class="option"><span class="option-key">B)</span> Bir kişi tarafından, kendisi hakkında</div>
+          <div class="option"><span class="option-key">C)</span> Bir arkadaş hakkında</div>
+          <div class="option"><span class="option-key">D)</span> Bir öğretmen tarafından</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soru 12 -->
+    <div class="question">
+      <span class="q-num">12.</span>
+      <div class="q-body">
+        <div class="q-text">Metinde <em>geçmiş zaman</em> eki almayan fiil hangisidir?</div>
+        <div class="options">
+          <div class="option"><span class="option-key">A)</span> kalktım</div>
+          <div class="option"><span class="option-key">B)</span> döndüm</div>
+          <div class="option"><span class="option-key">C)</span> çalışacağım</div>
+          <div class="option"><span class="option-key">D)</span> yoruldum</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soru 13 -->
+    <div class="question">
+      <span class="q-num">13.</span>
+      <div class="q-body">
+        <div class="q-text">Yazar yarın ne yapacak?</div>
+        <div class="options">
+          <div class="option"><span class="option-key">A)</span> Daha çok çalışacak</div>
+          <div class="option"><span class="option-key">B)</span> Kafede oturacak</div>
+          <div class="option"><span class="option-key">C)</span> Daha az çalışacak</div>
+          <div class="option"><span class="option-key">D)</span> Arkadaşıyla buluşacak</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soru 14 -->
+    <div class="question">
+      <span class="q-num">14.</span>
+      <div class="q-body">
+        <div class="q-text">Metinde birden fazla kullanılan zaman eki hangisidir?</div>
+        <div class="options">
+          <div class="option"><span class="option-key">A)</span> -ecek/-acak</div>
+          <div class="option"><span class="option-key">B)</span> -yor</div>
+          <div class="option"><span class="option-key">C)</span> -di/-dı/-du/-dü</div>
+          <div class="option"><span class="option-key">D)</span> -miş</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soru 15 -->
+    <div class="question">
+      <span class="q-num">15.</span>
+      <div class="q-body">
+        <div class="q-text">"Öğleden sonra arkadaşımla buluştum." Bu cümleyi gelecek zamana çevirin.</div>
+        <div style="margin-top:0.5rem;">
+          <div class="writing-area"><div class="writing-line"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION C: DİNLEME -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-tag tag-c">C Bölümü</span>
+      <span class="section-title">Dinleme Anlama</span>
+      <span class="section-points">16–19. sorular · 20 puan</span>
+    </div>
+    <div class="section-instruction">Aşağıdaki diyalogu okuyun (veya dinleyin) ve soruları yanıtlayın.</div>
+
+    <div class="dialogue">
+      <p><span class="speaker">Öğretmen:</span> Mehmet, dün nereye gittin?</p>
+      <p><span class="speaker">Mehmet:</span> Dün kütüphaneye gittim. Çok güzeldi.</p>
+      <p><span class="speaker">Öğretmen:</span> Ne yapıyorsun orada?</p>
+      <p><span class="speaker">Mehmet:</span> Şu an tarih kitabı okuyorum. Sınav için çalışıyorum.</p>
+      <p><span class="speaker">Öğretmen:</span> Sınav ne zaman?</p>
+      <p><span class="speaker">Mehmet:</span> Gelecek Cuma. Çok çalışacağım!</p>
+    </div>
+
+    <!-- Soru 16 -->
+    <div class="question">
+      <span class="q-num">16.</span>
+      <div class="q-body">
+        <div class="q-text">Mehmet dün nereye gitti?</div>
+        <div class="options">
+          <div class="option"><span class="option-key">A)</span> Okula</div>
+          <div class="option"><span class="option-key">B)</span> Markete</div>
+          <div class="option"><span class="option-key">C)</span> Kütüphaneye</div>
+          <div class="option"><span class="option-key">D)</span> Parka</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soru 17 -->
+    <div class="question">
+      <span class="q-num">17.</span>
+      <div class="q-body">
+        <div class="q-text">Mehmet şu an ne yapıyor?</div>
+        <div class="options">
+          <div class="option"><span class="option-key">A)</span> Matematik çalışıyor</div>
+          <div class="option"><span class="option-key">B)</span> Tarih kitabı okuyor</div>
+          <div class="option"><span class="option-key">C)</span> Uyuyor</div>
+          <div class="option"><span class="option-key">D)</span> Öğretmenle konuşacak</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soru 18 -->
+    <div class="question">
+      <span class="q-num">18.</span>
+      <div class="q-body">
+        <div class="q-text">Sınav ne zaman?</div>
+        <div class="options">
+          <div class="option"><span class="option-key">A)</span> Bu Pazartesi</div>
+          <div class="option"><span class="option-key">B)</span> Yarın</div>
+          <div class="option"><span class="option-key">C)</span> Geçen Cuma</div>
+          <div class="option"><span class="option-key">D)</span> Gelecek Cuma</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soru 19 -->
+    <div class="question">
+      <span class="q-num">19.</span>
+      <div class="q-body">
+        <div class="q-text">Diyalogda hangi üç zaman ekinin hepsi kullanılmıştır?</div>
+        <div class="options">
+          <div class="option"><span class="option-key">A)</span> Sadece -yor</div>
+          <div class="option"><span class="option-key">B)</span> -di ve -ecek, -yor yok</div>
+          <div class="option"><span class="option-key">C)</span> -di, -yor ve -ecek</div>
+          <div class="option"><span class="option-key">D)</span> Sadece -di ve -yor</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION D: YAZMA -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-tag tag-d">D Bölümü</span>
+      <span class="section-title">Yazma</span>
+      <span class="section-points">20–22. sorular · 20 puan</span>
+    </div>
+    <div class="section-instruction">Verilen ipuçlarını kullanarak doğru zaman ekiyle tam cümle yazın.</div>
+
+    <!-- Soru 20 -->
+    <div class="question">
+      <span class="q-num">20.</span>
+      <div class="q-body">
+        <div class="q-text">Şu an ne yapıyorsunuz? Kendinizden bir cümle yazın. (-yor ekini kullanın)</div>
+        <div class="writing-area">
+          <div class="writing-line"></div>
+          <div class="writing-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soru 21 -->
+    <div class="question">
+      <span class="q-num">21.</span>
+      <div class="q-body">
+        <div class="q-text">Dün sabah ne yaptınız? Üç fiil kullanarak yazın. (-di/-dı/-du/-dü ekini kullanın)</div>
+        <div class="writing-area">
+          <div class="writing-line"></div>
+          <div class="writing-line"></div>
+          <div class="writing-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soru 22 -->
+    <div class="question">
+      <span class="q-num">22.</span>
+      <div class="q-body">
+        <div class="q-text">Bu yaz ne yapacaksınız? İki cümle yazın. (-ecek/-acak ekini kullanın)</div>
+        <div class="writing-area">
+          <div class="writing-line"></div>
+          <div class="writing-line"></div>
+          <div class="writing-line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION E: KONUŞMA (EŞLEŞTİRME) -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-tag tag-e">E Bölümü</span>
+      <span class="section-title">Konuşma – Eşleştirme ve Tamamlama</span>
+      <span class="section-points">23–25. sorular · 15 puan</span>
+    </div>
+    <div class="section-instruction">Soruları yanıtlarıyla eşleştirin ve diyalogu tamamlayın.</div>
+
+    <!-- Soru 23: Eşleştirme -->
+    <div class="question">
+      <span class="q-num">23.</span>
+      <div class="q-body">
+        <div class="q-text">Sol sütundaki soruları sağ sütundaki yanıtlarla eşleştirin.</div>
+        <div class="match-cols">
+          <div class="match-col">
+            <div class="match-col-header">Sorular</div>
+            <div class="match-item"><span class="match-key">1.</span> Dün ne yedin?</div>
+            <div class="match-item"><span class="match-key">2.</span> Şu an ne yapıyorsun?</div>
+            <div class="match-item"><span class="match-key">3.</span> Yarın nereye gideceksin?</div>
+            <div class="match-item"><span class="match-key">4.</span> Geçen hafta ne izledin?</div>
+          </div>
+          <div class="match-col">
+            <div class="match-col-header">Yanıtlar</div>
+            <div class="match-item"><span class="match-key">A.</span> Müzeye gideceğim.</div>
+            <div class="match-item"><span class="match-key">B.</span> Makarna yedim.</div>
+            <div class="match-item"><span class="match-key">C.</span> Bir film izledim.</div>
+            <div class="match-item"><span class="match-key">D.</span> Müzik dinliyorum.</div>
+          </div>
+        </div>
+        <div style="margin-top:0.8rem; font-size:14px; color:var(--ink-muted);">
+          Cevaplar: 1→<span class="match-answer-box"></span> &nbsp; 2→<span class="match-answer-box"></span> &nbsp; 3→<span class="match-answer-box"></span> &nbsp; 4→<span class="match-answer-box"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soru 24 -->
+    <div class="question">
+      <span class="q-num">24.</span>
+      <div class="q-body">
+        <div class="q-text">Aşağıdaki diyalogu tamamlayın. Uygun zaman ekini kullanın.</div>
+        <div class="dialogue" style="margin-top:0.5rem;">
+          <p><span class="speaker">A:</span> Bugün okula gidiyor musun?</p>
+          <p><span class="speaker">B:</span> Hayır, dün çok yoruld<span class="blank" style="min-width:60px"></span>. Bugün evde kalıyorum.</p>
+          <p><span class="speaker">A:</span> Yarın gelecek misin?</p>
+          <p><span class="speaker">B:</span> Evet, yarın mutlaka gelec<span class="blank" style="min-width:60px"></span>!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soru 25 -->
+    <div class="question">
+      <span class="q-num">25.</span>
+      <div class="q-body">
+        <div class="q-text">Aşağıdaki tabloya bakarak arkadaşınızla dün / şu an / yarın için birer cümle söyleyin. (Sözlü değerlendirme için — yazılı sınavda 3 cümle yazın.)</div>
+        <div style="margin-top:0.6rem; background:white; border:1px solid var(--paper-rule); border-radius:3px; overflow:hidden; font-size:14px;">
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; text-align:center; background:var(--paper-warm); border-bottom:1px solid var(--paper-rule);">
+            <div style="padding:0.5rem; font-weight:600; border-right:1px solid var(--paper-rule);">Dün</div>
+            <div style="padding:0.5rem; font-weight:600; border-right:1px solid var(--paper-rule);">Şu an</div>
+            <div style="padding:0.5rem; font-weight:600;">Yarın</div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; text-align:center;">
+            <div style="padding:0.8rem; color:var(--ink-muted); border-right:1px solid var(--paper-rule);">Spor yaptım</div>
+            <div style="padding:0.8rem; color:var(--ink-muted); border-right:1px solid var(--paper-rule);">Ders çalışıyorum</div>
+            <div style="padding:0.8rem; color:var(--ink-muted);">Alışveriş yapacağım</div>
+          </div>
+        </div>
+        <div class="writing-area" style="margin-top:0.6rem;">
+          <div class="writing-line"></div>
+          <div class="writing-line"></div>
+          <div class="writing-line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CEVAP ANAHTARI -->
+  <div class="answer-key">
+    <h2>Cevap Anahtarı</h2>
+
+    <div style="font-size:13px; color:var(--ink-muted); margin-bottom:1rem; font-style:italic;">
+      Not: 20–22 ve 25. sorular açık uçludur; örnek yanıtlar aşağıdadır.
+    </div>
+
+    <div class="answer-grid">
+      <div class="answer-item"><span class="a-num">1.</span><span class="a-val">B</span></div>
+      <div class="answer-item"><span class="a-num">2.</span><span class="a-val">C</span></div>
+      <div class="answer-item"><span class="a-num">3.</span><span class="a-val">C</span></div>
+      <div class="answer-item"><span class="a-num">4.</span><span class="a-val">C</span></div>
+      <div class="answer-item"><span class="a-num">5.</span><span class="a-val">gittim</span></div>
+      <div class="answer-item"><span class="a-num">6.</span><span class="a-val">pişiriyor</span></div>
+      <div class="answer-item"><span class="a-num">7.</span><span class="a-val">C</span></div>
+      <div class="answer-item"><span class="a-num">8.</span><span class="a-val">C</span></div>
+      <div class="answer-item"><span class="a-num">9.</span><span class="a-val">B</span></div>
+      <div class="answer-item"><span class="a-num">10.</span><span class="a-val">C</span></div>
+      <div class="answer-item"><span class="a-num">11.</span><span class="a-val">B</span></div>
+      <div class="answer-item"><span class="a-num">12.</span><span class="a-val">C</span></div>
+      <div class="answer-item"><span class="a-num">13.</span><span class="a-val">C</span></div>
+      <div class="answer-item"><span class="a-num">14.</span><span class="a-val">C</span></div>
+      <div class="answer-item"><span class="a-num">15.</span><span class="a-val">Örnek ↓</span></div>
+      <div class="answer-item"><span class="a-num">16.</span><span class="a-val">C</span></div>
+      <div class="answer-item"><span class="a-num">17.</span><span class="a-val">B</span></div>
+      <div class="answer-item"><span class="a-num">18.</span><span class="a-val">D</span></div>
+      <div class="answer-item"><span class="a-num">19.</span><span class="a-val">C</span></div>
+      <div class="answer-item"><span class="a-num">23.</span><span class="a-val">Eşl. ↓</span></div>
+      <div class="answer-item"><span class="a-num">24.</span><span class="a-val">Eşl. ↓</span></div>
+    </div>
+
+    <div style="margin-top:1.5rem; display:flex; flex-direction:column; gap:0.8rem; font-size:14px;">
+      <div style="padding:0.8rem 1rem; background:white; border:1px solid var(--paper-rule); border-radius:3px;">
+        <strong>15. soru örnek yanıt:</strong> "Öğleden sonra arkadaşımla <span style="color:var(--correct); font-weight:600">buluşacağım</span>."
+      </div>
+      <div style="padding:0.8rem 1rem; background:white; border:1px solid var(--paper-rule); border-radius:3px;">
+        <strong>23. eşleştirme:</strong> 1→B &nbsp;|&nbsp; 2→D &nbsp;|&nbsp; 3→A &nbsp;|&nbsp; 4→C
+      </div>
+      <div style="padding:0.8rem 1rem; background:white; border:1px solid var(--paper-rule); border-radius:3px;">
+        <strong>24. diyalog:</strong> yoruld<span style="color:var(--correct); font-weight:600">um</span> &nbsp;/&nbsp; gelec<span style="color:var(--correct); font-weight:600">eğim</span>
+      </div>
+    </div>
+
+    <div class="score-box">
+      <div class="score-row"><strong>A Bölümü</strong> (Dil Bilgisi): 8 soru × 3 puan = 24 puan</div>
+      <div class="score-row"><strong>B Bölümü</strong> (Okuma): 7 soru × 3 puan = 21 puan</div>
+      <div class="score-row"><strong>C Bölümü</strong> (Dinleme): 4 soru × 5 puan = 20 puan</div>
+      <div class="score-row"><strong>D Bölümü</strong> (Yazma): 3 soru × ~6-7 puan = 20 puan</div>
+      <div class="score-row"><strong>E Bölümü</strong> (Konuşma): 3 soru × 5 puan = 15 puan</div>
+      <div class="score-row" style="font-weight:600; color:var(--ink); border-top:1px solid var(--paper-rule); padding-top:0.5rem; width:100%">Toplam: <strong>100 puan</strong></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
