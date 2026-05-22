@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turkish Geniş Zaman — Aorist Tense</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #f5f3ee;
+  --surface:   #ffffff;
+  --card:      #ffffff;
+  --card2:     #faf9f6;
+  --border:    #e2ddd4;
+  --border2:   #ede9e0;
+  --text:      #1a1714;
+  --text2:     #5c5649;
+  --text3:     #9c9388;
+  --accent:    #2a6049;
+  --accent-bg: #eef5f1;
+  --accent2:   #b45309;
+  --accent2-bg:#fef3e2;
+  --blue:      #1d4ed8;
+  --blue-bg:   #eff6ff;
+  --purple:    #6d28d9;
+  --purple-bg: #f5f3ff;
+  --red:       #dc2626;
+  --red-bg:    #fef2f2;
+  --green:     #15803d;
+  --green-bg:  #f0fdf4;
+  --shadow:    0 1px 3px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  font-size:15px;
+  line-height:1.65;
+}
+
+/* ── HEADER ── */
+.hero{
+  background:var(--accent);
+  color:#fff;
+  padding:52px 0 44px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-inner{position:relative;z-index:1;}
+.wrap{max-width:980px;margin:0 auto;padding:0 28px;}
+.hero-tag{
+  display:inline-block;
+  font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:20px;padding:4px 14px;
+  margin-bottom:14px;color:rgba(255,255,255,.9);
+}
+.hero h1{font-size:clamp(26px,5vw,40px);font-weight:800;line-height:1.15;margin-bottom:8px;}
+.hero h1 em{font-style:normal;color:#a7f3d0;}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.75);max-width:560px;}
+
+/* ── NAV ── */
+.sticky-nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(245,243,238,.95);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{display:flex;gap:4px;padding:10px 0;overflow-x:auto;scrollbar-width:none;}
+.nav-inner::-webkit-scrollbar{display:none;}
+.nav-btn{
+  white-space:nowrap;font-size:13px;font-weight:500;
+  padding:6px 14px;border-radius:8px;cursor:pointer;
+  background:transparent;border:none;color:var(--text2);
+  transition:all .15s;font-family:'Plus Jakarta Sans',sans-serif;
+}
+.nav-btn:hover{background:var(--surface);color:var(--text);}
+.nav-btn.active{background:var(--accent);color:#fff;}
+
+/* ── SECTIONS ── */
+.section{padding:44px 0;}
+.section+.section{border-top:1px solid var(--border2);}
+.s-head{margin-bottom:28px;}
+.s-tag{
+  font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--text3);margin-bottom:6px;
+}
+.s-title{font-size:22px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.s-sub{font-size:14px;color:var(--text2);max-width:680px;}
+
+/* ── CALLOUT BOX ── */
+.callout{
+  border-radius:14px;padding:18px 20px;
+  margin-bottom:20px;
+  border:1px solid transparent;
+}
+.callout.green{background:var(--green-bg);border-color:#bbf7d0;}
+.callout.blue{background:var(--blue-bg);border-color:#bfdbfe;}
+.callout.amber{background:var(--accent2-bg);border-color:#fed7aa;}
+.callout.red{background:var(--red-bg);border-color:#fecaca;}
+.callout.purple{background:var(--purple-bg);border-color:#ddd6fe;}
+.callout-head{
+  font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:8px;
+}
+.callout.green .callout-head{color:var(--green);}
+.callout.blue  .callout-head{color:var(--blue);}
+.callout.amber .callout-head{color:var(--accent2);}
+.callout.red   .callout-head{color:var(--red);}
+.callout.purple .callout-head{color:var(--purple);}
+.callout p,.callout ul{font-size:14px;color:var(--text);}
+.callout ul{padding-left:18px;}
+.callout li{margin-bottom:4px;}
+
+/* ── FORMULA CARD ── */
+.formula{
+  background:var(--accent);color:#fff;
+  border-radius:14px;padding:20px 24px;
+  margin-bottom:20px;
+  font-size:15px;
+}
+.formula .f-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#a7f3d0;margin-bottom:8px;}
+.formula .f-line{
+  font-family:'JetBrains Mono',monospace;
+  font-size:16px;
+  background:rgba(255,255,255,.12);
+  border-radius:8px;padding:10px 14px;
+  margin-bottom:8px;color:#fff;
+  line-height:1.6;
+}
+.formula .f-line:last-child{margin-bottom:0;}
+.formula .f-note{font-size:13px;color:rgba(255,255,255,.7);margin-top:8px;}
+
+/* ── CONJUGATION TABLE ── */
+.conj-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+@media(max-width:600px){.conj-wrap{grid-template-columns:1fr;}}
+.conj-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.conj-card-head{
+  padding:12px 16px;
+  font-size:13px;font-weight:700;
+  background:var(--card2);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:8px;
+}
+.conj-table{width:100%;border-collapse:collapse;}
+.conj-table td{padding:9px 16px;font-size:13px;border-bottom:1px solid var(--border2);}
+.conj-table tr:last-child td{border-bottom:none;}
+.conj-table tr:hover td{background:var(--card2);}
+.conj-table .pronoun{color:var(--text3);font-size:12px;}
+.conj-table .form{font-family:'JetBrains Mono',monospace;font-weight:500;color:var(--accent);}
+.conj-table .en{color:var(--text2);font-size:12px;}
+.suffix-hi{color:var(--accent2);font-weight:700;}
+
+/* ── VOWEL HARMONY TABLE ── */
+.vh-table{width:100%;border-collapse:collapse;background:var(--card);border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);}
+.vh-table th{background:var(--accent);color:#fff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:10px 14px;text-align:left;}
+.vh-table td{padding:10px 14px;font-size:13px;border-bottom:1px solid var(--border2);}
+.vh-table tr:last-child td{border-bottom:none;}
+.vh-table tr:hover td{background:var(--card2);}
+.mono{font-family:'JetBrains Mono',monospace;font-weight:500;}
+
+/* ── IRREGULAR VERBS ── */
+.irreg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;}
+.irreg-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:16px;
+  box-shadow:var(--shadow);
+  border-left:3px solid var(--accent2);
+  transition:box-shadow .2s,transform .2s;
+}
+.irreg-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
+.irreg-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;}
+.irreg-verb{font-size:17px;font-weight:700;color:var(--text);}
+.irreg-en{font-size:12px;color:var(--text3);}
+.irreg-badge{
+  font-size:11px;font-weight:700;
+  background:var(--accent2-bg);color:var(--accent2);
+  border:1px solid #fed7aa;
+  border-radius:6px;padding:2px 8px;
+  white-space:nowrap;
+}
+.irreg-forms{display:flex;flex-direction:column;gap:4px;}
+.irreg-row{display:flex;align-items:center;gap:8px;font-size:13px;}
+.irreg-pronoun{color:var(--text3);min-width:36px;font-size:12px;}
+.irreg-form{font-family:'JetBrains Mono',monospace;font-weight:500;color:var(--accent);flex:1;}
+.irreg-trans{color:var(--text2);font-size:12px;}
+.irreg-note{
+  margin-top:10px;font-size:12px;color:var(--text2);
+  background:var(--accent2-bg);border-radius:8px;padding:7px 10px;
+  border-left:2px solid var(--accent2);
+}
+
+/* ── EXERCISES ── */
+.progress-bar-wrap{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:16px 20px;
+  display:flex;align-items:center;gap:16px;
+  margin-bottom:20px;
+  box-shadow:var(--shadow);
+}
+.pb-info{flex:1;}
+.pb-label{font-size:13px;color:var(--text2);margin-bottom:6px;}
+.pb-bg{height:8px;background:var(--border);border-radius:4px;overflow:hidden;}
+.pb-fill{height:8px;background:linear-gradient(90deg,var(--accent),#34d399);border-radius:4px;transition:width .4s cubic-bezier(.4,0,.2,1);width:0%;}
+.pb-score{font-size:26px;font-weight:800;color:var(--text);white-space:nowrap;}
+.pb-score small{font-size:14px;font-weight:400;color:var(--text3);}
+
+.ex-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;}
+.ex-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;padding:20px;
+  box-shadow:var(--shadow);
+  transition:border-color .2s,box-shadow .2s;
+}
+.ex-card.solved{border-color:#86efac;box-shadow:0 0 0 3px rgba(134,239,172,.2);}
+.ex-card.shake{animation:shake .35s;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+.ex-top{display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.ex-num{font-size:11px;font-weight:700;color:var(--text3);font-family:'JetBrains Mono',monospace;}
+.ex-type{
+  font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:2px 10px;border-radius:20px;
+}
+.type-positive{background:var(--green-bg);color:var(--green);}
+.type-negative{background:var(--red-bg);color:var(--red);}
+.type-question{background:var(--blue-bg);color:var(--blue);}
+.type-irregular{background:var(--accent2-bg);color:var(--accent2);}
+.tts-btn{
+  margin-left:auto;
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:8px;padding:5px 12px;cursor:pointer;
+  color:var(--text2);font-size:13px;font-weight:500;
+  display:flex;align-items:center;gap:5px;
+  transition:all .15s;font-family:'Plus Jakarta Sans',sans-serif;
+}
+.tts-btn:hover{background:var(--accent-bg);border-color:var(--accent);color:var(--accent);}
+.tts-btn.playing{background:var(--green-bg);border-color:#86efac;color:var(--green);animation:pulse 1.2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.65}}
+
+.sentence{
+  font-size:17px;line-height:1.7;
+  display:flex;align-items:baseline;flex-wrap:wrap;gap:3px;
+  margin-bottom:10px;
+}
+.s-word{color:var(--text);}
+.s-stem{color:var(--text);font-weight:500;}
+.s-input{
+  font-family:'JetBrains Mono',monospace;font-size:16px;
+  background:transparent;border:none;
+  border-bottom:2.5px solid var(--border);
+  color:var(--accent);width:80px;outline:none;
+  padding:0 4px;transition:border-color .15s;
+  font-weight:500;
+}
+.s-input:focus{border-bottom-color:var(--accent);}
+.s-input.correct{border-bottom-color:var(--green);color:var(--green);}
+.s-input.wrong{border-bottom-color:var(--red);color:var(--red);}
+.s-static{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:500;}
+
+.ex-en{font-size:13px;font-style:italic;color:var(--text3);margin-bottom:12px;}
+.ex-footer{display:flex;align-items:center;gap:10px;}
+.check-btn{
+  background:var(--accent);color:#fff;
+  border:none;border-radius:8px;
+  padding:6px 16px;cursor:pointer;
+  font-size:13px;font-weight:600;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  transition:opacity .15s;
+}
+.check-btn:hover{opacity:.85;}
+.check-btn:disabled{opacity:.35;cursor:default;}
+.feedback{font-size:12px;font-weight:600;}
+.feedback.ok{color:var(--green);}
+.feedback.err{color:var(--red);}
+.feedback.info{color:var(--text3);font-style:italic;font-weight:400;}
+
+/* ── FOOTER ── */
+footer{
+  text-align:center;padding:28px;
+  font-size:13px;color:var(--text3);
+  border-top:1px solid var(--border);
+}
+
+/* ── MISC ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:640px){.two-col{grid-template-columns:1fr;}}
+.tag{
+  display:inline-block;font-size:11px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  padding:2px 9px;border-radius:6px;
+}
+.tag-pos{background:var(--green-bg);color:var(--green);}
+.tag-neg{background:var(--red-bg);color:var(--red);}
+.tag-q{background:var(--blue-bg);color:var(--blue);}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-tag">Turkish Grammar · A2–B1</div>
+    <h1>Geniş Zaman<br><em>The Aorist Tense</em></h1>
+    <p class="hero-sub">Habits, general truths, routines — with irregular verbs, vowel harmony rules, and 10 TTS-powered interactive exercises.</p>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="sticky-nav" aria-label="Section navigation">
+  <div class="wrap">
+    <div class="nav-inner">
+      <button class="nav-btn active" onclick="scrollTo('s-intro')">📖 What is it?</button>
+      <button class="nav-btn" onclick="scrollTo('s-positive')">✅ Positive</button>
+      <button class="nav-btn" onclick="scrollTo('s-negative')">❌ Negative</button>
+      <button class="nav-btn" onclick="scrollTo('s-question')">❓ Question</button>
+      <button class="nav-btn" onclick="scrollTo('s-irregular')">⚡ Irregular</button>
+      <button class="nav-btn" onclick="scrollTo('s-exercises')">🎧 Exercises</button>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- ─────────────────────────────────────────── -->
+<!-- SECTION 1 — INTRO -->
+<!-- ─────────────────────────────────────────── -->
+<section class="section" id="s-intro">
+  <div class="s-head">
+    <div class="s-tag">Section 1</div>
+    <h2 class="s-title">What is the Geniş Zaman?</h2>
+    <p class="s-sub">The aorist tense expresses habitual, repeated, or generally true actions — similar to the English <em>Simple Present</em>.</p>
+  </div>
+
+  <div class="callout green">
+    <div class="callout-head">🇬🇧 When do we use it?</div>
+    <ul>
+      <li><strong>Habits &amp; routines:</strong> Her sabah kahve içerim. → I drink coffee every morning.</li>
+      <li><strong>General truths:</strong> Güneş doğudan doğar. → The sun rises in the east.</li>
+      <li><strong>Likes &amp; preferences:</strong> Müzik dinlerim. → I like listening to music.</li>
+      <li><strong>Scheduled future:</strong> Yarın gelirim. → I'll come tomorrow (it's planned).</li>
+      <li><strong>Proverbs &amp; facts:</strong> Damlaya damlaya göl olur. → Drop by drop a lake forms.</li>
+    </ul>
+  </div>
+
+  <div class="callout blue">
+    <div class="callout-head">💡 Key difference from Şimdiki Zaman (-iyor)</div>
+    <p><strong>Şimdiki Zaman</strong> = right now, at this moment → <em>Kitap okuyorum</em> = I am reading (right now).<br>
+    <strong>Geniş Zaman</strong> = in general, always, habitually → <em>Kitap okurum</em> = I read (in general / as a habit).</p>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- SECTION 2 — POSITIVE -->
+<!-- ─────────────────────────────────────────── -->
+<section class="section" id="s-positive">
+  <div class="s-head">
+    <div class="s-tag">Section 2</div>
+    <h2 class="s-title">Positive Form <span class="tag tag-pos">Olumlu</span></h2>
+    <p class="s-sub">The positive aorist uses either <strong>-ir/-ır/-ur/-ür</strong> (for consonant-ending verbs) or <strong>-r</strong> (for vowel-ending verbs), followed by personal endings.</p>
+  </div>
+
+  <div class="formula">
+    <div class="f-label">Formula</div>
+    <div class="f-line">Consonant-final stem + <span style="color:#a7f3d0">-ir / -ır / -ur / -ür</span> + personal suffix</div>
+    <div class="f-line">Vowel-final stem &nbsp; + <span style="color:#a7f3d0">-r</span> + personal suffix</div>
+    <div class="f-note">⚠ One-syllable consonant-final verbs are mostly irregular (see Section 5).</div>
+  </div>
+
+  <!-- Vowel harmony table -->
+  <h3 style="font-size:14px;font-weight:700;color:var(--text2);margin-bottom:10px;text-transform:uppercase;letter-spacing:.08em;">Vowel Harmony for -ir suffix</h3>
+  <table class="vh-table" style="margin-bottom:20px;">
+    <thead><tr><th>Last vowel in stem</th><th>Suffix</th><th>Example verb</th><th>1st sg. form</th></tr></thead>
+    <tbody>
+      <tr><td>a, ı</td><td class="mono">-ır</td><td>yazmak (to write)</td><td class="mono">yazarım</td></tr>
+      <tr><td>e, i</td><td class="mono">-ir</td><td>içmek (to drink)</td><td class="mono">içerim</td></tr>
+      <tr><td>o, u</td><td class="mono">-ur</td><td>uyumak (to sleep)</td><td class="mono">uyurum</td></tr>
+      <tr><td>ö, ü</td><td class="mono">-ür</td><td>gülmek (to laugh)</td><td class="mono">gülerim</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Personal suffixes -->
+  <h3 style="font-size:14px;font-weight:700;color:var(--text2);margin-bottom:10px;text-transform:uppercase;letter-spacing:.08em;">Personal Suffixes</h3>
+  <table class="vh-table" style="margin-bottom:20px;">
+    <thead><tr><th>Pronoun</th><th>Suffix</th><th>Example: yazmak</th><th>English</th></tr></thead>
+    <tbody>
+      <tr><td>Ben (I)</td><td class="mono">-(i)m</td><td class="mono">yazarım</td><td>I write</td></tr>
+      <tr><td>Sen (you)</td><td class="mono">-(i)n</td><td class="mono">yazarsın</td><td>you write</td></tr>
+      <tr><td>O (he/she/it)</td><td class="mono">—</td><td class="mono">yazar</td><td>he/she writes</td></tr>
+      <tr><td>Biz (we)</td><td class="mono">-(i)z</td><td class="mono">yazarız</td><td>we write</td></tr>
+      <tr><td>Siz (you pl.)</td><td class="mono">-(i)nız</td><td class="mono">yazarsınız</td><td>you (pl.) write</td></tr>
+      <tr><td>Onlar (they)</td><td class="mono">-(l)ar/lar</td><td class="mono">yazarlar</td><td>they write</td></tr>
+    </tbody>
+  </table>
+
+  <div class="conj-wrap">
+    <div class="conj-card">
+      <div class="conj-card-head">yazmak — <em style="font-weight:400;color:var(--text3)">to write</em> <span class="tag" style="background:var(--accent-bg);color:var(--accent);font-size:10px;">consonant final</span></div>
+      <table class="conj-table">
+        <tr><td class="pronoun">Ben</td><td class="form">yazar<span class="suffix-hi">ım</span></td><td class="en">I write</td></tr>
+        <tr><td class="pronoun">Sen</td><td class="form">yazar<span class="suffix-hi">sın</span></td><td class="en">you write</td></tr>
+        <tr><td class="pronoun">O</td><td class="form">yazar</td><td class="en">he/she writes</td></tr>
+        <tr><td class="pronoun">Biz</td><td class="form">yazar<span class="suffix-hi">ız</span></td><td class="en">we write</td></tr>
+        <tr><td class="pronoun">Siz</td><td class="form">yazar<span class="suffix-hi">sınız</span></td><td class="en">you write</td></tr>
+        <tr><td class="pronoun">Onlar</td><td class="form">yazar<span class="suffix-hi">lar</span></td><td class="en">they write</td></tr>
+      </table>
+    </div>
+    <div class="conj-card">
+      <div class="conj-card-head">içmek — <em style="font-weight:400;color:var(--text3)">to drink</em> <span class="tag" style="background:var(--accent-bg);color:var(--accent);font-size:10px;">consonant final</span></div>
+      <table class="conj-table">
+        <tr><td class="pronoun">Ben</td><td class="form">içer<span class="suffix-hi">im</span></td><td class="en">I drink</td></tr>
+        <tr><td class="pronoun">Sen</td><td class="form">içer<span class="suffix-hi">sin</span></td><td class="en">you drink</td></tr>
+        <tr><td class="pronoun">O</td><td class="form">içer</td><td class="en">he/she drinks</td></tr>
+        <tr><td class="pronoun">Biz</td><td class="form">içer<span class="suffix-hi">iz</span></td><td class="en">we drink</td></tr>
+        <tr><td class="pronoun">Siz</td><td class="form">içer<span class="suffix-hi">siniz</span></td><td class="en">you drink</td></tr>
+        <tr><td class="pronoun">Onlar</td><td class="form">içer<span class="suffix-hi">ler</span></td><td class="en">they drink</td></tr>
+      </table>
+    </div>
+    <div class="conj-card">
+      <div class="conj-card-head">okumak — <em style="font-weight:400;color:var(--text3)">to read</em> <span class="tag" style="background:var(--accent-bg);color:var(--accent);font-size:10px;">consonant final</span></div>
+      <table class="conj-table">
+        <tr><td class="pronoun">Ben</td><td class="form">okur<span class="suffix-hi">um</span></td><td class="en">I read</td></tr>
+        <tr><td class="pronoun">Sen</td><td class="form">okur<span class="suffix-hi">sun</span></td><td class="en">you read</td></tr>
+        <tr><td class="pronoun">O</td><td class="form">okur</td><td class="en">he/she reads</td></tr>
+        <tr><td class="pronoun">Biz</td><td class="form">okur<span class="suffix-hi">uz</span></td><td class="en">we read</td></tr>
+        <tr><td class="pronoun">Siz</td><td class="form">okur<span class="suffix-hi">sunuz</span></td><td class="en">you read</td></tr>
+        <tr><td class="pronoun">Onlar</td><td class="form">okur<span class="suffix-hi">lar</span></td><td class="en">they read</td></tr>
+      </table>
+    </div>
+    <div class="conj-card">
+      <div class="conj-card-head">oynamak — <em style="font-weight:400;color:var(--text3)">to play</em> <span class="tag" style="background:var(--blue-bg);color:var(--blue);font-size:10px;">vowel final</span></div>
+      <table class="conj-table">
+        <tr><td class="pronoun">Ben</td><td class="form">oynar<span class="suffix-hi">ım</span></td><td class="en">I play</td></tr>
+        <tr><td class="pronoun">Sen</td><td class="form">oynar<span class="suffix-hi">sın</span></td><td class="en">you play</td></tr>
+        <tr><td class="pronoun">O</td><td class="form">oynar</td><td class="en">he/she plays</td></tr>
+        <tr><td class="pronoun">Biz</td><td class="form">oynar<span class="suffix-hi">ız</span></td><td class="en">we play</td></tr>
+        <tr><td class="pronoun">Siz</td><td class="form">oynar<span class="suffix-hi">sınız</span></td><td class="en">you play</td></tr>
+        <tr><td class="pronoun">Onlar</td><td class="form">oynar<span class="suffix-hi">lar</span></td><td class="en">they play</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- SECTION 3 — NEGATIVE -->
+<!-- ─────────────────────────────────────────── -->
+<section class="section" id="s-negative">
+  <div class="s-head">
+    <div class="s-tag">Section 3</div>
+    <h2 class="s-title">Negative Form <span class="tag tag-neg">Olumsuz</span></h2>
+    <p class="s-sub">The negative aorist uses <strong>-maz/-mez</strong> for all verbs — no vowel harmony variation on the main suffix, but the personal endings still harmonise.</p>
+  </div>
+
+  <div class="formula">
+    <div class="f-label">Negative Formula</div>
+    <div class="f-line">Verb stem + <span style="color:#fca5a5">-maz / -mez</span> + personal suffix</div>
+    <div class="f-note">Use -maz after back vowels (a, ı, o, u) · Use -mez after front vowels (e, i, ö, ü)</div>
+  </div>
+
+  <div class="callout amber">
+    <div class="callout-head">⚠ Special case: Ben (1st singular)</div>
+    <p>The 1st person singular negative is <strong>-mam / -mem</strong>, NOT -mazım/mezim.<br>
+    <em>Yazmam</em> (I don't write) — <em>İçmem</em> (I don't drink) — <em>Gelmem</em> (I don't come)</p>
+  </div>
+
+  <div class="conj-wrap">
+    <div class="conj-card">
+      <div class="conj-card-head">yazmak — <em style="font-weight:400;color:var(--text3)">negative</em></div>
+      <table class="conj-table">
+        <tr><td class="pronoun">Ben</td><td class="form">yaz<span class="suffix-hi">mam</span></td><td class="en">I don't write</td></tr>
+        <tr><td class="pronoun">Sen</td><td class="form">yaz<span class="suffix-hi">mazsın</span></td><td class="en">you don't write</td></tr>
+        <tr><td class="pronoun">O</td><td class="form">yaz<span class="suffix-hi">maz</span></td><td class="en">he/she doesn't write</td></tr>
+        <tr><td class="pronoun">Biz</td><td class="form">yaz<span class="suffix-hi">mayız</span></td><td class="en">we don't write</td></tr>
+        <tr><td class="pronoun">Siz</td><td class="form">yaz<span class="suffix-hi">mazsınız</span></td><td class="en">you don't write</td></tr>
+        <tr><td class="pronoun">Onlar</td><td class="form">yaz<span class="suffix-hi">mazlar</span></td><td class="en">they don't write</td></tr>
+      </table>
+    </div>
+    <div class="conj-card">
+      <div class="conj-card-head">içmek — <em style="font-weight:400;color:var(--text3)">negative</em></div>
+      <table class="conj-table">
+        <tr><td class="pronoun">Ben</td><td class="form">iç<span class="suffix-hi">mem</span></td><td class="en">I don't drink</td></tr>
+        <tr><td class="pronoun">Sen</td><td class="form">iç<span class="suffix-hi">mezsin</span></td><td class="en">you don't drink</td></tr>
+        <tr><td class="pronoun">O</td><td class="form">iç<span class="suffix-hi">mez</span></td><td class="en">he/she doesn't drink</td></tr>
+        <tr><td class="pronoun">Biz</td><td class="form">iç<span class="suffix-hi">meyiz</span></td><td class="en">we don't drink</td></tr>
+        <tr><td class="pronoun">Siz</td><td class="form">iç<span class="suffix-hi">mezsiniz</span></td><td class="en">you don't drink</td></tr>
+        <tr><td class="pronoun">Onlar</td><td class="form">iç<span class="suffix-hi">mezler</span></td><td class="en">they don't drink</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- SECTION 4 — QUESTION -->
+<!-- ─────────────────────────────────────────── -->
+<section class="section" id="s-question">
+  <div class="s-head">
+    <div class="s-tag">Section 4</div>
+    <h2 class="s-title">Question Form <span class="tag tag-q">Soru</span></h2>
+    <p class="s-sub">Add the question particle <strong>mi/mı/mu/mü</strong> after the aorist suffix, written separately. Personal endings attach to the question particle.</p>
+  </div>
+
+  <div class="formula">
+    <div class="f-label">Question Formula</div>
+    <div class="f-line">Aorist form (without pers. suffix) + <span style="color:#93c5fd">mi / mı / mu / mü</span> + personal suffix</div>
+    <div class="f-note">The question particle is always written as a separate word.</div>
+  </div>
+
+  <div class="conj-card" style="max-width:460px;margin-bottom:20px;">
+    <div class="conj-card-head">yazmak — <em style="font-weight:400;color:var(--text3)">question</em></div>
+    <table class="conj-table">
+      <tr><td class="pronoun">Ben</td><td class="form">yazar <span class="suffix-hi">mıyım</span>?</td><td class="en">Do I write?</td></tr>
+      <tr><td class="pronoun">Sen</td><td class="form">yazar <span class="suffix-hi">mısın</span>?</td><td class="en">Do you write?</td></tr>
+      <tr><td class="pronoun">O</td><td class="form">yazar <span class="suffix-hi">mı</span>?</td><td class="en">Does he/she write?</td></tr>
+      <tr><td class="pronoun">Biz</td><td class="form">yazar <span class="suffix-hi">mıyız</span>?</td><td class="en">Do we write?</td></tr>
+      <tr><td class="pronoun">Siz</td><td class="form">yazar <span class="suffix-hi">mısınız</span>?</td><td class="en">Do you write?</td></tr>
+      <tr><td class="pronoun">Onlar</td><td class="form">yazarlar <span class="suffix-hi">mı</span>?</td><td class="en">Do they write?</td></tr>
+    </table>
+  </div>
+
+  <div class="callout blue">
+    <div class="callout-head">💡 Negative question</div>
+    <p>Combine negative + question: <strong>Yazmaz mısın?</strong> → Don't you write? / Won't you write?<br>
+    This is also used for polite requests: <strong>Yazar mısınız?</strong> → Would you write? (polite)</p>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- SECTION 5 — IRREGULAR -->
+<!-- ─────────────────────────────────────────── -->
+<section class="section" id="s-irregular">
+  <div class="s-head">
+    <div class="s-tag">Section 5</div>
+    <h2 class="s-title">Irregular Verbs <span style="font-size:14px;font-weight:500;color:var(--text3)">— Düzensiz Fiiller</span></h2>
+    <p class="s-sub">Most one-syllable verbs ending in a consonant are irregular in the positive aorist — they use <strong>-ar/-er</strong> instead of the expected -ır/-ir. These must be memorised!</p>
+  </div>
+
+  <div class="callout amber">
+    <div class="callout-head">⚡ The Big Rule</div>
+    <p>Multi-syllable consonant-final verbs → regular <strong>-ir/-ır/-ur/-ür</strong><br>
+    Single-syllable consonant-final verbs → <strong>mostly irregular</strong>, use <strong>-ar/-er</strong><br>
+    The 13 most common irregulars are listed below. All others follow the regular rule.</p>
+  </div>
+
+  <div class="irreg-grid" id="irreg-grid"></div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- SECTION 6 — EXERCISES -->
+<!-- ─────────────────────────────────────────── -->
+<section class="section" id="s-exercises">
+  <div class="s-head">
+    <div class="s-tag">Section 6</div>
+    <h2 class="s-title">Interactive Exercises 🎧</h2>
+    <p class="s-sub">Press <strong>▶ Play</strong> to hear the sentence in Turkish, then type the correct verb form into the blank. Press <strong>Check</strong> or hit <strong>Enter</strong>.</p>
+  </div>
+
+  <div class="progress-bar-wrap">
+    <div class="pb-info">
+      <div class="pb-label">Your progress</div>
+      <div class="pb-bg"><div class="pb-fill" id="pb-fill"></div></div>
+    </div>
+    <div class="pb-score" id="pb-score">0 <small>/ 10</small></div>
+  </div>
+
+  <div class="ex-grid" id="ex-grid"></div>
+</section>
+
+</div><!-- /wrap -->
+
+<footer>
+  <strong>Türkçe Geniş Zaman</strong> — Aorist Tense &nbsp;·&nbsp; TTS works best in Chrome / Edge with a Turkish voice installed &nbsp;·&nbsp; Press ▶ Play on each card to hear the sentence
+</footer>
+
+<script>
+/* ── DATA ── */
+// ✅ Exact 13 irregular verbs from textbook: al-ır, bil-ir, bul-ur, dur-ur, gel-ir, gör-ür, kal-ır, ol-ur, öl-ür, san-ır, ver-ir, var-ır, vur-ur
+const IRREGULAR_VERBS = [
+  { verb:"almak",  en:"to take / buy",      stem:"al",  aor:"alır",  note:"Expected -ar (1-syllable back vowel) but takes -ır instead. One of the 13 textbook exceptions.",
+    forms:[["Ben","alırım","I take/buy"],["Sen","alırsın","you take"],["O","alır","he/she takes"]] },
+  { verb:"bilmek", en:"to know",            stem:"bil", aor:"bilir", note:"Expected -er (front vowel) but takes -ir instead. Very common verb — memorise this early!",
+    forms:[["Ben","bilirim","I know"],["Sen","bilirsin","you know"],["O","bilir","he/she knows"]] },
+  { verb:"bulmak", en:"to find",            stem:"bul", aor:"bulur", note:"Expected -ur by back vowel rule — but it is still listed as an exception because 1-syllable verbs normally take -ar/-er.",
+    forms:[["Ben","bulurum","I find"],["Sen","bulursun","you find"],["O","bulur","he/she finds"]] },
+  { verb:"durmak", en:"to stop / stand",    stem:"dur", aor:"durur", note:"dur → durur. Takes -ur. Remember: 1-syllable back-vowel verbs normally take -ar, so -ur is exceptional.",
+    forms:[["Ben","dururum","I stop"],["Sen","durursun","you stop"],["O","durur","he/she stops"]] },
+  { verb:"gelmek", en:"to come",            stem:"gel", aor:"gelir", note:"gel → gelir. Expected -er (front vowel) but takes -ir. Extremely high-frequency verb.",
+    forms:[["Ben","gelirim","I come"],["Sen","gelirsin","you come"],["O","gelir","he/she comes"]] },
+  { verb:"görmek", en:"to see",             stem:"gör", aor:"görür", note:"gör → görür. Takes -ür (ö vowel harmony). Expected -er but takes -ür instead.",
+    forms:[["Ben","görürüm","I see"],["Sen","görürsün","you see"],["O","görür","he/she sees"]] },
+  { verb:"kalmak", en:"to stay / remain",   stem:"kal", aor:"kalır", note:"kal → kalır. Takes -ır instead of expected -ar. Common in expressions like 'nasıl kalır?'",
+    forms:[["Ben","kalırım","I stay"],["Sen","kalırsın","you stay"],["O","kalır","he/she stays"]] },
+  { verb:"olmak",  en:"to be / become",     stem:"ol",  aor:"olur",  note:"ol → olur. Takes -ur. 'Olur' alone means 'okay / alright / it works' in everyday Turkish.",
+    forms:[["Ben","olurum","I become"],["Sen","olursun","you become"],["O","olur","it happens/okay"]] },
+  { verb:"ölmek",  en:"to die",             stem:"öl",  aor:"ölür",  note:"öl → ölür. Takes -ür (ö front-rounded vowel). Expected -er but takes -ür.",
+    forms:[["Ben","ölürüm","I die"],["Sen","ölürsün","you die"],["O","ölür","he/she dies"]] },
+  { verb:"sanmak", en:"to suppose / think", stem:"san", aor:"sanır", note:"san → sanır. Takes -ır instead of expected -ar. Used to express assumptions.",
+    forms:[["Ben","sanırım","I suppose"],["Sen","sanırsın","you suppose"],["O","sanır","he/she supposes"]] },
+  { verb:"vermek", en:"to give",            stem:"ver", aor:"verir", note:"ver → verir. Takes -ir instead of expected -er. One of the most used verbs in Turkish.",
+    forms:[["Ben","veririm","I give"],["Sen","verirsin","you give"],["O","verir","he/she gives"]] },
+  { verb:"varmak", en:"to arrive / reach",  stem:"var", aor:"varır", note:"var → varır. Takes -ır instead of expected -ar. Do not confuse with 'var' (there is).",
+    forms:[["Ben","varırım","I arrive"],["Sen","varırsın","you arrive"],["O","varır","he/she arrives"]] },
+  { verb:"vurmak", en:"to hit / strike",    stem:"vur", aor:"vurur", note:"vur → vurur. Takes -ur instead of expected -ar. Another back-vowel 1-syllable exception.",
+    forms:[["Ben","vururum","I hit"],["Sen","vurursun","you hit"],["O","vurur","he/she hits"]] },
+];
+
+const EXERCISES = [
+  { id:0,  type:"positive",  typeLabel:"Positive",  stem:"Her sabah kahve", answer:"içerim",       post:".",   en:"I drink coffee every morning.", full:"Her sabah kahve içerim." },
+  { id:1,  type:"irregular", typeLabel:"Irregular", stem:"O her gün okula erken", answer:"gelir",  post:".",   en:"He comes to school early every day. (gel → gelir)", full:"O her gün okula erken gelir." },
+  { id:2,  type:"negative",  typeLabel:"Negative",  stem:"Ben sabahları erken", answer:"kalkmam",  post:".",   en:"I don't get up early in the mornings.", full:"Ben sabahları erken kalkmam." },
+  { id:3,  type:"irregular", typeLabel:"Irregular", stem:"Tren saat beşte istasyona", answer:"varır", post:".", en:"The train arrives at the station at five o'clock. (var → varır)", full:"Tren saat beşte istasyona varır." },
+  { id:4,  type:"question",  typeLabel:"Question",  stem:"Sen Türkçe",       answer:"bilir misin",  post:"?",  en:"Do you know Turkish? (bil → bilir)", full:"Sen Türkçe bilir misin?" },
+  { id:5,  type:"irregular", typeLabel:"Irregular", stem:"O arkadaşlarıyla evde", answer:"kalır",  post:".",   en:"She stays at home with her friends. (kal → kalır)", full:"O arkadaşlarıyla evde kalır." },
+  { id:6,  type:"positive",  typeLabel:"Positive",  stem:"Biz akşamları film", answer:"izleriz",   post:".",   en:"We watch films in the evenings.", full:"Biz akşamları film izleriz." },
+  { id:7,  type:"irregular", typeLabel:"Irregular", stem:"Her insan bir gün", answer:"ölür",       post:".",   en:"Every person dies one day. (öl → ölür)", full:"Her insan bir gün ölür." },
+  { id:8,  type:"question",  typeLabel:"Question",  stem:"Siz kahve",        answer:"içer misiniz", post:"?",  en:"Do you (all) drink coffee?", full:"Siz kahve içer misiniz?" },
+  { id:9,  type:"negative",  typeLabel:"Negative",  stem:"Ben sigara",       answer:"içmem",       post:".",   en:"I don't smoke.", full:"Ben sigara içmem." },
+];
+
+const TYPE_CLASS = { positive:"type-positive", negative:"type-negative", question:"type-question", irregular:"type-irregular" };
+let score = 0;
+const answered = new Set();
+
+/* ── Build Irregular Verbs ── */
+const ig = document.getElementById('irreg-grid');
+IRREGULAR_VERBS.forEach(v => {
+  const d = document.createElement('div');
+  d.className = 'irreg-card';
+  d.innerHTML = `
+    <div class="irreg-top">
+      <div><div class="irreg-verb">${v.verb}</div><div class="irreg-en">${v.en}</div></div>
+      <span class="irreg-badge">${v.stem} → ${v.aor}</span>
+    </div>
+    <div class="irreg-forms">${v.forms.map(([p,f,e])=>`<div class="irreg-row"><span class="irreg-pronoun">${p}</span><span class="irreg-form">${f}</span><span class="irreg-trans">${e}</span></div>`).join('')}</div>
+    <div class="irreg-note">💡 ${v.note}</div>`;
+  ig.appendChild(d);
+});
+
+/* ── Progress ── */
+function updateProgress(){
+  const pct = Math.round(score/10*100);
+  document.getElementById('pb-fill').style.width = pct+'%';
+  document.getElementById('pb-score').innerHTML = score+' <small>/ 10</small>';
+}
+
+/* ── TTS ── */
+function speak(text, btn){
+  if(!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  document.querySelectorAll('.tts-btn.playing').forEach(b=>{ b.classList.remove('playing'); b.innerHTML='▶ Play'; });
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang='tr-TR'; u.rate=0.82; u.pitch=1;
+  u.onstart = ()=>{ btn.classList.add('playing'); btn.innerHTML='⏸ Oynuyor'; };
+  u.onend = u.onerror = ()=>{ btn.classList.remove('playing'); btn.innerHTML='▶ Play'; };
+  window.speechSynthesis.speak(u);
+}
+
+/* ── Build Exercises ── */
+const exg = document.getElementById('ex-grid');
+EXERCISES.forEach(ex=>{
+  const card = document.createElement('div');
+  card.className='ex-card'; card.id='card-'+ex.id;
+  card.innerHTML=`
+    <div class="ex-top">
+      <span class="ex-num">#${ex.id+1}</span>
+      <span class="ex-type ${TYPE_CLASS[ex.type]}">${ex.typeLabel}</span>
+      <button class="tts-btn" id="tts-${ex.id}">▶ Play</button>
+    </div>
+    <div class="sentence">
+      <span class="s-word">${ex.stem}</span>
+      <input class="s-input" id="inp-${ex.id}" type="text" placeholder="___" maxlength="20" autocomplete="off" spellcheck="false">
+      <span class="s-word">${ex.post}</span>
+    </div>
+    <div class="ex-en">${ex.en}</div>
+    <div class="ex-footer">
+      <button class="check-btn" id="chk-${ex.id}">Check</button>
+      <span class="feedback" id="fb-${ex.id}"></span>
+    </div>`;
+  exg.appendChild(card);
+
+  document.getElementById('tts-'+ex.id).addEventListener('click', function(){ speak(ex.full, this); });
+
+  const inp = document.getElementById('inp-'+ex.id);
+  const chk = document.getElementById('chk-'+ex.id);
+  const fb  = document.getElementById('fb-'+ex.id);
+
+  function doCheck(){
+    if(answered.has(ex.id)) return;
+    const val = inp.value.trim().toLowerCase().replace(/\s+/g,' ');
+    const expected = ex.answer.toLowerCase();
+    if(val===expected){
+      inp.classList.add('correct'); inp.classList.remove('wrong');
+      fb.textContent='✓ Doğru!'; fb.className='feedback ok';
+      chk.disabled=true;
+      score++; answered.add(ex.id); updateProgress();
+      card.classList.add('solved');
+    } else {
+      inp.classList.add('wrong'); inp.classList.remove('correct');
+      fb.textContent='Try again — answer: '+ex.answer; fb.className='feedback err';
+      card.classList.add('shake');
+      setTimeout(()=>card.classList.remove('shake'),400);
+    }
+  }
+  chk.addEventListener('click', doCheck);
+  inp.addEventListener('keydown', e=>{ if(e.key==='Enter') doCheck(); });
+});
+
+updateProgress();
+
+/* ── Nav scroll & highlight ── */
+function scrollTo(id){ document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'}); }
+const sections=['s-intro','s-positive','s-negative','s-question','s-irregular','s-exercises'];
+const navBtns=[...document.querySelectorAll('.nav-btn')];
+window.addEventListener('scroll',()=>{
+  let cur=0;
+  sections.forEach((id,i)=>{
+    const el=document.getElementById(id);
+    if(el && window.scrollY>=el.offsetTop-120) cur=i;
+  });
+  navBtns.forEach((b,i)=>b.classList.toggle('active',i===cur));
+},{passive:true});
+</script>
+</body>
+</html>
