@@ -1,7 +1,3 @@
----
-layout: default
-title: Fatih Mehmet CANITEZ | Turkish for Foreigners
----
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -658,16 +654,109 @@ title: Fatih Mehmet CANITEZ | Turkish for Foreigners
       <span class="section-title">Dinleme Anlama</span>
       <span class="section-points">16–19. sorular · 20 puan</span>
     </div>
-    <div class="section-instruction">Aşağıdaki diyalogu okuyun (veya dinleyin) ve soruları yanıtlayın.</div>
+    <div class="section-instruction">Diyalogu <strong>iki kez</strong> dinleyin, ardından soruları yanıtlayın. Metin verilmemiştir.</div>
 
-    <div class="dialogue">
-      <p><span class="speaker">Öğretmen:</span> Mehmet, dün nereye gittin?</p>
-      <p><span class="speaker">Mehmet:</span> Dün kütüphaneye gittim. Çok güzeldi.</p>
-      <p><span class="speaker">Öğretmen:</span> Ne yapıyorsun orada?</p>
-      <p><span class="speaker">Mehmet:</span> Şu an tarih kitabı okuyorum. Sınav için çalışıyorum.</p>
-      <p><span class="speaker">Öğretmen:</span> Sınav ne zaman?</p>
-      <p><span class="speaker">Mehmet:</span> Gelecek Cuma. Çok çalışacağım!</p>
+    <!-- TTS Player -->
+    <div id="tts-player" style="background:white; border:1px solid var(--paper-rule); border-radius:6px; padding:1.2rem 1.5rem; margin-bottom:1.4rem; display:flex; flex-direction:column; gap:1rem;">
+      <div style="display:flex; align-items:center; gap:1rem;">
+        <button id="tts-btn" onclick="toggleTTS()" style="
+          background:var(--section-c); color:white; border:none; border-radius:50%;
+          width:48px; height:48px; cursor:pointer; font-size:20px; flex-shrink:0;
+          display:flex; align-items:center; justify-content:center; transition:opacity 0.2s;
+        " title="Dinle">▶</button>
+        <div style="flex:1;">
+          <div style="font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px;">🎧 Diyalog Dinleme</div>
+          <div id="tts-progress-bar" style="height:4px; background:var(--paper-rule); border-radius:2px; overflow:hidden;">
+            <div id="tts-fill" style="height:100%; width:0%; background:var(--section-c); transition:width 0.3s;"></div>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-top:4px;">
+            <span id="tts-status" style="font-size:12px; color:var(--ink-faint);">Başlatmak için ▶ düğmesine basın</span>
+            <span id="tts-time" style="font-size:12px; color:var(--ink-faint);"></span>
+          </div>
+        </div>
+        <button onclick="replayTTS()" style="
+          background:none; border:1px solid var(--paper-rule); border-radius:4px;
+          padding:6px 10px; cursor:pointer; font-size:12px; color:var(--ink-muted); flex-shrink:0;
+        " title="Yeniden dinle">↺ Tekrar</button>
+      </div>
+      <div id="tts-note" style="font-size:12px; color:var(--ink-faint); font-style:italic; border-top:1px solid var(--paper-rule); padding-top:0.6rem;">
+        Not: Metin sınav sırasında gösterilmez. Cevap anahtarında transkript yer almaktadır.
+      </div>
     </div>
+
+    <script>
+    const dialogue = [
+      { speaker: "Öğretmen", text: "Mehmet, dün nereye gittin?" },
+      { speaker: "Mehmet",   text: "Dün kütüphaneye gittim. Çok güzeldi." },
+      { speaker: "Öğretmen", text: "Ne yapıyorsun orada?" },
+      { speaker: "Mehmet",   text: "Şu an tarih kitabı okuyorum. Sınav için çalışıyorum." },
+      { speaker: "Öğretmen", text: "Sınav ne zaman?" },
+      { speaker: "Mehmet",   text: "Gelecek Cuma. Çok çalışacağım!" }
+    ];
+
+    let lineIndex = 0;
+    let isPlaying = false;
+    let utterance = null;
+
+    function setStatus(msg) {
+      document.getElementById('tts-status').textContent = msg;
+    }
+
+    function setProgress(pct) {
+      document.getElementById('tts-fill').style.width = pct + '%';
+    }
+
+    function speakLine(idx) {
+      if (idx >= dialogue.length) {
+        isPlaying = false;
+        document.getElementById('tts-btn').textContent = '▶';
+        setStatus('Dinleme tamamlandı ✓');
+        setProgress(100);
+        document.getElementById('tts-time').textContent = '';
+        lineIndex = 0;
+        return;
+      }
+      const line = dialogue[idx];
+      utterance = new SpeechSynthesisUtterance(line.speaker + '... ' + line.text);
+      utterance.lang = 'tr-TR';
+      utterance.rate = 0.88;
+      utterance.pitch = line.speaker === 'Öğretmen' ? 1.05 : 0.92;
+      const pct = Math.round(((idx + 1) / dialogue.length) * 100);
+      setStatus('🔊 ' + line.speaker + ' konuşuyor…');
+      setProgress(pct);
+      document.getElementById('tts-time').textContent = (idx + 1) + ' / ' + dialogue.length;
+      utterance.onend = () => { lineIndex++; speakLine(lineIndex); };
+      utterance.onerror = () => { setStatus('Hata oluştu. Tarayıcınız TTS desteklemiyor olabilir.'); isPlaying = false; };
+      speechSynthesis.speak(utterance);
+    }
+
+    function toggleTTS() {
+      if (!('speechSynthesis' in window)) {
+        setStatus('⚠ Tarayıcınız ses sentezini desteklemiyor.');
+        return;
+      }
+      if (isPlaying) {
+        speechSynthesis.cancel();
+        isPlaying = false;
+        document.getElementById('tts-btn').textContent = '▶';
+        setStatus('Duraklatıldı — devam etmek için tekrar basın');
+      } else {
+        isPlaying = true;
+        document.getElementById('tts-btn').textContent = '⏸';
+        speakLine(lineIndex);
+      }
+    }
+
+    function replayTTS() {
+      speechSynthesis.cancel();
+      isPlaying = false;
+      lineIndex = 0;
+      setProgress(0);
+      document.getElementById('tts-btn').textContent = '▶';
+      setStatus('Başlatmak için ▶ düğmesine basın');
+      document.getElementById('tts-time').textContent = '';
+    }
+    </script>
 
     <!-- Soru 16 -->
     <div class="question">
@@ -886,6 +975,27 @@ title: Fatih Mehmet CANITEZ | Turkish for Foreigners
       <div style="padding:0.8rem 1rem; background:white; border:1px solid var(--paper-rule); border-radius:3px;">
         <strong>15. soru örnek yanıt:</strong> "Öğleden sonra arkadaşımla <span style="color:var(--correct); font-weight:600">buluşacağım</span>."
       </div>
+
+      <!-- DİNLEME TRANSKRİPT -->
+      <div style="padding:1rem 1.2rem; background:white; border:2px solid var(--section-c); border-radius:4px;">
+        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.8rem;">
+          <span style="background:var(--section-c); color:white; font-size:11px; letter-spacing:0.15em; padding:2px 8px; border-radius:2px; text-transform:uppercase; font-weight:700;">C Bölümü — Dinleme Transkripti</span>
+        </div>
+        <div style="line-height:2; color:var(--ink);">
+          <p><strong style="color:var(--section-c)">Öğretmen:</strong> Mehmet, dün nereye <span style="background:#d8f3dc; padding:1px 3px; border-radius:2px;">gittin</span>?</p>
+          <p><strong style="color:var(--accent)">Mehmet:</strong> Dün kütüphaneye <span style="background:#d8f3dc; padding:1px 3px; border-radius:2px;">gittim</span>. Çok <span style="background:#d8f3dc; padding:1px 3px; border-radius:2px;">güzeldi</span>.</p>
+          <p><strong style="color:var(--section-c)">Öğretmen:</strong> Ne <span style="background:#fff3cd; padding:1px 3px; border-radius:2px;">yapıyorsun</span> orada?</p>
+          <p><strong style="color:var(--accent)">Mehmet:</strong> Şu an tarih kitabı <span style="background:#fff3cd; padding:1px 3px; border-radius:2px;">okuyorum</span>. Sınav için <span style="background:#fff3cd; padding:1px 3px; border-radius:2px;">çalışıyorum</span>.</p>
+          <p><strong style="color:var(--section-c)">Öğretmen:</strong> Sınav ne zaman?</p>
+          <p><strong style="color:var(--accent)">Mehmet:</strong> Gelecek Cuma. Çok <span style="background:#e8d5f5; padding:1px 3px; border-radius:2px;">çalışacağım</span>!</p>
+        </div>
+        <div style="margin-top:0.8rem; padding-top:0.7rem; border-top:1px solid var(--paper-rule); display:flex; gap:1.5rem; font-size:12px; color:var(--ink-muted);">
+          <span><span style="background:#d8f3dc; padding:1px 5px; border-radius:2px;">Yeşil</span> = -di (geçmiş)</span>
+          <span><span style="background:#fff3cd; padding:1px 5px; border-radius:2px;">Sarı</span> = -yor (şimdiki)</span>
+          <span><span style="background:#e8d5f5; padding:1px 5px; border-radius:2px;">Mor</span> = -ecek (gelecek)</span>
+        </div>
+      </div>
+
       <div style="padding:0.8rem 1rem; background:white; border:1px solid var(--paper-rule); border-radius:3px;">
         <strong>23. eşleştirme:</strong> 1→B &nbsp;|&nbsp; 2→D &nbsp;|&nbsp; 3→A &nbsp;|&nbsp; 4→C
       </div>
