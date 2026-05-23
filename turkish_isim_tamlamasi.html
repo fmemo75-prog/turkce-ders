@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turkish Noun Compounds — İsim Tamlaması</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0e0f13;
+  --surface: #16181f;
+  --surface2: #1e2028;
+  --border: #2a2d38;
+  --text: #e8e6e0;
+  --muted: #7a7d8a;
+  --faint: #3a3d4a;
+
+  --tr: #f0a04a;       /* Turkish orange — possessor */
+  --tr-dim: #7a5028;
+  --en: #5ba8d4;       /* English blue — possessed */
+  --en-dim: #243848;
+  --suffix: #a8d46a;   /* suffix green */
+  --suffix-dim: #3a4d20;
+  --genitive: #d46af0; /* genitive purple */
+  --gen-dim: #3d1f50;
+  --accent: #f0a04a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Instrument Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.hero {
+  padding: 4rem 2rem 3rem;
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--tr);
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.6rem;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--tr);
+}
+
+.hero-sub {
+  font-size: 15px;
+  color: var(--muted);
+  max-width: 520px;
+  margin-bottom: 2rem;
+}
+
+/* ── THEORY CARDS ── */
+.theory {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 2rem 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 600px) { .theory { grid-template-columns: 1fr; } }
+
+.theory-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.2rem 1.4rem;
+}
+
+.theory-card h3 {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.7rem;
+}
+
+.theory-card.type1 h3 { color: var(--genitive); }
+.theory-card.type2 h3 { color: var(--suffix); }
+
+.formula {
+  font-family: 'DM Mono', monospace;
+  font-size: 15px;
+  padding: 0.6rem 0.8rem;
+  background: var(--bg);
+  border-radius: 6px;
+  margin-bottom: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.f-gen  { color: var(--genitive); }
+.f-suf  { color: var(--suffix); }
+.f-plus { color: var(--faint); font-size: 12px; }
+.f-eq   { color: var(--muted); font-size: 12px; }
+
+.theory-card p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.theory-card p strong { color: var(--text); }
+
+/* Suffix table */
+.suffix-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-top: 0.5rem;
+}
+.suffix-table th {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 4px 6px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.suffix-table td {
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--faint);
+}
+.suffix-table td:first-child { color: var(--muted); }
+.suffix-table td:nth-child(2) { color: var(--genitive); font-family: 'DM Mono', monospace; }
+.suffix-table td:nth-child(3) { color: var(--suffix); font-family: 'DM Mono', monospace; }
+
+/* ── SECTION DIVIDER ── */
+.section-label {
+  max-width: 860px;
+  margin: 0 auto 1.5rem;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── EXAMPLE CARDS ── */
+.examples {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 2rem 5rem;
+  display: grid;
+  gap: 1px;
+}
+
+.example-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+  margin-bottom: 10px;
+}
+
+.example-card:hover { border-color: var(--tr-dim); }
+
+.card-top {
+  padding: 1.4rem 1.6rem 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: start;
+}
+
+/* Number badge */
+.card-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.type-badge {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+.badge-bel { background: var(--gen-dim); color: var(--genitive); }
+.badge-bel-siz { background: var(--suffix-dim); color: var(--suffix); }
+
+/* Turkish phrase display */
+.tr-phrase {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.15em;
+}
+
+.word-possessor { color: var(--tr); }
+.word-possessed { color: var(--text); }
+.word-genitive-suffix { color: var(--genitive); }
+.word-poss-suffix { color: var(--suffix); }
+
+/* Morpheme breakdown */
+.breakdown {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.6rem;
+}
+
+.morph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'DM Mono', monospace;
+}
+
+.morph-form {
+  font-size: 13px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.morph-label {
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 3px;
+  color: var(--muted);
+}
+
+.morph.stem .morph-form   { background: var(--surface2); color: var(--text); }
+.morph.gen .morph-form    { background: var(--gen-dim); color: var(--genitive); }
+.morph.suf .morph-form    { background: var(--suffix-dim); color: var(--suffix); }
+.morph.poss .morph-form   { background: var(--tr-dim); color: var(--tr); }
+
+.morph-arrow {
+  display: flex;
+  align-items: center;
+  color: var(--faint);
+  font-size: 14px;
+  padding-top: 2px;
+}
+
+/* English translation */
+.en-translation {
+  font-size: 14px;
+  color: var(--en);
+  font-style: italic;
+  margin-bottom: 0.3rem;
+}
+
+/* Literal gloss */
+.gloss {
+  font-size: 12px;
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+}
+
+/* ── PLAY BUTTON ── */
+.play-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--muted);
+  transition: all 0.15s;
+  min-width: 56px;
+  flex-shrink: 0;
+}
+
+.play-btn:hover {
+  border-color: var(--tr);
+  color: var(--tr);
+  background: rgba(240,160,74,0.06);
+}
+
+.play-btn.playing {
+  border-color: var(--suffix);
+  color: var(--suffix);
+  background: rgba(168,212,106,0.06);
+  animation: pulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes pulse { from { opacity: 0.8; } to { opacity: 1; } }
+
+.play-icon { font-size: 20px; line-height: 1; }
+.play-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* ── EXPLANATION BOX ── */
+.explanation {
+  border-top: 1px solid var(--border);
+  padding: 1rem 1.6rem;
+  background: var(--bg);
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.explanation strong { color: var(--text); }
+.explanation .highlight-gen  { color: var(--genitive); font-family: 'DM Mono', monospace; }
+.explanation .highlight-suf  { color: var(--suffix); font-family: 'DM Mono', monospace; }
+.explanation .highlight-tr   { color: var(--tr); font-weight: 500; }
+.explanation .highlight-en   { color: var(--en); font-style: italic; }
+
+/* ── FOOTER LEGEND ── */
+.legend {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+}
+
+.legend-item { display: flex; align-items: center; gap: 6px; }
+.legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+
+/* ── TTS STATUS BAR ── */
+#tts-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 10px 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 13px;
+  color: var(--muted);
+  transform: translateY(100%);
+  transition: transform 0.25s ease;
+  z-index: 100;
+}
+
+#tts-bar.visible { transform: translateY(0); }
+
+#tts-bar-text { font-family: 'DM Serif Display', serif; font-size: 16px; color: var(--tr); flex: 1; }
+#tts-bar-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; }
+
+.tts-stop {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: 'DM Mono', monospace;
+}
+
+.tts-stop:hover { border-color: var(--text); color: var(--text); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Turkish Grammar · A1–A2</div>
+  <h1><em>İsim Tamlaması</em><br>Noun Compounds</h1>
+  <p class="hero-sub">How Turkish links two nouns to express possession and attribution — with 10 audio examples.</p>
+</div>
+
+<!-- THEORY -->
+<div class="theory">
+  <div class="theory-card type1">
+    <h3>Type 1 — Belirtili Tamlama</h3>
+    <div class="formula">
+      <span class="f-gen">[Noun + -(n)ın/in/un/ün]</span>
+      <span class="f-plus">+</span>
+      <span class="f-suf">[Noun + -(s)ı/i/u/ü]</span>
+    </div>
+    <p>The <strong>possessor</strong> takes a <strong class="f-gen" style="color:var(--genitive)">genitive suffix</strong>; the <strong>possessed</strong> takes a <strong class="f-suf" style="color:var(--suffix)">possessive suffix</strong>. Ownership is <em>definite</em> — "the dog's bone," not just "a dog bone."</p>
+    <table class="suffix-table">
+      <tr><th>Last vowel</th><th>Genitive</th><th>Poss. 3sg</th></tr>
+      <tr><td>a / ı</td><td>-ın / -nın</td><td>-ı / -sı</td></tr>
+      <tr><td>e / i</td><td>-in / -nin</td><td>-i / -si</td></tr>
+      <tr><td>o / u</td><td>-un / -nun</td><td>-u / -su</td></tr>
+      <tr><td>ö / ü</td><td>-ün / -nün</td><td>-ü / -sü</td></tr>
+    </table>
+  </div>
+
+  <div class="theory-card type2">
+    <h3>Type 2 — Belirtisiz Tamlama</h3>
+    <div class="formula">
+      <span class="f-gen" style="color:var(--tr)">[Noun (bare)]</span>
+      <span class="f-plus">+</span>
+      <span class="f-suf">[Noun + -(s)ı/i/u/ü]</span>
+    </div>
+    <p>The <strong>first noun</strong> has <strong>no suffix</strong> — it acts as a <em>classifier</em> or <em>category</em>. Like English compounds: "apple tea," "bus stop." The second noun still takes the <strong class="f-suf" style="color:var(--suffix)">possessive suffix</strong>.</p>
+    <br>
+    <p style="font-size:12px; padding:0.6rem 0.8rem; background:var(--bg); border-radius:6px; margin-top:0.3rem;">
+      <strong>Quick test:</strong> Can you say "the X of Y"? → Type 1 (definite).<br>
+      Is it more like "X-type Y"? → Type 2 (indefinite compound).
+    </p>
+  </div>
+</div>
+
+<!-- EXAMPLES LABEL -->
+<div class="section-label">10 Worked Examples &nbsp;· &nbsp;press ▶ to hear</div>
+
+<!-- EXAMPLES -->
+<div class="examples" id="examples-list"></div>
+
+<!-- LEGEND -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:var(--tr)"></div> Possessor / first noun</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--genitive)"></div> Genitive suffix -(n)ın</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--suffix)"></div> Possessive suffix -(s)ı</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--en)"></div> English translation</div>
+</div>
+
+<!-- TTS STATUS BAR -->
+<div id="tts-bar">
+  <span id="tts-bar-label">Playing</span>
+  <span id="tts-bar-text"></span>
+  <button class="tts-stop" onclick="stopTTS()">■ Stop</button>
+</div>
+
+<script>
+const examples = [
+  {
+    n: 1,
+    type: "belirtili",
+    tr_full: "arabanın kapısı",
+    possessor: "araba",
+    gen_suffix: "nın",
+    possessed: "kapı",
+    poss_suffix: "sı",
+    en: "the car's door / the door of the car",
+    gloss: "car-GEN  door-POSS",
+    explanation: `<strong>araba</strong> ("car") ends in a vowel, so the genitive is <span class="highlight-gen">-nın</span> (not -ın). <strong>kapı</strong> ends in <em>ı</em> so the possessive is <span class="highlight-suf">-sı</span> (the s- is a buffer consonant before a vowel-final stem). Together: <span class="highlight-tr">arabanın kapısı</span> = <span class="highlight-en">the door of the car</span>. This is <strong>Type 1</strong> — ownership is definite, like saying <em>the</em> car's door.`
+  },
+  {
+    n: 2,
+    type: "belirtisiz",
+    tr_full: "elma çayı",
+    possessor: "elma",
+    gen_suffix: "",
+    possessed: "çay",
+    poss_suffix: "ı",
+    en: "apple tea",
+    gloss: "apple  tea-POSS",
+    explanation: `<strong>elma</strong> ("apple") is a bare noun — no genitive suffix. This is <strong>Type 2</strong>: <em>elma</em> classifies the <em>type</em> of tea, not an owner. <strong>çay</strong> ends in a consonant after <em>a</em>, so the possessive is <span class="highlight-suf">-ı</span>. Compare English: "apple tea" — same logic. You wouldn't say "the apple's tea" in English or Turkish.`
+  },
+  {
+    n: 3,
+    type: "belirtili",
+    tr_full: "öğretmenin kitabı",
+    possessor: "öğretmen",
+    gen_suffix: "in",
+    possessed: "kitab",
+    poss_suffix: "ı",
+    en: "the teacher's book",
+    gloss: "teacher-GEN  book-POSS",
+    explanation: `<strong>öğretmen</strong> ("teacher") ends in <em>e/i</em>-type vowel harmony, so the genitive is <span class="highlight-gen">-in</span>. <strong>kitap</strong> → the final <em>p</em> softens to <em>b</em> before a vowel suffix (consonant mutation). Possessive: <span class="highlight-suf">-ı</span>. Result: <span class="highlight-tr">öğretmenin kitabı</span> = <span class="highlight-en">the teacher's book</span>. Note the p→b change — very common in Turkish!`
+  },
+  {
+    n: 4,
+    type: "belirtisiz",
+    tr_full: "otobüs durağı",
+    possessor: "otobüs",
+    gen_suffix: "",
+    possessed: "durak",
+    poss_suffix: "ı",
+    en: "bus stop",
+    gloss: "bus  stop-POSS",
+    explanation: `<strong>otobüs</strong> ("bus") is a bare classifier — Type 2. <strong>durak</strong> ("stop") → final <em>k</em> softens to <em>ğ</em> before a vowel suffix: <span class="highlight-suf">durağı</span>. This k→ğ softening is one of the most frequent consonant mutations in Turkish. The compound is a fixed expression — it means "bus stop" in general, not one specific stop.`
+  },
+  {
+    n: 5,
+    type: "belirtili",
+    tr_full: "evin bahçesi",
+    possessor: "ev",
+    gen_suffix: "in",
+    possessed: "bahçe",
+    poss_suffix: "si",
+    en: "the house's garden / the garden of the house",
+    gloss: "house-GEN  garden-POSS",
+    explanation: `<strong>ev</strong> ("house") ends in a consonant; last vowel is <em>e</em>, so genitive is <span class="highlight-gen">-in</span>. <strong>bahçe</strong> ends in a vowel, so the possessive needs a buffer: <span class="highlight-suf">-si</span> (not -i directly). Result: <span class="highlight-tr">evin bahçesi</span> = <span class="highlight-en">the house's garden</span>. Type 1 — a specific house's garden.`
+  },
+  {
+    n: 6,
+    type: "belirtisiz",
+    tr_full: "çilek reçeli",
+    possessor: "çilek",
+    gen_suffix: "",
+    possessed: "reçel",
+    poss_suffix: "i",
+    en: "strawberry jam",
+    gloss: "strawberry  jam-POSS",
+    explanation: `<strong>çilek</strong> ("strawberry") — no suffix, Type 2 compound. <strong>reçel</strong> ("jam") ends in a consonant, last vowel is <em>e</em>, so possessive is <span class="highlight-suf">-i</span>. This is a food compound, just like "strawberry jam" in English. You could say <em>çileğin reçeli</em> for "the strawberry's jam" but that'd be odd — the bare form is used for general category nouns like foods.`
+  },
+  {
+    n: 7,
+    type: "belirtili",
+    tr_full: "kedinin kuyruğu",
+    possessor: "kedi",
+    gen_suffix: "nin",
+    possessed: "kuyruk",
+    poss_suffix: "u",
+    en: "the cat's tail",
+    gloss: "cat-GEN  tail-POSS",
+    explanation: `<strong>kedi</strong> ("cat") ends in a vowel, so genitive adds -n- buffer: <span class="highlight-gen">-nin</span>. <strong>kuyruk</strong> → final <em>k</em> softens to <em>ğ</em> before vowel, but <em>u</em>-vowel harmony gives <span class="highlight-suf">-u</span> → <em>kuyruğu</em>. Don't forget: back rounded vowels (o/u) take -u suffix. <span class="highlight-tr">Kedinin kuyruğu</span> = <span class="highlight-en">the cat's tail</span> — a real, specific cat.`
+  },
+  {
+    n: 8,
+    type: "belirtisiz",
+    tr_full: "dil bilgisi",
+    possessor: "dil",
+    gen_suffix: "",
+    possessed: "bilgi",
+    poss_suffix: "si",
+    en: "grammar (language knowledge)",
+    gloss: "language  knowledge-POSS",
+    explanation: `<strong>dil</strong> ("language/tongue") + <strong>bilgi</strong> ("knowledge") = "grammar / linguistics." Type 2 — a compound noun that has become a fixed term. <em>bilgi</em> ends in a vowel → buffer consonant: <span class="highlight-suf">-si</span>. Many abstract nouns and technical terms in Turkish are Type 2 compounds. You already know this word from <em>dil bilgisi sınavı</em> — grammar exam!`
+  },
+  {
+    n: 9,
+    type: "belirtili",
+    tr_full: "çocuğun oyuncağı",
+    possessor: "çocuk",
+    gen_suffix: "un",
+    possessed: "oyuncak",
+    poss_suffix: "ı",
+    en: "the child's toy",
+    gloss: "child-GEN  toy-POSS",
+    explanation: `<strong>çocuk</strong> ("child") → final <em>k</em> softens to <em>ğ</em> before the suffix: <em>çocuğ-</em>. Last vowel is <em>u</em> → genitive <span class="highlight-gen">-un</span>. <strong>oyuncak</strong> ("toy") → final <em>k</em> → <em>ğ</em> again, last vowel <em>a</em> → possessive <span class="highlight-suf">-ı</span>. Two consonant mutations in one phrase! <span class="highlight-tr">Çocuğun oyuncağı</span> = <span class="highlight-en">the child's toy</span>.`
+  },
+  {
+    n: 10,
+    type: "belirtisiz",
+    tr_full: "sabah kahvesi",
+    possessor: "sabah",
+    gen_suffix: "",
+    possessed: "kahve",
+    poss_suffix: "si",
+    en: "morning coffee",
+    gloss: "morning  coffee-POSS",
+    explanation: `<strong>sabah</strong> ("morning") — bare, no suffix, Type 2. <strong>kahve</strong> ("coffee") ends in a vowel, so possessive adds a -s- buffer: <span class="highlight-suf">-si</span>. <span class="highlight-tr">Sabah kahvesi</span> = <span class="highlight-en">morning coffee</span> — a category, not "the morning's specific coffee." This is the exact same structure as <em>elma çayı</em> (example 2). Learn to spot the pattern: [time/material/place] + [thing-POSS].`
+  }
+];
+
+function renderExamples() {
+  const container = document.getElementById('examples-list');
+
+  examples.forEach(ex => {
+    const isType1 = ex.type === "belirtili";
+
+    // Build morpheme breakdown
+    let morphHTML = '';
+    if (isType1) {
+      morphHTML = `
+        <div class="morph poss">
+          <span class="morph-form">${ex.possessor}</span>
+          <span class="morph-label">possessor</span>
+        </div>
+        <div class="morph-arrow">+</div>
+        <div class="morph gen">
+          <span class="morph-form">-${ex.gen_suffix}</span>
+          <span class="morph-label">genitive</span>
+        </div>
+        <div class="morph-arrow" style="margin:0 0.4rem; color:var(--faint)">·</div>
+        <div class="morph stem">
+          <span class="morph-form">${ex.possessed}</span>
+          <span class="morph-label">possessed</span>
+        </div>
+        <div class="morph-arrow">+</div>
+        <div class="morph suf">
+          <span class="morph-form">-${ex.poss_suffix}</span>
+          <span class="morph-label">poss. 3sg</span>
+        </div>
+      `;
+    } else {
+      morphHTML = `
+        <div class="morph poss">
+          <span class="morph-form">${ex.possessor}</span>
+          <span class="morph-label">classifier</span>
+        </div>
+        <div class="morph-arrow" style="color:var(--faint)">·</div>
+        <div class="morph stem">
+          <span class="morph-form">${ex.possessed}</span>
+          <span class="morph-label">head noun</span>
+        </div>
+        <div class="morph-arrow">+</div>
+        <div class="morph suf">
+          <span class="morph-form">-${ex.poss_suffix}</span>
+          <span class="morph-label">poss. 3sg</span>
+        </div>
+      `;
+    }
+
+    // Build coloured TR phrase
+    let phraseHTML = '';
+    if (isType1) {
+      phraseHTML = `
+        <span class="word-possessor">${ex.possessor}<span class="word-genitive-suffix">${ex.gen_suffix}</span></span>
+        &nbsp;
+        <span class="word-possessed">${ex.possessed}<span class="word-poss-suffix">${ex.poss_suffix}</span></span>
+      `;
+    } else {
+      phraseHTML = `
+        <span class="word-possessor">${ex.possessor}</span>
+        &nbsp;
+        <span class="word-possessed">${ex.possessed}<span class="word-poss-suffix">${ex.poss_suffix}</span></span>
+      `;
+    }
+
+    const card = document.createElement('div');
+    card.className = 'example-card';
+    card.id = `card-${ex.n}`;
+    card.innerHTML = `
+      <div class="card-top">
+        <div>
+          <div class="card-num">
+            <span>0${ex.n}</span>
+            <span class="type-badge ${isType1 ? 'badge-bel' : 'badge-bel-siz'}">
+              ${isType1 ? 'Type 1 · Belirtili' : 'Type 2 · Belirtisiz'}
+            </span>
+          </div>
+          <div class="tr-phrase">${phraseHTML}</div>
+          <div class="breakdown">${morphHTML}</div>
+          <div class="en-translation">"${ex.en}"</div>
+          <div class="gloss">${ex.gloss}</div>
+        </div>
+        <button class="play-btn" id="btn-${ex.n}" onclick="speakPhrase(${ex.n})" title="Listen to pronunciation">
+          <span class="play-icon">▶</span>
+          <span class="play-label">Listen</span>
+        </button>
+      </div>
+      <div class="explanation">${ex.explanation}</div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+// ── TTS ──
+let currentBtn = null;
+
+function speakPhrase(n) {
+  if (!('speechSynthesis' in window)) {
+    alert('Your browser does not support speech synthesis.');
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+
+  // Reset previous button
+  if (currentBtn) {
+    currentBtn.innerHTML = '<span class="play-icon">▶</span><span class="play-label">Listen</span>';
+    currentBtn.classList.remove('playing');
+  }
+
+  const ex = examples[n - 1];
+  const btn = document.getElementById(`btn-${n}`);
+  currentBtn = btn;
+  btn.classList.add('playing');
+  btn.innerHTML = '<span class="play-icon">◉</span><span class="play-label">Playing</span>';
+
+  // Show status bar
+  const bar = document.getElementById('tts-bar');
+  document.getElementById('tts-bar-text').textContent = ex.tr_full;
+  bar.classList.add('visible');
+
+  const utter = new SpeechSynthesisUtterance(ex.tr_full);
+  utter.lang = 'tr-TR';
+  utter.rate = 0.80;
+  utter.pitch = 1.0;
+
+  utter.onend = () => {
+    btn.innerHTML = '<span class="play-icon">▶</span><span class="play-label">Listen</span>';
+    btn.classList.remove('playing');
+    bar.classList.remove('visible');
+    currentBtn = null;
+  };
+
+  utter.onerror = () => {
+    btn.innerHTML = '<span class="play-icon">▶</span><span class="play-label">Listen</span>';
+    btn.classList.remove('playing');
+    bar.classList.remove('visible');
+  };
+
+  window.speechSynthesis.speak(utter);
+}
+
+function stopTTS() {
+  window.speechSynthesis.cancel();
+  if (currentBtn) {
+    currentBtn.innerHTML = '<span class="play-icon">▶</span><span class="play-label">Listen</span>';
+    currentBtn.classList.remove('playing');
+    currentBtn = null;
+  }
+  document.getElementById('tts-bar').classList.remove('visible');
+}
+
+renderExamples();
+
+// ── QUIZ DATA ──
+const quizData = [
+  {
+    q: "Choose the correct form: 'the window of the house'",
+    prompt_tr: "ev _____ pencere_____",
+    options: ["evin penceresi", "ev penceresi", "evin pencere", "evin pencereler"],
+    answer: 0,
+    explain: "<strong>evin penceresi</strong> — Type 1. <em>ev</em> + genitive <span class='hl-gen'>-in</span> → <em>evin</em>. <em>pencere</em> ends in a vowel → possessive buffer <span class='hl-suf'>-si</span>."
+  },
+  {
+    q: "Which is a Type 2 (belirtisiz) compound?",
+    prompt_tr: "",
+    options: ["annenin arabası", "çilek reçeli", "köpeğin kemiği", "öğretmenin kalemi"],
+    answer: 1,
+    explain: "<strong>çilek reçeli</strong> — 'strawberry jam.' <em>çilek</em> has no suffix; it classifies the type of jam. The others all have genitive <span class='hl-gen'>-(n)ın</span> on the first noun → Type 1."
+  },
+  {
+    q: "Fill in the blank: 'köpek_____ kemiğ_____' (the dog's bone)",
+    prompt_tr: "",
+    options: ["köpeğin — i", "köpekin — ı", "köpeğin — ü", "köpek — i"],
+    answer: 0,
+    explain: "<strong>köpeğin kemiği</strong> — <em>köpek</em>: final <em>k</em> → <em>ğ</em> before suffix, last vowel <em>e</em> → genitive <span class='hl-gen'>-in</span>. <em>kemik</em>: k→ğ again, last vowel <em>i</em> → possessive <span class='hl-suf'>-i</span>."
+  },
+  {
+    q: "What does 'sabah kahvesi' mean?",
+    prompt_tr: "sabah kahvesi",
+    options: ["the coffee's morning", "morning coffee (in general)", "the morning's specific coffee", "a cup of tea"],
+    answer: 1,
+    explain: "<strong>morning coffee</strong> — Type 2 compound. <em>sabah</em> classifies the type/time of coffee. No genitive suffix = indefinite/general category, just like 'apple tea' or 'bus stop'."
+  },
+  {
+    q: "Complete: 'araba _____ (the car's colour)'  renk → rengi",
+    prompt_tr: "_____ rengi",
+    options: ["arabanın rengi", "araba rengi", "arabanın renk", "arabanın renksi"],
+    answer: 0,
+    explain: "<strong>arabanın rengi</strong> — Type 1 (specific car). <em>araba</em> ends in vowel → <span class='hl-gen'>-nın</span>. <em>renk</em>: final k→ğ, last vowel <em>e</em> → <span class='hl-suf'>-i</span> → <em>rengi</em>."
+  },
+  {
+    q: "Which suffix does the POSSESSED noun always take in BOTH Type 1 and Type 2?",
+    prompt_tr: "",
+    options: ["Genitive -(n)ın/in/un/ün", "Possessive 3sg -(s)ı/i/u/ü", "Accusative -(y)ı/i/u/ü", "No suffix at all"],
+    answer: 1,
+    explain: "The <strong>possessed noun always takes possessive 3sg</strong> <span class='hl-suf'>-(s)ı/i/u/ü</span> in both types. The difference is only on the first noun: genitive in Type 1, bare (no suffix) in Type 2."
+  },
+  {
+    q: "How do you say 'dil bilgisi' in English?",
+    prompt_tr: "dil bilgisi",
+    options: ["language tongue", "grammar / language knowledge", "the language's information", "words and letters"],
+    answer: 1,
+    explain: "<strong>grammar / language knowledge</strong> — <em>dil</em> = language, <em>bilgi</em> = knowledge. Type 2 compound. <em>bilgi</em> ends in vowel → buffer <span class='hl-suf'>-si</span>. A fixed term — you've seen it in 'dil bilgisi sınavı'!"
+  },
+  {
+    q: "'çocuğun oyuncağı' — why does çocuk become çocuğ-?",
+    prompt_tr: "çocuğun oyuncağı",
+    options: [
+      "Vowel harmony changes it",
+      "Final k softens to ğ before a vowel suffix",
+      "It's an irregular verb form",
+      "The plural suffix is added"
+    ],
+    answer: 1,
+    explain: "<strong>Consonant mutation: k → ğ</strong> before a vowel suffix. This is one of the most common patterns in Turkish. Same thing happens to <em>oyuncak → oyuncağ-</em> in the same phrase. Both words end in <em>k</em>!"
+  },
+  {
+    q: "Pick the correct Type 2 (belirtisiz) compound for 'bus stop':",
+    prompt_tr: "",
+    options: ["otobüsün durağı", "otobüsün durak", "otobüs durağı", "otobüsler durak"],
+    answer: 2,
+    explain: "<strong>otobüs durağı</strong> — Type 2. <em>otobüs</em> is a bare classifier, no suffix. <em>durak</em>: final k→ğ, last vowel <em>a</em> → possessive <span class='hl-suf'>-ı</span>. <em>otobüsün durağı</em> would mean 'the (specific) bus's stop' — grammatical but unusual."
+  },
+  {
+    q: "Which sentence correctly uses a Type 1 compound?",
+    prompt_tr: "",
+    options: [
+      "Öğretmen kitabı çok güzel.",
+      "Öğretmenin kitabı çok güzel.",
+      "Öğretmenin kitap çok güzel.",
+      "Öğretmen kitabın çok güzel."
+    ],
+    answer: 1,
+    explain: "<strong>Öğretmenin kitabı çok güzel</strong> — 'The teacher's book is very nice.' Genitive <span class='hl-gen'>-in</span> on possessor + possessive <span class='hl-suf'>-ı</span> (with b-mutation from kitap) on possessed. Both suffixes must be present for Type 1."
+  }
+];
+
+let quizAnswers = new Array(10).fill(null);
+let quizSubmitted = false;
+
+function renderQuiz() {
+  const container = document.getElementById('quiz-container');
+  container.innerHTML = '';
+
+  quizData.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'quiz-card';
+    card.id = `qcard-${i}`;
+
+    let promptHTML = q.prompt_tr
+      ? `<div class="quiz-prompt">${q.prompt_tr}</div>`
+      : '';
+
+    let optionsHTML = q.options.map((opt, j) => `
+      <button class="quiz-opt" id="qopt-${i}-${j}" onclick="selectAnswer(${i}, ${j})">
+        <span class="quiz-opt-key">${String.fromCharCode(65+j)}</span>
+        <span class="quiz-opt-text">${opt}</span>
+      </button>
+    `).join('');
+
+    card.innerHTML = `
+      <div class="quiz-q-header">
+        <span class="quiz-num">Q${i+1}</span>
+        <span class="quiz-q-text">${q.q}</span>
+      </div>
+      ${promptHTML}
+      <div class="quiz-options" id="qopts-${i}">${optionsHTML}</div>
+      <div class="quiz-feedback" id="qfb-${i}"></div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function selectAnswer(qIdx, optIdx) {
+  if (quizSubmitted) return;
+  quizAnswers[qIdx] = optIdx;
+
+  // highlight selected
+  for (let j = 0; j < 4; j++) {
+    const btn = document.getElementById(`qopt-${qIdx}-${j}`);
+    if (btn) btn.classList.toggle('selected', j === optIdx);
+  }
+
+  // update submit button state
+  const allAnswered = quizAnswers.every(a => a !== null);
+  const submitBtn = document.getElementById('quiz-submit');
+  if (submitBtn) {
+    submitBtn.disabled = !allAnswered;
+    submitBtn.style.opacity = allAnswered ? '1' : '0.4';
+  }
+}
+
+function submitQuiz() {
+  if (quizSubmitted) return;
+  quizSubmitted = true;
+
+  let score = 0;
+
+  quizData.forEach((q, i) => {
+    const chosen = quizAnswers[i];
+    const correct = q.answer;
+    const isCorrect = chosen === correct;
+    if (isCorrect) score++;
+
+    // colour options
+    for (let j = 0; j < q.options.length; j++) {
+      const btn = document.getElementById(`qopt-${i}-${j}`);
+      if (!btn) continue;
+      btn.disabled = true;
+      if (j === correct) btn.classList.add('correct');
+      else if (j === chosen && !isCorrect) btn.classList.add('wrong');
+    }
+
+    // show feedback
+    const fb = document.getElementById(`qfb-${i}`);
+    if (fb) {
+      fb.innerHTML = `
+        <div class="fb-icon">${isCorrect ? '✓' : '✗'}</div>
+        <div class="fb-text">${q.explain}</div>
+      `;
+      fb.classList.add(isCorrect ? 'fb-correct' : 'fb-wrong');
+    }
+  });
+
+  // show score
+  const scoreEl = document.getElementById('quiz-score');
+  const pct = Math.round((score / 10) * 100);
+  const msg = score === 10 ? 'Perfect! Mükemmel! 🎉'
+            : score >= 7  ? 'Great work! İyi iş! 👍'
+            : score >= 5  ? 'Keep practising! Devam et! 💪'
+            : 'Review the examples above and try again.';
+
+  scoreEl.innerHTML = `
+    <div class="score-ring" style="--pct:${pct}">
+      <span class="score-num">${score}<span style="font-size:0.5em; color:var(--muted)">/10</span></span>
+    </div>
+    <div>
+      <div class="score-msg">${msg}</div>
+      <div class="score-sub">${pct}% correct</div>
+    </div>
+  `;
+  scoreEl.style.display = 'flex';
+
+  document.getElementById('quiz-submit').style.display = 'none';
+
+  const retryBtn = document.getElementById('quiz-retry');
+  if (retryBtn) retryBtn.style.display = 'inline-flex';
+}
+
+function retryQuiz() {
+  quizAnswers = new Array(10).fill(null);
+  quizSubmitted = false;
+  document.getElementById('quiz-score').style.display = 'none';
+  document.getElementById('quiz-submit').style.display = 'inline-flex';
+  document.getElementById('quiz-submit').disabled = true;
+  document.getElementById('quiz-submit').style.opacity = '0.4';
+  const retryBtn = document.getElementById('quiz-retry');
+  if (retryBtn) retryBtn.style.display = 'none';
+  renderQuiz();
+}
+
+renderQuiz();
+</script>
+
+<!-- QUIZ STYLES -->
+<style>
+.quiz-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 2rem 6rem;
+}
+
+.quiz-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.4rem 1.6rem;
+  margin-bottom: 10px;
+  transition: border-color 0.2s;
+}
+
+.quiz-q-header {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+  margin-bottom: 0.8rem;
+}
+
+.quiz-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--tr);
+  background: var(--tr-dim);
+  padding: 2px 7px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.quiz-q-text {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.quiz-prompt {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.2rem;
+  color: var(--tr);
+  margin-bottom: 0.8rem;
+  padding: 0.5rem 0.8rem;
+  background: var(--bg);
+  border-radius: 6px;
+  border-left: 3px solid var(--tr-dim);
+}
+
+.quiz-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 560px) { .quiz-options { grid-template-columns: 1fr; } }
+
+.quiz-opt {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 7px;
+  padding: 0.6rem 0.9rem;
+  cursor: pointer;
+  text-align: left;
+  color: var(--muted);
+  font-size: 13.5px;
+  font-family: 'Instrument Sans', sans-serif;
+  transition: all 0.15s;
+  line-height: 1.4;
+}
+
+.quiz-opt:hover:not(:disabled) {
+  border-color: var(--tr-dim);
+  color: var(--text);
+  background: rgba(240,160,74,0.04);
+}
+
+.quiz-opt.selected {
+  border-color: var(--tr);
+  color: var(--text);
+  background: rgba(240,160,74,0.08);
+}
+
+.quiz-opt.correct {
+  border-color: var(--suffix);
+  color: var(--suffix);
+  background: rgba(168,212,106,0.08);
+}
+
+.quiz-opt.wrong {
+  border-color: #d46a6a;
+  color: #d46a6a;
+  background: rgba(212,106,106,0.08);
+}
+
+.quiz-opt-key {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  min-width: 18px;
+  color: var(--faint);
+}
+
+.quiz-opt.selected .quiz-opt-key { color: var(--tr); }
+.quiz-opt.correct .quiz-opt-key  { color: var(--suffix); }
+.quiz-opt.wrong .quiz-opt-key    { color: #d46a6a; }
+
+/* Feedback */
+.quiz-feedback {
+  display: none;
+  gap: 0.6rem;
+  font-size: 13px;
+  line-height: 1.65;
+  padding: 0.7rem 0.9rem;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+}
+
+.quiz-feedback.fb-correct,
+.quiz-feedback.fb-wrong { display: flex; align-items: flex-start; }
+
+.quiz-feedback.fb-correct { background: rgba(168,212,106,0.08); border: 1px solid rgba(168,212,106,0.2); color: var(--muted); }
+.quiz-feedback.fb-wrong   { background: rgba(212,106,106,0.08); border: 1px solid rgba(212,106,106,0.2); color: var(--muted); }
+
+.fb-icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+.fb-correct .fb-icon { color: var(--suffix); }
+.fb-wrong   .fb-icon { color: #d46a6a; }
+
+.fb-text .hl-gen { color: var(--genitive); font-family: 'DM Mono', monospace; }
+.fb-text .hl-suf { color: var(--suffix);   font-family: 'DM Mono', monospace; }
+.fb-text strong  { color: var(--text); }
+
+/* Quiz actions */
+.quiz-actions {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--tr);
+  color: #0e0f13;
+  border: none;
+  border-radius: 7px;
+  padding: 0.7rem 1.4rem;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.btn-submit:hover:not(:disabled) { opacity: 0.88; }
+
+.btn-retry {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 7px;
+  padding: 0.65rem 1.2rem;
+  color: var(--muted);
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-retry:hover { border-color: var(--text); color: var(--text); }
+
+/* Score display */
+.quiz-score-display {
+  display: none;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  padding: 1.2rem 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.score-ring {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: conic-gradient(var(--suffix) calc(var(--pct) * 1%), var(--faint) 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.score-ring::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  background: var(--surface);
+  border-radius: 50%;
+}
+
+.score-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.3rem;
+  position: relative;
+  z-index: 1;
+  color: var(--text);
+}
+
+.score-msg {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.score-sub {
+  font-size: 13px;
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+}
+</style>
+
+<!-- QUIZ HTML -->
+<div class="section-label" style="max-width:860px;margin:2rem auto 1.5rem;padding:0 2rem">Practice Quiz &nbsp;· &nbsp;10 questions</div>
+<div class="quiz-wrap">
+  <div id="quiz-container"></div>
+  <div class="quiz-actions">
+    <button class="btn-submit" id="quiz-submit" onclick="submitQuiz()" disabled style="opacity:0.4">Check Answers →</button>
+    <button class="btn-retry" id="quiz-retry" onclick="retryQuiz()">↺ Try Again</button>
+  </div>
+  <div class="quiz-score-display" id="quiz-score"></div>
+</div>
+
+<script>
+renderQuiz();
+</script>
+</body>
+</html>
