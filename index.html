@@ -223,14 +223,15 @@ title: Fatih Mehmet CANITEZ | Turkish for Foreigners
   document.addEventListener('DOMContentLoaded', loadLessons);
 </script>
 
-<!-- 2. SENİN ESKİ DISQUS KODUN (YORUMLARI GETİRİR) -->
 <script>
     var disqus_config = function () {
-        this.page.url = window.location.href;  
-        this.page.identifier = window.location.pathname; 
+        // Sitenin tam adresini ve klasör yolunu buraya ekledik:
+        this.page.url = "https://fmemo75-prog.github.io/turkce-ders/";  
+        this.page.identifier = "/turkce-ders/"; 
     };
     (function() { 
         var d = document, s = d.createElement('script');
+        // Kısa ismin doğru: fmemo75-prog-github-io-turkce
         s.src = 'https://fmemo75-prog-github-io-turkce.disqus.com/embed.js'; 
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
