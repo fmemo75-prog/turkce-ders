@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mülkiyet Sıfatları — Turkish Possessive Adjectives</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F7F4EE;
+    --bg2: #EDE8DF;
+    --bg3: #ffffff;
+    --ink: #1C1915;
+    --ink2: #5C5650;
+    --ink3: #9C968E;
+    --accent: #C45C2A;
+    --accent-light: #F5E8DF;
+    --accent2: #2A6B5A;
+    --accent2-light: #DFF0EA;
+    --border: rgba(28,25,21,0.12);
+    --shadow: 0 2px 24px rgba(28,25,21,0.08);
+    --radius: 12px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--ink);
+    color: #F7F4EE;
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.02) 40px,
+      rgba(255,255,255,0.02) 41px
+    );
+  }
+  .header-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    position: relative;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: #F7F4EE;
+    position: relative;
+  }
+  header h1 em {
+    font-style: italic;
+    color: #C8A882;
+  }
+  .header-sub {
+    font-size: 15px;
+    color: rgba(247,244,238,0.55);
+    margin-top: 0.75rem;
+    font-weight: 300;
+    position: relative;
+  }
+
+  /* NAV TABS */
+  nav {
+    background: var(--bg3);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 12px rgba(28,25,21,0.06);
+  }
+  .nav-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    padding: 0 1.5rem;
+    gap: 0;
+  }
+  .nav-tab {
+    padding: 1rem 1.5rem;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink3);
+    background: none;
+    border: none;
+    border-bottom: 2.5px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+  .nav-tab:hover { color: var(--ink); }
+  .nav-tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* MAIN */
+  main { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .section { display: none; animation: fadeIn 0.25s ease; }
+  .section.visible { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  /* OVERVIEW */
+  .intro-box {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  @media(max-width:600px){ .intro-box { grid-template-columns: 1fr; } }
+  .intro-point {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .intro-dot {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .intro-point p { font-size: 14px; color: var(--ink2); line-height: 1.55; }
+  .intro-point strong { color: var(--ink); }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 1rem;
+  }
+
+  .grammar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+    margin-bottom: 2rem;
+  }
+  .gram-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.25rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .gram-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+  .gram-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--accent);
+    border-radius: 4px 0 0 4px;
+  }
+  .gram-card.green::before { background: var(--accent2); }
+  .gram-person {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 6px;
+  }
+  .gram-pronoun {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .gram-suffix {
+    display: inline-block;
+    padding: 2px 10px;
+    background: var(--accent-light);
+    color: var(--accent);
+    border-radius: 20px;
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .gram-card.green .gram-suffix { background: var(--accent2-light); color: var(--accent2); }
+  .gram-example {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .gram-example mark {
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 0 2px;
+    border-radius: 3px;
+  }
+  .gram-card.green .gram-example mark { background: var(--accent2-light); color: var(--accent2); }
+  .gram-meaning { font-size: 13px; color: var(--ink3); }
+
+  .vowel-box {
+    background: var(--ink);
+    color: #F7F4EE;
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-top: 1rem;
+  }
+  .vowel-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: #C8A882;
+  }
+  .vowel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  @media(max-width:500px){ .vowel-grid { grid-template-columns: 1fr; } }
+  .vowel-row { font-size: 14px; display: flex; align-items: center; gap: 8px; }
+  .vowel-tag { font-family: 'DM Mono', monospace; font-size: 12px; background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 4px; color: #C8A882; }
+
+  /* EXAMPLES */
+  .ex-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 14px;
+    overflow: hidden;
+    transition: box-shadow 0.15s;
+  }
+  .ex-card:hover { box-shadow: var(--shadow); }
+  .ex-top {
+    padding: 1.25rem 1.5rem 1rem;
+  }
+  .ex-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .ex-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink3);
+    letter-spacing: 0.08em;
+  }
+  .ex-badge {
+    padding: 3px 12px;
+    background: var(--accent-light);
+    color: var(--accent);
+    border-radius: 20px;
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+  }
+  .ex-tr {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.4;
+    margin-bottom: 6px;
+  }
+  .ex-tr mark {
+    background: none;
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 2px;
+  }
+  .ex-en {
+    font-size: 15px;
+    color: var(--ink2);
+    font-style: italic;
+    margin-bottom: 14px;
+  }
+  .ex-note {
+    font-size: 13px;
+    color: var(--ink3);
+    line-height: 1.5;
+  }
+  .ex-note strong { color: var(--ink); font-weight: 500; }
+  .ex-bottom {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .tts-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 7px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--bg3);
+    color: var(--ink2);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .tts-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
+  .tts-btn.playing { background: var(--accent); color: white; border-color: var(--accent); }
+  .tts-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+  .tts-speed {
+    margin-left: auto;
+    display: flex;
+    gap: 6px;
+  }
+  .speed-btn {
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    padding: 4px 10px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: none;
+    color: var(--ink3);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .speed-btn.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+  /* QUIZ */
+  .quiz-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .score-display {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+  .score-num { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--accent); }
+  .score-label { color: var(--ink3); font-size: 12px; }
+  .reset-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--bg3);
+    color: var(--ink2);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .reset-btn:hover { border-color: var(--ink); color: var(--ink); }
+  .progress-bar-wrap {
+    background: var(--bg2);
+    border-radius: 4px;
+    height: 4px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 4px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+  .q-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 14px;
+    transition: box-shadow 0.15s;
+  }
+  .q-card:hover { box-shadow: 0 1px 12px rgba(28,25,21,0.06); }
+  .q-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink3);
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+  .q-text {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+  .q-blank {
+    display: inline-block;
+    min-width: 80px;
+    border-bottom: 2px solid var(--ink);
+    margin: 0 4px;
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 15px;
+  }
+  .opts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  @media(max-width:480px){ .opts { grid-template-columns: 1fr; } }
+  .opt {
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 15px;
+    font-family: 'DM Mono', monospace;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.15s;
+  }
+  .opt:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-light); color: var(--accent); }
+  .opt.correct { background: #DFF0EA; color: var(--accent2); border-color: var(--accent2); }
+  .opt.wrong { background: #FCEAE6; color: #B03A1A; border-color: #C45C2A; }
+  .opt:disabled { cursor: default; }
+  .q-feedback {
+    margin-top: 10px;
+    font-size: 13px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: none;
+    line-height: 1.5;
+  }
+  .q-feedback.ok { background: #DFF0EA; color: var(--accent2); display: block; }
+  .q-feedback.no { background: #FCEAE6; color: #B03A1A; display: block; }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 13px;
+    color: var(--ink3);
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="header-eyebrow">Turkish Grammar — Level A2</p>
+  <h1>Mülkiyet Sıfatları<br><em>Possessive Adjectives</em></h1>
+  <p class="header-sub">Suffixes that show belonging · Ekler ile sahiplik ifadesi</p>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <button class="nav-tab active" onclick="showTab('overview', this)">Overview</button>
+    <button class="nav-tab" onclick="showTab('examples', this)">Examples + Audio</button>
+    <button class="nav-tab" onclick="showTab('quiz', this)">Exercises</button>
+  </div>
+</nav>
+
+<main>
+
+  <!-- OVERVIEW -->
+  <section id="overview" class="section visible">
+    <p class="section-label">What are possessive suffixes?</p>
+    <div class="intro-box">
+      <div class="intro-point">
+        <div class="intro-dot">1</div>
+        <p>In Turkish, possession is shown by adding a <strong>suffix to the noun</strong>, not by a separate word like "my" or "your".</p>
+      </div>
+      <div class="intro-point">
+        <div class="intro-dot">2</div>
+        <p>The possessive pronoun (benim, senin…) is <strong>optional</strong> — the suffix alone conveys the meaning.</p>
+      </div>
+      <div class="intro-point">
+        <div class="intro-dot">3</div>
+        <p><strong>Vowel harmony</strong> changes the suffix vowel: <em>evim</em> (my house) vs <em>arabam</em> (my car).</p>
+      </div>
+      <div class="intro-point">
+        <div class="intro-dot">4</div>
+        <p>Nouns ending in a vowel take a <strong>buffer -s-</strong>: <em>araba → arabası</em> (his/her car).</p>
+      </div>
+    </div>
+
+    <p class="section-label" style="margin-top:2rem;">All six forms</p>
+    <div class="grammar-grid">
+      <div class="gram-card">
+        <div class="gram-person">1st person singular</div>
+        <div class="gram-pronoun">benim</div>
+        <div class="gram-suffix">-(i)m / -(ı)m / -(u)m / -(ü)m</div>
+        <div class="gram-example">kitab<mark>ım</mark> · ev<mark>im</mark></div>
+        <div class="gram-meaning">my book · my house</div>
+      </div>
+      <div class="gram-card">
+        <div class="gram-person">2nd person singular</div>
+        <div class="gram-pronoun">senin</div>
+        <div class="gram-suffix">-(i)n / -(ı)n / -(u)n / -(ü)n</div>
+        <div class="gram-example">kitab<mark>ın</mark> · ev<mark>in</mark></div>
+        <div class="gram-meaning">your book · your house</div>
+      </div>
+      <div class="gram-card">
+        <div class="gram-person">3rd person singular</div>
+        <div class="gram-pronoun">onun</div>
+        <div class="gram-suffix">-(s)i / -(s)ı / -(s)u / -(s)ü</div>
+        <div class="gram-example">kitab<mark>ı</mark> · araba<mark>sı</mark></div>
+        <div class="gram-meaning">his/her book · his/her car</div>
+      </div>
+      <div class="gram-card green">
+        <div class="gram-person">1st person plural</div>
+        <div class="gram-pronoun">bizim</div>
+        <div class="gram-suffix">-(i)miz / -(ı)mız / -(u)muz / -(ü)müz</div>
+        <div class="gram-example">kitab<mark>ımız</mark> · ev<mark>imiz</mark></div>
+        <div class="gram-meaning">our book · our house</div>
+      </div>
+      <div class="gram-card green">
+        <div class="gram-person">2nd person plural / formal</div>
+        <div class="gram-pronoun">sizin</div>
+        <div class="gram-suffix">-(i)niz / -(ı)nız / -(u)nuz / -(ü)nüz</div>
+        <div class="gram-example">kitab<mark>ınız</mark> · ev<mark>iniz</mark></div>
+        <div class="gram-meaning">your (pl./formal) book · house</div>
+      </div>
+      <div class="gram-card green">
+        <div class="gram-person">3rd person plural</div>
+        <div class="gram-pronoun">onların</div>
+        <div class="gram-suffix">-ları / -leri</div>
+        <div class="gram-example">kitap<mark>ları</mark> · ev<mark>leri</mark></div>
+        <div class="gram-meaning">their book · their house</div>
+      </div>
+    </div>
+
+    <div class="vowel-box">
+      <h3>Vowel harmony quick guide</h3>
+      <div class="vowel-grid">
+        <div class="vowel-row"><span class="vowel-tag">a, ı</span> → suffix uses <strong>-ı</strong> · araba<strong>m</strong></div>
+        <div class="vowel-row"><span class="vowel-tag">e, i</span> → suffix uses <strong>-i</strong> · ev<strong>im</strong></div>
+        <div class="vowel-row"><span class="vowel-tag">o, u</span> → suffix uses <strong>-u</strong> · okul<strong>um</strong></div>
+        <div class="vowel-row"><span class="vowel-tag">ö, ü</span> → suffix uses <strong>-ü</strong> · göz<strong>üm</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXAMPLES -->
+  <section id="examples" class="section">
+    <p class="section-label">5 annotated examples with audio</p>
+    <div id="speed-global" style="display:flex;gap:6px;margin-bottom:1.5rem;align-items:center;">
+      <span style="font-size:13px;color:var(--ink3);margin-right:4px;">Playback speed:</span>
+      <button class="speed-btn active" onclick="setSpeed(0.7,this)">Slow</button>
+      <button class="speed-btn" onclick="setSpeed(1.0,this)">Normal</button>
+    </div>
+    <div id="ex-list"></div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="section">
+    <div class="quiz-header">
+      <div>
+        <p class="section-label" style="margin-bottom:4px;">Test yourself</p>
+        <div class="score-display">
+          <div>
+            <div class="score-label">Score</div>
+            <div class="score-num" id="score-display">0 / 0</div>
+          </div>
+          <div style="width:1px;height:32px;background:var(--border);"></div>
+          <div>
+            <div class="score-label">Answered</div>
+            <div class="score-num" id="answered-display">0 / 10</div>
+          </div>
+        </div>
+      </div>
+      <button class="reset-btn" onclick="resetQuiz()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+        Reset
+      </button>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-fill"></div></div>
+    <div id="quiz-list"></div>
+  </section>
+
+</main>
+
+<footer>Türkçe Mülkiyet Sıfatları — A2 Grammar Reference</footer>
+
+<script>
+const examples = [
+  {
+    tr: "Bu benim arabam.",
+    en: "This is my car.",
+    suffix: "-(ı)m",
+    highlight: "arabam",
+    note: "<strong>araba</strong> ends in -a (back vowel) → suffix becomes <strong>-m</strong> (vowel already there). Pronoun <em>benim</em> is optional.",
+    person: "1st sg"
+  },
+  {
+    tr: "Senin adın ne?",
+    en: "What is your name?",
+    suffix: "-(ı)n",
+    highlight: "adın",
+    note: "<strong>ad</strong> (name) → last vowel is <em>a</em> → uses <strong>-ın</strong>. Without the pronoun: <em>Adın ne?</em> is equally correct.",
+    person: "2nd sg"
+  },
+  {
+    tr: "Onun evi çok büyük.",
+    en: "His/her house is very big.",
+    suffix: "-(s)i",
+    highlight: "evi",
+    note: "<strong>ev</strong> ends in a consonant, last vowel <em>e</em> → uses <strong>-i</strong>. No buffer -s- needed (ends in consonant).",
+    person: "3rd sg"
+  },
+  {
+    tr: "Bizim köpeğimiz çok sevimli.",
+    en: "Our dog is very cute.",
+    suffix: "-(i)miz",
+    highlight: "köpeğimiz",
+    note: "<strong>köpek → köpeğ-</strong> (consonant softening: k→ğ). Last vowel <em>e</em> → uses <strong>-imiz</strong>.",
+    person: "1st pl"
+  },
+  {
+    tr: "Sizin öğretmeniniz kim?",
+    en: "Who is your (plural/formal) teacher?",
+    suffix: "-(i)niz",
+    highlight: "öğretmeniniz",
+    note: "<strong>öğretmen</strong>, last vowel <em>e</em> → uses <strong>-iniz</strong>. Use <em>sizin</em> for formal address or groups.",
+    person: "2nd pl"
+  }
+];
+
+const quizData = [
+  {
+    q: "_____ çantası çok ağır. (her bag)",
+    blank: "Whose?",
+    opts: ["Onun","Benim","Bizim","Senin"],
+    ans: 0,
+    explain: "'Onun' = his/her. The suffix -sı on çanta confirms 3rd person singular."
+  },
+  {
+    q: "Bu _____ evimiz. (our house)",
+    blank: "pronoun",
+    opts: ["sizin","onların","bizim","benim"],
+    ans: 2,
+    explain: "-imiz is the 1st person plural suffix → pronoun is 'bizim'."
+  },
+  {
+    q: "Kitab_____ masada. (My book is on the table.)",
+    blank: "suffix",
+    opts: ["ın","ım","ı","ımız"],
+    ans: 1,
+    explain: "kitap → kitab- + -ım (1st sg, back vowel a → ı, but kitap's last vowel is 'a' so -ım). My = 1st singular."
+  },
+  {
+    q: "Arabaları çok hızlı. — Who does it belong to?",
+    blank: "owner",
+    opts: ["benim","senin","onların","bizim"],
+    ans: 2,
+    explain: "The suffix -ları is the 3rd person plural possessive → 'onların' (their)."
+  },
+  {
+    q: "Ev_____ nerede? (Where is your house? — singular informal)",
+    blank: "suffix",
+    opts: ["im","in","iniz","i"],
+    ans: 1,
+    explain: "2nd person singular: -in (ev has front vowel 'e' → -in). Formal/plural would be -iniz."
+  },
+  {
+    q: "Ev_____ çok güzel. (Your house — plural/formal)",
+    blank: "suffix",
+    opts: ["im","iniz","imiz","leri"],
+    ans: 1,
+    explain: "2nd person plural/formal: -iniz. Front vowel 'e' → -iniz."
+  },
+  {
+    q: "Kedi_____ hasta. (Their cat is sick.)",
+    blank: "suffix",
+    opts: ["si","leri","miz","niz"],
+    ans: 1,
+    explain: "3rd person plural uses -ları/-leri. 'kedi' has front vowel → -leri."
+  },
+  {
+    q: "Bu benim _____. (This is my bag.)",
+    blank: "correct form",
+    opts: ["çantam","çantası","çantan","çantamız"],
+    ans: 0,
+    explain: "çanta + 1st sg suffix: çanta ends in vowel 'a' → drop buffer, add -m → çantam."
+  },
+  {
+    q: "Onun _____ çok tatlı. (His/her smile is lovely.)",
+    blank: "correct form",
+    opts: ["gülüşüm","gülüşün","gülüşü","gülüşleri"],
+    ans: 2,
+    explain: "3rd sg: -ü (front rounded vowel ü in gülüş → -ü). Buffer -s- not needed (ends in consonant)."
+  },
+  {
+    q: "Bizim _____ çok çalışkan. (Our students are very hardworking.)",
+    blank: "correct form",
+    opts: ["öğrencimiz","öğrencileri","öğrencilerimiz","öğrenciniz"],
+    ans: 2,
+    explain: "1st plural + plural noun: öğrenci + -ler (plural) + -imiz (our) → öğrencilerimiz."
+  }
+];
+
+let ttsSpeed = 0.7;
+let scores = new Array(10).fill(null);
+
+function setSpeed(s, btn) {
+  ttsSpeed = s;
+  document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function speak(text, btn) {
+  if (!('speechSynthesis' in window)) { alert('TTS not supported in this browser.'); return; }
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'tr-TR';
+  u.rate = ttsSpeed;
+  btn.classList.add('playing');
+  u.onend = () => btn.classList.remove('playing');
+  u.onerror = () => btn.classList.remove('playing');
+  window.speechSynthesis.speak(u);
+}
+
+function buildExamples() {
+  const c = document.getElementById('ex-list');
+  examples.forEach((e, i) => {
+    const hiTr = e.tr.replace(e.highlight, `<mark>${e.highlight}</mark>`);
+    const safe = e.tr.replace(/'/g, "\\'");
+    c.innerHTML += `
+    <div class="ex-card">
+      <div class="ex-top">
+        <div class="ex-meta">
+          <span class="ex-num">EXAMPLE ${i+1} · ${e.person.toUpperCase()}</span>
+          <span class="ex-badge">${e.suffix}</span>
+        </div>
+        <div class="ex-tr">${hiTr}</div>
+        <div class="ex-en">${e.en}</div>
+        <div class="ex-note">${e.note}</div>
+      </div>
+      <div class="ex-bottom">
+        <button class="tts-btn" onclick="speak('${safe}', this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          Listen in Turkish
+        </button>
+      </div>
+    </div>`;
+  });
+}
+
+function buildQuiz() {
+  const c = document.getElementById('quiz-list');
+  c.innerHTML = '';
+  quizData.forEach((q, i) => {
+    const optsHtml = q.opts.map((o, j) =>
+      `<button class="opt" id="opt-${i}-${j}" onclick="answer(${i},${j})">${o}</button>`
+    ).join('');
+    c.innerHTML += `
+    <div class="q-card" id="qcard-${i}">
+      <div class="q-num">QUESTION ${i+1} OF 10</div>
+      <div class="q-text">${q.q}</div>
+      <div class="opts">${optsHtml}</div>
+      <div class="q-feedback" id="fb-${i}"></div>
+    </div>`;
+  });
+  updateScoreDisplay();
+}
+
+function answer(qi, oi) {
+  if (scores[qi] !== null) return;
+  const correct = quizData[qi].ans === oi;
+  scores[qi] = correct ? 1 : 0;
+  for (let j = 0; j < quizData[qi].opts.length; j++) {
+    const btn = document.getElementById(`opt-${qi}-${j}`);
+    btn.disabled = true;
+    if (j === quizData[qi].ans) btn.classList.add('correct');
+    else if (j === oi && !correct) btn.classList.add('wrong');
+  }
+  const fb = document.getElementById(`fb-${qi}`);
+  fb.className = 'q-feedback ' + (correct ? 'ok' : 'no');
+  fb.innerHTML = (correct ? '✓ Correct! ' : '✗ Not quite. ') + quizData[qi].explain;
+  updateScoreDisplay();
+}
+
+function updateScoreDisplay() {
+  const answered = scores.filter(s => s !== null).length;
+  const pts = scores.filter(s => s === 1).length;
+  document.getElementById('score-display').textContent = `${pts} / ${answered}`;
+  document.getElementById('answered-display').textContent = `${answered} / 10`;
+  document.getElementById('progress-fill').style.width = (answered / 10 * 100) + '%';
+}
+
+function resetQuiz() {
+  scores = new Array(10).fill(null);
+  buildQuiz();
+}
+
+function showTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('visible');
+  btn.classList.add('active');
+}
+
+buildExamples();
+buildQuiz();
+</script>
+</body>
+</html>
