@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>-lı/-li/-lu/-lü Eki — Turkish Suffix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:       #F9F6F1;
+  --bg2:      #F0EBE2;
+  --card:     #FFFFFF;
+  --ink:      #1A1612;
+  --ink2:     #5A524A;
+  --ink3:     #9A9088;
+  --border:   rgba(26,22,18,0.1);
+  --teal:     #1A7A6E;
+  --teal-l:   #E0F2EF;
+  --orange:   #C05A1A;
+  --orange-l: #FBEEE4;
+  --blue:     #1A5A8A;
+  --blue-l:   #E0EEF8;
+  --rose:     #A03050;
+  --rose-l:   #F8E0E8;
+  --r: 14px;
+  --shadow: 0 2px 20px rgba(26,22,18,0.07);
+  --shadow-lg: 0 6px 40px rgba(26,22,18,0.12);
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; }
+
+header {
+  background: var(--ink);
+  padding: 3.5rem 2rem 3rem;
+  position: relative; overflow: hidden;
+}
+header::after {
+  content: '-lı -li -lu -lü';
+  position: absolute; right: -20px; bottom: -30px;
+  font-family: 'Lora', serif; font-size: 120px; font-weight: 700;
+  color: rgba(255,255,255,0.04); white-space: nowrap; pointer-events: none; letter-spacing: -4px;
+}
+.h-inner { max-width: 860px; margin: 0 auto; position: relative; }
+.h-eyebrow {
+  font-family: 'Fira Code', monospace; font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 10px;
+}
+.h-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--teal); }
+header h1 { font-family: 'Lora', serif; font-size: clamp(2.2rem,5vw,4rem); font-weight: 700; color: #F5F0E8; line-height: 1.1; margin-bottom: 0.6rem; }
+header h1 span { font-style: italic; color: #C8B890; }
+.h-sub { font-size: 15px; color: rgba(245,240,232,0.45); font-weight: 300; max-width: 520px; line-height: 1.6; }
+
+nav { background: var(--card); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 16px rgba(26,22,18,0.05); }
+.nav-inner { max-width: 860px; margin: 0 auto; display: flex; padding: 0 1.5rem; }
+.ntab { padding: 1rem 1.4rem; font-size: 14px; font-weight: 500; color: var(--ink3); background: none; border: none; border-bottom: 2.5px solid transparent; cursor: pointer; transition: color 0.18s, border-color 0.18s; white-space: nowrap; font-family: 'Outfit', sans-serif; }
+.ntab:hover { color: var(--ink); }
+.ntab.active { color: var(--teal); border-bottom-color: var(--teal); }
+
+main { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
+.sec { display: none; animation: fadeUp 0.22s ease; }
+.sec.on { display: block; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+.sec-label { font-family: 'Fira Code', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 8px; }
+.sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* OVERVIEW */
+.meaning-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 12px; margin-bottom: 2.5rem; }
+.m-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 1.25rem; position: relative; overflow: hidden; transition: transform 0.15s, box-shadow 0.15s; }
+.m-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.m-stripe { position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: var(--r) var(--r) 0 0; }
+.m-icon { font-size: 28px; margin: 8px 0 10px; display: block; }
+.m-type { font-family: 'Fira Code', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; font-weight: 500; }
+.m-card h3 { font-family: 'Lora', serif; font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.m-card p { font-size: 13px; color: var(--ink2); line-height: 1.6; }
+.m-example { margin-top: 10px; padding: 8px 10px; border-radius: 8px; font-size: 13px; }
+.m-example .tr { font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.m-example .en { font-size: 12px; color: var(--ink3); font-style: italic; }
+.c1 .m-stripe { background: var(--teal); } .c1 .m-type { color: var(--teal); } .c1 .m-example { background: var(--teal-l); }
+.c2 .m-stripe { background: var(--orange); } .c2 .m-type { color: var(--orange); } .c2 .m-example { background: var(--orange-l); }
+.c3 .m-stripe { background: var(--blue); } .c3 .m-type { color: var(--blue); } .c3 .m-example { background: var(--blue-l); }
+.c4 .m-stripe { background: var(--rose); } .c4 .m-type { color: var(--rose); } .c4 .m-example { background: var(--rose-l); }
+
+.harmony-box { background: var(--ink); color: #F5F0E8; border-radius: var(--r); padding: 1.5rem; margin-top: 1rem; }
+.harmony-box h3 { font-family: 'Lora', serif; font-size: 15px; font-style: italic; font-weight: 400; color: #C8B890; margin-bottom: 1rem; }
+.h-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 10px; }
+.h-row { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+.h-pill { font-family: 'Fira Code', monospace; font-size: 12px; padding: 3px 10px; background: rgba(255,255,255,0.08); border-radius: 20px; color: #C8B890; white-space: nowrap; }
+.h-row span { color: rgba(245,240,232,0.65); }
+.h-row strong { color: #F5F0E8; }
+
+/* EXAMPLES */
+.ex-list { display: flex; flex-direction: column; gap: 14px; }
+.ex-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; transition: box-shadow 0.15s; }
+.ex-card:hover { box-shadow: var(--shadow); }
+.ex-body { padding: 1.25rem 1.5rem 1rem; }
+.ex-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+.ex-n { font-family: 'Fira Code', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); }
+.ex-cat { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; font-family: 'Fira Code', monospace; }
+.cat-with  { background: var(--teal-l);   color: var(--teal);   }
+.cat-place { background: var(--orange-l); color: var(--orange); }
+.cat-state { background: var(--blue-l);   color: var(--blue);   }
+.cat-adj   { background: var(--rose-l);   color: var(--rose);   }
+.ex-tr { font-family: 'Lora', serif; font-size: 22px; font-weight: 700; color: var(--ink); line-height: 1.4; margin-bottom: 5px; }
+.ex-tr mark { background: none; border-bottom: 3px solid var(--teal); padding-bottom: 1px; color: var(--teal); }
+.ex-en { font-size: 15px; color: var(--ink2); font-style: italic; margin-bottom: 10px; }
+.ex-note { font-size: 13px; color: var(--ink3); line-height: 1.6; background: var(--bg); padding: 8px 12px; border-radius: 8px; }
+.ex-note strong { color: var(--ink2); }
+.ex-foot { background: var(--bg2); border-top: 1px solid var(--border); padding: 0.65rem 1.5rem; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.tts-btn { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 500; padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border); background: var(--card); color: var(--ink2); cursor: pointer; transition: all 0.15s; font-family: 'Outfit', sans-serif; }
+.tts-btn:hover, .tts-btn.playing { background: var(--teal); color: white; border-color: var(--teal); }
+.spd-wrap { margin-left: auto; display: flex; gap: 6px; align-items: center; }
+.spd { font-size: 12px; font-family: 'Fira Code', monospace; padding: 4px 10px; border-radius: 12px; border: 1px solid var(--border); background: none; color: var(--ink3); cursor: pointer; transition: all 0.15s; }
+.spd.on { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+/* QUIZ */
+.quiz-top { display: flex; align-items: flex-start; gap: 12px; flex-wrap: wrap; margin-bottom: 1.5rem; justify-content: space-between; }
+.score-pill { display: flex; gap: 20px; align-items: center; background: var(--card); border: 1px solid var(--border); border-radius: 40px; padding: 10px 22px; }
+.sp-block { text-align: center; }
+.sp-val { font-family: 'Lora', serif; font-size: 22px; font-weight: 700; color: var(--teal); line-height: 1; }
+.sp-lbl { font-size: 11px; color: var(--ink3); font-family: 'Fira Code', monospace; letter-spacing: 0.06em; }
+.divider { width: 1px; height: 34px; background: var(--border); }
+.reset-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; padding: 9px 20px; border-radius: 20px; border: 1px solid var(--border); background: var(--card); color: var(--ink2); cursor: pointer; transition: all 0.15s; font-family: 'Outfit', sans-serif; }
+.reset-btn:hover { border-color: var(--ink); color: var(--ink); }
+.pbar-wrap { height: 4px; background: var(--bg2); border-radius: 4px; overflow: hidden; margin-bottom: 2rem; }
+.pbar { height: 100%; background: var(--teal); width: 0%; transition: width 0.4s ease; border-radius: 4px; }
+
+.q-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 1.5rem; margin-bottom: 14px; transition: box-shadow 0.15s; }
+.q-card:hover { box-shadow: 0 2px 14px rgba(26,22,18,0.05); }
+.q-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+.q-num { font-family: 'Fira Code', monospace; font-size: 10px; color: var(--ink3); letter-spacing: 0.1em; text-transform: uppercase; }
+.q-cat { font-size: 11px; font-family: 'Fira Code', monospace; padding: 2px 10px; border-radius: 20px; }
+
+/* TYPE-IN quiz */
+.q-sentence { font-family: 'Lora', serif; font-size: 20px; font-weight: 600; color: var(--ink); margin-bottom: 6px; line-height: 1.5; }
+.q-english { font-size: 14px; color: var(--ink3); font-style: italic; margin-bottom: 14px; }
+.q-hint { font-size: 13px; color: var(--ink2); margin-bottom: 14px; }
+.q-hint strong { color: var(--teal); font-family: 'Fira Code', monospace; }
+
+.input-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.root-display { font-family: 'Fira Code', monospace; font-size: 18px; font-weight: 500; color: var(--ink); background: var(--bg2); padding: 8px 14px; border-radius: 8px 0 0 8px; border: 1.5px solid var(--border); border-right: none; white-space: nowrap; }
+.suffix-input {
+  font-family: 'Fira Code', monospace; font-size: 18px; font-weight: 500;
+  color: var(--teal); width: 90px; padding: 8px 12px;
+  border: 1.5px solid var(--border); border-radius: 0 8px 8px 0;
+  background: var(--card); outline: none; transition: border-color 0.15s;
+  text-align: center;
+}
+.suffix-input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px var(--teal-l); }
+.suffix-input.correct-input { border-color: var(--teal); background: var(--teal-l); color: var(--teal); }
+.suffix-input.wrong-input   { border-color: var(--orange); background: var(--orange-l); color: var(--orange); }
+.suffix-input:disabled { opacity: 0.8; cursor: default; }
+
+.check-btn { padding: 9px 20px; border-radius: 8px; border: 1.5px solid var(--teal); background: var(--teal); color: white; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.15s; font-family: 'Outfit', sans-serif; }
+.check-btn:hover { background: var(--teal-l); color: var(--teal); }
+.check-btn:disabled { opacity: 0.4; cursor: default; }
+
+.q-tts-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); background: var(--bg2); color: var(--ink2); cursor: pointer; transition: all 0.15s; font-family: 'Outfit', sans-serif; }
+.q-tts-btn:hover, .q-tts-btn.playing { background: var(--teal); color: white; border-color: var(--teal); }
+
+.q-fb { display: none; margin-top: 12px; font-size: 13px; padding: 10px 14px; border-radius: 8px; line-height: 1.6; }
+.q-fb.ok { display: block; background: var(--teal-l);   color: var(--teal);   }
+.q-fb.no { display: block; background: var(--orange-l); color: var(--orange); }
+
+footer { text-align: center; padding: 2.5rem 1.5rem; font-size: 13px; color: var(--ink3); border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="h-inner">
+    <p class="h-eyebrow">Turkish Grammar · Level A2–B1</p>
+    <h1>-lı / -li / -lu / -lü<br><span>The "with / having" Suffix</span></h1>
+    <p class="h-sub">One suffix, four vowel forms, many meanings — with annotated examples, TTS audio, and type-in exercises.</p>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <button class="ntab active" onclick="show('overview',this)">Overview</button>
+    <button class="ntab" onclick="show('examples',this)">Examples + Audio</button>
+    <button class="ntab" onclick="show('quiz',this)">Exercises</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ══ OVERVIEW ══ -->
+<section id="overview" class="sec on">
+  <p class="sec-label">Four meanings of the same suffix</p>
+  <div class="meaning-grid">
+    <div class="m-card c1">
+      <div class="m-stripe"></div>
+      <span class="m-icon">🎁</span>
+      <div class="m-type">Meaning 1 · With / Having</div>
+      <h3>"Equipped with"</h3>
+      <p>Added to a noun → adjective meaning "having X" or "with X". The most common use.</p>
+      <div class="m-example"><div class="tr">şeker<strong>li</strong> çay</div><div class="en">tea with sugar</div></div>
+    </div>
+    <div class="m-card c2">
+      <div class="m-stripe"></div>
+      <span class="m-icon">📍</span>
+      <div class="m-type">Meaning 2 · From / Of a place</div>
+      <h3>"From that place"</h3>
+      <p>Added to a city or region → shows origin, like a demonym. Very common in introductions.</p>
+      <div class="m-example"><div class="tr">İstanbul<strong>lu</strong></div><div class="en">person from Istanbul</div></div>
+    </div>
+    <div class="m-card c3">
+      <div class="m-stripe"></div>
+      <span class="m-icon">😊</span>
+      <div class="m-type">Meaning 3 · Characterised by</div>
+      <h3>"Full of / marked by"</h3>
+      <p>Describes a quality or emotional state — "having the quality of X".</p>
+      <div class="m-example"><div class="tr">umut<strong>lu</strong></div><div class="en">hopeful (full of hope)</div></div>
+    </div>
+    <div class="m-card c4">
+      <div class="m-stripe"></div>
+      <span class="m-icon">🔢</span>
+      <div class="m-type">Meaning 4 · Numbered / Labelled</div>
+      <h3>"Bearing that number"</h3>
+      <p>Added to numbers or codes to describe something labelled or identified by that number.</p>
+      <div class="m-example"><div class="tr">100<strong>lük</strong> bir not</div><div class="en">a score of 100</div></div>
+    </div>
+  </div>
+
+  <p class="sec-label" style="margin-top:2rem;">Vowel harmony</p>
+  <div class="harmony-box">
+    <h3>Which form to use? Follow the last vowel of the root.</h3>
+    <div class="h-grid">
+      <div class="h-row"><span class="h-pill">a, ı</span> <span>→ use</span> <strong>-lı</strong> &nbsp;<span style="opacity:.5">· çay → çay<strong>lı</strong></span></div>
+      <div class="h-row"><span class="h-pill">e, i</span> <span>→ use</span> <strong>-li</strong> &nbsp;<span style="opacity:.5">· süt → süt<strong>li</strong>… wait: ü → -lü!</span></div>
+      <div class="h-row"><span class="h-pill">o, u</span> <span>→ use</span> <strong>-lu</strong> &nbsp;<span style="opacity:.5">· tuz → tuz<strong>lu</strong></span></div>
+      <div class="h-row"><span class="h-pill">ö, ü</span> <span>→ use</span> <strong>-lü</strong> &nbsp;<span style="opacity:.5">· göz → göz<strong>lü</strong></span></div>
+    </div>
+    <p style="margin-top:1rem;font-size:13px;color:rgba(245,240,232,0.45);line-height:1.6;">
+      Nouns ending in a vowel: just attach directly — <em>araba → arabalı</em>. No buffer consonant needed.
+    </p>
+  </div>
+</section>
+
+<!-- ══ EXAMPLES ══ -->
+<section id="examples" class="sec">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:1.5rem;flex-wrap:wrap;">
+    <p class="sec-label" style="margin:0;flex:1;">10 annotated examples with audio</p>
+    <div style="display:flex;gap:6px;align-items:center;">
+      <span style="font-size:12px;color:var(--ink3);">Speed:</span>
+      <button class="spd on" onclick="setSpd(0.75,this)">Slow</button>
+      <button class="spd" onclick="setSpd(1.0,this)">Normal</button>
+    </div>
+  </div>
+  <div class="ex-list" id="ex-list"></div>
+</section>
+
+<!-- ══ QUIZ ══ -->
+<section id="quiz" class="sec">
+  <div class="quiz-top">
+    <div>
+      <p class="sec-label" style="margin-bottom:8px;">Type the correct suffix · Doğru eki yaz</p>
+      <div class="score-pill">
+        <div class="sp-block"><div class="sp-val" id="s-pts">0</div><div class="sp-lbl">correct</div></div>
+        <div class="divider"></div>
+        <div class="sp-block"><div class="sp-val" id="s-done">0</div><div class="sp-lbl">answered</div></div>
+        <div class="divider"></div>
+        <div class="sp-block"><div class="sp-val" id="s-total">10</div><div class="sp-lbl">total</div></div>
+      </div>
+    </div>
+    <button class="reset-btn" onclick="resetQuiz()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+      Reset
+    </button>
+  </div>
+  <div class="pbar-wrap"><div class="pbar" id="pbar"></div></div>
+  <div id="quiz-list"></div>
+</section>
+
+</main>
+<footer>Türkçe -lı/-li/-lu/-lü Eki · A2–B1 Grammar Reference</footer>
+
+<script>
+const catClass = { 'with/having':'cat-with', 'place origin':'cat-place', 'quality/state':'cat-state', 'number/label':'cat-adj' };
+
+/* ── EXAMPLES ── */
+const examples = [
+  {
+    tr: "Şekerli kahve içmek istemiyorum.",
+    en: "I don't want to drink coffee with sugar.",
+    key: "Şekerli", root: "şeker", suffix: "-li", cat: "with/having",
+    note: "<strong>şeker</strong> (sugar) → last vowel <em>e</em> → use <strong>-li</strong>. Means 'containing sugar'. Opposite: şekersiz (sugarless)."
+  },
+  {
+    tr: "Annem sütlü çay yapar.",
+    en: "My mother makes tea with milk.",
+    key: "sütlü", root: "süt", suffix: "-lü", cat: "with/having",
+    note: "<strong>süt</strong> (milk) → last vowel <em>ü</em> → use <strong>-lü</strong>. Very common in food/drink vocabulary."
+  },
+  {
+    tr: "Bu tuzlu çorba çok lezzetli.",
+    en: "This salty soup is very delicious.",
+    key: "tuzlu", root: "tuz", suffix: "-lu", cat: "with/having",
+    note: "<strong>tuz</strong> (salt) → last vowel <em>u</em> → use <strong>-lu</strong>. Describes flavour/content in food contexts."
+  },
+  {
+    tr: "Ahmet Ankaralı bir müzisyen.",
+    en: "Ahmet is a musician from Ankara.",
+    key: "Ankaralı", root: "Ankara", suffix: "-lı", cat: "place origin",
+    note: "<strong>Ankara</strong> → last vowel <em>a</em> → use <strong>-lı</strong>. Added to city names it means 'from / native of that city'."
+  },
+  {
+    tr: "İstanbullu insanlar hep aceleci olur mu?",
+    en: "Are people from Istanbul always in a hurry?",
+    key: "İstanbullu", root: "İstanbul", suffix: "-lu", cat: "place origin",
+    note: "<strong>İstanbul</strong> → last vowel <em>u</em> → use <strong>-lu</strong>. Acts as both noun (an Istanbulite) and adjective."
+  },
+  {
+    tr: "Gözlüklü öğretmeni tanıyor musun?",
+    en: "Do you know the teacher with glasses?",
+    key: "Gözlüklü", root: "gözlük", suffix: "-lü", cat: "with/having",
+    note: "<strong>gözlük</strong> (glasses) → last vowel <em>ü</em> → use <strong>-lü</strong>. Used to identify people by what they wear or carry."
+  },
+  {
+    tr: "Bu umutlu haberler bizi mutlu etti.",
+    en: "This hopeful news made us happy.",
+    key: "umutlu", root: "umut", suffix: "-lu", cat: "quality/state",
+    note: "<strong>umut</strong> (hope) → last vowel <em>u</em> → use <strong>-lu</strong>. Describes an emotional quality. Compare: korkulu (fearful), heyecanlı (excited)."
+  },
+  {
+    tr: "Kalabalık ve gürültülü bir şehirde yaşıyorum.",
+    en: "I live in a crowded and noisy city.",
+    key: "gürültülü", root: "gürültü", suffix: "-lü", cat: "quality/state",
+    note: "<strong>gürültü</strong> (noise) → last vowel <em>ü</em> → use <strong>-lü</strong>. Describes a characteristic of a place or situation."
+  },
+  {
+    tr: "Renkli bir elbise giymek istiyorum.",
+    en: "I want to wear a colourful dress.",
+    key: "Renkli", root: "renk", suffix: "-li", cat: "quality/state",
+    note: "<strong>renk</strong> (colour) → last vowel <em>e</em> → use <strong>-li</strong>. The noun renk keeps its k before the suffix (no consonant mutation)."
+  },
+  {
+    tr: "Sınıfta on beşli gruplar oluşturduk.",
+    en: "We formed groups of fifteen in class.",
+    key: "on beşli", root: "on beş", suffix: "-li", cat: "number/label",
+    note: "<strong>on beş</strong> (fifteen) → last vowel <em>e</em> → use <strong>-li</strong>. Attached to numbers it means 'in groups of X' or 'labelled with X'."
+  }
+];
+
+/* ── QUIZ — type-in the suffix ── */
+// root: what is shown in the box | answer: the correct suffix to type | full: complete word for TTS
+const quiz = [
+  {
+    sentence: "Çay ___ içmek ister misin?",
+    english:  "Would you like to drink tea with sugar?",
+    hint:     "sugar = şeker (last vowel: e)",
+    root:     "şeker",
+    answer:   "li",
+    full_tr:  "Şekerli çay içmek ister misin?",
+    cat:      "with/having",
+    exp:      "şeker → last vowel 'e' → -li. Full word: şekerli (sugary / with sugar)."
+  },
+  {
+    sentence: "Bu çorba biraz ___ .",
+    english:  "This soup is a bit salty.",
+    hint:     "salt = tuz (last vowel: u)",
+    root:     "tuz",
+    answer:   "lu",
+    full_tr:  "Bu çorba biraz tuzlu.",
+    cat:      "with/having",
+    exp:      "tuz → last vowel 'u' → -lu. Full word: tuzlu (salty / with salt)."
+  },
+  {
+    sentence: "Süt___ kahve sever misin?",
+    english:  "Do you like coffee with milk?",
+    hint:     "milk = süt (last vowel: ü)",
+    root:     "süt",
+    answer:   "lü",
+    full_tr:  "Sütlü kahve sever misin?",
+    cat:      "with/having",
+    exp:      "süt → last vowel 'ü' → -lü. Full word: sütlü (with milk / milky)."
+  },
+  {
+    sentence: "Sen İzmir___ misin?",
+    english:  "Are you from Izmir?",
+    hint:     "city: İzmir (last vowel: i)",
+    root:     "İzmir",
+    answer:   "li",
+    full_tr:  "Sen İzmirli misin?",
+    cat:      "place origin",
+    exp:      "İzmir → last vowel 'i' → -li. Full word: İzmirli (person from İzmir)."
+  },
+  {
+    sentence: "Trabzon___ biri mi?",
+    english:  "Is he/she from Trabzon?",
+    hint:     "city: Trabzon (last vowel: o)",
+    root:     "Trabzon",
+    answer:   "lu",
+    full_tr:  "Trabzonlu biri mi?",
+    cat:      "place origin",
+    exp:      "Trabzon → last vowel 'o' → -lu. Full word: Trabzonlu."
+  },
+  {
+    sentence: "Gözlük___ öğretmen kim?",
+    english:  "Who is the teacher with glasses?",
+    hint:     "glasses = gözlük (last vowel: ü)",
+    root:     "gözlük",
+    answer:   "lü",
+    full_tr:  "Gözlüklü öğretmen kim?",
+    cat:      "with/having",
+    exp:      "gözlük → last vowel 'ü' → -lü. Full word: gözlüklü."
+  },
+  {
+    sentence: "Umut___ bir öğrenci sınava girdi.",
+    english:  "A hopeful student took the exam.",
+    hint:     "hope = umut (last vowel: u)",
+    root:     "umut",
+    answer:   "lu",
+    full_tr:  "Umutlu bir öğrenci sınava girdi.",
+    cat:      "quality/state",
+    exp:      "umut → last vowel 'u' → -lu. Full word: umutlu (hopeful)."
+  },
+  {
+    sentence: "Renk___ bir tablo aldım.",
+    english:  "I bought a colourful painting.",
+    hint:     "colour = renk (last vowel: e)",
+    root:     "renk",
+    answer:   "li",
+    full_tr:  "Renkli bir tablo aldım.",
+    cat:      "quality/state",
+    exp:      "renk → last vowel 'e' → -li. Full word: renkli (colourful)."
+  },
+  {
+    sentence: "Dışarısı çok gürültü___ .",
+    english:  "It is very noisy outside.",
+    hint:     "noise = gürültü (last vowel: ü)",
+    root:     "gürültü",
+    answer:   "lü",
+    full_tr:  "Dışarısı çok gürültülü.",
+    cat:      "quality/state",
+    exp:      "gürültü → last vowel 'ü' → -lü. Full word: gürültülü (noisy)."
+  },
+  {
+    sentence: "On beş___ gruplar oluşturduk.",
+    english:  "We formed groups of fifteen.",
+    hint:     "fifteen = on beş (last vowel: e)",
+    root:     "on beş",
+    answer:   "li",
+    full_tr:  "On beşli gruplar oluşturduk.",
+    cat:      "number/label",
+    exp:      "on beş → last vowel 'e' → -li. Full word: on beşli (in groups of 15)."
+  }
+];
+
+let speed = 0.75;
+let scores = new Array(10).fill(null);
+
+/* ── TTS ── */
+function speak(text, btn) {
+  if (!('speechSynthesis' in window)) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'tr-TR'; u.rate = speed;
+  btn.classList.add('playing');
+  u.onend = u.onerror = () => btn.classList.remove('playing');
+  speechSynthesis.speak(u);
+}
+function setSpd(s, btn) {
+  speed = s;
+  document.querySelectorAll('.spd').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+}
+
+/* ── BUILD EXAMPLES ── */
+function buildExamples() {
+  const c = document.getElementById('ex-list');
+  examples.forEach((e, i) => {
+    const hiTr = e.tr.replace(e.key, `<mark>${e.key}</mark>`);
+    const safe = e.tr.replace(/'/g, "\\'");
+    c.innerHTML += `
+    <div class="ex-card">
+      <div class="ex-body">
+        <div class="ex-meta">
+          <span class="ex-n">Example ${String(i+1).padStart(2,'0')}</span>
+          <span class="ex-cat ${catClass[e.cat]}">${e.cat}</span>
+          <span style="font-family:'Fira Code',monospace;font-size:11px;background:var(--bg2);padding:2px 9px;border-radius:20px;color:var(--ink3);">${e.suffix}</span>
+        </div>
+        <div class="ex-tr">${hiTr}</div>
+        <div class="ex-en">${e.en}</div>
+        <div class="ex-note">${e.note}</div>
+      </div>
+      <div class="ex-foot">
+        <button class="tts-btn" onclick="speak('${safe}',this)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          Listen
+        </button>
+      </div>
+    </div>`;
+  });
+}
+
+/* ── BUILD QUIZ ── */
+function buildQuiz() {
+  const c = document.getElementById('quiz-list');
+  c.innerHTML = '';
+  quiz.forEach((q, i) => {
+    const safeFull = q.full_tr.replace(/'/g, "\\'");
+    // build sentence with blank shown as root + input box
+    c.innerHTML += `
+    <div class="q-card" id="qcard-${i}">
+      <div class="q-meta">
+        <span class="q-num">Question ${String(i+1).padStart(2,'0')} / 10</span>
+        <span class="q-cat ${catClass[q.cat]}">${q.cat}</span>
+      </div>
+      <div class="q-sentence">${q.sentence.replace('___', '<span style="color:var(--teal);font-style:italic;">[suffix]</span>')}</div>
+      <div class="q-english">${q.english}</div>
+      <div class="q-hint">Root: <strong>${q.root}</strong> &nbsp;·&nbsp; ${q.hint}</div>
+      <div class="input-row">
+        <span class="root-display">${q.root}</span>
+        <input class="suffix-input" id="inp-${i}" type="text" placeholder="-??" autocomplete="off" autocorrect="off" spellcheck="false"
+          onkeydown="if(event.key==='Enter') checkAnswer(${i})">
+        <button class="check-btn" id="chk-${i}" onclick="checkAnswer(${i})">Check</button>
+        <button class="q-tts-btn" id="tts-${i}" onclick="speak('${safeFull}',this)" title="Listen to the full sentence">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          Listen
+        </button>
+      </div>
+      <div class="q-fb" id="fb-${i}"></div>
+    </div>`;
+  });
+  updateScore();
+}
+
+function normalise(s) {
+  return s.trim().toLowerCase()
+    .replace(/ğ/g,'g').replace(/ş/g,'s').replace(/ı/g,'i')
+    .replace(/ö/g,'o').replace(/ü/g,'u').replace(/ç/g,'c')
+    .replace(/^-/,'');
+}
+
+function checkAnswer(qi) {
+  if (scores[qi] !== null) return;
+  const inp = document.getElementById(`inp-${qi}`);
+  const raw = inp.value.trim().toLowerCase().replace(/^-/,'');
+  const correct = raw === quiz[qi].answer || normalise(raw) === normalise(quiz[qi].answer);
+  scores[qi] = correct ? 1 : 0;
+  inp.disabled = true;
+  document.getElementById(`chk-${qi}`).disabled = true;
+  inp.classList.add(correct ? 'correct-input' : 'wrong-input');
+  if (!correct) inp.value = '-' + quiz[qi].answer;
+  const fb = document.getElementById(`fb-${qi}`);
+  fb.className = 'q-fb ' + (correct ? 'ok' : 'no');
+  fb.innerHTML = (correct ? '✓ Correct! ' : '✗ The correct suffix is <strong>-' + quiz[qi].answer + '</strong>. ') + quiz[qi].exp;
+  updateScore();
+}
+
+function updateScore() {
+  const done = scores.filter(s => s !== null).length;
+  const pts  = scores.filter(s => s === 1).length;
+  document.getElementById('s-pts').textContent  = pts;
+  document.getElementById('s-done').textContent = done;
+  document.getElementById('pbar').style.width   = (done / 10 * 100) + '%';
+}
+
+function resetQuiz() { scores = new Array(10).fill(null); buildQuiz(); }
+
+function show(id, btn) {
+  document.querySelectorAll('.sec').forEach(s => s.classList.remove('on'));
+  document.querySelectorAll('.ntab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('active');
+}
+
+buildExamples();
+buildQuiz();
+</script>
+</body>
+</html>
